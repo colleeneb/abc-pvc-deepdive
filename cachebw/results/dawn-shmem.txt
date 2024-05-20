@@ -6,3 +6,14 @@ n      682, reps =    10000, bytes        16368, bandwidth = 38912.373816
 n     1365, reps =    10000, bytes        32760, bandwidth = 79064.550918
 n     2730, reps =    10000, bytes        65520, bandwidth = 96999.891347
 n     5461, reps =    10000, bytes       131064, bandwidth = 105266.496878
+
+
+# FLAT HIERARCHY - 1 TILE
+n       42, reps =    10000, bytes         1008, bandwidth =  1383.113574
+n       85, reps =    10000, bytes         2040, bandwidth =  2485.284685
+n      170, reps =    10000, bytes         4080, bandwidth =  3479.269990
+n      341, reps =    10000, bytes         8184, bandwidth =  6028.112320
+n      682, reps =    10000, bytes        16368, bandwidth = 19455.804078
+n     1365, reps =    10000, bytes        32760, bandwidth = 39545.242481
+n     2730, reps =    10000, bytes        65520, bandwidth = 48505.366619
+n     5461, reps =    10000, bytes       131064, bandwidth = 52633.247588

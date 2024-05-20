@@ -7,14 +7,14 @@ To Benchmark
 # MODEL = USM
 # SHMEM = 0
 make
-./benchmark.sh -n 14
+ONEAPI_DEVICE_SELECTOR=level_zero:0 ./benchmark.sh -n 14
 
 # For shared memory
 # COMPILER = INTEL
 # MODEL = USM
 # SHMEM = 0
 make
-./benchmark.sh -n 7
+ONEAPI_DEVICE_SELECTOR=level_zero:0 ./benchmark.sh -n 7
 ```
 
 
