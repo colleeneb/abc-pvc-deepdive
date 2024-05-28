@@ -7,6 +7,6 @@ To run on PVC:
 ```sh
 # Source your compilers
 make sycl-usm
-ONEAPI_DEVICE_SELECTOR=level_zero:0 ./run.sycl
+ONEAPI_DEVICE_SELECTOR=level_zero:0.0 ./run.sycl
 # Results are in lat.csv
 ```
