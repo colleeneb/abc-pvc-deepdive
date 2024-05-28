@@ -27,8 +27,8 @@ int main() {
     for (uint32_t j = 0; j < deviceCount; j++) {
 
       ze_device_properties_t deviceProperties = {};
-      check(zeDeviceGetProperties(devices[i],&deviceProperties),"zeDeviceGetProperties");
-      printf("Idle Frequency: %u \n", deviceProperies.coreClockRate);
+      check(zeDeviceGetProperties(devices[i], &deviceProperties),"zeDeviceGetProperties");
+      printf("Idle Frequency: %u \n", deviceProperties.coreClockRate);
       printf("numEUsPerSubslice: %u: numSubslicesPerSlice %u, numSlices %u, totalNumEus %u\n", 
 		      deviceProperties.numEUsPerSubslice,
 		      deviceProperties.numSubslicesPerSlice,

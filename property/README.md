@@ -8,3 +8,9 @@ Compile
 $CC -lze_loader power.c
 ```
 
+# Read number of EU and Frequency
+
+```
+$CC -lze_loader eu_freq.c
+```
+
