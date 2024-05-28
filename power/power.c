@@ -25,6 +25,16 @@ int main() {
     check(zesDeviceGet(drivers[i], &deviceCount, devices), "zesDeviceGet");
 
     for (uint32_t j = 0; j < deviceCount; j++) {
+
+      ze_device_properties_t deviceProperties = {};
+      check(zeDeviceGetProperties(devices[i],&deviceProperties),"zeDeviceGetProperties");
+      printf("Idle Frequency: %u \n", deviceProperies.coreClockRate);
+      printf("numEUsPerSubslice: %u: numSubslicesPerSlice %u, numSlices %u, totalNumEus %u\n", 
+		      deviceProperties.numEUsPerSubslice,
+		      deviceProperties.numSubslicesPerSlice,
+		      deviceProperties.numSlices,
+		      deviceProperties.numEUsPerSubslice*deviceProperties.numSubslicesPerSlice*deviceProperties.numSlices);
+
       uint32_t powerDomainCount = 0;
       check(zesDeviceEnumPowerDomains(devices[i], &powerDomainCount, NULL),
             "zesDeviceEnumPowerDomains");
