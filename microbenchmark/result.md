@@ -32,3 +32,42 @@
 |                          ---|-----------:|-----------:|    ----:|
 | Single-precision FFT C2C 1D |  3 TFlop/s | 34 TFlop/s |    10.8 |
 | Single-precision FFT C2C 2D |  3 TFlop/s | 35 TFlop/s |    10.4 |
+
+
+# Dawn
+(provisional, node id pvc-s-33)
+
+Intel oneAPI 2024.1, MPICH 4.2.1
+
+## Micro-benchmarks
+
+|                                     | One Tile   | Full Node   | Scaling |
+|                                  ---|-----------:| -----------:|    ----:|
+| Single Precision Peak Flops         | 26 TFlop/s | 207 TFlop/s |     8.0 |
+| Double Precision Peak Flops         | 20 TFlop/s | 139 TFlop/s |     7.1 |
+| Memory Bandwidth (triad)            | 1 TB/s     | 9 TB/s      |     8.0 |
+| PCIe Unidirectional Bandwidth (H2D) | 54 GB/s    | 218 GB/s    |     4.0 |
+| PCIe Unidirectional Bandwidth (D2H) | 52 GB/s    | 212 GB/s    |     4.1 |
+| PCIe Bidirectional Bandwidth        | 73 GB/s    | 285 GB/s    |     3.9 |
+| Tile2Tile Unidirectional Bandwidth  | 197 GB/s   | 786 GB/s    |     4.0 |
+| Tile2Tile Bidirectional Bandwidth   | 287 GB/s   | 1 TB/s      |     4.0 |
+| GPU2GPU Unidirectional Bandwidth    |            |             |         |
+| GPU2GPU Bidirectional Bandwidth     |            |             |         |
+
+## GEMM
+
+|          | One Tile    | Full Node    | Scaling |
+|       ---| -----------:|  -----------:|    ----:|
+| DGEMM    | 18 TFlop/s  | 145 TFlop/s  |     8.1 |
+| SGEMM    | 26 TFlop/s  | 205 TFlop/s  |     7.9 |
+| HGEMM    | 323 TFlop/s | 1902 TFlop/s |     5.9 |
+| BF16GEMM | 333 TFlop/s | 2005 TFlop/s |     6.0 |
+| TF32GEMM | 145 TFlop/s | 975 TFlop/s  |     6.7 |
+| I8GEMM   | 664 TFlop/s | 3987 TFlop/s |     6.0 |
+
+## FFT
+
+|                             | One Tile   | Full Node  | Scaling |
+|                          ---|-----------:|-----------:|    ----:|
+| Single-precision FFT C2C 1D | 4 TFlop/s  | 26 TFlop/s |     7.4 |
+| Single-precision FFT C2C 2D | 4 TFlop/s  | 25 TFlop/s |     6.8 |
