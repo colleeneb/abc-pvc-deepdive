@@ -10,7 +10,7 @@ then
 fi
 
 executable=$1
-
+export ZE_FLAT_DEVICE_HIERARCHY=COMPOSITE
 if [ -x "$(command -v $executable)" ]; then
     ZE_AFFINITY_MASK=0.0 $executable &
     ZE_AFFINITY_MASK=0.1 $executable &
