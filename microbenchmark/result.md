@@ -51,8 +51,8 @@ Intel oneAPI 2024.1, MPICH 4.2.1
 | PCIe Bidirectional Bandwidth        | 73 GB/s    | 285 GB/s    |     3.9 |
 | Tile2Tile Unidirectional Bandwidth  | 197 GB/s   | 786 GB/s    |     4.0 |
 | Tile2Tile Bidirectional Bandwidth   | 287 GB/s   | 1 TB/s      |     4.0 |
-| GPU2GPU Unidirectional Bandwidth    |            |             |         |
-| GPU2GPU Bidirectional Bandwidth     |            |             |         |
+| GPU2GPU Unidirectional Bandwidth    | 31 GB/s    | 126 GB/s    |     4.1 |
+| GPU2GPU Bidirectional Bandwidth     | 63 GB/s    | 189 GB/s    |     3.0 |
 
 ## GEMM
 
