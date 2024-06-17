@@ -14,7 +14,7 @@ fi
 # Setting the environment
 case "$1" in
 dawn)
-  source dawn.env
+  source ../../environment/dawn.env
   case "$2" in
   tile)
     export ONEAPI_DEVICE_SELECTOR=level_zero:0.0
