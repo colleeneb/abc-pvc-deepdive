@@ -2,6 +2,7 @@
 
 set -eu
 BASE="$PWD"
+BM=256 # Problem size to run on one tile (required for scaling)
 
 # Downloading source code
 if [ ! -e cloverleaf/CMakeLists.txt ]; then
@@ -14,7 +15,7 @@ fi
 # Setting the environment
 case "$1" in
 dawn)
-  source ../../environment/dawn.env
+  source $BASE/../../environment/dawn.env
   case "$2" in
   tile)
     export ONEAPI_DEVICE_SELECTOR=level_zero:0.0
@@ -23,6 +24,10 @@ dawn)
   gpu)
     export ONEAPI_DEVICE_SELECTOR=level_zero:0.0,0.1
     export NP=2
+    ;;
+  half-node)
+    export ONEAPI_DEVICE_SELECTOR=level_zero:0.0,0.1,1.0,1.1
+    export NP=4
     ;;
   node)
     export ONEAPI_DEVICE_SELECTOR=level_zero:0.0,0.1,1.0,1.1,2.0,2.1,3.0,3.1
@@ -36,12 +41,26 @@ esac
 # Compiling the code
 cd "$BASE/cloverleaf"
 
-CMAKE_OPTS+="-DCMAKE_VERBOSE_MAKEFILE=ON -DENABLE_PROFILING=ON "
+CMAKE_OPTS+="-DCMAKE_VERBOSE_MAKEFILE=ON -DENABLE_PROFILING=OFF "
 CMAKE_OPTS+="-DENABLE_MPI=ON "
-CMAKE_OPTS+="-DMODEL=sycl-usm "
-CMAKE_OPTS+="-DSYCL_COMPILER=ONEAPI-ICPX "
-BENCHMARK_EXE="sycl-usm-cloverleaf"
 
+if [ "$VENDOR" = "INTEL" ]; then
+  MODEL="sycl-usm"
+  CMAKE_OPTS+="-DSYCL_COMPILER=ONEAPI-ICPX "
+elif [ "$VENDOR" = "NVIDIA" ]; then
+  MODEL="cuda"
+  CMAKE_OPTS+="-DCMAKE_CUDA_COMPILER=$(which nvcc) "
+  CMAKE_OPTS+="-DCUDA_ARCH=$ARCH "
+  CMAKE_OPTS+="-DCMAKE_C_COMPILER=nvc "
+  CMAKE_OPTS+="-DCMAKE_CXX_COMPILER=nvc++ "
+elif [ "$VENDOR" = "AMD" ]; then
+  echo "The vendor is AMD."
+else
+  echo "VENDOR variable is either unset or not set to INTEL/NVIDIA/AMD"
+fi
+
+CMAKE_OPTS+="-DMODEL=$MODEL "
+BENCHMARK_EXE="$MODEL-cloverleaf"
 
 rm -rf build
 rm -rf results
@@ -52,10 +71,20 @@ ldd "$BASE/cloverleaf/build/$BENCHMARK_EXE"
 
 # Running the code
 
+if [[ "$(mpiexec --version)" =~ "Intel(R) MPI" ]]; then
+  gpu_launch_prelude='export SELECTED_DEVICE=$(($MPI_LOCALRANKID % $NP)) && echo "# SELECTED_DEVICE=$SELECTED_DEVICE"'
+elif [[ "$(mpiexec --version)" =~ "Open MPI" ]]; then
+  gpu_launch_prelude='export SELECTED_DEVICE=$(($OMPI_COMM_WORLD_LOCAL_RANK % $NP)) && echo "# SELECTED_DEVICE=$SELECTED_DEVICE"'
+elif [[ "$(mpiexec --version)" =~ "mpich" ]]; then
+  gpu_launch_prelude='export SELECTED_DEVICE=$(($MPI_LOCALRANKID % $NP)) && echo "# SELECTED_DEVICE=$SELECTED_DEVICE"'
+else
+  echo Cannot recognise the MPI Vendor
+fi
+
 RUN() {
   cd "$BASE/cloverleaf"
   mkdir -p results
-  BENCHMARK_EXE="$PWD/build/sycl-usm-cloverleaf"
+  BENCHMARK_EXE="$PWD/build/$MODEL-cloverleaf"
 
   export I_MPI_PORT_RANGE=50000:50500
   export btl_tcp_port_min_v4=1024
@@ -77,7 +106,6 @@ RUN() {
   echo "======"
 
   function create_command() {
-      gpu_launch_prelude='export SELECTED_DEVICE=$(($MPI_LOCALRANKID % $NP)) && echo "# SELECTED_DEVICE=$SELECTED_DEVICE"'
       echo "$gpu_launch_prelude && $2"
   }
 
@@ -89,47 +117,14 @@ RUN() {
     export OMP_PLACES=cores
     echo ">>> Using 1R/N $NP"
     mpiexec -launcher ssh -np "$NP" -map-by core -bind-to core \
-      sh -c "$(create_command node "$BENCHMARK_EXE --file $DECK --out $PWD/cloverleaf_np${NP}_sycl-usm_${1}_stage_$2.out --staging-buffer $2 $opts")"
+      sh -c "$(create_command node "$BENCHMARK_EXE --file $DECK --out $PWD/cloverleaf_np${NP}_${1}_stage_$2.out --staging-buffer $2 $opts")"
 
   )
 }
 
-case "$2" in
-  tile)
-    for bm in 4 8 16 32 64; do
-      RUN $bm true
-    done
-    ;;
-  gpu)
-    for bm in 4 8 16 32 64 128; do
-      RUN $bm true
-    done
-    ;;
-  node)
-    for bm in 4 8 16 32 64 128 256 512; do
-      RUN $bm true
-    done
-    ;;
-esac
+bm=$(($BM * $NP))
+RUN $bm true
 
 # Extracting the FOM value
 cd "$BASE/cloverleaf/results"
-
-case "$2" in
-  tile)
-    for bm in 4 8 16 32 64; do
-      echo $bm $(cat cloverleaf_np"$NP"_sycl-usm_"$bm"_stage_true.out | grep "Wall clock" | tail -n 1 | awk '{ print $3 }') >> $BASE/$1-$2.fom
-    done
-    ;;
-  gpu)
-    for bm in 4 8 16 32 64 128; do
-      echo $bm $(cat cloverleaf_np"$NP"_sycl-usm_"$bm"_stage_true.out | grep "Wall clock" | tail -n 1 | awk '{ print $3 }') >> $BASE/$1-$2.fom
-    done
-    ;;
-  node)
-    for bm in 4 8 16 32 64 128 256 512; do
-      echo $bm $(cat cloverleaf_np"$NP"_sycl-usm_"$bm"_stage_true.out | grep "Wall clock" | tail -n 1 | awk '{ print $3 }') >> $BASE/$1-$2.fom
-    done
-    ;;
-esac
-
+echo $bm $(cat cloverleaf_np"$NP"_"$bm"_stage_true.out | grep "Wall clock" | tail -n 1 | awk '{ print $3 }') >> $BASE/$1-$2.fom
