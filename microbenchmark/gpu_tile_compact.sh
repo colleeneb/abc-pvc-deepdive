@@ -23,6 +23,8 @@ tile_id=$((_MPI_RANKID % num_tile))
 #numa_id=$((1+ gpu_id / num_gpu_per_socket))
 
 export ZE_ENABLE_PCI_ID_DEVICE_ORDER=1
+export ONEAPI_DEVICE_SELECTOR=level_zero:gpu
+export ZE_FLAT_DEVICE_HIERARCHY=COMPOSITE
 export ZE_AFFINITY_MASK=$gpu_id.$tile_id
 #export ONEAPI_DEVICE_SELECTOR=level_zero:$gpu_id.$tile_id
 #https://stackoverflow.com/a/28099707/7674852
