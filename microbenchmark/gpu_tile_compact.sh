@@ -4,8 +4,6 @@ num_gpu=6
 num_tile=2
 num_socket=2
 
-_MPI_RANKID=$PALS_LOCAL_RANKID
-
 # Get the RankID from different launcher                                                                                                                                                                                    
 if [[ -v MPI_LOCALRANKID ]]; then
   _MPI_RANKID=$MPI_LOCALRANKID
