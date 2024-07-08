@@ -13,30 +13,7 @@ if [ ! -e cloverleaf/CMakeLists.txt ]; then
 fi
 
 # Setting the environment
-case "$1" in
-dawn)
-  source $BASE/../../environment/dawn.env
-  case "$2" in
-  tile)
-    export ONEAPI_DEVICE_SELECTOR=level_zero:0.0
-    export NP=1
-    ;;
-  gpu)
-    export ONEAPI_DEVICE_SELECTOR=level_zero:0.0,0.1
-    export NP=2
-    ;;
-  half-node)
-    export ONEAPI_DEVICE_SELECTOR=level_zero:0.0,0.1,1.0,1.1
-    export NP=4
-    ;;
-  node)
-    export ONEAPI_DEVICE_SELECTOR=level_zero:0.0,0.1,1.0,1.1,2.0,2.1,3.0,3.1
-    export NP=8
-    ;;
-  esac
-  ;;
-*) echo "Unknown System" && exit ;;
-esac
+source $BASE/../../environment/$1.env $2
 
 # Compiling the code
 cd "$BASE/cloverleaf"
@@ -112,11 +89,11 @@ RUN() {
   cd "$BASE/cloverleaf/results"
   (
     set -o xtrace
-    export OMP_NUM_THREADS=$NCPUS
+    #export OMP_NUM_THREADS=$NCPUS
     export OMP_PROC_BIND=true
     export OMP_PLACES=cores
     echo ">>> Using 1R/N $NP"
-    mpiexec -launcher ssh -np "$NP" -map-by core -bind-to core \
+    $MPICOMMAND -launcher ssh\
       sh -c "$(create_command node "$BENCHMARK_EXE --file $DECK --out $PWD/cloverleaf_np${NP}_${1}_stage_$2.out --staging-buffer $2 $opts")"
 
   )
