@@ -48,16 +48,6 @@ ldd "$BASE/cloverleaf/build/$BENCHMARK_EXE"
 
 # Running the code
 
-if [[ "$(mpiexec --version)" =~ "Intel(R) MPI" ]]; then
-  gpu_launch_prelude='export SELECTED_DEVICE=$(($MPI_LOCALRANKID % $NP)) && echo "# SELECTED_DEVICE=$SELECTED_DEVICE"'
-elif [[ "$(mpiexec --version)" =~ "Open MPI" ]]; then
-  gpu_launch_prelude='export SELECTED_DEVICE=$(($OMPI_COMM_WORLD_LOCAL_RANK % $NP)) && echo "# SELECTED_DEVICE=$SELECTED_DEVICE"'
-elif [[ "$(mpiexec --version)" =~ "mpich" ]]; then
-  gpu_launch_prelude='export SELECTED_DEVICE=$(($MPI_LOCALRANKID % $NP)) && echo "# SELECTED_DEVICE=$SELECTED_DEVICE"'
-else
-  echo Cannot recognise the MPI Vendor
-fi
-
 RUN() {
   cd "$BASE/cloverleaf"
   mkdir -p results
@@ -71,7 +61,10 @@ RUN() {
   export I_MPI_OFFLOAD_RDMA=1
   export I_MPI_OFFLOAD_IPC=0 # TODO this needs CAP_SYS_PTRACE
 
-  opts='--device $SELECTED_DEVICE'
+  # MPICH
+  export MPIR_CVAR_ENABLE_GPU=1
+
+  opts='--device 0'
   DECK="$PWD/InputDecks/clover_bm$1.in"
 
   echo "master=$(hostname) nproc=$NCPUS"
@@ -82,10 +75,6 @@ RUN() {
   echo "DECK=$DECK"
   echo "======"
 
-  function create_command() {
-      echo "$gpu_launch_prelude && $2"
-  }
-
   cd "$BASE/cloverleaf/results"
   (
     set -o xtrace
@@ -93,15 +82,15 @@ RUN() {
     export OMP_PROC_BIND=true
     export OMP_PLACES=cores
     echo ">>> Using 1R/N $NP"
-    $MPICOMMAND -launcher ssh\
-      sh -c "$(create_command node "$BENCHMARK_EXE --file $DECK --out $PWD/cloverleaf_np${NP}_${1}_stage_$2.out --staging-buffer $2 $opts")"
-
+    $MPICOMMAND\
+      $BASE/../../microbenchmark/gpu_tile_compact.sh\
+      sh -c "$BENCHMARK_EXE --file $DECK --out $PWD/cloverleaf_np${NP}_${1}_stage_$2.out --staging-buffer $2 $opts"
   )
 }
 
 bm=$(($BM * $NP))
-RUN $bm true
+RUN $bm false
 
 # Extracting the FOM value
 cd "$BASE/cloverleaf/results"
-echo $bm $(cat cloverleaf_np"$NP"_"$bm"_stage_true.out | grep "Wall clock" | tail -n 1 | awk '{ print $3 }') >> $BASE/$1-$2.fom
+echo $bm $(cat cloverleaf_np"$NP"_"$bm"_stage_false.out | grep "Wall clock" | tail -n 1 | awk '{ print $3 }') >> $BASE/$1-$2.fom
