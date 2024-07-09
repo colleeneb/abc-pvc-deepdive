@@ -13,13 +13,7 @@ if [ ! -e minibude/CMakeLists.txt ]; then
 fi
 
 # Setting the environment
-case "$1" in
-dawn)
-  source $BASE/../../environment/dawn.env
-  export ONEAPI_DEVICE_SELECTOR=level_zero:0.0 
-  ;;
-*) echo "Unknown System" && exit ;;
-esac
+source $BASE/../../environment/$1.env nompi
 
 # Compiling the code
 cd "$BASE/minibude"
@@ -60,17 +54,20 @@ RUN() {
   DECK="$PWD/data/$1"
 
   cd "$BASE"
-  $BENCHMARK_EXE --deck $DECK --wgsize 4,8,16,32,64,128,256,512,1024 --ppwi 1,2,4,8,16,32,64 --csv | tee $OUT
+  $MPICOMMAND\
+    ../../microbenchmark/gpu_tile_compact.sh\
+    sh -c "$BENCHMARK_EXE --deck $DECK --wgsize 4,8,16,32,64,128,256,512,1024 --ppwi 1,2,4,8,16,32,64 --csv | tee $OUT\${RANK}"
 }
 
 RUN $BM
 
 # FOM
 cd $BASE
-best=$(tail -n1 $OUT)
+result=${OUT}0
+best=$(tail -n1 $result)
 ppwi=$(echo "$best" | grep -oP '(?<=ppwi: )\d+')
 wgsize=$(echo "$best" | grep -oP '(?<=wgsize: )\d+')
 echo ========================================
-echo best gflops/s = $(echo $(grep "^$ppwi,$wgsize" $OUT) | awk -F',' '{print $9}')
+echo best gflops/s = $(echo $(grep "^$ppwi,$wgsize" $result) | awk -F',' '{print $9}')
 echo ========================================
 

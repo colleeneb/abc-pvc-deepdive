@@ -22,6 +22,9 @@ tile_id=$((_MPI_RANKID % num_tile))
 #num_gpu_per_socket=$((num_gpu / num_socket))
 #numa_id=$((1+ gpu_id / num_gpu_per_socket))
 
+# If needed for some applications
+export RANK=$_MPI_RANKID
+
 export ZE_ENABLE_PCI_ID_DEVICE_ORDER=1
 export ONEAPI_DEVICE_SELECTOR=level_zero:gpu
 export ZE_FLAT_DEVICE_HIERARCHY=COMPOSITE

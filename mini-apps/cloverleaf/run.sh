@@ -84,7 +84,7 @@ RUN() {
     echo ">>> Using 1R/N $NP"
     $MPICOMMAND\
       $BASE/../../microbenchmark/gpu_tile_compact.sh\
-      sh -c "$BENCHMARK_EXE --file $DECK --out $PWD/cloverleaf_np${NP}_${1}_stage_$2.out --staging-buffer $2 $opts"
+      $BENCHMARK_EXE --file $DECK --out $PWD/cloverleaf_np${NP}_${1}_stage_$2.out --staging-buffer $2 $opts
   )
 }
 
