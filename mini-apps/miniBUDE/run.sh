@@ -24,10 +24,15 @@ if [ "$VENDOR" = "INTEL" ]; then
   MODEL="sycl"
   CMAKE_OPTS+="-DSYCL_COMPILER=ONEAPI-ICPX "
 elif [ "$VENDOR" = "NVIDIA" ]; then
-  MODEL="cuda"
-  CMAKE_OPTS+="-DCMAKE_CUDA_COMPILER=$(which nvcc) "
-  CMAKE_OPTS+="-DCUDA_ARCH=$ARCH "
+  # MODEL="cuda"
+  # CMAKE_OPTS+="-DCMAKE_CUDA_COMPILER=$(which nvcc) "
+  # CMAKE_OPTS+="-DCUDA_ARCH=$ARCH "
+  # CMAKE_OPTS+="-DCMAKE_CXX_COMPILER=nvc++ "
+  MODEL="acc"
+  CMAKE_OPTS+="-DCUDA_ARCH=cc90 "
   CMAKE_OPTS+="-DCMAKE_CXX_COMPILER=nvc++ "
+  CMAKE_OPTS+="-DTARGET_DEVICE=gpu "
+  CMAKE_OPTS+="-DTARGET_PROCESSOR=native "
 elif [ "$VENDOR" = "AMD" ]; then
   MODEL="hip"
   CMAKE_OPTS+="-DCMAKE_C_COMPILER=gcc "
