@@ -1,0 +1,1 @@
+../microbenchmark/gpu_tile_compact.sh

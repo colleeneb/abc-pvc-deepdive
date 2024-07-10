@@ -58,7 +58,7 @@ RUN() {
 
   cd "$BASE"
   $MPICOMMAND\
-    ../../microbenchmark/gpu_tile_compact.sh\
+    $BASE/../gpu_tile_compact.sh\
     sh -c "$BENCHMARK_EXE --deck $DECK --wgsize 4,8,16,32,64,128,256,512,1024 --ppwi 1,2,4,8,16,32,64 --csv | tee $OUT\${RANK}"
 }
 

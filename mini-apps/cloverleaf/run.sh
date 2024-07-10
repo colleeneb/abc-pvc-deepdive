@@ -87,7 +87,7 @@ RUN() {
     export OMP_PLACES=cores
     echo ">>> Using 1R/N $NP"
     $MPICOMMAND\
-      $BASE/../../microbenchmark/gpu_tile_compact.sh\
+      $BASE/../gpu_tile_compact.sh\
       $BENCHMARK_EXE --file $DECK --out $PWD/cloverleaf_np${NP}_${1}_stage_$2.out --staging-buffer $2 $opts
   )
 }
