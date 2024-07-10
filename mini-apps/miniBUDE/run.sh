@@ -29,7 +29,10 @@ elif [ "$VENDOR" = "NVIDIA" ]; then
   CMAKE_OPTS+="-DCUDA_ARCH=$ARCH "
   CMAKE_OPTS+="-DCMAKE_CXX_COMPILER=nvc++ "
 elif [ "$VENDOR" = "AMD" ]; then
-  echo "The vendor is AMD."
+  MODEL="hip"
+  CMAKE_OPTS+="-DCMAKE_C_COMPILER=gcc "
+  CMAKE_OPTS+="-DCMAKE_CXX_COMPILER=hipcc "
+  CMAKE_OPTS+="-DCXX_EXTRA_FLAGS=--offload-arch=gfx90a;--gcc-toolchain=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/ "
 else
   echo "VENDOR variable is either unset or not set to INTEL/NVIDIA/AMD"
 fi
