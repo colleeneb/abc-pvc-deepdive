@@ -12,13 +12,7 @@ if [ ! -d cachebw ]; then
 fi
 
 # Setting the environment
-case "$1" in
-dawn)
-  source ../environment/dawn.env
-  export ONEAPI_DEVICE_SELECTOR=level_zero:0.0
-  ;;
-*) echo "Unknown System" && exit ;;
-esac
+source $BASE/../environment/$1.env tile
 
 # Compiling the code
 cd $BASE/cachebw
@@ -27,7 +21,7 @@ make
 
 # Running the code
 cd $BASE/cachebw
-./benchmark.sh -n 14 -r 1000 | tee results/$1.txt
+$BASE/gpu_tile_compact.sh ./benchmark.sh -n 14 -r 1000 | tee results/$1.txt
 
 # Compiling the code
 cd $BASE/cachebw
@@ -36,11 +30,11 @@ make
 
 # Running the code
 cd $BASE/cachebw
-./benchmark.sh -n 7 -r 1000 | tee results/$1-shmem.txt
+$BASE/gpu_tile_compact.sh ./benchmark.sh -n 7 -r 1000 | tee results/$1-shmem.txt
 
 # Extracting the results
-cd $BASE/cachebw
-cat results/$1.txt
-echo \n
-cat results/$1-shmem.txt
+#cd $BASE/cachebw
+#cat results/$1.txt
+#echo \n
+#cat results/$1-shmem.txt
 
