@@ -1,0 +1,785 @@
++ BASE=/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE
++ BM=bm1
++ '[' '!' -e minibude/CMakeLists.txt ']'
++ source /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/../../environment/jlse_mi250.env half-node
+++ module load gcc/12.2.0
+++ local _mlredir=1
+++ '[' -n '' ']'
+++ case " $@ " in
+++ '[' 1 -eq 0 ']'
+++ _module_raw load gcc/12.2.0
++++ /usr/bin/tclsh /usr/lib64/Modules/modulecmd.tcl bash load gcc/12.2.0
+++ eval 'LD_LIBRARY_PATH=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib64; export LD_LIBRARY_PATH;
+__MODULES_LMCONFLICT=gcc/12.2.0\&gcc; export __MODULES_LMCONFLICT;
+MANPATH=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/share/man:/usr/local/man:/usr/share/man; export MANPATH;
+PATH=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin:/home/bertoni/miniconda3/bin:/home/bertoni/miniconda3/condabin:/home/bertoni/.local/bin:/home/bertoni/bin:/home/bertoni/bin/x86_64:/usr/local/bin:/usr/bin:/bin:/usr/lpp/mmfs/bin:/opt/rocm/bin:/opt/rocm/profiler/bin:/opt/rocm/opencl/bin:/home/bertoni/bin; export PATH;
+_LMFILES_=/soft/modulefiles/gcc/12.2.0; export _LMFILES_;
+LOADEDMODULES=gcc/12.2.0; export LOADEDMODULES;
+test 0;'
++++ LD_LIBRARY_PATH=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib64
++++ export LD_LIBRARY_PATH
++++ __MODULES_LMCONFLICT='gcc/12.2.0&gcc'
++++ export __MODULES_LMCONFLICT
++++ MANPATH=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/share/man:/usr/local/man:/usr/share/man
++++ export MANPATH
++++ PATH=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin:/home/bertoni/miniconda3/bin:/home/bertoni/miniconda3/condabin:/home/bertoni/.local/bin:/home/bertoni/bin:/home/bertoni/bin/x86_64:/usr/local/bin:/usr/bin:/bin:/usr/lpp/mmfs/bin:/opt/rocm/bin:/opt/rocm/profiler/bin:/opt/rocm/opencl/bin:/home/bertoni/bin
++++ export PATH
++++ _LMFILES_=/soft/modulefiles/gcc/12.2.0
++++ export _LMFILES_
++++ LOADEDMODULES=gcc/12.2.0
++++ export LOADEDMODULES
++++ test 0
+++ _mlstatus=0
+++ return 0
+++ module load rocm/6.1.0 cmake/3.28.3 openmpi/4.1.1-gcc
+++ local _mlredir=1
+++ '[' -n '' ']'
+++ case " $@ " in
+++ '[' 1 -eq 0 ']'
+++ _module_raw load rocm/6.1.0 cmake/3.28.3 openmpi/4.1.1-gcc
++++ /usr/bin/tclsh /usr/lib64/Modules/modulecmd.tcl bash load rocm/6.1.0 cmake/3.28.3 openmpi/4.1.1-gcc
+++ eval 'LD_LIBRARY_PATH=/soft/libraries/mpi/openmpi/4.1.1/lib:/soft/compilers/rocm/rocm-6.1.0/lib:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib64; export LD_LIBRARY_PATH;
+OMPI_FC=gfortran; export OMPI_FC;
+__MODULES_LMALTNAME=rocm/6.1.0\&as\|rocm/default\&as\|rocm/latest:cmake/3.28.3\&as\|cmake/default\&as\|cmake/latest; export __MODULES_LMALTNAME;
+__MODULES_LMCONFLICT=gcc/12.2.0\&gcc:rocm/6.1.0\&rocm\&aomp/rocm:cmake/3.28.3\&cmake:openmpi/4.1.1-gcc\&openmpi; export __MODULES_LMCONFLICT;
+PATH=/soft/libraries/mpi/openmpi/4.1.1/bin:/soft/buildtools/cmake/3.28.3/bin:/soft/compilers/rocm/rocm-6.1.0/bin:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin:/home/bertoni/miniconda3/bin:/home/bertoni/miniconda3/condabin:/home/bertoni/.local/bin:/home/bertoni/bin:/home/bertoni/bin/x86_64:/usr/local/bin:/usr/bin:/bin:/usr/lpp/mmfs/bin:/opt/rocm/bin:/opt/rocm/profiler/bin:/opt/rocm/opencl/bin:/home/bertoni/bin; export PATH;
+ROCM_PATH=/soft/compilers/rocm/rocm-6.1.0; export ROCM_PATH;
+OMPI_CC=gcc; export OMPI_CC;
+_LMFILES_=/soft/modulefiles/gcc/12.2.0:/soft/modulefiles/rocm/6.1.0:/soft/modulefiles/cmake/3.28.3:/soft/modulefiles/openmpi/4.1.1-gcc; export _LMFILES_;
+LOADEDMODULES=gcc/12.2.0:rocm/6.1.0:cmake/3.28.3:openmpi/4.1.1-gcc; export LOADEDMODULES;
+OMPI_CXX=g++; export OMPI_CXX;
+test 0;'
++++ LD_LIBRARY_PATH=/soft/libraries/mpi/openmpi/4.1.1/lib:/soft/compilers/rocm/rocm-6.1.0/lib:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib64
++++ export LD_LIBRARY_PATH
++++ OMPI_FC=gfortran
++++ export OMPI_FC
++++ __MODULES_LMALTNAME='rocm/6.1.0&as|rocm/default&as|rocm/latest:cmake/3.28.3&as|cmake/default&as|cmake/latest'
++++ export __MODULES_LMALTNAME
++++ __MODULES_LMCONFLICT='gcc/12.2.0&gcc:rocm/6.1.0&rocm&aomp/rocm:cmake/3.28.3&cmake:openmpi/4.1.1-gcc&openmpi'
++++ export __MODULES_LMCONFLICT
++++ PATH=/soft/libraries/mpi/openmpi/4.1.1/bin:/soft/buildtools/cmake/3.28.3/bin:/soft/compilers/rocm/rocm-6.1.0/bin:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin:/home/bertoni/miniconda3/bin:/home/bertoni/miniconda3/condabin:/home/bertoni/.local/bin:/home/bertoni/bin:/home/bertoni/bin/x86_64:/usr/local/bin:/usr/bin:/bin:/usr/lpp/mmfs/bin:/opt/rocm/bin:/opt/rocm/profiler/bin:/opt/rocm/opencl/bin:/home/bertoni/bin
++++ export PATH
++++ ROCM_PATH=/soft/compilers/rocm/rocm-6.1.0
++++ export ROCM_PATH
++++ OMPI_CC=gcc
++++ export OMPI_CC
++++ _LMFILES_=/soft/modulefiles/gcc/12.2.0:/soft/modulefiles/rocm/6.1.0:/soft/modulefiles/cmake/3.28.3:/soft/modulefiles/openmpi/4.1.1-gcc
++++ export _LMFILES_
++++ LOADEDMODULES=gcc/12.2.0:rocm/6.1.0:cmake/3.28.3:openmpi/4.1.1-gcc
++++ export LOADEDMODULES
++++ OMPI_CXX=g++
++++ export OMPI_CXX
++++ test 0
+++ _mlstatus=0
+++ return 0
+++ module list
+++ local _mlredir=1
+++ '[' -n '' ']'
+++ case " $@ " in
+++ '[' 1 -eq 0 ']'
+++ _module_raw list
++++ /usr/bin/tclsh /usr/lib64/Modules/modulecmd.tcl bash list
+Currently Loaded Modulefiles:
+ 1) gcc/12.2.0   2) rocm/6.1.0   3) cmake/3.28.3   4) openmpi/4.1.1-gcc  
+++ eval ''
+++ _mlstatus=0
+++ return 0
+++ export OMPI_MCA_btl_openib_allow_ib=1
+++ OMPI_MCA_btl_openib_allow_ib=1
+++ export OMPI_MCA_orte_base_help_aggregate=0
+++ OMPI_MCA_orte_base_help_aggregate=0
+++ export OMPI_MCA_mpi_warn_on_fork=0
+++ OMPI_MCA_mpi_warn_on_fork=0
+++ export MPIEXEC=mpirun
+++ MPIEXEC=mpirun
+++ export 'MPIBINDINGS=-report-bindings --map-by node:PE=16'
+++ MPIBINDINGS='-report-bindings --map-by node:PE=16'
+++ export OMP_NUM_THREADS=16
+++ OMP_NUM_THREADS=16
+++ case "$1" in
+++ export NP=4
+++ NP=4
+++ export 'MPICOMMAND=mpirun -n 4 -report-bindings --map-by node:PE=16'
+++ MPICOMMAND='mpirun -n 4 -report-bindings --map-by node:PE=16'
+++ export VENDOR=AMD
+++ VENDOR=AMD
+++ export ARCH=gfx90a
+++ ARCH=gfx90a
++++ nproc --all
+++ export NCPUS=256
+++ NCPUS=256
++ cd /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude
++ CMAKE_OPTS+='-DCMAKE_VERBOSE_MAKEFILE=ON '
++ '[' AMD = INTEL ']'
++ '[' AMD = NVIDIA ']'
++ '[' AMD = AMD ']'
++ MODEL=hip
++ CMAKE_OPTS+='-DCMAKE_C_COMPILER=gcc '
++ CMAKE_OPTS+='-DCMAKE_CXX_COMPILER=hipcc '
++ CMAKE_OPTS+='-DCXX_EXTRA_FLAGS=--offload-arch=gfx90a;--gcc-toolchain=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/ '
++ CMAKE_OPTS+='-DMODEL=hip '
++ BENCHMARK_EXE=hip-bude
++ rm -rf build
++ cmake -Bbuild -H. -DCMAKE_BUILD_TYPE=RELEASE -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=hipcc '-DCXX_EXTRA_FLAGS=--offload-arch=gfx90a;--gcc-toolchain=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/' -DMODEL=hip
+-- The CXX compiler identification is Clang 17.0.0
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /soft/compilers/rocm/rocm-6.1.0/bin/hipcc - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- CXX_EXTRA_LINK_FLAGS: 
+        Appends to link flags which appear *before* the objects.
+        Do not use this for linking libraries, as the link line is order-dependent
+-- CXX_EXTRA_LIBRARIES: 
+        Append to link flags which appear *after* the objects.
+        Use this for linking extra libraries (e.g `-lmylib`, or simply `mylib`)
+-- CXX_EXTRA_LINKER_FLAGS: 
+        Append to linker flags (i.e GCC's `-Wl` or equivalent)
+-- Available models:  omp;ocl;std-indices;std-ranges;hip;cuda;kokkos;sycl;acc;raja;tbb;thrust
+-- Selected model  :  hip
+-- Supported flags:
+
+   CMAKE_CXX_COMPILER (required): Absolute path to the AMD HIP C++ compiler
+
+-- Model-specific flags for this build:
+
+   CMAKE_CXX_COMPILER = `/soft/compilers/rocm/rocm-6.1.0/bin/hipcc`
+
+-- Default RELEASE flags are `-O3;-march=native`, set RELEASE_FLAGS to override (CXX_EXTRA_* flags are not affected)
+-- PPWI not set, defaulting to 1,2,4,8,16,32,64,128
+-- CXX vendor  : Clang (/soft/compilers/rocm/rocm-6.1.0/bin/hipcc)
+-- Platform    : x86_64
+-- PPWI        : 1,2,4,8,16,32,64,128
+-- Sources     : src/hip/fasten.hpp;src/main.cpp
+-- Libraries   :  
+-- CXX Flags   :  -DNDEBUG -O3;-march=native --offload-arch=gfx90a;--gcc-toolchain=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/
+    CXX flags derived from (CMake + (Override ? Override : Default) + Extras), where:
+        CMake                    = ` -DNDEBUG`
+        Default                  = `-O3;-march=native`
+        Override (RELEASE_FLAGS) = ``
+        Extras (CXX_EXTRA_FLAGS) = `--offload-arch=gfx90a;--gcc-toolchain=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/`
+-- Link Flags  :  --offload-arch=gfx90a;--gcc-toolchain=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/
+-- Linker Flags:   
+-- Defs        : HIP
+-- Executable  : hip-bude
+-- Configuring done (2.3s)
+-- Generating done (0.1s)
+CMake Warning:
+  Manually-specified variables were not used by the project:
+
+    CMAKE_C_COMPILER
+
+
+-- Build files have been written to: /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build
++ cmake --build build --config RELEASE -j 256
+Change Dir: '/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+
+Run Build Command(s): /soft/buildtools/cmake/3.28.3/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile -j256
+/soft/buildtools/cmake/3.28.3/bin/cmake -S/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude -B/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build --check-build-system CMakeFiles/Makefile.cmake 0
+/soft/buildtools/cmake/3.28.3/bin/cmake -E cmake_progress_start /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/CMakeFiles /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build//CMakeFiles/progress.marks
+/usr/bin/gmake  -f CMakeFiles/Makefile2 all
+gmake[1]: Entering directory '/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+/usr/bin/gmake  -f CMakeFiles/check_git.dir/build.make CMakeFiles/check_git.dir/depend
+/usr/bin/gmake  -f CMakeFiles/extract_compile_commands.dir/build.make CMakeFiles/extract_compile_commands.dir/depend
+gmake[2]: Entering directory '/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+cd /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build && /soft/buildtools/cmake/3.28.3/bin/cmake -E cmake_depends "Unix Makefiles" /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/CMakeFiles/check_git.dir/DependInfo.cmake "--color="
+gmake[2]: Entering directory '/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+cd /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build && /soft/buildtools/cmake/3.28.3/bin/cmake -E cmake_depends "Unix Makefiles" /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/CMakeFiles/extract_compile_commands.dir/DependInfo.cmake "--color="
+gmake[2]: Leaving directory '/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+gmake[2]: Leaving directory '/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+/usr/bin/gmake  -f CMakeFiles/extract_compile_commands.dir/build.make CMakeFiles/extract_compile_commands.dir/build
+/usr/bin/gmake  -f CMakeFiles/check_git.dir/build.make CMakeFiles/check_git.dir/build
+gmake[2]: Entering directory '/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+/soft/buildtools/cmake/3.28.3/bin/cmake -DCOMMAND_FILE=/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/compile_commands.json -DPRE_CONFIGURE_FILE="/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/meta_build.h.in" -DPOST_CONFIGURE_FILE="/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/generated/meta_build.h" -DSRC_DIR_PREFIX="/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src" -DOUT_DIR_PREFIX="CMakeFiles/bude.dir" -P /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/cmake/extract_compile_command.cmake
+gmake[2]: Entering directory '/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+-- Transforming /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/compile_commands.json...
+[ 33%] Checking the git repository for changes...
+/soft/buildtools/cmake/3.28.3/bin/cmake -D_BUILD_TIME_CHECK_GIT=TRUE -DGIT_WORKING_DIR=/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude -DGIT_EXECUTABLE=/usr/bin/git -DGIT_STATE_FILE=/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/git-state-hash -DPRE_CONFIGURE_FILE=/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/meta_vcs.h.in -DPOST_CONFIGURE_FILE=/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/generated/meta_vcs.h -DGIT_FAIL_IF_NONZERO_EXIT=FALSE -DGIT_IGNORE_UNTRACKED=FALSE -P /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/cmake/git_watcher.cmake
+gmake[2]: Leaving directory '/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+[ 33%] Built target extract_compile_commands
+gmake[2]: Leaving directory '/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+[ 33%] Built target check_git
+/usr/bin/gmake  -f CMakeFiles/bude.dir/build.make CMakeFiles/bude.dir/depend
+gmake[2]: Entering directory '/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+cd /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build && /soft/buildtools/cmake/3.28.3/bin/cmake -E cmake_depends "Unix Makefiles" /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/CMakeFiles/bude.dir/DependInfo.cmake "--color="
+gmake[2]: Leaving directory '/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+/usr/bin/gmake  -f CMakeFiles/bude.dir/build.make CMakeFiles/bude.dir/build
+gmake[2]: Entering directory '/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+[ 66%] Building CXX object CMakeFiles/bude.dir/src/main.cpp.o
+/soft/compilers/rocm/rocm-6.1.0/bin/hipcc -DHIP -DUSE_PPWI=1,2,4,8,16,32,64,128 -I/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/hip -I/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/generated -DNDEBUG -std=c++17 -O3 -march=native --offload-arch=gfx90a --gcc-toolchain=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/ -MD -MT CMakeFiles/bude.dir/src/main.cpp.o -MF CMakeFiles/bude.dir/src/main.cpp.o.d -o CMakeFiles/bude.dir/src/main.cpp.o -c /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp
+[100%] Linking CXX executable hip-bude
+/soft/buildtools/cmake/3.28.3/bin/cmake -E cmake_link_script CMakeFiles/bude.dir/link.txt --verbose=1
+/soft/compilers/rocm/rocm-6.1.0/bin/hipcc  -DNDEBUG --offload-arch=gfx90a --gcc-toolchain=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/ CMakeFiles/bude.dir/src/main.cpp.o -o hip-bude 
+gmake[2]: Leaving directory '/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+[100%] Built target bude
+gmake[1]: Leaving directory '/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+/soft/buildtools/cmake/3.28.3/bin/cmake -E cmake_progress_start /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/CMakeFiles 0
+
++ ldd /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/hip-bude
+	linux-vdso.so.1 (0x00007ffc577fe000)
+	libamdhip64.so.6 => /soft/compilers/rocm/rocm-6.1.0/lib/llvm/bin/../../../lib/libamdhip64.so.6 (0x00007f8bea328000)
+	libstdc++.so.6 => /soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib64/libstdc++.so.6 (0x00007f8be9e00000)
+	libm.so.6 => /lib64/libm.so.6 (0x00007f8be9cb4000)
+	libgcc_s.so.1 => /soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib64/libgcc_s.so.1 (0x00007f8be9a00000)
+	libc.so.6 => /lib64/libc.so.6 (0x00007f8be9809000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x00007f8bea310000)
+	librt.so.1 => /lib64/librt.so.1 (0x00007f8bea306000)
+	libamd_comgr.so.2 => /soft/compilers/rocm/rocm-6.1.0/lib/llvm/bin/../../../lib/libamd_comgr.so.2 (0x00007f8be14b8000)
+	libhsa-runtime64.so.1 => /soft/compilers/rocm/rocm-6.1.0/lib/llvm/bin/../../../lib/libhsa-runtime64.so.1 (0x00007f8be11e0000)
+	libnuma.so.1 => /usr/lib64/libnuma.so.1 (0x00007f8be0e00000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x00007f8bea2e0000)
+	/lib64/ld-linux-x86-64.so.2 (0x00007f8beba59000)
+	libz.so.1 => /lib64/libz.so.1 (0x00007f8bea2c8000)
+	libzstd.so.1 => /usr/lib64/libzstd.so.1 (0x00007f8be10af000)
+	libtinfo.so.6 => /lib64/libtinfo.so.6 (0x00007f8bea299000)
+	libelf.so.1 => /usr/lib64/libelf.so.1 (0x00007f8be0a00000)
+	librocprofiler-register.so.0 => /soft/compilers/rocm/rocm-6.1.0/lib/llvm/bin/../../../lib/librocprofiler-register.so.0 (0x00007f8be1011000)
+	libdrm.so.2 => /usr/lib64/libdrm.so.2 (0x00007f8be0600000)
+	libdrm_amdgpu.so.1 => /usr/lib64/libdrm_amdgpu.so.1 (0x00007f8be0200000)
++ OUT=/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/hip-bude-bm1.out
++ RUN bm1
++ cd /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude
++ mkdir -p results
++ BENCHMARK_EXE=/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/hip-bude
++ DECK=/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/data/bm1
++ cd /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE
++ mpirun -n 4 -report-bindings --map-by node:PE=16 /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/../gpu_tile_compact.sh sh -c '/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/hip-bude --deck /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/data/bm1 --wgsize 4,8,16,32,64,128,256,512,1024 --ppwi 1,2,4,8,16,32,64 --csv | tee /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/hip-bude-bm1.out${RANK}'
+for AMD 0 for 0
+for AMD 1 for 1
+for AMD 2 for 2
+[amdgpu05:229154] MCW rank 0 bound to socket 0[core 0[hwt 0-1]], socket 0[core 1[hwt 0-1]], socket 0[core 2[hwt 0-1]], socket 0[core 3[hwt 0-1]], socket 0[core 4[hwt 0-1]], socket 0[core 5[hwt 0-1]], socket 0[core 6[hwt 0-1]], socket 0[core 7[hwt 0-1]], socket 0[core 8[hwt 0-1]], socket 0[core 9[hwt 0-1]], socket 0[core 10[hwt 0-1]], socket 0[core 11[hwt 0-1]], socket 0[core 12[hwt 0-1]], socket 0[core 13[hwt 0-1]], socket 0[core 14[hwt 0-1]], socket 0[core 15[hwt 0-1]]: [BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../..][../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../..]
+[amdgpu05:229154] MCW rank 1 bound to socket 0[core 16[hwt 0-1]], socket 0[core 17[hwt 0-1]], socket 0[core 18[hwt 0-1]], socket 0[core 19[hwt 0-1]], socket 0[core 20[hwt 0-1]], socket 0[core 21[hwt 0-1]], socket 0[core 22[hwt 0-1]], socket 0[core 23[hwt 0-1]], socket 0[core 24[hwt 0-1]], socket 0[core 25[hwt 0-1]], socket 0[core 26[hwt 0-1]], socket 0[core 27[hwt 0-1]], socket 0[core 28[hwt 0-1]], socket 0[core 29[hwt 0-1]], socket 0[core 30[hwt 0-1]], socket 0[core 31[hwt 0-1]]: [../../../../../../../../../../../../../../../../BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../..][../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../..]
+[amdgpu05:229154] MCW rank 2 bound to socket 0[core 32[hwt 0-1]], socket 0[core 33[hwt 0-1]], socket 0[core 34[hwt 0-1]], socket 0[core 35[hwt 0-1]], socket 0[core 36[hwt 0-1]], socket 0[core 37[hwt 0-1]], socket 0[core 38[hwt 0-1]], socket 0[core 39[hwt 0-1]], socket 0[core 40[hwt 0-1]], socket 0[core 41[hwt 0-1]], socket 0[core 42[hwt 0-1]], socket 0[core 43[hwt 0-1]], socket 0[core 44[hwt 0-1]], socket 0[core 45[hwt 0-1]], socket 0[core 46[hwt 0-1]], socket 0[core 47[hwt 0-1]]: [../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/../../../../../../../../../../../../../../../..][../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../..]
+[amdgpu05:229154] MCW rank 3 bound to socket 0[core 48[hwt 0-1]], socket 0[core 49[hwt 0-1]], socket 0[core 50[hwt 0-1]], socket 0[core 51[hwt 0-1]], socket 0[core 52[hwt 0-1]], socket 0[core 53[hwt 0-1]], socket 0[core 54[hwt 0-1]], socket 0[core 55[hwt 0-1]], socket 0[core 56[hwt 0-1]], socket 0[core 57[hwt 0-1]], socket 0[core 58[hwt 0-1]], socket 0[core 59[hwt 0-1]], socket 0[core 60[hwt 0-1]], socket 0[core 61[hwt 0-1]], socket 0[core 62[hwt 0-1]], socket 0[core 63[hwt 0-1]]: [../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB][../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../..]
+for AMD 3 for 3
+# (ppwi=1,wgsize=4,valid=1)
+# (ppwi=1,wgsize=4,valid=1)
+# (ppwi=1,wgsize=4,valid=1)
+# (ppwi=1,wgsize=4,valid=1)
+# (ppwi=1,wgsize=8,valid=1)
+# (ppwi=1,wgsize=8,valid=1)
+# (ppwi=1,wgsize=8,valid=1)
+# (ppwi=1,wgsize=8,valid=1)
+# (ppwi=1,wgsize=16,valid=1)
+# (ppwi=1,wgsize=16,valid=1)
+# (ppwi=1,wgsize=16,valid=1)
+# (ppwi=1,wgsize=16,valid=1)
+# (ppwi=1,wgsize=32,valid=1)
+# (ppwi=1,wgsize=32,valid=1)
+# (ppwi=1,wgsize=32,valid=1)
+# (ppwi=1,wgsize=32,valid=1)
+# (ppwi=1,wgsize=64,valid=1)
+# (ppwi=1,wgsize=64,valid=1)
+# (ppwi=1,wgsize=64,valid=1)
+# (ppwi=1,wgsize=64,valid=1)
+# (ppwi=1,wgsize=128,valid=1)
+# (ppwi=1,wgsize=128,valid=1)
+# (ppwi=1,wgsize=128,valid=1)
+# (ppwi=1,wgsize=128,valid=1)
+# (ppwi=1,wgsize=256,valid=1)
+# (ppwi=1,wgsize=256,valid=1)
+# (ppwi=1,wgsize=256,valid=1)
+# (ppwi=1,wgsize=256,valid=1)
+# (ppwi=1,wgsize=512,valid=1)
+# (ppwi=1,wgsize=512,valid=1)
+# (ppwi=1,wgsize=512,valid=1)
+# (ppwi=1,wgsize=512,valid=1)
+# (ppwi=1,wgsize=1024,valid=1)
+# (ppwi=1,wgsize=1024,valid=1)
+# (ppwi=1,wgsize=1024,valid=1)
+# (ppwi=1,wgsize=1024,valid=1)
+# (ppwi=2,wgsize=4,valid=1)
+# (ppwi=2,wgsize=4,valid=1)
+# (ppwi=2,wgsize=4,valid=1)
+# (ppwi=2,wgsize=4,valid=1)
+# (ppwi=2,wgsize=8,valid=1)
+# (ppwi=2,wgsize=8,valid=1)
+# (ppwi=2,wgsize=8,valid=1)
+# (ppwi=2,wgsize=8,valid=1)
+# (ppwi=2,wgsize=16,valid=1)
+# (ppwi=2,wgsize=16,valid=1)
+# (ppwi=2,wgsize=16,valid=1)
+# (ppwi=2,wgsize=16,valid=1)
+# (ppwi=2,wgsize=32,valid=1)
+# (ppwi=2,wgsize=32,valid=1)
+# (ppwi=2,wgsize=32,valid=1)
+# (ppwi=2,wgsize=32,valid=1)
+# (ppwi=2,wgsize=64,valid=1)
+# (ppwi=2,wgsize=64,valid=1)
+# (ppwi=2,wgsize=64,valid=1)
+# (ppwi=2,wgsize=64,valid=1)
+# (ppwi=2,wgsize=128,valid=1)
+# (ppwi=2,wgsize=128,valid=1)
+# (ppwi=2,wgsize=128,valid=1)
+# (ppwi=2,wgsize=128,valid=1)
+# (ppwi=2,wgsize=256,valid=1)
+# (ppwi=2,wgsize=256,valid=1)
+# (ppwi=2,wgsize=256,valid=1)
+# (ppwi=2,wgsize=256,valid=1)
+# (ppwi=2,wgsize=512,valid=1)
+# (ppwi=2,wgsize=512,valid=1)
+# (ppwi=2,wgsize=512,valid=1)
+# (ppwi=2,wgsize=512,valid=1)
+# (ppwi=2,wgsize=1024,valid=1)
+# (ppwi=2,wgsize=1024,valid=1)
+# (ppwi=2,wgsize=1024,valid=1)
+# (ppwi=2,wgsize=1024,valid=1)
+# (ppwi=4,wgsize=4,valid=1)
+# (ppwi=4,wgsize=4,valid=1)
+# (ppwi=4,wgsize=4,valid=1)
+# (ppwi=4,wgsize=4,valid=1)
+# (ppwi=4,wgsize=8,valid=1)
+# (ppwi=4,wgsize=8,valid=1)
+# (ppwi=4,wgsize=8,valid=1)
+# (ppwi=4,wgsize=8,valid=1)
+# (ppwi=4,wgsize=16,valid=1)
+# (ppwi=4,wgsize=16,valid=1)
+# (ppwi=4,wgsize=16,valid=1)
+# (ppwi=4,wgsize=16,valid=1)
+# (ppwi=4,wgsize=32,valid=1)
+# (ppwi=4,wgsize=32,valid=1)
+# (ppwi=4,wgsize=32,valid=1)
+# (ppwi=4,wgsize=32,valid=1)
+# (ppwi=4,wgsize=64,valid=1)
+# (ppwi=4,wgsize=64,valid=1)
+# (ppwi=4,wgsize=64,valid=1)
+# (ppwi=4,wgsize=64,valid=1)
+# (ppwi=4,wgsize=128,valid=1)
+# (ppwi=4,wgsize=128,valid=1)
+# (ppwi=4,wgsize=128,valid=1)
+# (ppwi=4,wgsize=128,valid=1)
+# (ppwi=4,wgsize=256,valid=1)
+# (ppwi=4,wgsize=256,valid=1)
+# (ppwi=4,wgsize=256,valid=1)
+# (ppwi=4,wgsize=256,valid=1)
+# (ppwi=4,wgsize=512,valid=1)
+# (ppwi=4,wgsize=512,valid=1)
+# (ppwi=4,wgsize=512,valid=1)
+# (ppwi=4,wgsize=512,valid=1)
+# (ppwi=4,wgsize=1024,valid=1)
+# (ppwi=4,wgsize=1024,valid=1)
+# (ppwi=4,wgsize=1024,valid=1)
+# (ppwi=4,wgsize=1024,valid=1)
+# (ppwi=8,wgsize=4,valid=1)
+# (ppwi=8,wgsize=4,valid=1)
+# (ppwi=8,wgsize=4,valid=1)
+# (ppwi=8,wgsize=4,valid=1)
+# (ppwi=8,wgsize=8,valid=1)
+# (ppwi=8,wgsize=8,valid=1)
+# (ppwi=8,wgsize=8,valid=1)
+# (ppwi=8,wgsize=8,valid=1)
+# (ppwi=8,wgsize=16,valid=1)
+# (ppwi=8,wgsize=16,valid=1)
+# (ppwi=8,wgsize=16,valid=1)
+# (ppwi=8,wgsize=16,valid=1)
+# (ppwi=8,wgsize=32,valid=1)
+# (ppwi=8,wgsize=32,valid=1)
+# (ppwi=8,wgsize=32,valid=1)
+# (ppwi=8,wgsize=32,valid=1)
+# (ppwi=8,wgsize=64,valid=1)
+# (ppwi=8,wgsize=64,valid=1)
+# (ppwi=8,wgsize=64,valid=1)
+# (ppwi=8,wgsize=64,valid=1)
+# (ppwi=8,wgsize=128,valid=1)
+# (ppwi=8,wgsize=128,valid=1)
+# (ppwi=8,wgsize=128,valid=1)
+# (ppwi=8,wgsize=128,valid=1)
+# (ppwi=8,wgsize=256,valid=1)
+# (ppwi=8,wgsize=256,valid=1)
+# (ppwi=8,wgsize=256,valid=1)
+# (ppwi=8,wgsize=256,valid=1)
+# (ppwi=8,wgsize=512,valid=1)
+# (ppwi=8,wgsize=512,valid=1)
+# (ppwi=8,wgsize=512,valid=1)
+# (ppwi=8,wgsize=512,valid=1)
+# (ppwi=8,wgsize=1024,valid=1)
+# (ppwi=8,wgsize=1024,valid=1)
+# (ppwi=8,wgsize=1024,valid=1)
+# (ppwi=8,wgsize=1024,valid=1)
+# (ppwi=16,wgsize=4,valid=1)
+# (ppwi=16,wgsize=4,valid=1)
+# (ppwi=16,wgsize=4,valid=1)
+# (ppwi=16,wgsize=4,valid=1)
+# (ppwi=16,wgsize=8,valid=1)
+# (ppwi=16,wgsize=8,valid=1)
+# (ppwi=16,wgsize=8,valid=1)
+# (ppwi=16,wgsize=8,valid=1)
+# (ppwi=16,wgsize=16,valid=1)
+# (ppwi=16,wgsize=16,valid=1)
+# (ppwi=16,wgsize=16,valid=1)
+# (ppwi=16,wgsize=16,valid=1)
+# (ppwi=16,wgsize=32,valid=1)
+# (ppwi=16,wgsize=32,valid=1)
+# (ppwi=16,wgsize=32,valid=1)
+# (ppwi=16,wgsize=32,valid=1)
+# (ppwi=16,wgsize=64,valid=1)
+# (ppwi=16,wgsize=64,valid=1)
+# (ppwi=16,wgsize=64,valid=1)
+# (ppwi=16,wgsize=64,valid=1)
+# (ppwi=16,wgsize=128,valid=1)
+# (ppwi=16,wgsize=128,valid=1)
+# (ppwi=16,wgsize=128,valid=1)
+# (ppwi=16,wgsize=128,valid=1)
+# (ppwi=16,wgsize=256,valid=1)
+# (ppwi=16,wgsize=256,valid=1)
+# (ppwi=16,wgsize=256,valid=1)
+# (ppwi=16,wgsize=256,valid=1)
+# (ppwi=16,wgsize=512,valid=1)
+# (ppwi=16,wgsize=512,valid=1)
+# (ppwi=16,wgsize=512,valid=1)
+# (ppwi=16,wgsize=512,valid=1)
+# (ppwi=16,wgsize=1024,valid=1)
+# (ppwi=16,wgsize=1024,valid=1)
+# (ppwi=16,wgsize=1024,valid=1)
+# (ppwi=16,wgsize=1024,valid=1)
+# (ppwi=32,wgsize=4,valid=1)
+# (ppwi=32,wgsize=4,valid=1)
+# (ppwi=32,wgsize=4,valid=1)
+# (ppwi=32,wgsize=4,valid=1)
+# (ppwi=32,wgsize=8,valid=1)
+# (ppwi=32,wgsize=8,valid=1)
+# (ppwi=32,wgsize=8,valid=1)
+# (ppwi=32,wgsize=8,valid=1)
+# (ppwi=32,wgsize=16,valid=1)
+# (ppwi=32,wgsize=16,valid=1)
+# (ppwi=32,wgsize=16,valid=1)
+# (ppwi=32,wgsize=16,valid=1)
+# (ppwi=32,wgsize=32,valid=1)
+# (ppwi=32,wgsize=32,valid=1)
+# (ppwi=32,wgsize=32,valid=1)
+# (ppwi=32,wgsize=32,valid=1)
+# (ppwi=32,wgsize=64,valid=1)
+# (ppwi=32,wgsize=64,valid=1)
+# (ppwi=32,wgsize=64,valid=1)
+# (ppwi=32,wgsize=64,valid=1)
+# (ppwi=32,wgsize=128,valid=1)
+# (ppwi=32,wgsize=128,valid=1)
+# (ppwi=32,wgsize=128,valid=1)
+# (ppwi=32,wgsize=128,valid=1)
+# (ppwi=32,wgsize=256,valid=1)
+# (ppwi=32,wgsize=256,valid=1)
+# (ppwi=32,wgsize=256,valid=1)
+# (ppwi=32,wgsize=256,valid=1)
+# (ppwi=32,wgsize=512,valid=1)
+# (ppwi=32,wgsize=512,valid=1)
+# (ppwi=32,wgsize=512,valid=1)
+# (ppwi=32,wgsize=512,valid=1)
+# (ppwi=32,wgsize=1024,valid=1)
+# (ppwi=32,wgsize=1024,valid=1)
+# (ppwi=32,wgsize=1024,valid=1)
+# (ppwi=32,wgsize=1024,valid=1)
+# (ppwi=64,wgsize=4,valid=1)
+# (ppwi=64,wgsize=4,valid=1)
+# (ppwi=64,wgsize=4,valid=1)
+# (ppwi=64,wgsize=4,valid=1)
+# (ppwi=64,wgsize=8,valid=1)
+# (ppwi=64,wgsize=8,valid=1)
+# (ppwi=64,wgsize=8,valid=1)
+# (ppwi=64,wgsize=8,valid=1)
+# (ppwi=64,wgsize=16,valid=1)
+# (ppwi=64,wgsize=16,valid=1)
+# (ppwi=64,wgsize=16,valid=1)
+# (ppwi=64,wgsize=16,valid=1)
+# (ppwi=64,wgsize=32,valid=1)
+# (ppwi=64,wgsize=32,valid=1)
+# (ppwi=64,wgsize=32,valid=1)
+# (ppwi=64,wgsize=32,valid=1)
+# (ppwi=64,wgsize=64,valid=1)
+# (ppwi=64,wgsize=64,valid=1)
+# (ppwi=64,wgsize=64,valid=1)
+# (ppwi=64,wgsize=64,valid=1)
+# (ppwi=64,wgsize=128,valid=1)
+# (ppwi=64,wgsize=128,valid=1)
+# (ppwi=64,wgsize=128,valid=1)
+# (ppwi=64,wgsize=128,valid=1)
+# (ppwi=64,wgsize=256,valid=1)
+# (ppwi=64,wgsize=256,valid=1)
+# (ppwi=64,wgsize=256,valid=1)
+# (ppwi=64,wgsize=256,valid=1)
+# (ppwi=64,wgsize=512,valid=1)
+# (ppwi=64,wgsize=512,valid=1)
+# (ppwi=64,wgsize=512,valid=1)
+# (ppwi=64,wgsize=512,valid=1)
+# (ppwi=64,wgsize=1024,valid=1)
+ppwi,wgsize,sum_ms,avg_ms,min_ms,max_ms,stddev_ms,interactions/s,gflops/s,gfinst/s
+1,4,1832.851,229.106,227.977,236.504,2.796,6976201311.965,279.205,174.405
+1,8,928.496,116.062,116.046,116.074,0.010,13771013189.606,551.150,344.275
+1,16,495.587,61.948,60.507,71.826,3.734,25800392616.134,1032.595,645.010
+1,32,259.021,32.378,32.346,32.398,0.018,49364033532.811,1975.671,1234.101
+1,64,168.088,21.011,20.997,21.021,0.008,76069137117.474,3044.475,1901.728
+1,128,167.955,20.994,20.977,21.014,0.011,76129548583.875,3046.893,1903.239
+1,256,167.421,20.928,20.904,20.955,0.016,76372379195.117,3056.611,1909.309
+1,512,209.258,26.157,26.130,26.195,0.020,61103076175.720,2445.496,1527.577
+1,1024,209.363,26.170,26.124,26.226,0.039,61072659572.983,2444.279,1526.816
+2,4,1230.628,153.828,153.803,153.846,0.014,10390093735.947,363.876,259.752
+2,8,631.944,78.993,78.634,81.364,0.896,20233350397.568,708.600,505.834
+2,16,330.907,41.363,41.356,41.371,0.004,38640315179.439,1353.238,966.008
+2,32,209.304,26.163,26.148,26.171,0.006,61089846854.078,2139.452,1527.246
+2,64,148.274,18.534,18.513,18.563,0.015,86234645566.130,3020.058,2155.866
+2,128,156.790,19.599,18.511,26.973,2.788,81550730834.747,2856.021,2038.768
+2,256,147.179,18.397,18.346,18.615,0.083,86876211287.807,3042.527,2171.905
+2,512,147.052,18.382,18.359,18.395,0.011,86950856830.727,3045.141,2173.771
+2,1024,261.401,32.675,32.636,32.736,0.030,48914653779.439,1713.060,1222.866
+4,4,958.186,119.773,119.697,120.112,0.129,13344320095.204,433.969,333.608
+4,8,494.450,61.806,61.800,61.813,0.005,25859735236.918,840.981,646.493
+4,16,309.977,38.747,38.739,38.752,0.005,41249306497.711,1341.463,1031.233
+4,32,215.110,26.889,26.880,26.899,0.006,59440812128.913,1933.067,1486.020
+4,64,130.757,16.345,16.332,16.355,0.006,97787032960.064,3180.119,2444.676
+4,128,212.194,26.524,26.490,26.554,0.020,60257857478.847,1959.638,1506.446
+4,256,130.336,16.292,16.270,16.316,0.016,98102555987.076,3190.381,2452.564
+4,512,211.602,26.450,26.370,26.733,0.108,60426266979.980,1965.115,1510.657
+4,1024,389.926,48.741,48.716,48.772,0.021,32791661278.471,1066.413,819.792
+8,4,837.036,104.629,104.603,104.698,0.028,15275737216.202,477.682,381.893
+8,8,519.256,64.907,64.896,64.924,0.009,24624324814.641,770.018,615.608
+8,16,361.230,45.154,45.143,45.158,0.005,35396657562.514,1106.875,884.916
+8,32,214.966,26.871,26.832,27.109,0.090,59480861195.686,1860.002,1487.022
+8,64,214.687,26.836,26.827,26.857,0.009,59558084949.585,1862.417,1488.952
+8,128,214.124,26.766,26.756,26.775,0.006,59714552803.498,1867.310,1492.864
+8,256,212.532,26.567,26.534,26.608,0.023,60161860723.143,1881.298,1504.047
+8,512,354.147,44.268,44.242,44.287,0.013,36104585636.354,1129.012,902.615
+8,1024,658.819,82.352,82.320,82.400,0.026,19407953687.870,606.898,485.199
+16,4,949.359,118.670,118.629,118.719,0.030,13468392415.888,412.745,336.710
+16,8,654.494,81.812,81.749,81.978,0.083,19536206686.332,598.696,488.405
+16,16,383.758,47.970,47.947,47.995,0.015,33318709751.861,1021.068,832.968
+16,32,380.129,47.516,47.495,47.562,0.020,33636823670.017,1030.816,840.921
+16,64,377.853,47.232,47.198,47.249,0.016,33839452791.724,1037.026,845.986
+16,128,378.686,47.336,47.305,47.364,0.021,33765046943.525,1034.746,844.126
+16,256,374.427,46.803,46.718,46.829,0.036,34149069358.269,1046.514,853.727
+16,512,644.119,80.515,80.411,80.695,0.081,19850903422.393,608.340,496.273
+16,1024,1200.104,150.013,149.885,150.200,0.100,10654360128.936,326.508,266.359
+32,4,1361.199,170.150,169.957,170.282,0.111,9393436598.814,284.930,234.836
+32,8,984.255,123.032,122.827,123.261,0.148,12990880707.246,394.051,324.772
+32,16,971.893,121.487,120.773,121.941,0.354,13156114861.761,399.063,328.903
+32,32,779.884,97.485,97.450,97.523,0.025,16395182360.751,497.314,409.880
+32,64,779.237,97.405,97.346,97.576,0.089,16408781925.045,497.726,410.220
+32,128,983.370,122.921,121.905,124.150,0.766,13002566698.861,394.406,325.064
+32,256,988.206,123.526,122.381,124.598,0.857,12938931498.428,392.475,323.473
+32,512,1403.341,175.418,174.816,176.291,0.539,9111351392.248,276.374,227.784
+32,1024,2458.005,307.251,306.930,307.648,0.221,5201916191.911,157.789,130.048
+64,4,2820.688,352.586,349.228,359.194,3.292,4533056288.263,136.792,113.326
+64,8,2457.927,307.241,306.518,308.691,0.628,5202081739.681,156.981,130.052
+64,16,2440.510,305.064,303.466,306.333,0.853,5239207023.282,158.102,130.980
+64,32,2439.964,304.996,302.449,305.915,1.027,5240378679.673,158.137,131.009
+64,64,2455.069,306.884,301.916,313.166,3.417,5208137747.001,157.164,130.203
+64,128,2457.564,307.196,303.238,310.310,2.250,5202849356.413,157.004,130.071
+64,256,2453.571,306.696,298.359,311.519,4.773,5211315907.020,157.260,130.283
+64,512,3101.166,387.646,386.709,388.473,0.714,4123074039.337,124.420,103.077
+64,1024,5264.648,658.081,652.612,666.993,3.830,2428716124.337,73.290,60.718
+# best: { min_ms: 16.270, max_ms: 16.316, sum_ms: 130.336, avg_ms: 16.292, ppwi: 4, wgsize: 256 }
+# (ppwi=64,wgsize=1024,valid=1)
+ppwi,wgsize,sum_ms,avg_ms,min_ms,max_ms,stddev_ms,interactions/s,gflops/s,gfinst/s
+1,4,1840.353,230.044,228.437,240.767,4.053,6947762671.622,278.067,173.694
+1,8,930.449,116.306,116.276,116.327,0.018,13742110790.528,549.993,343.553
+1,16,498.287,62.286,60.648,73.536,4.252,25660609524.379,1027.001,641.515
+1,32,259.535,32.442,32.425,32.469,0.016,49266318114.628,1971.760,1231.658
+1,64,168.502,21.063,21.046,21.083,0.015,75882234481.674,3036.994,1897.056
+1,128,168.454,21.057,21.041,21.075,0.010,75904051297.586,3037.868,1897.601
+1,256,167.888,20.986,20.967,21.003,0.013,76160137798.936,3048.117,1904.003
+1,512,209.692,26.212,26.189,26.243,0.020,60976694738.371,2440.438,1524.417
+1,1024,209.785,26.223,26.178,26.289,0.035,60949722099.255,2439.358,1523.743
+2,4,1233.533,154.192,154.169,154.221,0.020,10365621746.905,363.019,259.141
+2,8,630.959,78.870,78.815,79.159,0.110,20264915725.871,709.706,506.623
+2,16,331.733,41.467,41.456,41.479,0.007,38544062130.842,1349.867,963.602
+2,32,209.811,26.226,26.214,26.234,0.006,60942189767.347,2134.281,1523.555
+2,64,148.620,18.578,18.554,18.614,0.020,86033606376.886,3013.018,2150.840
+2,128,159.636,19.955,18.551,29.591,3.643,80096698745.202,2805.099,2002.417
+2,256,147.289,18.411,18.367,18.550,0.054,86811341130.683,3040.255,2170.284
+2,512,147.433,18.429,18.417,18.442,0.007,86726272834.368,3037.276,2168.157
+2,1024,261.883,32.735,32.723,32.748,0.009,48824600354.066,1709.906,1220.615
+4,4,963.432,120.429,119.943,123.605,1.200,13271659274.829,431.606,331.791
+4,8,495.504,61.938,61.930,61.950,0.006,25804698043.112,839.191,645.117
+4,16,310.614,38.827,38.819,38.838,0.007,41164655059.631,1338.710,1029.116
+4,32,215.492,26.937,26.931,26.952,0.006,59335523826.780,1929.643,1483.388
+4,64,143.595,17.949,16.374,28.806,4.104,89044439418.271,2895.803,2226.111
+4,128,212.665,26.583,26.579,26.593,0.005,60124193045.166,1955.291,1503.105
+4,256,130.636,16.330,16.287,16.391,0.033,97877397242.416,3183.058,2446.935
+4,512,212.105,26.513,26.421,26.650,0.077,60282995840.634,1960.456,1507.075
+4,1024,390.462,48.808,48.767,48.855,0.027,32746699556.268,1064.951,818.667
+8,4,838.912,104.864,104.851,104.880,0.010,15241570237.121,476.613,381.039
+8,8,520.378,65.047,65.030,65.057,0.009,24571256937.873,768.358,614.281
+8,16,361.915,45.239,45.232,45.247,0.005,35329711759.950,1104.781,883.243
+8,32,215.463,26.933,26.890,27.150,0.083,59343583008.892,1855.710,1483.590
+8,64,215.161,26.895,26.882,26.914,0.010,59426748753.367,1858.310,1485.669
+8,128,214.509,26.814,26.789,26.862,0.023,59607469452.405,1863.962,1490.187
+8,256,221.432,27.679,26.603,34.999,2.767,57743824240.905,1805.684,1443.596
+8,512,354.574,44.322,44.246,44.377,0.039,36061078711.064,1127.652,901.527
+8,1024,659.124,82.390,82.356,82.415,0.020,19398991605.418,606.618,484.975
+16,4,951.433,118.929,118.793,119.314,0.149,13439022302.893,411.845,335.976
+16,8,655.513,81.939,81.846,82.207,0.124,19505860994.242,597.766,487.647
+16,16,384.569,48.071,48.035,48.097,0.019,33248450799.003,1018.914,831.211
+16,32,380.887,47.611,47.572,47.668,0.027,33569931188.226,1028.766,839.248
+16,64,378.537,47.317,47.289,47.365,0.023,33778329013.985,1035.153,844.458
+16,128,379.118,47.390,47.371,47.414,0.014,33726511665.595,1033.565,843.163
+16,256,375.121,46.890,46.803,46.988,0.052,34085871492.015,1044.578,852.147
+16,512,644.920,80.615,80.505,80.747,0.065,19826226991.896,607.584,495.656
+16,1024,1200.797,150.100,149.893,150.372,0.166,10648207114.399,326.319,266.205
+32,4,1364.113,170.514,170.357,170.755,0.116,9373372909.842,284.322,234.334
+32,8,985.421,123.178,122.748,123.420,0.191,12975508261.064,393.585,324.388
+32,16,968.411,121.051,119.329,122.543,1.029,13203418272.960,400.498,330.085
+32,32,780.976,97.622,97.577,97.651,0.023,16372245120.057,496.618,409.306
+32,64,779.839,97.480,97.398,97.663,0.087,16396123070.900,497.342,409.903
+32,128,983.795,122.974,120.770,124.477,1.190,12996948592.577,394.235,324.924
+32,256,980.829,122.604,121.269,124.022,0.882,13036250947.224,395.427,325.906
+32,512,1412.042,176.505,174.802,177.261,0.758,9055206742.884,274.671,226.380
+32,1024,2457.651,307.206,306.756,307.827,0.379,5202665520.284,157.812,130.067
+64,4,2811.565,351.446,348.170,359.833,3.702,4547764725.539,137.236,113.694
+64,8,2462.777,307.847,307.350,308.561,0.380,5191836597.295,156.672,129.796
+64,16,2441.338,305.167,302.047,306.656,1.615,5237428575.179,158.048,130.936
+64,32,2431.284,303.910,300.311,307.027,2.332,5259088057.406,158.702,131.477
+64,64,2469.367,308.671,300.710,316.691,4.456,5177981226.222,156.254,129.450
+64,128,2466.332,308.291,300.256,313.330,4.576,5184354031.835,156.446,129.609
+64,256,2441.330,305.166,302.824,307.908,1.520,5237446098.132,158.048,130.936
+64,512,3112.827,389.103,388.778,389.820,0.335,4107628625.868,123.954,102.691
+64,1024,5272.465,659.058,654.168,664.305,3.060,2425115541.493,73.182,60.628
+# best: { min_ms: 16.287, max_ms: 16.391, sum_ms: 130.636, avg_ms: 16.330, ppwi: 4, wgsize: 256 }
+# (ppwi=64,wgsize=1024,valid=1)
+ppwi,wgsize,sum_ms,avg_ms,min_ms,max_ms,stddev_ms,interactions/s,gflops/s,gfinst/s
+1,4,1836.516,229.564,228.314,236.859,2.759,6962279785.513,278.648,174.057
+1,8,930.443,116.305,116.275,116.320,0.015,13742206378.295,549.997,343.555
+1,16,499.958,62.495,60.643,73.548,4.216,25574806114.767,1023.567,639.370
+1,32,259.417,32.427,32.405,32.448,0.016,49288775949.053,1972.659,1232.219
+1,64,168.536,21.067,21.045,21.091,0.013,75867279607.083,3036.396,1896.682
+1,128,168.417,21.052,21.034,21.062,0.008,75920501031.749,3038.526,1898.013
+1,256,167.939,20.992,20.970,21.015,0.015,76136861495.656,3047.185,1903.422
+1,512,209.759,26.220,26.204,26.265,0.018,60957178120.416,2439.657,1523.929
+1,1024,209.830,26.229,26.200,26.247,0.016,60936702263.852,2438.837,1523.418
+2,4,1233.327,154.166,154.153,154.198,0.013,10367356507.720,363.079,259.184
+2,8,634.133,79.267,78.769,82.473,1.212,20163493193.949,706.154,504.087
+2,16,331.706,41.463,41.455,41.476,0.006,38547213578.277,1349.978,963.680
+2,32,209.736,26.217,26.202,26.226,0.008,60963933699.758,2135.043,1524.098
+2,64,148.574,18.572,18.551,18.609,0.020,86060271582.689,3013.952,2151.507
+2,128,160.973,20.122,18.546,30.938,4.088,79431439788.307,2781.801,1985.786
+2,256,147.194,18.399,18.368,18.417,0.014,86867086568.483,3042.207,2171.677
+2,512,147.368,18.421,18.386,18.460,0.023,86764839760.352,3038.627,2169.121
+2,1024,261.923,32.740,32.692,32.801,0.042,48817189503.644,1709.647,1220.430
+4,4,966.640,120.830,119.942,126.898,2.293,13227608471.605,430.173,330.690
+4,8,495.517,61.940,61.926,61.947,0.006,25804022873.921,839.169,645.101
+4,16,310.685,38.836,38.827,38.849,0.007,41155251402.222,1338.405,1028.881
+4,32,215.584,26.948,26.935,26.961,0.008,59310203632.336,1928.819,1482.755
+4,64,139.777,17.472,16.370,24.808,2.774,91476369328.840,2974.891,2286.909
+4,128,212.726,26.591,26.583,26.597,0.005,60107057627.127,1954.734,1502.676
+4,256,130.654,16.332,16.302,16.365,0.025,97863879892.501,3182.619,2446.597
+4,512,212.274,26.534,26.456,26.673,0.081,60234993613.991,1958.894,1505.875
+4,1024,390.582,48.823,48.784,48.872,0.028,32736603623.238,1064.623,818.415
+8,4,838.931,104.866,104.856,104.881,0.009,15241228790.505,476.602,381.031
+8,8,520.438,65.055,65.042,65.063,0.007,24568396042.136,768.269,614.210
+8,16,361.969,45.246,45.232,45.257,0.007,35324437903.176,1104.617,883.111
+8,32,215.519,26.940,26.897,27.179,0.091,59328191639.151,1855.228,1483.205
+8,64,215.198,26.900,26.889,26.915,0.010,59416511092.371,1857.990,1485.413
+8,128,214.575,26.822,26.798,26.846,0.015,59589050675.951,1863.386,1489.726
+8,256,221.673,27.709,26.619,34.910,2.722,57681195552.452,1803.726,1442.030
+8,512,354.660,44.332,44.303,44.368,0.020,36052379048.854,1127.380,901.309
+8,1024,659.614,82.452,82.429,82.473,0.013,19384574130.649,606.167,484.614
+16,4,950.958,118.870,118.782,118.911,0.039,13445740414.268,412.051,336.144
+16,8,655.495,81.937,81.847,82.190,0.113,19506385677.740,597.782,487.660
+16,16,384.343,48.043,48.022,48.061,0.011,33268048070.521,1019.515,831.701
+16,32,380.890,47.611,47.581,47.635,0.019,33569623154.696,1028.757,839.241
+16,64,378.515,47.314,47.292,47.332,0.013,33780219005.998,1035.211,844.505
+16,128,379.305,47.413,47.382,47.443,0.020,33709864275.222,1033.055,842.747
+16,256,375.274,46.909,46.877,46.974,0.031,34072007578.400,1044.153,851.800
+16,512,644.801,80.600,80.568,80.654,0.027,19829899666.584,607.697,495.747
+16,1024,1201.029,150.129,149.948,150.463,0.160,10646147033.793,326.256,266.154
+32,4,1363.637,170.455,170.248,170.728,0.149,9376639340.440,284.421,234.416
+32,8,986.016,123.252,122.984,123.496,0.193,12967679009.184,393.347,324.192
+32,16,975.523,121.940,121.515,122.342,0.323,13107154048.644,397.578,327.679
+32,32,780.609,97.576,97.542,97.623,0.026,16379950201.212,496.851,409.499
+32,64,779.749,97.469,97.369,97.620,0.087,16398016213.267,497.399,409.950
+32,128,989.740,123.718,123.109,124.567,0.487,12918881217.405,391.867,322.972
+32,256,989.384,123.673,123.015,124.424,0.411,12923538268.326,392.008,323.088
+32,512,1412.013,176.502,175.040,177.035,0.586,9055395322.885,274.676,226.385
+32,1024,2456.615,307.077,306.713,307.333,0.192,5204858976.830,157.878,130.121
+64,4,2822.905,352.863,348.166,364.140,4.616,4529495410.305,136.685,113.237
+64,8,2462.863,307.858,307.030,308.359,0.414,5191656013.335,156.667,129.791
+64,16,2445.655,305.707,304.517,306.407,0.646,5228184330.164,157.769,130.705
+64,32,2442.812,305.352,302.924,306.895,1.204,5234269015.788,157.953,130.857
+64,64,2473.719,309.215,304.063,320.561,4.828,5168871833.249,155.979,129.222
+64,128,2472.174,309.022,304.659,312.788,2.784,5172102722.101,156.077,129.303
+64,256,2461.562,307.695,304.433,309.932,1.910,5194399260.431,156.749,129.860
+64,512,3102.426,387.803,385.913,389.442,1.359,4121398509.905,124.370,103.035
+64,1024,5266.337,658.292,655.319,667.128,3.769,2427937369.365,73.267,60.698
+# best: { min_ms: 16.302, max_ms: 16.365, sum_ms: 130.654, avg_ms: 16.332, ppwi: 4, wgsize: 256 }
+# (ppwi=64,wgsize=1024,valid=1)
+ppwi,wgsize,sum_ms,avg_ms,min_ms,max_ms,stddev_ms,interactions/s,gflops/s,gfinst/s
+1,4,1834.659,229.332,228.258,236.635,2.760,6969325609.326,278.930,174.233
+1,8,929.709,116.214,116.197,116.220,0.007,13753055080.668,550.431,343.826
+1,16,500.547,62.568,60.579,76.164,5.139,25544747298.580,1022.364,638.619
+1,32,259.156,32.395,32.377,32.420,0.015,49338311718.407,1974.641,1233.458
+1,64,168.235,21.029,21.011,21.043,0.011,76002730272.596,3041.817,1900.068
+1,128,168.264,21.033,21.002,21.067,0.020,75989913159.586,3041.304,1899.748
+1,256,167.661,20.958,20.943,20.978,0.013,76263202990.222,3052.242,1906.580
+1,512,209.536,26.192,26.166,26.214,0.015,61022006360.143,2442.251,1525.550
+1,1024,209.472,26.184,26.137,26.234,0.034,61040697293.506,2442.999,1526.017
+2,4,1232.189,154.024,153.994,154.042,0.015,10376927307.206,363.415,259.423
+2,8,639.874,79.984,78.715,88.755,3.315,19982597318.214,699.819,499.565
+2,16,331.234,41.404,41.394,41.418,0.007,38602140536.644,1351.901,965.054
+2,32,209.431,26.179,26.152,26.193,0.011,61052827572.945,2138.156,1526.321
+2,64,148.415,18.552,18.539,18.580,0.012,86152633271.393,3017.186,2153.816
+2,128,148.907,18.613,18.529,18.889,0.134,85868103421.379,3007.222,2146.703
+2,256,155.226,19.403,18.356,26.581,2.713,82372260776.308,2884.792,2059.307
+2,512,147.296,18.412,18.398,18.442,0.013,86806866670.564,3040.098,2170.172
+2,1024,261.748,32.719,32.699,32.738,0.014,48849792547.607,1710.788,1221.245
+4,4,970.182,121.273,119.845,131.155,3.735,13179317693.325,428.603,329.483
+4,8,495.020,61.877,61.869,61.888,0.007,25829944450.513,840.012,645.749
+4,16,310.355,38.794,38.781,38.811,0.010,41199044185.362,1339.829,1029.976
+4,32,215.369,26.921,26.917,26.925,0.002,59369392347.473,1930.744,1484.235
+4,64,131.724,16.466,16.358,16.698,0.140,97068877343.568,3156.764,2426.722
+4,128,212.565,26.571,26.556,26.583,0.008,60152551653.307,1956.213,1503.814
+4,256,130.499,16.312,16.286,16.346,0.016,97979961148.969,3186.394,2449.499
+4,512,224.264,28.033,26.426,39.029,4.156,57014695488.543,1854.168,1425.367
+4,1024,390.226,48.778,48.752,48.797,0.015,32766461888.833,1065.594,819.162
+8,4,838.220,104.778,104.755,104.845,0.027,15254148356.691,477.006,381.354
+8,8,519.940,64.993,64.978,65.007,0.010,24591933144.164,769.005,614.798
+8,16,361.658,45.207,45.198,45.215,0.006,35354727425.209,1105.564,883.868
+8,32,223.586,27.948,26.872,35.404,2.818,57187539082.828,1788.289,1429.688
+8,64,214.952,26.869,26.855,26.884,0.009,59484609049.999,1860.120,1487.115
+8,128,214.401,26.800,26.780,26.839,0.020,59637379477.915,1864.897,1490.934
+8,256,213.436,26.679,26.561,26.969,0.130,59907164811.382,1873.333,1497.679
+8,512,354.364,44.295,44.234,44.342,0.036,36082491643.458,1128.321,902.062
+8,1024,659.050,82.381,82.316,82.432,0.037,19401147936.964,606.686,485.029
+16,4,950.253,118.782,118.747,118.814,0.022,13455716010.446,412.357,336.393
+16,8,667.355,83.419,81.793,94.415,4.156,19159718792.222,587.159,478.993
+16,16,383.969,47.996,47.984,48.007,0.008,33300441118.990,1020.508,832.511
+16,32,380.568,47.571,47.529,47.598,0.024,33598014968.093,1029.627,839.950
+16,64,378.284,47.285,47.245,47.304,0.018,33800923077.754,1035.845,845.023
+16,128,378.876,47.359,47.292,47.426,0.047,33748113424.816,1034.227,843.703
+16,256,375.047,46.881,46.802,47.057,0.077,34092603285.864,1044.784,852.315
+16,512,644.653,80.582,80.505,80.663,0.057,19834441864.821,607.836,495.861
+16,1024,1212.346,151.543,149.819,162.712,4.223,10546767601.614,323.211,263.669
+32,4,1364.137,170.517,170.156,170.959,0.250,9373204597.745,284.317,234.330
+32,8,986.124,123.266,123.126,123.395,0.092,12966250955.942,393.304,324.156
+32,16,973.063,121.633,120.593,122.242,0.543,13140302200.907,398.584,328.508
+32,32,780.499,97.562,97.500,97.780,0.084,16382256555.560,496.921,409.556
+32,64,788.114,98.514,97.361,105.985,2.824,16223959533.508,492.120,405.599
+32,128,987.549,123.444,122.091,124.489,0.860,12947545569.144,392.737,323.689
+32,256,991.304,123.913,123.395,124.258,0.249,12898496568.585,391.249,322.462
+32,512,1411.047,176.381,175.850,177.002,0.380,9061593113.223,274.864,226.540
+32,1024,2456.794,307.099,306.737,307.480,0.206,5204479333.536,157.867,130.112
+64,4,2795.980,349.497,344.949,356.381,3.363,4573114170.244,138.001,114.328
+64,8,2459.065,307.383,306.490,308.031,0.521,5199672888.734,156.909,129.992
+64,16,2443.417,305.427,304.631,306.260,0.526,5232973141.580,157.913,130.824
+64,32,2451.479,306.435,303.652,311.634,2.274,5215764464.292,157.394,130.394
+64,64,2467.610,308.451,306.112,310.297,1.429,5181667685.672,156.365,129.542
+64,128,2483.435,310.429,308.654,313.150,1.505,5148650045.695,155.369,128.716
+64,256,2457.499,307.187,304.526,309.143,1.591,5202986324.235,157.009,130.075
+64,512,3119.448,389.931,388.531,397.432,2.847,4098909524.014,123.691,102.473
+64,1024,5268.986,658.623,653.583,660.860,2.181,2426716501.200,73.230,60.668
+# best: { min_ms: 16.286, max_ms: 16.346, sum_ms: 130.499, avg_ms: 16.312, ppwi: 4, wgsize: 256 }
++ cd /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE
++ result=/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/hip-bude-bm1.out0
+++ tail -n1 /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/hip-bude-bm1.out0
++ best='# best: { min_ms: 16.302, max_ms: 16.365, sum_ms: 130.654, avg_ms: 16.332, ppwi: 4, wgsize: 256 }'
+++ echo '# best: { min_ms: 16.302, max_ms: 16.365, sum_ms: 130.654, avg_ms: 16.332, ppwi: 4, wgsize: 256 }'
+++ grep -oP '(?<=ppwi: )\d+'
++ ppwi=4
+++ echo '# best: { min_ms: 16.302, max_ms: 16.365, sum_ms: 130.654, avg_ms: 16.332, ppwi: 4, wgsize: 256 }'
+++ grep -oP '(?<=wgsize: )\d+'
++ wgsize=256
++ echo ========================================
+========================================
+++ awk -F, '{print $9}'
++++ grep '^4,256' /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/hip-bude-bm1.out0
+++ echo 4,256,130.654,16.332,16.302,16.365,0.025,97863879892.501,3182.619,2446.597
++ echo best gflops/s = 3182.619
+best gflops/s = 3182.619
++ echo ========================================
+========================================
