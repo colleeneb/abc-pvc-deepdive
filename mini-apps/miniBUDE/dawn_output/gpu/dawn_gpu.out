@@ -1,0 +1,369 @@
+-- The CXX compiler identification is IntelLLVM 2024.1.0
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/local/dawn/software/spack/spack-views/dawn-2024-04-15/intel-oneapi-compilers-2024.1.0/gcc-13.2.0/wadpqv2pkfepzdf7m6gsclizcp5bffsw/compiler/2024.1/bin/icpx - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- CXX_EXTRA_FLAGS: 
+        Appends to common compile flags. These will be appended at link phase as well.
+        To use separate flags at link phase, set `CXX_EXTRA_LINK_FLAGS`
+-- CXX_EXTRA_LINK_FLAGS: 
+        Appends to link flags which appear *before* the objects.
+        Do not use this for linking libraries, as the link line is order-dependent
+-- CXX_EXTRA_LIBRARIES: 
+        Append to link flags which appear *after* the objects.
+        Use this for linking extra libraries (e.g `-lmylib`, or simply `mylib`)
+-- CXX_EXTRA_LINKER_FLAGS: 
+        Append to linker flags (i.e GCC's `-Wl` or equivalent)
+-- Available models:  omp;ocl;std-indices;std-ranges;hip;cuda;kokkos;sycl;acc;raja;tbb;thrust
+-- Selected model  :  sycl
+-- Supported flags:
+
+   CMAKE_CXX_COMPILER (optional, default=c++): Any CXX compiler that is supported by CMake detection, this is used for host compilation when required by the SYCL compiler
+   SYCL_COMPILER (required): Compile using the specified SYCL compiler implementation
+        Supported values are
+           ONEAPI-ICPX  - icpx as a standalone compiler
+           ONEAPI-Clang - oneAPI's Clang driver (enabled via `source /opt/intel/oneapi/setvars.sh  --include-intel-llvm`)
+           DPCPP        - dpc++ as a standalone compiler (https://github.com/intel/llvm)
+           HIPSYCL      - hipSYCL compiler (https://github.com/illuhad/hipSYCL)
+           COMPUTECPP   - ComputeCpp compiler (https://developer.codeplay.com/products/computecpp/ce/home)
+   SYCL_COMPILER_DIR (optional, default=): Absolute path to the selected SYCL compiler directory, most are packaged differently so set the path according to `SYCL_COMPILER`:
+           ONEAPI-ICPX              - `icpx` must be used for OneAPI 2023 and later on releases (i.e `source /opt/intel/oneapi/setvars.sh` first)
+           ONEAPI-Clang             - set to the directory that contains the Intel clang++ binary.
+           HIPSYCL|DPCPP|COMPUTECPP - set to the root of the binary distribution that contains at least `bin/`, `include/`, and `lib/`
+   OpenCL_LIBRARY (optional, default=): [ComputeCpp only] Path to OpenCL library, usually called libOpenCL.so
+
+-- Model-specific flags for this build:
+
+   CMAKE_CXX_COMPILER = `/usr/local/dawn/software/spack/spack-views/dawn-2024-04-15/intel-oneapi-compilers-2024.1.0/gcc-13.2.0/wadpqv2pkfepzdf7m6gsclizcp5bffsw/compiler/2024.1/bin/icpx`
+   SYCL_COMPILER = `ONEAPI-ICPX`
+   SYCL_COMPILER_DIR = ``
+   OpenCL_LIBRARY = ``
+
+-- Default RELEASE flags are `-O3;-march=native;-fsycl`, set RELEASE_FLAGS to override (CXX_EXTRA_* flags are not affected)
+-- PPWI not set, defaulting to 1,2,4,8,16,32,64,128
+-- CXX vendor  : IntelLLVM (icpx)
+-- Platform    : x86_64
+-- PPWI        : 1,2,4,8,16,32,64,128
+-- Sources     : src/sycl/fasten.hpp;src/main.cpp
+-- Libraries   :  
+-- CXX Flags   :  -DNDEBUG -O3;-march=native;-fsycl 
+    CXX flags derived from (CMake + (Override ? Override : Default) + Extras), where:
+        CMake                    = ` -DNDEBUG`
+        Default                  = `-O3;-march=native;-fsycl`
+        Override (RELEASE_FLAGS) = ``
+        Extras (CXX_EXTRA_FLAGS) = ``
+-- Link Flags  : -fsycl 
+-- Linker Flags:   
+-- Defs        : SYCL
+-- Executable  : sycl-bude
+-- Configuring done (1.3s)
+-- Generating done (0.3s)
+-- Build files have been written to: /home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build
+/usr/bin/cmake -S/home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude -B/home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build --check-build-system CMakeFiles/Makefile.cmake 0
+/usr/bin/cmake -E cmake_progress_start /home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/CMakeFiles /home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build//CMakeFiles/progress.marks
+/usr/bin/gmake  -f CMakeFiles/Makefile2 all
+gmake[1]: Entering directory '/rds/user/dn-sad1/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+/usr/bin/gmake  -f CMakeFiles/extract_compile_commands.dir/build.make CMakeFiles/extract_compile_commands.dir/depend
+/usr/bin/gmake  -f CMakeFiles/check_git.dir/build.make CMakeFiles/check_git.dir/depend
+gmake[2]: Entering directory '/rds/user/dn-sad1/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+cd /home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build && /usr/bin/cmake -E cmake_depends "Unix Makefiles" /home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude /home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude /home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build /home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build /home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/CMakeFiles/extract_compile_commands.dir/DependInfo.cmake --color=
+gmake[2]: Entering directory '/rds/user/dn-sad1/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+cd /home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build && /usr/bin/cmake -E cmake_depends "Unix Makefiles" /home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude /home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude /home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build /home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build /home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/CMakeFiles/check_git.dir/DependInfo.cmake --color=
+gmake[2]: Leaving directory '/rds/user/dn-sad1/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+/usr/bin/gmake  -f CMakeFiles/extract_compile_commands.dir/build.make CMakeFiles/extract_compile_commands.dir/build
+gmake[2]: Leaving directory '/rds/user/dn-sad1/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+/usr/bin/gmake  -f CMakeFiles/check_git.dir/build.make CMakeFiles/check_git.dir/build
+gmake[2]: Entering directory '/rds/user/dn-sad1/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+/usr/bin/cmake -DCOMMAND_FILE=/home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/compile_commands.json -DPRE_CONFIGURE_FILE="/home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/meta_build.h.in" -DPOST_CONFIGURE_FILE="/home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/generated/meta_build.h" -DSRC_DIR_PREFIX="/home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src" -DOUT_DIR_PREFIX="CMakeFiles/bude.dir" -P /home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/cmake/extract_compile_command.cmake
+gmake[2]: Entering directory '/rds/user/dn-sad1/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+-- Transforming /home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/compile_commands.json...
+[ 33%] Checking the git repository for changes...
+/usr/bin/cmake -D_BUILD_TIME_CHECK_GIT=TRUE -DGIT_WORKING_DIR=/home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude -DGIT_EXECUTABLE=/usr/bin/git -DGIT_STATE_FILE=/home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/git-state-hash -DPRE_CONFIGURE_FILE=/home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/meta_vcs.h.in -DPOST_CONFIGURE_FILE=/home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/generated/meta_vcs.h -DGIT_FAIL_IF_NONZERO_EXIT=FALSE -DGIT_IGNORE_UNTRACKED=FALSE -P /home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/cmake/git_watcher.cmake
+gmake[2]: Leaving directory '/rds/user/dn-sad1/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+[ 33%] Built target extract_compile_commands
+gmake[2]: Leaving directory '/rds/user/dn-sad1/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+[ 33%] Built target check_git
+/usr/bin/gmake  -f CMakeFiles/bude.dir/build.make CMakeFiles/bude.dir/depend
+gmake[2]: Entering directory '/rds/user/dn-sad1/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+cd /home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build && /usr/bin/cmake -E cmake_depends "Unix Makefiles" /home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude /home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude /home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build /home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build /home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/CMakeFiles/bude.dir/DependInfo.cmake --color=
+gmake[2]: Leaving directory '/rds/user/dn-sad1/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+/usr/bin/gmake  -f CMakeFiles/bude.dir/build.make CMakeFiles/bude.dir/build
+gmake[2]: Entering directory '/rds/user/dn-sad1/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+[ 66%] Building CXX object CMakeFiles/bude.dir/src/main.cpp.o
+icpx -DSYCL -DUSE_PPWI=1,2,4,8,16,32,64,128 -I/home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl -I/home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/generated -DNDEBUG -std=c++17 -O3 -march=native -fsycl -MD -MT CMakeFiles/bude.dir/src/main.cpp.o -MF CMakeFiles/bude.dir/src/main.cpp.o.d -o CMakeFiles/bude.dir/src/main.cpp.o -c /home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp
+[100%] Linking CXX executable sycl-bude
+/usr/bin/cmake -E cmake_link_script CMakeFiles/bude.dir/link.txt --verbose=1
+icpx  -DNDEBUG -fsycl CMakeFiles/bude.dir/src/main.cpp.o -o sycl-bude 
+gmake[2]: Leaving directory '/rds/user/dn-sad1/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+[100%] Built target bude
+gmake[1]: Leaving directory '/rds/user/dn-sad1/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+/usr/bin/cmake -E cmake_progress_start /home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/CMakeFiles 0
+	linux-vdso.so.1 (0x00007ffc4070d000)
+	libstdc++.so.6 => /usr/local/dawn/software/spack/spack-views/dawn-2024-04-15/gcc-runtime-13.2.0/gcc-13.2.0/ayevhr77cuf2t7ueefdspf4embreh46h/lib/libstdc++.so.6 (0x000014eb83e94000)
+	libm.so.6 => /lib64/libm.so.6 (0x000014eb83b12000)
+	libgcc_s.so.1 => /usr/local/dawn/software/spack/spack-views/dawn-2024-04-15/gcc-runtime-13.2.0/gcc-13.2.0/ayevhr77cuf2t7ueefdspf4embreh46h/lib/libgcc_s.so.1 (0x000014eb842e4000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x000014eb8390e000)
+	libsycl.so.7 => /usr/local/dawn/software/spack/opt-2024-04-15/linux-rocky8-sapphirerapids/gcc-13.2.0/intel-oneapi-compilers-2024.1.0-wadpqv2pkfepzdf7m6gsclizcp5bffsw/compiler/2024.1/lib/libsycl.so.7 (0x000014eb83579000)
+	libc.so.6 => /lib64/libc.so.6 (0x000014eb831b4000)
+	/lib64/ld-linux-x86-64.so.2 (0x000014eb840f7000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x000014eb82f94000)
+# (ppwi=1,wgsize=4,valid=1)
+# (ppwi=1,wgsize=8,valid=1)
+# (ppwi=1,wgsize=4,valid=1)
+# (ppwi=1,wgsize=16,valid=1)
+# (ppwi=1,wgsize=32,valid=1)
+# (ppwi=1,wgsize=8,valid=1)
+# (ppwi=1,wgsize=64,valid=1)
+# (ppwi=1,wgsize=16,valid=1)
+# (ppwi=1,wgsize=32,valid=1)
+# (ppwi=1,wgsize=128,valid=1)
+# (ppwi=1,wgsize=64,valid=1)
+# (ppwi=1,wgsize=256,valid=1)
+# (ppwi=1,wgsize=128,valid=1)
+# (ppwi=1,wgsize=512,valid=1)
+# (ppwi=1,wgsize=256,valid=1)
+# (ppwi=1,wgsize=1024,valid=1)
+# (ppwi=1,wgsize=512,valid=1)
+# (ppwi=1,wgsize=1024,valid=1)
+# (ppwi=2,wgsize=4,valid=1)
+# (ppwi=2,wgsize=8,valid=1)
+# (ppwi=2,wgsize=4,valid=1)
+# (ppwi=2,wgsize=16,valid=1)
+# (ppwi=2,wgsize=8,valid=1)
+# (ppwi=2,wgsize=32,valid=1)
+# (ppwi=2,wgsize=16,valid=1)
+# (ppwi=2,wgsize=64,valid=1)
+# (ppwi=2,wgsize=32,valid=1)
+# (ppwi=2,wgsize=128,valid=1)
+# (ppwi=2,wgsize=64,valid=1)
+# (ppwi=2,wgsize=256,valid=1)
+# (ppwi=2,wgsize=128,valid=1)
+# (ppwi=2,wgsize=256,valid=1)
+# (ppwi=2,wgsize=512,valid=1)
+# (ppwi=2,wgsize=512,valid=1)
+# (ppwi=2,wgsize=1024,valid=1)
+# (ppwi=2,wgsize=1024,valid=1)
+# (ppwi=4,wgsize=4,valid=1)
+# (ppwi=4,wgsize=4,valid=1)
+# (ppwi=4,wgsize=8,valid=1)
+# (ppwi=4,wgsize=8,valid=1)
+# (ppwi=4,wgsize=16,valid=1)
+# (ppwi=4,wgsize=16,valid=1)
+# (ppwi=4,wgsize=32,valid=1)
+# (ppwi=4,wgsize=32,valid=1)
+# (ppwi=4,wgsize=64,valid=1)
+# (ppwi=4,wgsize=64,valid=1)
+# (ppwi=4,wgsize=128,valid=1)
+# (ppwi=4,wgsize=128,valid=1)
+# (ppwi=4,wgsize=256,valid=1)
+# (ppwi=4,wgsize=256,valid=1)
+# (ppwi=4,wgsize=512,valid=1)
+# (ppwi=4,wgsize=512,valid=1)
+# (ppwi=4,wgsize=1024,valid=1)
+# (ppwi=4,wgsize=1024,valid=1)
+# (ppwi=8,wgsize=4,valid=1)
+# (ppwi=8,wgsize=4,valid=1)
+# (ppwi=8,wgsize=8,valid=1)
+# (ppwi=8,wgsize=8,valid=1)
+# (ppwi=8,wgsize=16,valid=1)
+# (ppwi=8,wgsize=16,valid=1)
+# (ppwi=8,wgsize=32,valid=1)
+# (ppwi=8,wgsize=32,valid=1)
+# (ppwi=8,wgsize=64,valid=1)
+# (ppwi=8,wgsize=64,valid=1)
+# (ppwi=8,wgsize=128,valid=1)
+# (ppwi=8,wgsize=128,valid=1)
+# (ppwi=8,wgsize=256,valid=1)
+# (ppwi=8,wgsize=256,valid=1)
+# (ppwi=8,wgsize=512,valid=1)
+# (ppwi=8,wgsize=512,valid=1)
+# (ppwi=8,wgsize=1024,valid=1)
+# (ppwi=8,wgsize=1024,valid=1)
+# (ppwi=16,wgsize=4,valid=1)
+# (ppwi=16,wgsize=4,valid=1)
+# (ppwi=16,wgsize=8,valid=1)
+# (ppwi=16,wgsize=8,valid=1)
+# (ppwi=16,wgsize=16,valid=1)
+# (ppwi=16,wgsize=16,valid=1)
+# (ppwi=16,wgsize=32,valid=1)
+# (ppwi=16,wgsize=32,valid=1)
+# (ppwi=16,wgsize=64,valid=1)
+# (ppwi=16,wgsize=64,valid=1)
+# (ppwi=16,wgsize=128,valid=1)
+# (ppwi=16,wgsize=128,valid=1)
+# (ppwi=16,wgsize=256,valid=1)
+# (ppwi=16,wgsize=256,valid=1)
+# (ppwi=16,wgsize=512,valid=1)
+# (ppwi=16,wgsize=512,valid=1)
+# (ppwi=16,wgsize=1024,valid=1)
+# (ppwi=16,wgsize=1024,valid=1)
+# (ppwi=32,wgsize=4,valid=1)
+# (ppwi=32,wgsize=4,valid=1)
+# (ppwi=32,wgsize=8,valid=1)
+# (ppwi=32,wgsize=8,valid=1)
+# (ppwi=32,wgsize=16,valid=1)
+# (ppwi=32,wgsize=16,valid=1)
+# (ppwi=32,wgsize=32,valid=1)
+# (ppwi=32,wgsize=32,valid=1)
+# (ppwi=32,wgsize=64,valid=1)
+# (ppwi=32,wgsize=64,valid=1)
+# (ppwi=32,wgsize=128,valid=1)
+# (ppwi=32,wgsize=128,valid=1)
+# (ppwi=32,wgsize=256,valid=1)
+# (ppwi=32,wgsize=256,valid=1)
+# (ppwi=32,wgsize=512,valid=1)
+# (ppwi=32,wgsize=512,valid=1)
+# (ppwi=32,wgsize=1024,valid=1)
+# (ppwi=32,wgsize=1024,valid=1)
+# (ppwi=64,wgsize=4,valid=1)
+# (ppwi=64,wgsize=4,valid=1)
+# (ppwi=64,wgsize=8,valid=1)
+# (ppwi=64,wgsize=8,valid=1)
+# (ppwi=64,wgsize=16,valid=1)
+# (ppwi=64,wgsize=16,valid=1)
+# (ppwi=64,wgsize=32,valid=1)
+# (ppwi=64,wgsize=32,valid=1)
+# (ppwi=64,wgsize=64,valid=1)
+# (ppwi=64,wgsize=64,valid=1)
+# (ppwi=64,wgsize=128,valid=1)
+# (ppwi=64,wgsize=128,valid=1)
+# (ppwi=64,wgsize=256,valid=1)
+# (ppwi=64,wgsize=256,valid=1)
+# (ppwi=64,wgsize=512,valid=1)
+# (ppwi=64,wgsize=512,valid=1)
+# (ppwi=64,wgsize=1024,valid=1)
+ppwi,wgsize,sum_ms,avg_ms,min_ms,max_ms,stddev_ms,interactions/s,gflops/s,gfinst/s
+1,4,291.963,36.495,36.466,36.553,0.027,43794379177.733,1752.759,1094.859
+1,8,146.772,18.346,18.268,18.602,0.107,87117035222.824,3486.639,2177.926
+1,16,73.750,9.219,9.149,9.365,0.063,173373228250.709,6938.825,4334.331
+1,32,73.266,9.158,8.561,9.256,0.226,174518904564.893,6984.678,4362.973
+1,64,80.166,10.021,10.010,10.032,0.010,159497340651.889,6383.478,3987.434
+1,128,80.170,10.021,10.014,10.036,0.009,159490982216.748,6383.223,3987.275
+1,256,80.179,10.022,10.014,10.035,0.009,159472454924.927,6382.482,3986.811
+1,512,80.191,10.024,10.018,10.039,0.008,159448471718.548,6381.522,3986.212
+1,1024,80.187,10.023,10.014,10.035,0.009,159456630369.557,6381.848,3986.416
+2,4,224.069,28.009,27.998,28.038,0.014,57064394550.019,1998.475,1426.610
+2,8,112.466,14.058,14.043,14.082,0.015,113690559299.740,3981.603,2842.264
+2,16,103.050,12.881,12.873,12.893,0.008,124079240865.369,4345.429,3101.981
+2,32,93.048,11.631,11.621,11.644,0.009,137416297998.322,4812.512,3435.407
+2,64,100.145,12.518,12.508,12.546,0.013,127677842811.174,4471.457,3191.946
+2,128,108.742,13.593,13.578,13.618,0.013,117583830895.018,4117.951,2939.596
+2,256,129.832,16.229,16.214,16.244,0.011,98483795620.173,3449.041,2462.095
+2,512,129.838,16.230,16.221,16.244,0.008,98479191444.991,3448.880,2461.980
+2,1024,129.864,16.233,16.220,16.269,0.016,98459478762.615,3448.189,2461.487
+4,4,359.521,44.940,44.886,45.046,0.056,35564926722.376,1156.602,889.123
+4,8,324.057,40.507,40.491,40.537,0.014,39457110047.175,1283.180,986.428
+4,16,253.893,31.737,31.474,31.891,0.125,50361205112.703,1637.790,1259.030
+4,32,247.101,30.888,30.827,30.931,0.035,51745410491.601,1682.806,1293.635
+4,64,247.210,30.901,30.835,30.959,0.042,51722544225.417,1682.062,1293.064
+4,128,264.812,33.101,33.081,33.136,0.016,48284637358.664,1570.258,1207.116
+4,256,317.652,39.706,39.693,39.736,0.014,40252689663.617,1309.053,1006.317
+4,512,385.909,48.239,48.217,48.282,0.019,33133056128.240,1077.516,828.326
+4,1024,385.832,48.229,48.212,48.257,0.016,33139608158.812,1077.729,828.490
+8,4,611.569,76.446,76.421,76.476,0.016,20907416803.907,653.788,522.685
+8,8,469.761,58.720,58.671,58.741,0.022,27218838650.889,851.150,680.471
+8,16,429.698,53.712,53.699,53.726,0.009,29756597318.324,930.507,743.915
+8,32,425.395,53.174,53.144,53.243,0.030,30057564893.739,939.918,751.439
+8,64,425.804,53.225,53.214,53.237,0.009,30028718979.505,939.016,750.718
+8,128,456.758,57.095,57.039,57.226,0.060,27993682683.991,875.379,699.842
+8,256,493.638,61.705,61.681,61.737,0.018,25902243973.251,809.979,647.556
+8,512,494.029,61.754,61.699,61.795,0.026,25881744814.134,809.338,647.044
+8,1024,494.033,61.754,61.687,61.794,0.032,25881550294.841,809.332,647.039
+16,4,899.001,112.375,112.354,112.397,0.015,14222828303.421,435.865,355.571
+16,8,818.562,102.320,102.258,102.359,0.033,15620482925.641,478.697,390.512
+16,16,780.439,97.555,97.518,97.692,0.053,16383512115.562,502.080,409.588
+16,32,788.883,98.610,98.608,98.612,0.002,16208149010.092,496.706,405.204
+16,64,812.541,101.568,101.512,101.615,0.041,15736243403.348,482.245,393.406
+16,128,814.802,101.850,101.800,101.921,0.035,15692569925.374,480.906,392.314
+16,256,814.883,101.860,101.822,101.972,0.047,15691011650.552,480.858,392.275
+16,512,814.894,101.862,101.825,101.937,0.033,15690790445.985,480.852,392.270
+16,1024,963.354,120.419,120.394,120.445,0.015,13272734173.998,406.749,331.818
+32,4,1268.403,158.550,158.531,158.576,0.015,10080659568.578,305.776,252.016
+32,8,1289.163,161.145,161.130,161.159,0.010,9918321812.261,300.852,247.958
+32,16,1336.746,167.093,167.077,167.114,0.013,9565265930.051,290.142,239.132
+32,32,1492.163,186.520,186.511,186.537,0.009,8568996097.007,259.923,214.225
+32,64,1494.235,186.779,186.767,186.787,0.008,8557113007.607,259.562,213.928
+32,128,1494.317,186.790,186.780,186.807,0.009,8556641773.351,259.548,213.916
+32,256,1494.404,186.801,186.791,186.816,0.010,8556142095.317,259.533,213.904
+32,512,1523.941,190.493,190.440,190.550,0.038,8390310386.684,254.502,209.758
+32,1024,2044.461,255.558,253.286,258.657,1.510,6254133866.843,189.706,156.353
+64,4,3474.533,434.317,434.302,434.332,0.010,3680015533.828,111.050,92.000
+64,8,3558.107,444.763,444.699,444.800,0.032,3593578390.639,108.442,89.839
+64,16,3725.702,465.713,465.702,465.726,0.009,3431926597.622,103.564,85.798
+64,32,4083.004,510.376,510.363,510.389,0.009,3131599800.086,94.501,78.290
+64,64,4113.826,514.228,514.210,514.244,0.011,3108137536.447,93.793,77.703
+64,128,4114.071,514.259,514.227,514.291,0.025,3107951829.586,93.787,77.699
+64,256,4155.955,519.494,519.446,519.517,0.023,3076630127.709,92.842,76.916
+64,512,6253.121,781.640,780.791,782.509,0.590,2044792737.668,61.705,51.120
+64,1024,10419.698,1302.462,1302.322,1302.570,0.090,1227131092.060,37.031,30.678
+# best: { min_ms: 8.561, max_ms: 9.256, sum_ms: 73.266, avg_ms: 9.158, ppwi: 1, wgsize: 32 }
+# (ppwi=64,wgsize=1024,valid=1)
+ppwi,wgsize,sum_ms,avg_ms,min_ms,max_ms,stddev_ms,interactions/s,gflops/s,gfinst/s
+1,4,292.941,36.618,36.490,36.820,0.122,43648172130.926,1746.908,1091.204
+1,8,146.544,18.318,18.266,18.487,0.068,87252561746.694,3492.063,2181.314
+1,16,73.530,9.191,9.147,9.203,0.018,173893529389.853,6959.649,4347.338
+1,32,72.680,9.085,8.572,9.264,0.296,175926413011.730,7041.010,4398.160
+1,64,72.776,9.097,8.568,9.277,0.303,175694034276.503,7031.709,4392.351
+1,128,80.280,10.035,10.018,10.044,0.009,159271999636.472,6374.459,3981.800
+1,256,78.893,9.862,8.589,10.083,0.481,162071568372.639,6486.504,4051.789
+1,512,80.279,10.035,10.023,10.046,0.009,159273860612.050,6374.533,3981.847
+1,1024,80.270,10.034,10.022,10.049,0.012,159291861545.744,6375.254,3982.297
+2,4,224.254,28.032,27.999,28.102,0.031,57017107474.568,1996.819,1425.428
+2,8,112.520,14.065,14.042,14.105,0.021,113635803684.115,3979.685,2840.895
+2,16,103.046,12.881,12.867,12.892,0.010,124084011578.697,4345.596,3102.100
+2,32,93.068,11.634,11.619,11.645,0.010,137386936040.281,4811.483,3434.673
+2,64,95.984,11.998,11.638,12.365,0.350,133213479883.344,4665.323,3330.337
+2,128,100.132,12.516,12.506,12.526,0.008,127695008172.076,4472.058,3192.375
+2,256,118.594,14.824,14.809,14.832,0.009,107815694306.534,3775.857,2695.392
+2,512,129.875,16.234,16.225,16.250,0.010,98450799950.263,3447.885,2461.270
+2,1024,129.864,16.233,16.223,16.246,0.009,98459806294.928,3448.201,2461.495
+4,4,359.397,44.925,44.887,44.973,0.033,35577168018.987,1157.000,889.429
+4,8,325.461,40.683,40.613,40.713,0.029,39286793943.196,1277.641,982.170
+4,16,251.192,31.399,31.084,31.511,0.134,50902652364.217,1655.399,1272.566
+4,32,231.953,28.994,28.964,29.025,0.021,55124613292.842,1792.700,1378.115
+4,64,246.738,30.842,30.765,30.944,0.052,51821607911.506,1685.284,1295.540
+4,128,263.668,32.959,32.918,33.004,0.029,48494053761.487,1577.069,1212.351
+4,256,292.037,36.505,36.467,36.566,0.029,43783340176.598,1423.872,1094.584
+4,512,317.768,39.721,39.708,39.730,0.007,40237933385.166,1308.573,1005.948
+4,1024,386.176,48.272,48.257,48.290,0.012,33110168073.557,1076.772,827.754
+8,4,614.642,76.830,76.799,76.863,0.020,20802907470.505,650.519,520.073
+8,8,459.216,57.402,57.353,57.482,0.037,27843854916.855,870.694,696.096
+8,16,415.573,51.947,51.132,52.179,0.314,30767934075.669,962.132,769.198
+8,32,422.759,52.845,52.779,52.887,0.040,30244957460.506,945.778,756.124
+8,64,425.672,53.209,53.166,53.239,0.022,30037979671.663,939.306,750.949
+8,128,457.368,57.171,57.010,57.293,0.084,27956347054.527,874.212,698.909
+8,256,458.045,57.256,57.188,57.350,0.047,27915013821.477,872.919,697.875
+8,512,494.582,61.823,61.769,61.885,0.038,25852807860.471,808.433,646.320
+8,1024,494.735,61.842,61.788,61.890,0.036,25844827915.572,808.183,646.121
+16,4,896.940,112.117,112.052,112.253,0.058,14255509525.024,436.867,356.388
+16,8,788.331,98.541,97.172,99.399,0.991,16219502349.034,497.054,405.488
+16,16,773.555,96.694,96.692,96.698,0.002,16529312553.109,506.549,413.233
+16,32,789.195,98.649,98.638,98.664,0.009,16201741781.651,496.510,405.044
+16,64,813.139,101.642,101.432,101.888,0.166,15724653006.106,481.889,393.116
+16,128,814.773,101.847,101.734,101.994,0.094,15693129526.278,480.923,392.328
+16,256,815.945,101.993,101.935,102.032,0.032,15670581408.307,480.232,391.765
+16,512,815.999,102.000,101.938,102.044,0.038,15669552832.803,480.201,391.739
+16,1024,964.477,120.560,120.513,120.602,0.029,13257278090.330,406.276,331.432
+32,4,1254.510,156.814,156.787,156.834,0.013,10192294462.472,309.162,254.807
+32,8,1283.184,160.398,160.273,160.721,0.183,9964539456.075,302.253,249.113
+32,16,1343.482,167.935,167.066,168.241,0.494,9517309875.942,288.688,237.933
+32,32,1494.245,186.781,186.525,186.885,0.147,8557056525.018,259.560,213.926
+32,64,1495.217,186.902,186.890,186.917,0.009,8551493212.857,259.392,213.787
+32,128,1496.726,187.091,186.802,187.157,0.111,8542869290.819,259.130,213.572
+32,256,1496.585,187.073,186.884,187.152,0.107,8543675032.014,259.154,213.592
+32,512,1524.326,190.541,190.459,190.613,0.051,8388187168.075,254.438,209.705
+32,1024,2056.529,257.066,255.025,259.329,1.455,6217435332.692,188.593,155.436
+64,4,3491.322,436.415,436.265,436.707,0.157,3662319408.707,110.516,91.558
+64,8,3580.244,447.531,447.377,447.609,0.065,3571358534.626,107.772,89.284
+64,16,3762.880,470.360,470.040,470.548,0.152,3398018468.249,102.541,84.950
+64,32,4062.479,507.810,507.798,507.822,0.010,3147422255.542,94.979,78.686
+64,64,4130.281,516.285,515.968,516.523,0.156,3095754288.548,93.419,77.394
+64,128,4129.963,516.245,515.805,516.523,0.243,3095992474.093,93.427,77.400
+64,256,4168.467,521.058,520.818,521.240,0.149,3067395523.815,92.564,76.685
+64,512,6194.154,774.269,773.409,774.805,0.420,2064258451.582,62.292,51.606
+64,1024,10513.457,1314.182,1313.878,1314.427,0.211,1216187628.742,36.700,30.405
+# best: { min_ms: 8.572, max_ms: 9.264, sum_ms: 72.680, avg_ms: 9.085, ppwi: 1, wgsize: 32 }
+========================================
+best gflops/s = 6984.678
+========================================
