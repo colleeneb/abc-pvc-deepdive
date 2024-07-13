@@ -1,0 +1,128 @@
+Loading intel-oneapi-compilers/2024.1.0/gcc/wadpqv2p
+  Loading requirement: gcc-runtime/13.2.0/gcc/ayevhr77 zlib-ng/2.1.6/gcc/thn3ikgx zstd/1.5.5/gcc/7o3rooli binutils/2.42/gcc/s65uixqt
+icx -O3 -std=gnu99 -c profiler.c -o profiler.o
+icpx -O3 -fsycl -DENABLE_PROFILING -c sycl-usm.cpp -o obj_sycl.o
+icpx -O3 -fsycl obj_sycl.o profiler.o -o run.sycl
+Unknown MPI, adjust this script.
+Running on Intel(R) Data Center GPU Max 1550
+Allocating 4096 MiB
+Elapsed Clock Cycles 3414
+Array Size 0.000MB Stride 5 Cache Lines 4 Time 0.000081788000s
+Loads = 40
+Cycles / Load = 85.3500
+Elapsed Clock Cycles 5509
+Array Size 0.001MB Stride 5 Cache Lines 8 Time 0.000021082000s
+Loads = 80
+Cycles / Load = 68.8625
+Elapsed Clock Cycles 10655
+Array Size 0.002MB Stride 5 Cache Lines 16 Time 0.000027484000s
+Loads = 160
+Cycles / Load = 66.5938
+Elapsed Clock Cycles 19974
+Array Size 0.004MB Stride 5 Cache Lines 32 Time 0.000038138000s
+Loads = 320
+Cycles / Load = 62.4188
+Elapsed Clock Cycles 39599
+Array Size 0.008MB Stride 5 Cache Lines 64 Time 0.000055951000s
+Loads = 640
+Cycles / Load = 61.8734
+Elapsed Clock Cycles 78849
+Array Size 0.016MB Stride 5 Cache Lines 128 Time 0.000099271000s
+Loads = 1280
+Cycles / Load = 61.6008
+Elapsed Clock Cycles 157357
+Array Size 0.031MB Stride 5 Cache Lines 256 Time 0.000183062000s
+Loads = 2560
+Cycles / Load = 61.4676
+Elapsed Clock Cycles 314373
+Array Size 0.062MB Stride 5 Cache Lines 512 Time 0.000356366000s
+Loads = 5120
+Cycles / Load = 61.4010
+Elapsed Clock Cycles 628395
+Array Size 0.125MB Stride 5 Cache Lines 1024 Time 0.000702549000s
+Loads = 10240
+Cycles / Load = 61.3667
+Elapsed Clock Cycles 1256449
+Array Size 0.250MB Stride 5 Cache Lines 2048 Time 0.001393648000s
+Loads = 20480
+Cycles / Load = 61.3500
+Elapsed Clock Cycles 2512558
+Array Size 0.500MB Stride 5 Cache Lines 4096 Time 0.002777014000s
+Loads = 40960
+Cycles / Load = 61.3417
+Elapsed Clock Cycles 34823659
+Array Size 1.000MB Stride 5 Cache Lines 8192 Time 0.024208557000s
+Loads = 81920
+Cycles / Load = 425.0935
+Elapsed Clock Cycles 69666173
+Array Size 2.000MB Stride 5 Cache Lines 16384 Time 0.048430010000s
+Loads = 163840
+Cycles / Load = 425.2086
+Elapsed Clock Cycles 139371926
+Array Size 4.000MB Stride 5 Cache Lines 32768 Time 0.096913814000s
+Loads = 327680
+Cycles / Load = 425.3294
+Elapsed Clock Cycles 279099919
+Array Size 8.000MB Stride 5 Cache Lines 65536 Time 0.194001498000s
+Loads = 655360
+Cycles / Load = 425.8727
+Elapsed Clock Cycles 557669583
+Array Size 16.000MB Stride 5 Cache Lines 131072 Time 0.387594609000s
+Loads = 1.31072e+06
+Cycles / Load = 425.4681
+Elapsed Clock Cycles 1117327532
+Array Size 32.000MB Stride 5 Cache Lines 262144 Time 0.776444301000s
+Loads = 2.62144e+06
+Cycles / Load = 426.2266
+Elapsed Clock Cycles 2233919073
+Array Size 64.000MB Stride 5 Cache Lines 524288 Time 1.552402110000s
+Loads = 5.24288e+06
+Cycles / Load = 426.0862
+Elapsed Clock Cycles 4472945865
+Array Size 128.000MB Stride 5 Cache Lines 1048576 Time 3.108114448000s
+Loads = 1.04858e+07
+Cycles / Load = 426.5734
+Elapsed Clock Cycles 14546778198
+Array Size 256.000MB Stride 5 Cache Lines 2097152 Time 10.045291328000s
+Loads = 2.09715e+07
+Cycles / Load = 693.6444
+Elapsed Clock Cycles 35992254539
+Array Size 512.000MB Stride 5 Cache Lines 4194304 Time 24.902268102000s
+Loads = 4.1943e+07
+Cycles / Load = 858.1222
+Elapsed Clock Cycles 71995021344
+Array Size 1024.000MB Stride 5 Cache Lines 8388608 Time 49.826200746000s
+Loads = 8.38861e+07
+Cycles / Load = 858.2475
+Elapsed Clock Cycles 143994395804
+Array Size 2048.000MB Stride 5 Cache Lines 16777216 Time 99.657606242000s
+Loads = 1.67772e+08
+Cycles / Load = 858.2735
+Elapsed Clock Cycles 288105694165
+Array Size 4096.000MB Stride 5 Cache Lines 33554432 Time 199.396145252000s
+Loads = 3.35544e+08
+Cycles / Load = 858.6219
+5,512,85.3500
+5,1024,68.8625
+5,2048,66.5938
+5,4096,62.4188
+5,8192,61.8734
+5,16384,61.6008
+5,32768,61.4676
+5,65536,61.4010
+5,131072,61.3667
+5,262144,61.3500
+5,524288,61.3417
+5,1048576,425.0935
+5,2097152,425.2086
+5,4194304,425.3294
+5,8388608,425.8727
+5,16777216,425.4681
+5,33554432,426.2266
+5,67108864,426.0862
+5,134217728,426.5734
+5,268435456,693.6444
+5,536870912,858.1222
+5,1073741824,858.2475
+5,2147483648,858.2735
+5,4294967296,858.6219

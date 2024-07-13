@@ -1,0 +1,16 @@
+Unknown MPI, adjust this script.
+n       42, reps =     1000, bytes         1008, bandwidth =   172.306281
+n       85, reps =     1000, bytes         2040, bandwidth =   268.718071
+n      170, reps =     1000, bytes         4080, bandwidth =   483.513407
+n      341, reps =     1000, bytes         8184, bandwidth =   669.907647
+n      682, reps =     1000, bytes        16368, bandwidth =  1151.952020
+n     1365, reps =     1000, bytes        32760, bandwidth =  1829.671782
+n     2730, reps =     1000, bytes        65520, bandwidth =  2404.865044
+n     5461, reps =     1000, bytes       131064, bandwidth =  3881.015057
+n    10922, reps =     1000, bytes       262128, bandwidth =  4491.524098
+n    21845, reps =     1000, bytes       524280, bandwidth =  6055.603662
+n    43690, reps =     1000, bytes      1048560, bandwidth =  7141.163216
+n    87381, reps =     1000, bytes      2097144, bandwidth =  4451.870838
+n   174762, reps =     1000, bytes      4194288, bandwidth =  2739.170841
+n   349525, reps =     1000, bytes      8388600, bandwidth =  2660.177979
+n   699050, reps =     1000, bytes     16777200, bandwidth =  2652.954317
