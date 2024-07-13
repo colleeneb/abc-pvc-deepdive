@@ -44,8 +44,7 @@ cd $BASE/cachebw
 $BASE/gpu_tile_compact.sh ./benchmark.sh -n 7 -r 1000 | tee results/$1-shmem.txt
 
 # Extracting the results
-#cd $BASE/cachebw
-#cat results/$1.txt
-#echo \n
-#cat results/$1-shmem.txt
+cd $BASE/cachebw
+cp results/$1.txt $BASE/$1-cachebw.txt
+cp results/$1-shmem.txt $BASE/$1-cachebw-shmem.txt
 

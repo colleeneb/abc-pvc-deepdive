@@ -36,4 +36,5 @@ $BASE/gpu_tile_compact.sh ./run.sycl
 # Extracting the results
 cd $BASE/lats
 cat lat.csv
+cp lat.csv $BASE/$1-lat.csv
 
