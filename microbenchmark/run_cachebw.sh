@@ -16,8 +16,20 @@ source $BASE/../environment/$1.env tile
 
 # Compiling the code
 cd $BASE/cachebw
-sed -i 's/SHMEM=1/SHMEM=0/g' Makefile
-make
+
+if [ "$VENDOR" = "INTEL" ]; then
+  export COMPILER="INTEL"
+  export MODEL="USM"
+elif [ "$VENDOR" = "NVIDIA" ]; then
+  export COMPILER=$VENDOR
+elif [ "$VENDOR" = "AMD" ]; then
+  export COMPILER=$VENDOR
+  export HIPOPTS="--offload-arch=gfx90a;--gcc-toolchain=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/"
+else
+  echo "VENDOR variable is either unset or not set to INTEL/NVIDIA/AMD"
+fi
+
+SHMEM=0 make
 
 # Running the code
 cd $BASE/cachebw
@@ -25,8 +37,7 @@ $BASE/gpu_tile_compact.sh ./benchmark.sh -n 14 -r 1000 | tee results/$1.txt
 
 # Compiling the code
 cd $BASE/cachebw
-sed -i 's/SHMEM=0/SHMEM=1/g' Makefile
-make
+SHMEM=1 make
 
 # Running the code
 cd $BASE/cachebw
