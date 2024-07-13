@@ -21,7 +21,7 @@ elif [ "$VENDOR" = "NVIDIA" ]; then
   MODEL="cuda"
 elif [ "$VENDOR" = "AMD" ]; then
   MODEL="hip"
-  export HIPOPTS="--offload-arch=gfx90a;--gcc-toolchain=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/"
+  export HIPOPTS="--offload-arch=gfx90a --gcc-toolchain=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/"
 else
   echo "VENDOR variable is either unset or not set to INTEL/NVIDIA/AMD"
 fi
