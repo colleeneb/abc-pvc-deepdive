@@ -1,0 +1,13 @@
+Unknown MPI, adjust this script.
+mem bw = 3467.372287
+n       42, reps =     1000, bytes         1008, bandwidth =  3467.372287
+mem bw = 6470.646025
+n       85, reps =     1000, bytes         2040, bandwidth =  6470.646025
+mem bw = 9123.767474
+n      170, reps =     1000, bytes         4080, bandwidth =  9123.767474
+mem bw = 13148.430593
+n      341, reps =     1000, bytes         8184, bandwidth = 13148.430593
+n      682, reps =     1000, bytes        16368, bandwidth =    -1.000000
+n     1365, reps =     1000, bytes        32760, bandwidth =    -1.000000
+n     2730, reps =     1000, bytes        65520, bandwidth =    -1.000000
+n     5461, reps =     1000, bytes       131064, bandwidth =    -1.000000
