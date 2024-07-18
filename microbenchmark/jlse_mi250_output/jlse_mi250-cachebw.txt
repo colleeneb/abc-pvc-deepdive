@@ -1,0 +1,17 @@
+Unknown MPI, adjust this script.
+for AMD 0 for 
+n       42, reps =     1000, bytes         1008, bandwidth =   303.436657
+n       85, reps =     1000, bytes         2040, bandwidth =   567.615998
+n      170, reps =     1000, bytes         4080, bandwidth =  1039.222927
+n      341, reps =     1000, bytes         8184, bandwidth =  1621.572404
+n      682, reps =     1000, bytes        16368, bandwidth =  2177.852993
+n     1365, reps =     1000, bytes        32760, bandwidth =  1955.333442
+n     2730, reps =     1000, bytes        65520, bandwidth =  1657.082256
+n     5461, reps =     1000, bytes       131064, bandwidth =   684.480231
+n    10922, reps =     1000, bytes       262128, bandwidth =   627.041488
+n    21845, reps =     1000, bytes       524280, bandwidth =   575.518804
+n    43690, reps =     1000, bytes      1048560, bandwidth =   553.157526
+n    87381, reps =     1000, bytes      2097144, bandwidth =   475.826386
+n   174762, reps =     1000, bytes      4194288, bandwidth =   482.414182
+n   349525, reps =     1000, bytes      8388600, bandwidth =   445.805748
+n   699050, reps =     1000, bytes     16777200, bandwidth =   469.903427
