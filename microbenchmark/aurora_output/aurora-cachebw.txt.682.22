@@ -1,17 +1,17 @@
 Unknown MPI, adjust this script.
 RANK  has ZAM of 0.0
-n       42, reps =     1000, bytes         1008, bandwidth =   152.660573
-n       85, reps =     1000, bytes         2040, bandwidth =   233.509219
-n      170, reps =     1000, bytes         4080, bandwidth =   426.819305
-n      341, reps =     1000, bytes         8184, bandwidth =   591.913481
-n      682, reps =     1000, bytes        16368, bandwidth =  1015.771763
-n     1365, reps =     1000, bytes        32760, bandwidth =  1651.934746
-n     2730, reps =     1000, bytes        65520, bandwidth =  2066.103517
-n     5461, reps =     1000, bytes       131064, bandwidth =  3536.411181
-n    10922, reps =     1000, bytes       262128, bandwidth =  4050.222803
-n    21845, reps =     1000, bytes       524280, bandwidth =  5224.445463
-n    43690, reps =     1000, bytes      1048560, bandwidth =  6382.536404
-n    87381, reps =     1000, bytes      2097144, bandwidth =  5339.856991
-n   174762, reps =     1000, bytes      4194288, bandwidth =  2686.873772
-n   349525, reps =     1000, bytes      8388600, bandwidth =  2558.312286
-n   699050, reps =     1000, bytes     16777200, bandwidth =  2633.105623
+n       42, reps =     1000, bytes         1008, bandwidth =   150.241220
+n       85, reps =     1000, bytes         2040, bandwidth =   235.349983
+n      170, reps =     1000, bytes         4080, bandwidth =   415.900062
+n      341, reps =     1000, bytes         8184, bandwidth =   584.135611
+n      682, reps =     1000, bytes        16368, bandwidth =  1001.091052
+n     1365, reps =     1000, bytes        32760, bandwidth =  1658.516051
+n     2730, reps =     1000, bytes        65520, bandwidth =  2078.814110
+n     5461, reps =     1000, bytes       131064, bandwidth =  3475.887609
+n    10922, reps =     1000, bytes       262128, bandwidth =  3959.761866
+n    21845, reps =     1000, bytes       524280, bandwidth =  5178.846874
+n    43690, reps =     1000, bytes      1048560, bandwidth =  6406.351327
+n    87381, reps =     1000, bytes      2097144, bandwidth =  5306.479427
+n   174762, reps =     1000, bytes      4194288, bandwidth =  2715.660862
+n   349525, reps =     1000, bytes      8388600, bandwidth =  2574.865166
+n   699050, reps =     1000, bytes     16777200, bandwidth =  2634.181909

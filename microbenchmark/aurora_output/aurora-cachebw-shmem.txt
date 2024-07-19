@@ -1,60 +1,10 @@
 Unknown MPI, adjust this script.
 RANK  has ZAM of 0.0
-n       42, reps =     1000, bytes         1008, bandwidth =  2297.036593
-n       85, reps =     1000, bytes         2040, bandwidth =  4168.280898
-n      170, reps =     1000, bytes         4080, bandwidth =  5975.143278
-n      341, reps =     1000, bytes         8184, bandwidth =  9207.843985
-n      682, reps =     1000, bytes        16368, bandwidth = 24902.082396
-n     1365, reps =     1000, bytes        32760, bandwidth = 38455.059647
-n     2730, reps =     1000, bytes        65520, bandwidth = 43344.152475
-n     5461, reps =     1000, bytes       131064, bandwidth = 46003.160890
-BACKEND_ZE | 1 Hostnames | 8 Processes | 8 Threads | 
-
-                               Name |     Time | Time(%) | Calls |  Average |      Min |      Max |         
-                     zeModuleCreate | 599.58ms |  72.39% |     8 |  74.95ms |  74.09ms |  76.25ms |         
-             zeEventHostSynchronize | 196.42ms |  23.71% |    16 |  12.28ms |  88.40us | 136.71ms |         
-       zeCommandListCreateImmediate |  11.76ms |   1.42% |    24 | 490.08us |  51.90us |   1.16ms |         
-      zeCommandListAppendMemoryCopy |   6.65ms |   0.80% |     8 | 831.64us | 820.43us | 850.26us |         
-    zeCommandListAppendLaunchKernel |   4.34ms |   0.52% |     8 | 542.79us | 526.51us | 555.37us |         
-        zeContextMakeMemoryResident |   3.90ms |   0.47% |    16 | 243.75us |  11.30us | 503.15us |         
-zeDriverGetExtensionFunctionAddress |   1.87ms |   0.23% |    16 | 117.13us |    850ns | 254.79us |         
-                          zeMemFree |   1.05ms |   0.13% |    40 |  26.13us |   3.08us |  77.52us |         
-                   zeMemAllocShared | 768.28us |   0.09% |    16 |  48.02us |  30.31us |  68.01us |         
-                 zeEventPoolDestroy | 513.38us |   0.06% |     8 |  64.17us |  50.76us |  98.23us |         
-                   zeMemAllocDevice | 482.85us |   0.06% |    16 |  30.18us |  22.09us |  39.24us |         
-                    zeModuleDestroy | 383.47us |   0.05% |     8 |  47.93us |  41.21us |  78.06us |         
-                     zeMemAllocHost | 133.45us |   0.02% |     8 |  16.68us |  15.76us |  18.05us |         
-               zeCommandListDestroy |  95.74us |   0.01% |    24 |   3.99us |   1.90us |   5.91us |         
-                  zeEventPoolCreate |  81.45us |   0.01% |     8 |  10.18us |   8.86us |  11.28us |         
-                     zeKernelCreate |  45.58us |   0.01% |     8 |   5.70us |   5.15us |   6.75us |         
-                      zeEventCreate |  39.56us |   0.00% |     8 |   4.94us |   4.20us |   5.44us |         
-                     zeEventDestroy |  22.18us |   0.00% |     8 |   2.77us |   2.48us |   3.10us |         
-                   zeEventHostReset |  20.09us |   0.00% |     8 |   2.51us |   2.32us |   2.81us |         
-                        zeDeviceGet |  16.41us |   0.00% |    16 |   1.03us |    414ns |   1.75us |         
-                    zeKernelDestroy |  13.41us |   0.00% |     8 |   1.68us |   1.51us |   1.89us |         
-              zeDeviceGetSubDevices |  12.90us |   0.00% |    32 | 403.00ns |    122ns |    855ns |         
-                    zeContextCreate |  11.52us |   0.00% |     8 |   1.44us |   1.15us |   1.62us |         
-                   zeContextDestroy |   9.31us |   0.00% |     8 |   1.16us |    997ns |   1.40us |         
-         zeKernelSetGlobalOffsetExp |   6.28us |   0.00% |     8 | 784.38ns |    459ns |   1.00us |         
-            zeModuleBuildLogDestroy |   5.96us |   0.00% |     8 | 744.75ns |    599ns |    905ns |         
-               zeKernelSetGroupSize |   5.54us |   0.00% |     8 | 692.25ns |    511ns |    904ns |         
-                        zeDriverGet |   5.43us |   0.00% |    16 | 339.50ns |    176ns |    639ns |         
-          zeKernelSetIndirectAccess |   4.41us |   0.00% |     8 | 551.62ns |    442ns |    706ns |         
-                             zeInit |   3.82us |   0.00% |     8 | 477.38ns |    326ns |    628ns |         
-              zeDriverGetApiVersion |   3.74us |   0.00% |     8 | 467.38ns |    371ns |    651ns |         
-                              Total | 828.26ms | 100.00% |   392 |                                          
-
-Device profiling | 1 Hostnames | 8 Processes | 8 Threads | 1 Devices | 1 Subdevices | 
-
-                                                                            Name |     Time | Time(%) | Calls | Average |    Min |      Max |         
-cache_triad(unsigned long, unsigned l[...]nst::{lambda(sycl::_V1::nd_item<1>)#1} | 195.23ms |  99.99% |     8 | 24.40ms | 1.44ms | 136.51ms |         
-                                              zeCommandListAppendMemoryCopy(D2M) |  22.40us |   0.01% |     8 |  2.80us | 2.56us |   3.12us |         
-                                                                           Total | 195.25ms | 100.00% |    16 |                                       
-
-Explicit memory traffic (BACKEND_ZE) | 1 Hostnames | 8 Processes | 8 Threads | 
-
-                              Name |     Byte | Byte(%) | Calls | Average |     Min |     Max |         
-       zeContextMakeMemoryResident | 524.30kB |  82.05% |    16 | 32.77kB |      1B | 65.54kB |         
-zeCommandListAppendMemoryCopy(D2M) | 114.69kB |  17.95% |     8 | 14.34kB | 14.34kB | 14.34kB |         
-                             Total | 638.98kB | 100.00% |    24 |                                       
-
+n       42, reps =     1000, bytes         1008, bandwidth =  2354.276770
+n       85, reps =     1000, bytes         2040, bandwidth =  4151.169450
+n      170, reps =     1000, bytes         4080, bandwidth =  5946.548994
+n      341, reps =     1000, bytes         8184, bandwidth =  9243.445622
+n      682, reps =     1000, bytes        16368, bandwidth = 24909.932382
+n     1365, reps =     1000, bytes        32760, bandwidth = 38439.308587
+n     2730, reps =     1000, bytes        65520, bandwidth = 43313.126436
+n     5461, reps =     1000, bytes       131064, bandwidth = 46012.152165
