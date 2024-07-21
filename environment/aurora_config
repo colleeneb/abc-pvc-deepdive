@@ -1,0 +1,11 @@
+0:0.0.0.0
+0:201.0.5.1853
+ucode-intel-20230214-150200.21.1.x86_64
+libdrm_intel1-2.4.107-150400.1.8.x86_64
+intel-fw-gpu-2024.04.6-293.x86_64
+intel-i915-kmp-default-1.24.1.11.240117.14_k5.14.21_150400.24.55-1.x86_64
+intel-pmt-0.gitcfa662e6c8c8-1.x86_64
+intel-gpu-umd-821.36-0.x86_64
+#define __INTEL_MKL_BUILD_DATE 20240229
+  Driver Version                                  17002026
+Intel(R) oneAPI DPC++/C++ Compiler 2024.2.0 (2024.x.0.20240227)
