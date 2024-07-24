@@ -1,0 +1,5 @@
+Currently Loaded Modulefiles:
+ 1) dawn-env/2023-12-22(default)   5) rhel8/slurm                       9) zstd/1.5.5/gcc/7o3rooli                       13) intel-oneapi-mkl/2024.1.0/oneapi/xps7uyz6  
+ 2) dawn-env/2024-04-15            6) default-dawn                     10) binutils/2.42/gcc/s65uixqt                    
+ 3) dot                            7) gcc-runtime/13.2.0/gcc/ayevhr77  11) intel-oneapi-compilers/2024.1.0/gcc/wadpqv2p  
+ 4) rhel8/global                   8) zlib-ng/2.1.6/gcc/thn3ikgx       12) intel-oneapi-tbb/2021.12.0/oneapi/pvsbvzxn    
