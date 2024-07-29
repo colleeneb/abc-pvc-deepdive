@@ -18,94 +18,90 @@ Currently Loaded Modulefiles:
 -- CXX_EXTRA_LINKER_FLAGS: 
         Append to linker flags (i.e GCC's `-Wl` or equivalent)
 -- Available models:  omp;ocl;std-indices;std-ranges;hip;cuda;kokkos;sycl;acc;raja;tbb;thrust
--- Selected model  :  acc
+-- Selected model  :  cuda
 -- Supported flags:
 
-   CMAKE_CXX_COMPILER (optional, default=c++): Any CXX compiler that supports OpenACC as per CMake detection
-   TARGET_DEVICE (optional, default=): [PGI/NVHPC only] This sets the `-target` flag, possible values are:
-             gpu       - Globally set the target device to an NVIDIA GPU
-             multicore - Globally set the target device to the host CPU
-         Refer to `nvc++ --help` for the full list
-   CUDA_ARCH (optional, default=): [PGI/NVHPC only] Only applicable if `TARGET_DEVICE` is set to `gpu`.
-         Nvidia architecture in ccXY format, for example, sm_70 becomes cc70, will be passed in via `-gpu=` (e.g `cc70`)
-         Possible values are:
-             cc35  - Compile for compute capability 3.5
-             cc50  - Compile for compute capability 5.0
-             cc60  - Compile for compute capability 6.0
-             cc62  - Compile for compute capability 6.2
-             cc70  - Compile for compute capability 7.0
-             cc72  - Compile for compute capability 7.2
-             cc75  - Compile for compute capability 7.5
-             cc80  - Compile for compute capability 8.0
-             ccall - Compile for all supported compute capabilities
-         Refer to `nvc++ --help` for the full list
-   TARGET_PROCESSOR (optional, default=): [PGI/NVHPC only] This sets the `-tp` (target processor) flag, possible values are:
-             px          - Generic x86 Processor
-             bulldozer   - AMD Bulldozer processor
-             piledriver  - AMD Piledriver processor
-             zen         - AMD Zen architecture (Epyc, Ryzen)
-             zen2        - AMD Zen 2 architecture (Ryzen 2)
-             sandybridge - Intel SandyBridge processor
-             haswell     - Intel Haswell processor
-             knl         - Intel Knights Landing processor
-             skylake     - Intel Skylake Xeon processor
-             host        - Link native version of HPC SDK cpu math library
-             native      - Alias for -tp host
-        Refer to `nvc++ --help` for the full list
+   CMAKE_CXX_COMPILER (optional, default=c++): Any CXX compiler that is supported by CMake detection, this is used for host compilation
+   MEM (optional, default=DEFAULT): Device memory mode:
+        DEFAULT   - allocate host and device memory pointers.
+        MANAGED   - use CUDA Managed Memory.
+        PAGEFAULT - shared memory, only host pointers allocated.
+   CMAKE_CUDA_COMPILER (required): Path to the CUDA nvcc compiler
+   CUDA_ARCH (required): Nvidia architecture, will be passed in via `-arch=` (e.g `sm_70`) for nvcc
+   CUDA_EXTRA_FLAGS (optional, default=): Additional CUDA flags passed to nvcc, this is appended after `CUDA_ARCH`
 
 -- Model-specific flags for this build:
 
    CMAKE_CXX_COMPILER = `/soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/bin/nvc++`
-   TARGET_DEVICE = `gpu`
-   CUDA_ARCH = `cc90`
-   TARGET_PROCESSOR = `native`
+   MEM = `DEFAULT`
+   CMAKE_CUDA_COMPILER = `/soft/compilers/cuda/cuda-12.3.0/bin/nvcc`
+   CUDA_ARCH = `sm_90`
+   CUDA_EXTRA_FLAGS = ``
 
--- Found OpenACC_CXX: -acc -Minfo=accel  
--- Default RELEASE flags are `-O3;-march=native;-target=gpu;-gpu=cc90;-tp=native`, set RELEASE_FLAGS to override (CXX_EXTRA_* flags are not affected)
+CMake Deprecation Warning at src/cuda/model.cmake:28 (cmake_policy):
+  The OLD behavior for policy CMP0104 will be removed from a future version
+  of CMake.
+
+  The cmake-policies(7) manual explains that the OLD behaviors of all
+  policies are deprecated and that a policy should be set to OLD only under
+  specific short-term circumstances.  Projects should be ported to the NEW
+  behavior and not rely on setting a policy to OLD.
+Call Stack (most recent call first):
+  CMakeLists.txt:194 (setup)
+
+
+-- The CUDA compiler identification is NVIDIA 12.3.52
+-- Detecting CUDA compiler ABI info
+-- Detecting CUDA compiler ABI info - done
+-- Check for working CUDA compiler: /soft/compilers/cuda/cuda-12.3.0/bin/nvcc - skipped
+-- Detecting CUDA compile features
+-- Detecting CUDA compile features - done
+-- NVCC flags:  -std=c++17 -forward-unknown-to-host-compiler -arch=sm_90 -use_fast_math -restrict -keep   -DNDEBUG
+-- Default RELEASE flags are `-O3;-march=native`, set RELEASE_FLAGS to override (CXX_EXTRA_* flags are not affected)
 -- PPWI not set, defaulting to 1,2,4,8,16,32,64,128
 -- CXX vendor  : NVHPC (/soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/bin/nvc++)
 -- Platform    : x86_64
 -- PPWI        : 1,2,4,8,16,32,64,128
--- Sources     : src/acc/fasten.hpp;src/main.cpp
--- Libraries   : OpenACC::OpenACC_CXX 
--- CXX Flags   : -fast  -DNDEBUG -O3;-march=native;-target=gpu;-gpu=cc90;-tp=native 
+-- Sources     : src/cuda/fasten.hpp;src/main.cpp
+-- Libraries   :  
+-- CXX Flags   : -fast  -DNDEBUG -O3;-march=native 
     CXX flags derived from (CMake + (Override ? Override : Default) + Extras), where:
         CMake                    = `-fast  -DNDEBUG`
-        Default                  = `-O3;-march=native;-target=gpu;-gpu=cc90;-tp=native`
+        Default                  = `-O3;-march=native`
         Override (RELEASE_FLAGS) = ``
         Extras (CXX_EXTRA_FLAGS) = ``
 -- Link Flags  :  
 -- Linker Flags:   
--- Defs        : ACC;restrict=__restrict
--- Executable  : acc-bude
--- Configuring done (2.5s)
+-- Defs        : CUDA;MEM=DEFAULT
+-- Executable  : cuda-bude
+-- Configuring done (2.8s)
 -- Generating done (0.1s)
 -- Build files have been written to: /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build
 Change Dir: '/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
 
-Run Build Command(s): /soft/buildtools/cmake/3.28.3/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile -j192
+Run Build Command(s): /soft/buildtools/cmake/3.28.3/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile -j1
 /soft/buildtools/cmake/3.28.3/bin/cmake -S/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude -B/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build --check-build-system CMakeFiles/Makefile.cmake 0
 /soft/buildtools/cmake/3.28.3/bin/cmake -E cmake_progress_start /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/CMakeFiles /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build//CMakeFiles/progress.marks
 /usr/bin/gmake  -f CMakeFiles/Makefile2 all
 gmake[1]: Entering directory '/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
 /usr/bin/gmake  -f CMakeFiles/extract_compile_commands.dir/build.make CMakeFiles/extract_compile_commands.dir/depend
-/usr/bin/gmake  -f CMakeFiles/check_git.dir/build.make CMakeFiles/check_git.dir/depend
-gmake[2]: Entering directory '/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
 gmake[2]: Entering directory '/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
 cd /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build && /soft/buildtools/cmake/3.28.3/bin/cmake -E cmake_depends "Unix Makefiles" /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/CMakeFiles/extract_compile_commands.dir/DependInfo.cmake "--color="
-cd /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build && /soft/buildtools/cmake/3.28.3/bin/cmake -E cmake_depends "Unix Makefiles" /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/CMakeFiles/check_git.dir/DependInfo.cmake "--color="
-gmake[2]: Leaving directory '/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
 gmake[2]: Leaving directory '/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
 /usr/bin/gmake  -f CMakeFiles/extract_compile_commands.dir/build.make CMakeFiles/extract_compile_commands.dir/build
-/usr/bin/gmake  -f CMakeFiles/check_git.dir/build.make CMakeFiles/check_git.dir/build
-gmake[2]: Entering directory '/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
 gmake[2]: Entering directory '/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
 /soft/buildtools/cmake/3.28.3/bin/cmake -DCOMMAND_FILE=/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/compile_commands.json -DPRE_CONFIGURE_FILE="/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/meta_build.h.in" -DPOST_CONFIGURE_FILE="/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/generated/meta_build.h" -DSRC_DIR_PREFIX="/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src" -DOUT_DIR_PREFIX="CMakeFiles/bude.dir" -P /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/cmake/extract_compile_command.cmake
 -- Transforming /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/compile_commands.json...
+gmake[2]: Leaving directory '/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+[  0%] Built target extract_compile_commands
+/usr/bin/gmake  -f CMakeFiles/check_git.dir/build.make CMakeFiles/check_git.dir/depend
+gmake[2]: Entering directory '/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+cd /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build && /soft/buildtools/cmake/3.28.3/bin/cmake -E cmake_depends "Unix Makefiles" /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/CMakeFiles/check_git.dir/DependInfo.cmake "--color="
+gmake[2]: Leaving directory '/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+/usr/bin/gmake  -f CMakeFiles/check_git.dir/build.make CMakeFiles/check_git.dir/build
+gmake[2]: Entering directory '/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
 [ 33%] Checking the git repository for changes...
 /soft/buildtools/cmake/3.28.3/bin/cmake -D_BUILD_TIME_CHECK_GIT=TRUE -DGIT_WORKING_DIR=/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude -DGIT_EXECUTABLE=/usr/bin/git -DGIT_STATE_FILE=/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/git-state-hash -DPRE_CONFIGURE_FILE=/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/meta_vcs.h.in -DPOST_CONFIGURE_FILE=/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/generated/meta_vcs.h -DGIT_FAIL_IF_NONZERO_EXIT=FALSE -DGIT_IGNORE_UNTRACKED=FALSE -P /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/cmake/git_watcher.cmake
-gmake[2]: Leaving directory '/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
-[ 33%] Built target extract_compile_commands
 gmake[2]: Leaving directory '/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
 [ 33%] Built target check_git
 /usr/bin/gmake  -f CMakeFiles/bude.dir/build.make CMakeFiles/bude.dir/depend
@@ -114,872 +110,1211 @@ cd /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build && /
 gmake[2]: Leaving directory '/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
 /usr/bin/gmake  -f CMakeFiles/bude.dir/build.make CMakeFiles/bude.dir/build
 gmake[2]: Entering directory '/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
-[ 66%] Building CXX object CMakeFiles/bude.dir/src/main.cpp.o
-/soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/bin/nvc++ -DACC -DUSE_PPWI=1,2,4,8,16,32,64,128 -Drestrict=__restrict -I/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/acc -I/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/generated -fast  -DNDEBUG --c++17 -O3 -march=native -target=gpu -gpu=cc90 -tp=native -acc -Minfo=accel -MD -MT CMakeFiles/bude.dir/src/main.cpp.o -MF CMakeFiles/bude.dir/src/main.cpp.o.d -o CMakeFiles/bude.dir/src/main.cpp.o -c /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp
-AccBude<1ul>::fasten(Params const&, unsigned long, unsigned long) const:
-     74, include "fasten.hpp"
-         202, Generating copyin(poses_5[:nposes],protein[:natpro],forcefield[:ntypes]) [if not already present]
-              Generating copyout(energies[:nposes]) [if not already present]
-              Generating copyin(ligand[:natlig],poses_0[:nposes],poses_1[:nposes],poses_2[:nposes],poses_3[:nposes],poses_4[:nposes]) [if not already present]
-         205, Generating present(protein[:natpro])
-              Generating implicit firstprivate(nposes)
-              Generating NVIDIA GPU code
-              29, #pragma acc loop seq
-              57, #pragma acc loop seq
-              68, #pragma acc loop seq
-              77, #pragma acc loop seq
-             101, #pragma acc loop seq
-             133, #pragma acc loop seq
-             216, #pragma acc loop gang, vector(128) /* blockIdx.x threadIdx.x */
-         205, Local memory used for .inl_transform_61140,.inl_p_params_61162,.inl_lpos_y_61156,.inl_lpos_x_61155,.inl_l_params_61149,.inl_l_atom_61147,.inl_etot_61144,.inl_p_atom_61160,.inl_lpos_z_61157
-         216, Generating implicit firstprivate(ntypes,natpro,natlig)
-          29, Complex loop carried dependence of poses_0->,poses_1->,poses_2->,.inl_transform_61140,poses_3->,poses_4->,poses_5->,.inl_etot_61144 prevents parallelization
-          57, Complex loop carried dependence of ligand->x,ligand->y,ligand->z,forcefield->radius,forcefield->hphb,forcefield->elsc,.inl_lpos_x_61155,.inl_lpos_y_61156,.inl_lpos_z_61157,protein->x,protein->y,protein->z prevents parallelization
-              Loop carried reuse of .inl_etot_61144 prevents parallelization
-              Complex loop carried dependence of .inl_etot_61144 prevents parallelization
-          68, Loop is parallelizable
-          77, Complex loop carried dependence of protein->x,protein->y,protein->z,forcefield->radius,forcefield->hphb,forcefield->elsc prevents parallelization
-              Loop carried dependence of .inl_etot_61144 prevents parallelization
-              Loop carried backward dependence of .inl_etot_61144 prevents vectorization
-              Complex loop carried dependence of .inl_etot_61144 prevents parallelization
-         101, Loop is parallelizable
-         133, Complex loop carried dependence of energies->,.inl_etot_61144 prevents parallelization
-AccBude<2ul>::enumerateDevices[abi:cxx11]():
-     74, include "fasten.hpp"
-AccBude<2ul>::fasten(Params const&, unsigned long, unsigned long) const:
-     74, include "fasten.hpp"
-         202, Generating copyin(poses_5[:nposes],protein[:natpro],forcefield[:ntypes]) [if not already present]
-              Generating copyout(energies[:nposes]) [if not already present]
-              Generating copyin(ligand[:natlig],poses_0[:nposes],poses_1[:nposes],poses_2[:nposes],poses_3[:nposes],poses_4[:nposes]) [if not already present]
-         205, Generating present(protein[:natpro])
-              Generating implicit firstprivate(nposes)
-              Generating NVIDIA GPU code
-              29, #pragma acc loop seq
-              57, #pragma acc loop seq
-              68, #pragma acc loop seq
-              77, #pragma acc loop seq
-             101, #pragma acc loop seq
-             133, #pragma acc loop seq
-             216, #pragma acc loop gang, vector(128) /* blockIdx.x threadIdx.x */
-         205, Local memory used for .inl_transform_62102,.inl_p_params_62124,.inl_lpos_y_62118,.inl_lpos_x_62117,.inl_l_params_62111,.inl_l_atom_62109,.inl_etot_62106,.inl_p_atom_62122,.inl_lpos_z_62119
-         216, Generating implicit firstprivate(ntypes,natpro,natlig)
-          29, Complex loop carried dependence of poses_0->,poses_1->,poses_2->,.inl_transform_62102,poses_3->,poses_4->,poses_5->,.inl_etot_62106 prevents parallelization
-          57, Complex loop carried dependence of ligand->x,ligand->y,ligand->z,forcefield->radius,forcefield->hphb,forcefield->elsc,.inl_lpos_x_62117,.inl_lpos_y_62118,.inl_lpos_z_62119,protein->x,protein->y,protein->z prevents parallelization
-              Loop carried reuse of .inl_etot_62106 prevents parallelization
-              Complex loop carried dependence of .inl_etot_62106 prevents parallelization
-          68, Loop is parallelizable
-          77, Complex loop carried dependence of protein->x,protein->y,protein->z,forcefield->radius,forcefield->hphb,forcefield->elsc prevents parallelization
-              Loop carried dependence of .inl_etot_62106 prevents parallelization
-              Loop carried backward dependence of .inl_etot_62106 prevents vectorization
-              Complex loop carried dependence of .inl_etot_62106 prevents parallelization
-         101, Loop is parallelizable
-         133, Loop carried reuse of energies-> prevents parallelization
-              Complex loop carried dependence of energies->,.inl_etot_62106 prevents parallelization
-AccBude<4ul>::enumerateDevices[abi:cxx11]():
-     74, include "fasten.hpp"
-AccBude<4ul>::fasten(Params const&, unsigned long, unsigned long) const:
-     74, include "fasten.hpp"
-         202, Generating copyin(poses_5[:nposes],protein[:natpro],forcefield[:ntypes]) [if not already present]
-              Generating copyout(energies[:nposes]) [if not already present]
-              Generating copyin(ligand[:natlig],poses_0[:nposes],poses_1[:nposes],poses_2[:nposes],poses_3[:nposes],poses_4[:nposes]) [if not already present]
-         205, Generating present(protein[:natpro])
-              Generating implicit firstprivate(nposes)
-              Generating NVIDIA GPU code
-              29, #pragma acc loop seq
-              57, #pragma acc loop seq
-              68, #pragma acc loop seq
-              77, #pragma acc loop seq
-             101, #pragma acc loop seq
-             133, #pragma acc loop seq
-             216, #pragma acc loop gang, vector(128) /* blockIdx.x threadIdx.x */
-         205, Local memory used for .inl_transform_63064,.inl_p_params_63086,.inl_lpos_y_63080,.inl_lpos_x_63079,.inl_l_params_63073,.inl_l_atom_63071,.inl_etot_63068,.inl_p_atom_63084,.inl_lpos_z_63081
-         216, Generating implicit firstprivate(ntypes,natpro,natlig)
-          29, Complex loop carried dependence of poses_0->,poses_1->,poses_2->,.inl_transform_63064,poses_3->,poses_4->,poses_5->,.inl_etot_63068 prevents parallelization
-          57, Complex loop carried dependence of ligand->x,ligand->y,ligand->z,forcefield->radius,forcefield->hphb,forcefield->elsc,.inl_lpos_x_63079,.inl_lpos_y_63080,.inl_lpos_z_63081,protein->x,protein->y,protein->z prevents parallelization
-              Loop carried reuse of .inl_etot_63068 prevents parallelization
-              Complex loop carried dependence of .inl_etot_63068 prevents parallelization
-          68, Loop is parallelizable
-          77, Complex loop carried dependence of protein->x,protein->y,protein->z,forcefield->radius,forcefield->hphb,forcefield->elsc prevents parallelization
-              Loop carried dependence of .inl_etot_63068 prevents parallelization
-              Loop carried backward dependence of .inl_etot_63068 prevents vectorization
-              Complex loop carried dependence of .inl_etot_63068 prevents parallelization
-         101, Loop is parallelizable
-         133, Loop carried reuse of energies-> prevents parallelization
-              Complex loop carried dependence of energies->,.inl_etot_63068 prevents parallelization
-AccBude<8ul>::enumerateDevices[abi:cxx11]():
-     74, include "fasten.hpp"
-AccBude<8ul>::fasten(Params const&, unsigned long, unsigned long) const:
-     74, include "fasten.hpp"
-         202, Generating copyin(poses_5[:nposes],protein[:natpro],forcefield[:ntypes]) [if not already present]
-              Generating copyout(energies[:nposes]) [if not already present]
-              Generating copyin(ligand[:natlig],poses_0[:nposes],poses_1[:nposes],poses_2[:nposes],poses_3[:nposes],poses_4[:nposes]) [if not already present]
-         205, Generating present(protein[:natpro])
-              Generating implicit firstprivate(nposes)
-              Generating NVIDIA GPU code
-              29, #pragma acc loop seq
-              57, #pragma acc loop seq
-              68, #pragma acc loop seq
-              77, #pragma acc loop seq
-             101, #pragma acc loop seq
-             133, #pragma acc loop seq
-             216, #pragma acc loop gang, vector(128) /* blockIdx.x threadIdx.x */
-         205, Local memory used for .inl_transform_64026,.inl_p_params_64048,.inl_lpos_y_64042,.inl_lpos_x_64041,.inl_l_params_64035,.inl_l_atom_64033,.inl_etot_64030,.inl_p_atom_64046,.inl_lpos_z_64043
-         216, Generating implicit firstprivate(ntypes,natpro,natlig)
-          29, Complex loop carried dependence of poses_0->,poses_1->,poses_2->,.inl_transform_64026,poses_3->,poses_4->,poses_5->,.inl_etot_64030 prevents parallelization
-          57, Complex loop carried dependence of ligand->x,ligand->y,ligand->z,forcefield->radius,forcefield->hphb,forcefield->elsc,.inl_lpos_x_64041,.inl_lpos_y_64042,.inl_lpos_z_64043,protein->x,protein->y,protein->z prevents parallelization
-              Loop carried reuse of .inl_etot_64030 prevents parallelization
-              Complex loop carried dependence of .inl_etot_64030 prevents parallelization
-          68, Loop is parallelizable
-          77, Complex loop carried dependence of protein->x,protein->y,protein->z,forcefield->radius,forcefield->hphb,forcefield->elsc prevents parallelization
-              Loop carried dependence of .inl_etot_64030 prevents parallelization
-              Loop carried backward dependence of .inl_etot_64030 prevents vectorization
-              Complex loop carried dependence of .inl_etot_64030 prevents parallelization
-         101, Loop is parallelizable
-         133, Loop carried reuse of energies-> prevents parallelization
-              Complex loop carried dependence of energies->,.inl_etot_64030 prevents parallelization
-AccBude<16ul>::enumerateDevices[abi:cxx11]():
-     74, include "fasten.hpp"
-AccBude<16ul>::fasten(Params const&, unsigned long, unsigned long) const:
-     74, include "fasten.hpp"
-         202, Generating copyin(poses_5[:nposes],protein[:natpro],forcefield[:ntypes]) [if not already present]
-              Generating copyout(energies[:nposes]) [if not already present]
-              Generating copyin(ligand[:natlig],poses_0[:nposes],poses_1[:nposes],poses_2[:nposes],poses_3[:nposes],poses_4[:nposes]) [if not already present]
-         205, Generating present(protein[:natpro])
-              Generating implicit firstprivate(nposes)
-              Generating NVIDIA GPU code
-              29, #pragma acc loop seq
-              57, #pragma acc loop seq
-              68, #pragma acc loop vector(32) /* threadIdx.x */
-              77, #pragma acc loop seq
-             101, #pragma acc loop vector(32) /* threadIdx.x */
-             133, #pragma acc loop seq
-             216, #pragma acc loop gang /* blockIdx.x */
-         205, CUDA shared memory used for .inl_transform_64988,.inl_p_params_65010,.inl_lpos_y_65004,.inl_lpos_x_65003,.inl_l_params_64997,.inl_l_atom_64995,.inl_etot_64992,.inl_p_atom_65008,.inl_lpos_z_65005
-         216, Generating implicit firstprivate(ntypes,natpro,natlig)
-          29, Complex loop carried dependence of poses_0->,poses_1->,poses_2->,.inl_transform_64988,poses_3->,poses_4->,poses_5->,.inl_etot_64992 prevents parallelization
-          57, Complex loop carried dependence of ligand->x,ligand->y,ligand->z,forcefield->radius,forcefield->hphb,forcefield->elsc,.inl_lpos_x_65003,.inl_lpos_y_65004,.inl_lpos_z_65005,protein->x,protein->y,protein->z prevents parallelization
-              Loop carried reuse of .inl_etot_64992 prevents parallelization
-              Complex loop carried dependence of .inl_etot_64992 prevents parallelization
-          68, Loop is parallelizable
-          77, Complex loop carried dependence of protein->x,protein->y,protein->z,forcefield->radius,forcefield->hphb,forcefield->elsc prevents parallelization
-              Loop carried dependence of .inl_etot_64992 prevents parallelization
-              Loop carried backward dependence of .inl_etot_64992 prevents vectorization
-              Complex loop carried dependence of .inl_etot_64992 prevents parallelization
-         101, Loop is parallelizable
-         133, Loop carried reuse of energies-> prevents parallelization
-              Complex loop carried dependence of energies->,.inl_etot_64992 prevents parallelization
-AccBude<32ul>::enumerateDevices[abi:cxx11]():
-     74, include "fasten.hpp"
-AccBude<32ul>::fasten(Params const&, unsigned long, unsigned long) const:
-     74, include "fasten.hpp"
-         202, Generating copyin(poses_5[:nposes],protein[:natpro],forcefield[:ntypes]) [if not already present]
-              Generating copyout(energies[:nposes]) [if not already present]
-              Generating copyin(ligand[:natlig],poses_0[:nposes],poses_1[:nposes],poses_2[:nposes],poses_3[:nposes],poses_4[:nposes]) [if not already present]
-         205, Generating present(protein[:natpro])
-              Generating implicit firstprivate(nposes)
-              Generating NVIDIA GPU code
-              29, #pragma acc loop seq
-              57, #pragma acc loop seq
-              68, #pragma acc loop vector(32) /* threadIdx.x */
-              77, #pragma acc loop seq
-             101, #pragma acc loop vector(32) /* threadIdx.x */
-             133, #pragma acc loop seq
-             216, #pragma acc loop gang /* blockIdx.x */
-         205, CUDA shared memory used for .inl_transform_65950,.inl_p_params_65972,.inl_lpos_y_65966,.inl_lpos_x_65965,.inl_l_params_65959,.inl_l_atom_65957,.inl_etot_65954,.inl_p_atom_65970,.inl_lpos_z_65967
-         216, Generating implicit firstprivate(ntypes,natpro,natlig)
-          29, Complex loop carried dependence of poses_0->,poses_1->,poses_2->,.inl_transform_65950,poses_3->,poses_4->,poses_5->,.inl_etot_65954 prevents parallelization
-          57, Complex loop carried dependence of ligand->x,ligand->y,ligand->z,forcefield->radius,forcefield->hphb,forcefield->elsc,.inl_lpos_x_65965,.inl_lpos_y_65966,.inl_lpos_z_65967,protein->x,protein->y,protein->z prevents parallelization
-              Loop carried reuse of .inl_etot_65954 prevents parallelization
-              Complex loop carried dependence of .inl_etot_65954 prevents parallelization
-          68, Loop is parallelizable
-          77, Complex loop carried dependence of protein->x,protein->y,protein->z,forcefield->radius,forcefield->hphb,forcefield->elsc prevents parallelization
-              Loop carried dependence of .inl_etot_65954 prevents parallelization
-              Loop carried backward dependence of .inl_etot_65954 prevents vectorization
-              Complex loop carried dependence of .inl_etot_65954 prevents parallelization
-         101, Loop is parallelizable
-         133, Loop carried reuse of energies-> prevents parallelization
-              Complex loop carried dependence of energies->,.inl_etot_65954 prevents parallelization
-AccBude<64ul>::enumerateDevices[abi:cxx11]():
-     74, include "fasten.hpp"
-AccBude<64ul>::fasten(Params const&, unsigned long, unsigned long) const:
-     74, include "fasten.hpp"
-         202, Generating copyin(protein[:natpro],poses_5[:nposes],forcefield[:ntypes]) [if not already present]
-              Generating copyout(energies[:nposes]) [if not already present]
-              Generating copyin(ligand[:natlig],poses_0[:nposes],poses_1[:nposes],poses_2[:nposes],poses_3[:nposes],poses_4[:nposes]) [if not already present]
-         205, Generating present(protein[:natpro])
-              Generating implicit firstprivate(nposes)
-              Generating NVIDIA GPU code
-              29, #pragma acc loop seq
-              57, #pragma acc loop seq
-              68, #pragma acc loop vector(64) /* threadIdx.x */
-              77, #pragma acc loop seq
-             101, #pragma acc loop vector(64) /* threadIdx.x */
-             133, #pragma acc loop seq
-             216, #pragma acc loop gang /* blockIdx.x */
-         205, CUDA shared memory used for .inl_lpos_y_66928,.inl_lpos_x_66927,.inl_l_params_66921,.inl_l_atom_66919,.inl_etot_66916,.inl_p_params_66934,.inl_p_atom_66932,.inl_lpos_z_66929
-         216, Generating implicit firstprivate(ntypes,natpro,natlig)
-          29, Complex loop carried dependence of poses_0->,poses_1->,poses_2->,.inl_transform_66912,poses_3->,poses_4->,poses_5->,.inl_etot_66916 prevents parallelization
-          57, Complex loop carried dependence of ligand->x,ligand->y,ligand->z,forcefield->radius,forcefield->hphb,forcefield->elsc,.inl_lpos_x_66927,.inl_lpos_y_66928,.inl_lpos_z_66929,protein->x,protein->y,protein->z prevents parallelization
-              Loop carried reuse of .inl_etot_66916 prevents parallelization
-              Complex loop carried dependence of .inl_etot_66916 prevents parallelization
-          68, Loop is parallelizable
-          77, Complex loop carried dependence of protein->x,protein->y,protein->z,forcefield->radius,forcefield->hphb,forcefield->elsc prevents parallelization
-              Loop carried dependence of .inl_etot_66916 prevents parallelization
-              Loop carried backward dependence of .inl_etot_66916 prevents vectorization
-              Complex loop carried dependence of .inl_etot_66916 prevents parallelization
-         101, Loop is parallelizable
-         133, Loop carried reuse of energies-> prevents parallelization
-              Complex loop carried dependence of energies->,.inl_etot_66916 prevents parallelization
-AccBude<128ul>::enumerateDevices[abi:cxx11]():
-     74, include "fasten.hpp"
-AccBude<128ul>::fasten(Params const&, unsigned long, unsigned long) const:
-     74, include "fasten.hpp"
-         202, Generating copyin(protein[:natpro],poses_5[:nposes],forcefield[:ntypes]) [if not already present]
-              Generating copyout(energies[:nposes]) [if not already present]
-              Generating copyin(ligand[:natlig],poses_0[:nposes],poses_1[:nposes],poses_2[:nposes],poses_3[:nposes],poses_4[:nposes]) [if not already present]
-         205, Generating present(protein[:natpro])
-              Generating implicit firstprivate(nposes)
-              Generating NVIDIA GPU code
-              29, #pragma acc loop seq
-              57, #pragma acc loop seq
-              68, #pragma acc loop vector(128) /* threadIdx.x */
-              77, #pragma acc loop seq
-             101, #pragma acc loop vector(128) /* threadIdx.x */
-             133, #pragma acc loop seq
-             216, #pragma acc loop gang /* blockIdx.x */
-         205, CUDA shared memory used for .inl_lpos_y_67890,.inl_lpos_x_67889,.inl_l_params_67883,.inl_l_atom_67881,.inl_etot_67878,.inl_p_params_67896,.inl_p_atom_67894,.inl_lpos_z_67891
-         216, Generating implicit firstprivate(ntypes,natpro,natlig)
-          29, Complex loop carried dependence of poses_0->,poses_1->,poses_2->,.inl_transform_67874,poses_3->,poses_4->,poses_5->,.inl_etot_67878 prevents parallelization
-          57, Complex loop carried dependence of ligand->x,ligand->y,ligand->z,forcefield->radius,forcefield->hphb,forcefield->elsc,.inl_lpos_x_67889,.inl_lpos_y_67890,.inl_lpos_z_67891,protein->x,protein->y,protein->z prevents parallelization
-              Loop carried reuse of .inl_etot_67878 prevents parallelization
-              Complex loop carried dependence of .inl_etot_67878 prevents parallelization
-          68, Loop is parallelizable
-          77, Complex loop carried dependence of protein->x,protein->y,protein->z,forcefield->radius,forcefield->hphb,forcefield->elsc prevents parallelization
-              Loop carried dependence of .inl_etot_67878 prevents parallelization
-              Loop carried backward dependence of .inl_etot_67878 prevents vectorization
-              Complex loop carried dependence of .inl_etot_67878 prevents parallelization
-         101, Loop is parallelizable
-         133, Loop carried reuse of energies-> prevents parallelization
-              Complex loop carried dependence of energies->,.inl_etot_67878 prevents parallelization
-std::unique_ptr<Params, std::default_delete<Params>>::~unique_ptr():
-     74, include "fasten.hpp"
-std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>>::basic_string(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>> const&):
-     74, include "fasten.hpp"
-std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>>::replace(unsigned long, unsigned long, char const*, unsigned long):
-     74, include "fasten.hpp"
-std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>>::find(char const*, unsigned long, unsigned long) const:
-     74, include "fasten.hpp"
-__gnu_cxx::char_traits<char>::compare(char const*, char const*, unsigned long):
-     74, include "fasten.hpp"
-__gnu_cxx::char_traits<char>::length(char const*):
-     74, include "fasten.hpp"
-__gnu_cxx::char_traits<char>::find(char const*, unsigned long, char const&):
-     74, include "fasten.hpp"
-std::abs(float):
-      1, include "cmath"
-          17, include "cmath"
-               47, include "std_abs.h"
-                    75, Generating implicit acc routine seq
-                        Generating acc routine seq
-                        Generating NVIDIA GPU code
-std::cos(float):
-      1, include "cmath"
-          17, include "cmath"
-              185, Generating implicit acc routine seq
-                   Generating acc routine seq
-                   Generating NVIDIA GPU code
-std::sin(float):
-      1, include "cmath"
-          17, include "cmath"
-              426, Generating implicit acc routine seq
-                   Generating acc routine seq
-                   Generating NVIDIA GPU code
-std::sqrt(float):
-      1, include "cmath"
-          17, include "cmath"
-              464, Generating implicit acc routine seq
-                   Generating acc routine seq
-                   Generating NVIDIA GPU code
-std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>> std::operator+<char, std::char_traits<char>, std::allocator<char>>(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>>&&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>>&&):
-     74, include "fasten.hpp"
-std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>> std::operator+<char, std::char_traits<char>, std::allocator<char>>(char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>>&&):
-     74, include "fasten.hpp"
-std::tuple_element<0ul, std::tuple<Params, std::vector<unsigned long, std::allocator<unsigned long>>, std::vector<unsigned long, std::allocator<unsigned long>>>>::type&& std::get<0ul, Params, std::vector<unsigned long, std::allocator<unsigned long>>, std::vector<unsigned long, std::allocator<unsigned long>>>(std::tuple<Params, std::vector<unsigned long, std::allocator<unsigned long>>, std::vector<unsigned long, std::allocator<unsigned long>>>&&):
-     74, include "fasten.hpp"
-std::tuple_element<1ul, std::tuple<Params, std::vector<unsigned long, std::allocator<unsigned long>>, std::vector<unsigned long, std::allocator<unsigned long>>>>::type&& std::get<1ul, Params, std::vector<unsigned long, std::allocator<unsigned long>>, std::vector<unsigned long, std::allocator<unsigned long>>>(std::tuple<Params, std::vector<unsigned long, std::allocator<unsigned long>>, std::vector<unsigned long, std::allocator<unsigned long>>>&&):
-     74, include "fasten.hpp"
-std::tuple_element<2ul, std::tuple<Params, std::vector<unsigned long, std::allocator<unsigned long>>, std::vector<unsigned long, std::allocator<unsigned long>>>>::type&& std::get<2ul, Params, std::vector<unsigned long, std::allocator<unsigned long>>, std::vector<unsigned long, std::allocator<unsigned long>>>(std::tuple<Params, std::vector<unsigned long, std::allocator<unsigned long>>, std::vector<unsigned long, std::allocator<unsigned long>>>&&):
-     74, include "fasten.hpp"
-std::basic_ostream<char, std::char_traits<char>>& std::operator<<<char, std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>>&, std::_Put_time<char>):
-     74, include "fasten.hpp"
-_ZSt10__fill_n_aIPfmfEN9__gnu_cxx11__enable_ifIXsrSt11__is_scalarIT1_E7__valueET_E6__typeES6_T0_RKS4_:
-      1, include "cmath"
-          17, include "cmath"
-double std::accumulate<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double>>>, double>(__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double>>>, __gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double>>>, double):
-     74, include "fasten.hpp"
-double std::accumulate<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double>>>, double, SummaryStats<double>::SummaryStats(std::vector<double, std::allocator<double>> const&)::'lambda'(auto, auto)>(__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double>>>, __gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double>>>, double, SummaryStats<double>::SummaryStats(std::vector<double, std::allocator<double>> const&)::'lambda'(auto, auto)):
-     74, include "fasten.hpp"
-_ZSt10__fill_n_aIP4AtommS0_EN9__gnu_cxx11__enable_ifIXntsrSt11__is_scalarIT1_E7__valueET_E6__typeES7_T0_RKS5_:
-      1, include "cmath"
-          17, include "cmath"
-_ZSt10__fill_n_aIP8FFParamsmS0_EN9__gnu_cxx11__enable_ifIXntsrSt11__is_scalarIT1_E7__valueET_E6__typeES7_T0_RKS5_:
-      1, include "cmath"
-          17, include "cmath"
-_ZSt8__fill_aIPfdEN9__gnu_cxx11__enable_ifIXsrSt11__is_scalarIT0_E7__valueEvE6__typeET_S8_RKS4_:
-      1, include "cmath"
-          17, include "cmath"
-__gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float>>> std::__copy_move_a2<false, float*, __gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float>>>>(float*, float*, __gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float>>>):
-      1, include "cmath"
-          17, include "cmath"
-__gnu_cxx::__normal_iterator<Result*, std::vector<Result, std::allocator<Result>>> std::__min_element<__gnu_cxx::__normal_iterator<Result*, std::vector<Result, std::allocator<Result>>>, __gnu_cxx::__ops::_Iter_comp_iter<bool run<1ul, 2ul, 4ul, 8ul, 16ul, 32ul, 64ul, 128ul>(Params const&, std::vector<unsigned long, std::allocator<unsigned long>> const&, std::vector<unsigned long, std::allocator<unsigned long>> const&)::'lambda15'(Result const&, Result const&)>>(__gnu_cxx::__normal_iterator<Result*, std::vector<Result, std::allocator<Result>>>, __gnu_cxx::__normal_iterator<Result*, std::vector<Result, std::allocator<Result>>>, __gnu_cxx::__ops::_Iter_comp_iter<bool run<1ul, 2ul, 4ul, 8ul, 16ul, 32ul, 64ul, 128ul>(Params const&, std::vector<unsigned long, std::allocator<unsigned long>> const&, std::vector<unsigned long, std::allocator<unsigned long>> const&)::'lambda15'(Result const&, Result const&)>):
-      1, include "cmath"
-          17, include "cmath"
-__gnu_cxx::__normal_iterator<Result*, std::vector<Result, std::allocator<Result>>> std::__find_if<__gnu_cxx::__normal_iterator<Result*, std::vector<Result, std::allocator<Result>>>, __gnu_cxx::__ops::_Iter_negate<bool run<1ul, 2ul, 4ul, 8ul, 16ul, 32ul, 64ul, 128ul>(Params const&, std::vector<unsigned long, std::allocator<unsigned long>> const&, std::vector<unsigned long, std::allocator<unsigned long>> const&)::'lambda16'(auto&)>>(__gnu_cxx::__normal_iterator<Result*, std::vector<Result, std::allocator<Result>>>, __gnu_cxx::__normal_iterator<Result*, std::vector<Result, std::allocator<Result>>>, __gnu_cxx::__ops::_Iter_negate<bool run<1ul, 2ul, 4ul, 8ul, 16ul, 32ul, 64ul, 128ul>(Params const&, std::vector<unsigned long, std::allocator<unsigned long>> const&, std::vector<unsigned long, std::allocator<unsigned long>> const&)::'lambda16'(auto&)>, std::random_access_iterator_tag):
-      1, include "cmath"
-          17, include "cmath"
-[100%] Linking CXX executable acc-bude
+[ 66%] Building CUDA object CMakeFiles/bude.dir/src/main.cpp.o
+/soft/compilers/cuda/cuda-12.3.0/bin/nvcc -forward-unknown-to-host-compiler -DCUDA -DMEM=DEFAULT -DUSE_PPWI="1\\,2\\,4\\,8\\,16\\,32\\,64\\,128" --options-file CMakeFiles/bude.dir/includes_CUDA.rsp -std=c++17 -forward-unknown-to-host-compiler -arch=sm_90 -use_fast_math -restrict -keep   -DNDEBUG -std=c++17 -O3 -march=native -MD -MT CMakeFiles/bude.dir/src/main.cpp.o -MF CMakeFiles/bude.dir/src/main.cpp.o.d -x cu -c /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp -o CMakeFiles/bude.dir/src/main.cpp.o
+[100%] Linking CUDA executable cuda-bude
 /soft/buildtools/cmake/3.28.3/bin/cmake -E cmake_link_script CMakeFiles/bude.dir/link.txt --verbose=1
-/soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/bin/nvc++ -fast  -DNDEBUG -acc -Minfo=accel CMakeFiles/bude.dir/src/main.cpp.o -o acc-bude 
-/usr/bin/ld: warning: /tmp/pgcudafatbYppd9LtL3Hl.o: missing .note.GNU-stack section implies executable stack
-/usr/bin/ld: NOTE: This behaviour is deprecated and will be removed in a future version of the linker
+/soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin/g++ @CMakeFiles/bude.dir/objects1.rsp -o cuda-bude @CMakeFiles/bude.dir/linkLibs.rsp -L"/soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/lib/stubs" -L"/soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/lib"
 gmake[2]: Leaving directory '/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
 [100%] Built target bude
 gmake[1]: Leaving directory '/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
 /soft/buildtools/cmake/3.28.3/bin/cmake -E cmake_progress_start /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/CMakeFiles 0
 
-	linux-vdso.so.1 (0x00007fffd733f000)
-	libacchost.so => /soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/lib/libacchost.so (0x00007f95ed400000)
-	libaccdevaux.so => /soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/lib/libaccdevaux.so (0x00007f95ed000000)
-	libaccdevice.so => /soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/lib/libaccdevice.so (0x00007f95ecc00000)
-	libdl.so.2 => /lib64/libdl.so.2 (0x00007f95ed763000)
-	libcudadevice.so => /soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/lib/libcudadevice.so (0x00007f95ec800000)
-	libatomic.so.1 => /soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib64/libatomic.so.1 (0x00007f95ec400000)
-	libnvhpcatm.so => /soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/lib/libnvhpcatm.so (0x00007f95ec000000)
-	libstdc++.so.6 => /soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib64/libstdc++.so.6 (0x00007f95eba00000)
-	libnvomp.so => /soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/lib/libnvomp.so (0x00007f95ea800000)
-	libpthread.so.0 => /lib64/libpthread.so.0 (0x00007f95ed73d000)
-	libnvcpumath.so => /soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/lib/libnvcpumath.so (0x00007f95ea200000)
-	libnvc.so => /soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/lib/libnvc.so (0x00007f95e9e00000)
-	libc.so.6 => /lib64/libc.so.6 (0x00007f95ec609000)
-	libgcc_s.so.1 => /soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib64/libgcc_s.so.1 (0x00007f95e9a00000)
-	libm.so.6 => /lib64/libm.so.6 (0x00007f95ed2b4000)
-	/lib64/ld-linux-x86-64.so.2 (0x00007f95ed77e000)
-[hopper01:62488] MCW rank 0 bound to socket 0[core 0[hwt 0-1]], socket 0[core 1[hwt 0-1]], socket 0[core 2[hwt 0-1]], socket 0[core 3[hwt 0-1]], socket 0[core 4[hwt 0-1]], socket 0[core 5[hwt 0-1]], socket 0[core 6[hwt 0-1]], socket 0[core 7[hwt 0-1]], socket 0[core 8[hwt 0-1]], socket 0[core 9[hwt 0-1]], socket 0[core 10[hwt 0-1]], socket 0[core 11[hwt 0-1]], socket 0[core 12[hwt 0-1]], socket 0[core 13[hwt 0-1]], socket 0[core 14[hwt 0-1]], socket 0[core 15[hwt 0-1]], socket 0[core 16[hwt 0-1]], socket 0[core 17[hwt 0-1]], socket 0[core 18[hwt 0-1]], socket 0[core 19[hwt 0-1]], socket 0[core 20[hwt 0-1]], socket 0[core 21[hwt 0-1]], socket 0[core 22[hwt 0-1]], socket 0[core 23[hwt 0-1]]: [BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/../../../../../../../../../../../../../../../../../../../../../../../..][../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../..]
-[hopper01:62488] MCW rank 1 bound to socket 0[core 24[hwt 0-1]], socket 0[core 25[hwt 0-1]], socket 0[core 26[hwt 0-1]], socket 0[core 27[hwt 0-1]], socket 0[core 28[hwt 0-1]], socket 0[core 29[hwt 0-1]], socket 0[core 30[hwt 0-1]], socket 0[core 31[hwt 0-1]], socket 0[core 32[hwt 0-1]], socket 0[core 33[hwt 0-1]], socket 0[core 34[hwt 0-1]], socket 0[core 35[hwt 0-1]], socket 0[core 36[hwt 0-1]], socket 0[core 37[hwt 0-1]], socket 0[core 38[hwt 0-1]], socket 0[core 39[hwt 0-1]], socket 0[core 40[hwt 0-1]], socket 0[core 41[hwt 0-1]], socket 0[core 42[hwt 0-1]], socket 0[core 43[hwt 0-1]], socket 0[core 44[hwt 0-1]], socket 0[core 45[hwt 0-1]], socket 0[core 46[hwt 0-1]], socket 0[core 47[hwt 0-1]]: [../../../../../../../../../../../../../../../../../../../../../../../../BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB][../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../..]
-[hopper01:62488] MCW rank 2 bound to socket 1[core 48[hwt 0-1]], socket 1[core 49[hwt 0-1]], socket 1[core 50[hwt 0-1]], socket 1[core 51[hwt 0-1]], socket 1[core 52[hwt 0-1]], socket 1[core 53[hwt 0-1]], socket 1[core 54[hwt 0-1]], socket 1[core 55[hwt 0-1]], socket 1[core 56[hwt 0-1]], socket 1[core 57[hwt 0-1]], socket 1[core 58[hwt 0-1]], socket 1[core 59[hwt 0-1]], socket 1[core 60[hwt 0-1]], socket 1[core 61[hwt 0-1]], socket 1[core 62[hwt 0-1]], socket 1[core 63[hwt 0-1]], socket 1[core 64[hwt 0-1]], socket 1[core 65[hwt 0-1]], socket 1[core 66[hwt 0-1]], socket 1[core 67[hwt 0-1]], socket 1[core 68[hwt 0-1]], socket 1[core 69[hwt 0-1]], socket 1[core 70[hwt 0-1]], socket 1[core 71[hwt 0-1]]: [../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../..][BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/../../../../../../../../../../../../../../../../../../../../../../../..]
-[hopper01:62488] MCW rank 3 bound to socket 1[core 72[hwt 0-1]], socket 1[core 73[hwt 0-1]], socket 1[core 74[hwt 0-1]], socket 1[core 75[hwt 0-1]], socket 1[core 76[hwt 0-1]], socket 1[core 77[hwt 0-1]], socket 1[core 78[hwt 0-1]], socket 1[core 79[hwt 0-1]], socket 1[core 80[hwt 0-1]], socket 1[core 81[hwt 0-1]], socket 1[core 82[hwt 0-1]], socket 1[core 83[hwt 0-1]], socket 1[core 84[hwt 0-1]], socket 1[core 85[hwt 0-1]], socket 1[core 86[hwt 0-1]], socket 1[core 87[hwt 0-1]], socket 1[core 88[hwt 0-1]], socket 1[core 89[hwt 0-1]], socket 1[core 90[hwt 0-1]], socket 1[core 91[hwt 0-1]], socket 1[core 92[hwt 0-1]], socket 1[core 93[hwt 0-1]], socket 1[core 94[hwt 0-1]], socket 1[core 95[hwt 0-1]]: [../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../..][../../../../../../../../../../../../../../../../../../../../../../../../BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB]
+	linux-vdso.so.1 (0x00007ffd2db8c000)
+	librt.so.1 => /lib64/librt.so.1 (0x00007f130e6f3000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x00007f130e6cf000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x00007f130e6ca000)
+	libstdc++.so.6 => /soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib64/libstdc++.so.6 (0x00007f130e200000)
+	libm.so.6 => /lib64/libm.so.6 (0x00007f130e0b4000)
+	libgcc_s.so.1 => /soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib64/libgcc_s.so.1 (0x00007f130de00000)
+	libc.so.6 => /lib64/libc.so.6 (0x00007f130dc09000)
+	/lib64/ld-linux-x86-64.so.2 (0x00007f130e711000)
++ cd /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude
++ mkdir -p results
++ BENCHMARK_EXE=/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/cuda-bude
++ DECK=/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/data/bm1
++ cd /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE
++ mpirun -n 4 -report-bindings --map-by node:PE=24 /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/../gpu_tile_compact.sh sh -c '/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/cuda-bude --deck /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/data/bm1 --wgsize 4,8,16,32,64,128,256,512,1024 --ppwi 1,2,4,8,16,32,64 --csv | tee /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/cuda-bude-bm1.out${RANK}'
+[hopper01:17720] MCW rank 0 bound to socket 0[core 0[hwt 0-1]], socket 0[core 1[hwt 0-1]], socket 0[core 2[hwt 0-1]], socket 0[core 3[hwt 0-1]], socket 0[core 4[hwt 0-1]], socket 0[core 5[hwt 0-1]], socket 0[core 6[hwt 0-1]], socket 0[core 7[hwt 0-1]], socket 0[core 8[hwt 0-1]], socket 0[core 9[hwt 0-1]], socket 0[core 10[hwt 0-1]], socket 0[core 11[hwt 0-1]], socket 0[core 12[hwt 0-1]], socket 0[core 13[hwt 0-1]], socket 0[core 14[hwt 0-1]], socket 0[core 15[hwt 0-1]], socket 0[core 16[hwt 0-1]], socket 0[core 17[hwt 0-1]], socket 0[core 18[hwt 0-1]], socket 0[core 19[hwt 0-1]], socket 0[core 20[hwt 0-1]], socket 0[core 21[hwt 0-1]], socket 0[core 22[hwt 0-1]], socket 0[core 23[hwt 0-1]]: [BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/../../../../../../../../../../../../../../../../../../../../../../../..][../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../..]
+[hopper01:17720] MCW rank 1 bound to socket 0[core 24[hwt 0-1]], socket 0[core 25[hwt 0-1]], socket 0[core 26[hwt 0-1]], socket 0[core 27[hwt 0-1]], socket 0[core 28[hwt 0-1]], socket 0[core 29[hwt 0-1]], socket 0[core 30[hwt 0-1]], socket 0[core 31[hwt 0-1]], socket 0[core 32[hwt 0-1]], socket 0[core 33[hwt 0-1]], socket 0[core 34[hwt 0-1]], socket 0[core 35[hwt 0-1]], socket 0[core 36[hwt 0-1]], socket 0[core 37[hwt 0-1]], socket 0[core 38[hwt 0-1]], socket 0[core 39[hwt 0-1]], socket 0[core 40[hwt 0-1]], socket 0[core 41[hwt 0-1]], socket 0[core 42[hwt 0-1]], socket 0[core 43[hwt 0-1]], socket 0[core 44[hwt 0-1]], socket 0[core 45[hwt 0-1]], socket 0[core 46[hwt 0-1]], socket 0[core 47[hwt 0-1]]: [../../../../../../../../../../../../../../../../../../../../../../../../BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB][../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../..]
+[hopper01:17720] MCW rank 2 bound to socket 1[core 48[hwt 0-1]], socket 1[core 49[hwt 0-1]], socket 1[core 50[hwt 0-1]], socket 1[core 51[hwt 0-1]], socket 1[core 52[hwt 0-1]], socket 1[core 53[hwt 0-1]], socket 1[core 54[hwt 0-1]], socket 1[core 55[hwt 0-1]], socket 1[core 56[hwt 0-1]], socket 1[core 57[hwt 0-1]], socket 1[core 58[hwt 0-1]], socket 1[core 59[hwt 0-1]], socket 1[core 60[hwt 0-1]], socket 1[core 61[hwt 0-1]], socket 1[core 62[hwt 0-1]], socket 1[core 63[hwt 0-1]], socket 1[core 64[hwt 0-1]], socket 1[core 65[hwt 0-1]], socket 1[core 66[hwt 0-1]], socket 1[core 67[hwt 0-1]], socket 1[core 68[hwt 0-1]], socket 1[core 69[hwt 0-1]], socket 1[core 70[hwt 0-1]], socket 1[core 71[hwt 0-1]]: [../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../..][BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/../../../../../../../../../../../../../../../../../../../../../../../..]
+[hopper01:17720] MCW rank 3 bound to socket 1[core 72[hwt 0-1]], socket 1[core 73[hwt 0-1]], socket 1[core 74[hwt 0-1]], socket 1[core 75[hwt 0-1]], socket 1[core 76[hwt 0-1]], socket 1[core 77[hwt 0-1]], socket 1[core 78[hwt 0-1]], socket 1[core 79[hwt 0-1]], socket 1[core 80[hwt 0-1]], socket 1[core 81[hwt 0-1]], socket 1[core 82[hwt 0-1]], socket 1[core 83[hwt 0-1]], socket 1[core 84[hwt 0-1]], socket 1[core 85[hwt 0-1]], socket 1[core 86[hwt 0-1]], socket 1[core 87[hwt 0-1]], socket 1[core 88[hwt 0-1]], socket 1[core 89[hwt 0-1]], socket 1[core 90[hwt 0-1]], socket 1[core 91[hwt 0-1]], socket 1[core 92[hwt 0-1]], socket 1[core 93[hwt 0-1]], socket 1[core 94[hwt 0-1]], socket 1[core 95[hwt 0-1]]: [../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../..][../../../../../../../../../../../../../../../../../../../../../../../../BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB]
+# Device and kernel cc: sm_90
+# Device and kernel cc: sm_90
+# Device and kernel cc: sm_90
+# Device and kernel cc: sm_90
 # (ppwi=1,wgsize=4,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=1,wgsize=4,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=1,wgsize=4,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=1,wgsize=4,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=1,wgsize=8,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=1,wgsize=8,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=1,wgsize=8,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=1,wgsize=8,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=1,wgsize=16,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=1,wgsize=16,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=1,wgsize=16,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=1,wgsize=16,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=1,wgsize=32,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=1,wgsize=32,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=1,wgsize=32,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=1,wgsize=32,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=1,wgsize=64,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=1,wgsize=64,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=1,wgsize=64,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=1,wgsize=64,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=1,wgsize=128,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=1,wgsize=128,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=1,wgsize=128,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=1,wgsize=128,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=1,wgsize=256,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=1,wgsize=256,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=1,wgsize=256,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=1,wgsize=256,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=1,wgsize=512,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=1,wgsize=512,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=1,wgsize=512,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=1,wgsize=512,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=1,wgsize=1024,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=1,wgsize=1024,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=1,wgsize=1024,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=1,wgsize=1024,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=2,wgsize=4,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=2,wgsize=4,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=2,wgsize=4,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=2,wgsize=4,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=2,wgsize=8,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=2,wgsize=8,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=2,wgsize=8,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=2,wgsize=8,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=2,wgsize=16,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=2,wgsize=16,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=2,wgsize=16,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=2,wgsize=16,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=2,wgsize=32,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=2,wgsize=32,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=2,wgsize=32,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=2,wgsize=32,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=2,wgsize=64,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=2,wgsize=64,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=2,wgsize=64,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=2,wgsize=64,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=2,wgsize=128,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=2,wgsize=128,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=2,wgsize=128,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=2,wgsize=128,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=2,wgsize=256,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=2,wgsize=256,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=2,wgsize=256,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=2,wgsize=256,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=2,wgsize=512,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=2,wgsize=512,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=2,wgsize=512,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=2,wgsize=512,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=2,wgsize=1024,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=2,wgsize=1024,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=2,wgsize=1024,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=2,wgsize=1024,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=4,wgsize=4,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=4,wgsize=4,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=4,wgsize=4,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=4,wgsize=4,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=4,wgsize=8,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=4,wgsize=8,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=4,wgsize=8,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=4,wgsize=8,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=4,wgsize=16,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=4,wgsize=16,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=4,wgsize=16,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=4,wgsize=16,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=4,wgsize=32,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=4,wgsize=32,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=4,wgsize=32,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=4,wgsize=32,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=4,wgsize=64,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=4,wgsize=64,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=4,wgsize=64,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=4,wgsize=64,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=4,wgsize=128,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=4,wgsize=128,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=4,wgsize=128,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=4,wgsize=128,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=4,wgsize=256,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=4,wgsize=256,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=4,wgsize=256,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=4,wgsize=256,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=4,wgsize=512,valid=1)
+# Device and kernel cc: sm_90
+# Verification failed for ppwi=4, wgsize=1024; difference exceeded tolerance (0.025%)
+# Bad energies (failed/total=58671/65536, showing first 8): 
+# index,actual,expected,difference_%
+# 0,0,865.523,100
+# 1,0,25.0715,100
+# 2,0,368.434,100
+# 3,0,14.6651,100
+# 4,0,574.987,100
+# 5,0,707.354,100
+# 6,0,33.947,100
+# 7,0,135.588,100
+# (ppwi=4,wgsize=1024,valid=0)
+# Device and kernel cc: sm_90
 # (ppwi=4,wgsize=512,valid=1)
+# Device and kernel cc: sm_90
+# Verification failed for ppwi=4, wgsize=1024; difference exceeded tolerance (0.025%)
+# Bad energies (failed/total=58671/65536, showing first 8): 
+# index,actual,expected,difference_%
+# 0,0,865.523,100
+# 1,0,25.0715,100
+# 2,0,368.434,100
+# 3,0,14.6651,100
+# 4,0,574.987,100
+# 5,0,707.354,100
+# 6,0,33.947,100
+# 7,0,135.588,100
+# (ppwi=4,wgsize=1024,valid=0)
+# Device and kernel cc: sm_90
 # (ppwi=4,wgsize=512,valid=1)
+# Device and kernel cc: sm_90
+# Verification failed for ppwi=4, wgsize=1024; difference exceeded tolerance (0.025%)
+# Bad energies (failed/total=58671/65536, showing first 8): 
+# index,actual,expected,difference_%
+# 0,0,865.523,100
+# 1,0,25.0715,100
+# 2,0,368.434,100
+# 3,0,14.6651,100
+# 4,0,574.987,100
+# 5,0,707.354,100
 # (ppwi=4,wgsize=512,valid=1)
-# (ppwi=4,wgsize=1024,valid=1)
-# (ppwi=4,wgsize=1024,valid=1)
-# (ppwi=4,wgsize=1024,valid=1)
-# (ppwi=4,wgsize=1024,valid=1)
+# 6,0,33.947,100
+# 7,0,135.588,100
+# (ppwi=4,wgsize=1024,valid=0)
+# Device and kernel cc: sm_90
+# Device and kernel cc: sm_90
+# Verification failed for ppwi=4, wgsize=1024; difference exceeded tolerance (0.025%)
+# Bad energies (failed/total=58671/65536, showing first 8): 
+# index,actual,expected,difference_%
+# 0,0,865.523,100
+# 1,0,25.0715,100
+# 2,0,368.434,100
+# 3,0,14.6651,100
+# 4,0,574.987,100
+# 5,0,707.354,100
+# 6,0,33.947,100
+# 7,0,135.588,100
+# (ppwi=4,wgsize=1024,valid=0)
+# Device and kernel cc: sm_90
 # (ppwi=8,wgsize=4,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=8,wgsize=4,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=8,wgsize=4,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=8,wgsize=4,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=8,wgsize=8,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=8,wgsize=8,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=8,wgsize=8,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=8,wgsize=8,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=8,wgsize=16,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=8,wgsize=16,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=8,wgsize=16,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=8,wgsize=16,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=8,wgsize=32,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=8,wgsize=32,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=8,wgsize=32,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=8,wgsize=32,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=8,wgsize=64,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=8,wgsize=64,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=8,wgsize=64,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=8,wgsize=64,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=8,wgsize=128,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=8,wgsize=128,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=8,wgsize=128,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=8,wgsize=128,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=8,wgsize=256,valid=1)
+# Device and kernel cc: sm_90
+# Verification failed for ppwi=8, wgsize=512; difference exceeded tolerance (0.025%)
+# Bad energies (failed/total=58671/65536, showing first 8): 
+# index,actual,expected,difference_%
+# 0,0,865.523,100
+# 1,0,25.0715,100
+# 2,0,368.434,100
+# 3,0,14.6651,100
+# 4,0,574.987,100
+# 5,0,707.354,100
+# 6,0,33.947,100
+# 7,0,135.588,100
+# (ppwi=8,wgsize=512,valid=0)
+# Device and kernel cc: sm_90
+# Verification failed for ppwi=8, wgsize=1024; difference exceeded tolerance (0.025%)
+# Bad energies (failed/total=58671/65536, showing first 8): 
+# index,actual,expected,difference_%
+# 0,0,865.523,100
+# 1,0,25.0715,100
+# 2,0,368.434,100
+# 3,0,14.6651,100
+# 4,0,574.987,100
+# 5,0,707.354,100
+# 6,0,33.947,100
+# 7,0,135.588,100
+# (ppwi=8,wgsize=1024,valid=0)
+# Device and kernel cc: sm_90
 # (ppwi=8,wgsize=256,valid=1)
+# Device and kernel cc: sm_90
+# Verification failed for ppwi=8, wgsize=512; difference exceeded tolerance (0.025%)
+# Bad energies (failed/total=58671/65536, showing first 8): 
+# index,actual,expected,difference_%
+# 0,0,865.523,100
+# 1,0,25.0715,100
+# 2,0,368.434,100
+# 3,0,14.6651,100
+# 4,0,574.987,100
+# 5,0,707.354,100
+# 6,0,33.947,100
+# 7,0,135.588,100
+# (ppwi=8,wgsize=512,valid=0)
+# Device and kernel cc: sm_90
+# Verification failed for ppwi=8, wgsize=1024; difference exceeded tolerance (0.025%)
+# Bad energies (failed/total=58671/65536, showing first 8): 
+# index,actual,expected,difference_%
+# 0,0,865.523,100
+# 1,0,25.0715,100
+# 2,0,368.434,100
+# 3,0,14.6651,100
+# 4,0,574.987,100
+# 5,0,707.354,100
+# 6,0,33.947,100
+# 7,0,135.588,100
+# (ppwi=8,wgsize=1024,valid=0)
+# Device and kernel cc: sm_90
 # (ppwi=8,wgsize=256,valid=1)
+# Device and kernel cc: sm_90
+# Verification failed for ppwi=8, wgsize=512; difference exceeded tolerance (0.025%)
+# Bad energies (failed/total=58671/65536, showing first 8): 
+# index,actual,expected,difference_%
+# 0,0,865.523,100
+# 1,0,25.0715,100
+# 2,0,368.434,100
+# 3,0,14.6651,100
+# 4,0,574.987,100
+# 5,0,707.354,100
+# 6,0,33.947,100
+# 7,0,135.588,100
+# (ppwi=8,wgsize=512,valid=0)
+# Device and kernel cc: sm_90
+# Verification failed for ppwi=8, wgsize=1024; difference exceeded tolerance (0.025%)
+# Bad energies (failed/total=58671/65536, showing first 8): 
+# index,actual,expected,difference_%
+# 0,0,865.523,100
+# 1,0,25.0715,100
+# 2,0,368.434,100
+# 3,0,14.6651,100
+# 4,0,574.987,100
+# 5,0,707.354,100
+# 6,0,33.947,100
+# 7,0,135.588,100
+# (ppwi=8,wgsize=1024,valid=0)
 # (ppwi=8,wgsize=256,valid=1)
-# (ppwi=8,wgsize=512,valid=1)
-# (ppwi=8,wgsize=512,valid=1)
-# (ppwi=8,wgsize=512,valid=1)
-# (ppwi=8,wgsize=512,valid=1)
-# (ppwi=8,wgsize=1024,valid=1)
-# (ppwi=8,wgsize=1024,valid=1)
-# (ppwi=8,wgsize=1024,valid=1)
-# (ppwi=8,wgsize=1024,valid=1)
+# Device and kernel cc: sm_90
+# Device and kernel cc: sm_90
+# Verification failed for ppwi=8, wgsize=512; difference exceeded tolerance (0.025%)
+# Bad energies (failed/total=58671/65536, showing first 8): 
+# index,actual,expected,difference_%
+# 0,0,865.523,100
+# 1,0,25.0715,100
+# 2,0,368.434,100
+# 3,0,14.6651,100
+# 4,0,574.987,100
+# 5,0,707.354,100
+# 6,0,33.947,100
+# 7,0,135.588,100
+# (ppwi=8,wgsize=512,valid=0)
+# Device and kernel cc: sm_90
+# Verification failed for ppwi=8, wgsize=1024; difference exceeded tolerance (0.025%)
+# Bad energies (failed/total=58671/65536, showing first 8): 
+# index,actual,expected,difference_%
+# 0,0,865.523,100
+# 1,0,25.0715,100
+# 2,0,368.434,100
+# 3,0,14.6651,100
+# 4,0,574.987,100
+# 5,0,707.354,100
+# 6,0,33.947,100
+# 7,0,135.588,100
+# (ppwi=8,wgsize=1024,valid=0)
+# Device and kernel cc: sm_90
 # (ppwi=16,wgsize=4,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=16,wgsize=4,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=16,wgsize=4,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=16,wgsize=4,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=16,wgsize=8,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=16,wgsize=8,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=16,wgsize=8,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=16,wgsize=8,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=16,wgsize=16,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=16,wgsize=16,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=16,wgsize=16,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=16,wgsize=16,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=16,wgsize=32,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=16,wgsize=32,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=16,wgsize=32,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=16,wgsize=32,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=16,wgsize=64,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=16,wgsize=64,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=16,wgsize=64,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=16,wgsize=64,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=16,wgsize=128,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=16,wgsize=128,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=16,wgsize=128,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=16,wgsize=128,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=16,wgsize=256,valid=1)
+# Device and kernel cc: sm_90
+# Verification failed for ppwi=16, wgsize=512; difference exceeded tolerance (0.025%)
+# Bad energies (failed/total=58671/65536, showing first 8): 
+# index,actual,expected,difference_%
+# 0,0,865.523,100
+# 1,0,25.0715,100
+# 2,0,368.434,100
+# 3,0,14.6651,100
+# 4,0,574.987,100
+# 5,0,707.354,100
+# 6,0,33.947,100
+# 7,0,135.588,100
+# (ppwi=16,wgsize=512,valid=0)
+# Device and kernel cc: sm_90
+# Verification failed for ppwi=16, wgsize=1024; difference exceeded tolerance (0.025%)
+# Bad energies (failed/total=58671/65536, showing first 8): 
+# index,actual,expected,difference_%
+# 0,0,865.523,100
+# 1,0,25.0715,100
+# 2,0,368.434,100
+# 3,0,14.6651,100
+# 4,0,574.987,100
+# 5,0,707.354,100
+# 6,0,33.947,100
+# 7,0,135.588,100
+# (ppwi=16,wgsize=1024,valid=0)
+# Device and kernel cc: sm_90
 # (ppwi=16,wgsize=256,valid=1)
+# Device and kernel cc: sm_90
+# Verification failed for ppwi=16, wgsize=512; difference exceeded tolerance (0.025%)
+# Bad energies (failed/total=58671/65536, showing first 8): 
+# index,actual,expected,difference_%
+# 0,0,865.523,100
+# 1,0,25.0715,100
+# 2,0,368.434,100
+# 3,0,14.6651,100
+# 4,0,574.987,100
+# 5,0,707.354,100
+# 6,0,33.947,100
+# 7,0,135.588,100
+# (ppwi=16,wgsize=512,valid=0)
+# Device and kernel cc: sm_90
+# Verification failed for ppwi=16, wgsize=1024; difference exceeded tolerance (0.025%)
+# Bad energies (failed/total=58671/65536, showing first 8): 
+# index,actual,expected,difference_%
+# 0,0,865.523,100
+# 1,0,25.0715,100
+# 2,0,368.434,100
+# 3,0,14.6651,100
+# 4,0,574.987,100
+# 5,0,707.354,100
+# 6,0,33.947,100
+# 7,0,135.588,100
+# (ppwi=16,wgsize=1024,valid=0)
+# Device and kernel cc: sm_90
 # (ppwi=16,wgsize=256,valid=1)
+# Device and kernel cc: sm_90
+# Verification failed for ppwi=16, wgsize=512; difference exceeded tolerance (0.025%)
+# Bad energies (failed/total=58671/65536, showing first 8): 
+# index,actual,expected,difference_%
+# 0,0,865.523,100
+# 1,0,25.0715,100
+# 2,0,368.434,100
+# 3,0,14.6651,100
+# 4,0,574.987,100
+# 5,0,707.354,100
+# 6,0,33.947,100
+# 7,0,135.588,100
+# (ppwi=16,wgsize=512,valid=0)
+# Device and kernel cc: sm_90
+# Verification failed for ppwi=16, wgsize=1024; difference exceeded tolerance (0.025%)
+# Bad energies (failed/total=58671/65536, showing first 8): 
+# index,actual,expected,difference_%
+# 0,0,865.523,100
+# 1,0,25.0715,100
+# 2,0,368.434,100
+# 3,0,14.6651,100
+# 4,0,574.987,100
+# 5,0,707.354,100
+# 6,0,33.947,100
+# 7,0,135.588,100
+# (ppwi=16,wgsize=1024,valid=0)
+# Device and kernel cc: sm_90
 # (ppwi=16,wgsize=256,valid=1)
-# (ppwi=16,wgsize=512,valid=1)
-# (ppwi=16,wgsize=512,valid=1)
-# (ppwi=16,wgsize=512,valid=1)
-# (ppwi=16,wgsize=512,valid=1)
-# (ppwi=16,wgsize=1024,valid=1)
-# (ppwi=16,wgsize=1024,valid=1)
-# (ppwi=16,wgsize=1024,valid=1)
-# (ppwi=16,wgsize=1024,valid=1)
+# Device and kernel cc: sm_90
+# Verification failed for ppwi=16, wgsize=512; difference exceeded tolerance (0.025%)
+# Bad energies (failed/total=58671/65536, showing first 8): 
+# index,actual,expected,difference_%
+# 0,0,865.523,100
+# 1,0,25.0715,100
+# 2,0,368.434,100
+# 3,0,14.6651,100
+# 4,0,574.987,100
+# 5,0,707.354,100
+# 6,0,33.947,100
+# 7,0,135.588,100
+# (ppwi=16,wgsize=512,valid=0)
+# Device and kernel cc: sm_90
+# Verification failed for ppwi=16, wgsize=1024; difference exceeded tolerance (0.025%)
+# Bad energies (failed/total=58671/65536, showing first 8): 
+# index,actual,expected,difference_%
+# 0,0,865.523,100
+# 1,0,25.0715,100
+# 2,0,368.434,100
+# 3,0,14.6651,100
+# 4,0,574.987,100
+# 5,0,707.354,100
+# 6,0,33.947,100
+# 7,0,135.588,100
+# (ppwi=16,wgsize=1024,valid=0)
+# Device and kernel cc: sm_90
 # (ppwi=32,wgsize=4,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=32,wgsize=4,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=32,wgsize=4,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=32,wgsize=4,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=32,wgsize=8,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=32,wgsize=8,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=32,wgsize=8,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=32,wgsize=8,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=32,wgsize=16,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=32,wgsize=16,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=32,wgsize=16,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=32,wgsize=16,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=32,wgsize=32,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=32,wgsize=32,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=32,wgsize=32,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=32,wgsize=32,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=32,wgsize=64,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=32,wgsize=64,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=32,wgsize=64,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=32,wgsize=64,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=32,wgsize=128,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=32,wgsize=128,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=32,wgsize=128,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=32,wgsize=128,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=32,wgsize=256,valid=1)
+# Device and kernel cc: sm_90
+# Verification failed for ppwi=32, wgsize=512; difference exceeded tolerance (0.025%)
+# Bad energies (failed/total=58671/65536, showing first 8): 
+# index,actual,expected,difference_%
+# 0,0,865.523,100
+# 1,0,25.0715,100
+# 2,0,368.434,100
+# 3,0,14.6651,100
+# 4,0,574.987,100
+# 5,0,707.354,100
+# 6,0,33.947,100
+# 7,0,135.588,100
+# (ppwi=32,wgsize=512,valid=0)
+# Device and kernel cc: sm_90
+# Verification failed for ppwi=32, wgsize=1024; difference exceeded tolerance (0.025%)
+# Bad energies (failed/total=58671/65536, showing first 8): 
+# index,actual,expected,difference_%
+# 0,0,865.523,100
+# 1,0,25.0715,100
+# 2,0,368.434,100
+# 3,0,14.6651,100
+# 4,0,574.987,100
+# 5,0,707.354,100
+# 6,0,33.947,100
+# 7,0,135.588,100
+# (ppwi=32,wgsize=1024,valid=0)
+# Device and kernel cc: sm_90
 # (ppwi=32,wgsize=256,valid=1)
+# Device and kernel cc: sm_90
+# Verification failed for ppwi=32, wgsize=512; difference exceeded tolerance (0.025%)
+# Bad energies (failed/total=58671/65536, showing first 8): 
+# index,actual,expected,difference_%
+# 0,0,865.523,100
+# 1,0,25.0715,100
+# 2,0,368.434,100
+# 3,0,14.6651,100
+# 4,0,574.987,100
+# 5,0,707.354,100
+# 6,0,33.947,100
+# 7,0,135.588,100
+# (ppwi=32,wgsize=512,valid=0)
+# Device and kernel cc: sm_90
+# Verification failed for ppwi=32, wgsize=1024; difference exceeded tolerance (0.025%)
+# Bad energies (failed/total=58671/65536, showing first 8): 
+# index,actual,expected,difference_%
+# 0,0,865.523,100
+# 1,0,25.0715,100
+# 2,0,368.434,100
+# 3,0,14.6651,100
+# 4,0,574.987,100
+# 5,0,707.354,100
+# 6,0,33.947,100
+# 7,0,135.588,100
+# (ppwi=32,wgsize=1024,valid=0)
 # (ppwi=32,wgsize=256,valid=1)
+# Device and kernel cc: sm_90
+# Device and kernel cc: sm_90
+# Verification failed for ppwi=32, wgsize=512; difference exceeded tolerance (0.025%)
+# Bad energies (failed/total=58671/65536, showing first 8): 
+# index,actual,expected,difference_%
+# 0,0,865.523,100
+# 1,0,25.0715,100
+# 2,0,368.434,100
+# 3,0,14.6651,100
+# 4,0,574.987,100
+# 5,0,707.354,100
+# 6,0,33.947,100
+# 7,0,135.588,100
+# (ppwi=32,wgsize=512,valid=0)
+# Device and kernel cc: sm_90
+# Verification failed for ppwi=32, wgsize=1024; difference exceeded tolerance (0.025%)
+# Bad energies (failed/total=58671/65536, showing first 8): 
+# index,actual,expected,difference_%
+# 0,0,865.523,100
+# 1,0,25.0715,100
+# 2,0,368.434,100
+# 3,0,14.6651,100
+# 4,0,574.987,100
+# 5,0,707.354,100
+# 6,0,33.947,100
+# 7,0,135.588,100
+# (ppwi=32,wgsize=1024,valid=0)
+# Device and kernel cc: sm_90
 # (ppwi=32,wgsize=256,valid=1)
-# (ppwi=32,wgsize=512,valid=1)
-# (ppwi=32,wgsize=512,valid=1)
-# (ppwi=32,wgsize=512,valid=1)
-# (ppwi=32,wgsize=512,valid=1)
-# (ppwi=32,wgsize=1024,valid=1)
-# (ppwi=32,wgsize=1024,valid=1)
-# (ppwi=32,wgsize=1024,valid=1)
-# (ppwi=32,wgsize=1024,valid=1)
+# Device and kernel cc: sm_90
+# Verification failed for ppwi=32, wgsize=512; difference exceeded tolerance (0.025%)
+# Bad energies (failed/total=58671/65536, showing first 8): 
+# index,actual,expected,difference_%
+# 0,0,865.523,100
+# 1,0,25.0715,100
+# 2,0,368.434,100
+# 3,0,14.6651,100
+# 4,0,574.987,100
+# 5,0,707.354,100
+# 6,0,33.947,100
+# 7,0,135.588,100
+# (ppwi=32,wgsize=512,valid=0)
+# Device and kernel cc: sm_90
+# Verification failed for ppwi=32, wgsize=1024; difference exceeded tolerance (0.025%)
+# Bad energies (failed/total=58671/65536, showing first 8): 
+# index,actual,expected,difference_%
+# 0,0,865.523,100
+# 1,0,25.0715,100
+# 2,0,368.434,100
+# 3,0,14.6651,100
+# 4,0,574.987,100
+# 5,0,707.354,100
+# 6,0,33.947,100
+# 7,0,135.588,100
+# (ppwi=32,wgsize=1024,valid=0)
+# Device and kernel cc: sm_90
 # (ppwi=64,wgsize=4,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=64,wgsize=4,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=64,wgsize=4,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=64,wgsize=4,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=64,wgsize=8,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=64,wgsize=8,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=64,wgsize=8,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=64,wgsize=8,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=64,wgsize=16,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=64,wgsize=16,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=64,wgsize=16,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=64,wgsize=16,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=64,wgsize=32,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=64,wgsize=32,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=64,wgsize=32,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=64,wgsize=32,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=64,wgsize=64,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=64,wgsize=64,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=64,wgsize=64,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=64,wgsize=64,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=64,wgsize=128,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=64,wgsize=128,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=64,wgsize=128,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=64,wgsize=128,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=64,wgsize=256,valid=1)
+# Device and kernel cc: sm_90
+# Verification failed for ppwi=64, wgsize=512; difference exceeded tolerance (0.025%)
+# Bad energies (failed/total=58671/65536, showing first 8): 
+# index,actual,expected,difference_%
+# 0,0,865.523,100
+# 1,0,25.0715,100
+# 2,0,368.434,100
+# 3,0,14.6651,100
+# 4,0,574.987,100
+# 5,0,707.354,100
+# 6,0,33.947,100
+# 7,0,135.588,100
+# (ppwi=64,wgsize=512,valid=0)
+# Device and kernel cc: sm_90
+# Verification failed for ppwi=64, wgsize=1024; difference exceeded tolerance (0.025%)
+# Bad energies (failed/total=58671/65536, showing first 8): 
+# index,actual,expected,difference_%
+# 0,0,865.523,100
+# 1,0,25.0715,100
+# 2,0,368.434,100
+# 3,0,14.6651,100
+# 4,0,574.987,100
+# 5,0,707.354,100
+# 6,0,33.947,100
+# 7,0,135.588,100
+# (ppwi=64,wgsize=1024,valid=0)
+ppwi,wgsize,sum_ms,avg_ms,min_ms,max_ms,stddev_ms,interactions/s,gflops/s,gfinst/s
+1,4,466.559,58.320,58.309,58.330,0.008,27405600177.697,1096.840,685.140
+1,8,237.158,29.645,29.638,29.683,0.014,53914927800.590,2157.809,1347.873
+1,16,122.092,15.262,15.256,15.267,0.003,104726766261.123,4191.424,2618.169
+1,32,64.454,8.057,8.054,8.061,0.002,198379584884.319,7939.641,4959.490
+1,64,64.603,8.075,8.063,8.082,0.005,197921454303.395,7921.305,4948.036
+1,128,64.508,8.063,8.055,8.077,0.009,198214137576.904,7933.019,4955.353
+1,256,63.057,7.882,7.874,7.896,0.009,202774099884.095,8115.520,5069.352
+1,512,59.587,7.448,7.447,7.451,0.001,214583813555.360,8588.174,5364.595
+1,1024,115.119,14.390,14.372,14.418,0.021,111070725506.812,4445.325,2776.768
+2,4,280.786,35.098,35.091,35.103,0.004,45537684264.918,1594.794,1138.442
+2,8,146.580,18.322,18.304,18.347,0.017,87231317024.312,3054.963,2180.783
+2,16,79.922,9.990,9.987,9.994,0.002,159984259543.760,5602.873,3999.606
+2,32,47.043,5.880,5.876,5.890,0.005,271801657427.899,9518.876,6795.041
+2,64,47.055,5.882,5.876,5.885,0.003,271732706025.405,9516.461,6793.318
+2,128,47.114,5.889,5.884,5.893,0.003,271391151615.756,9504.499,6784.779
+2,256,51.837,6.480,6.477,6.483,0.002,246663670049.918,8638.508,6166.592
+2,512,75.871,9.484,9.462,9.506,0.015,168526915128.075,5902.049,4213.173
+2,1024,129.752,16.219,16.200,16.251,0.024,98544051367.586,3451.151,2463.601
+4,4,192.917,24.115,24.084,24.167,0.028,66278892337.629,2155.447,1656.972
+4,8,102.200,12.775,12.758,12.802,0.016,125111331033.561,4068.729,3127.783
+4,16,57.734,7.217,7.198,7.231,0.012,221467898771.355,7202.329,5536.697
+4,32,43.805,5.476,5.473,5.479,0.002,291889973655.487,9492.516,7297.249
+4,64,43.734,5.467,5.464,5.472,0.002,292367823454.166,9508.056,7309.196
+4,128,43.705,5.463,5.461,5.466,0.002,292558294564.924,9514.251,7313.957
+4,256,58.067,7.258,7.248,7.278,0.010,220198903377.636,7161.060,5504.973
+4,512,90.999,11.375,11.371,11.377,0.002,140510181467.882,4569.513,3512.755
+4,1024,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,0.000,0.000,0.000,0.000
+8,4,170.527,21.316,21.296,21.355,0.023,74981496394.333,2344.717,1874.537
+8,8,85.012,10.627,10.613,10.634,0.006,150405813826.065,4703.281,3760.145
+8,16,68.027,8.503,8.502,8.505,0.001,187961094104.177,5877.657,4699.027
+8,32,68.008,8.501,8.498,8.505,0.003,188011179563.460,5879.223,4700.279
+8,64,67.843,8.480,8.477,8.487,0.003,188470469843.689,5893.586,4711.762
+8,128,68.124,8.516,8.503,8.523,0.007,187691095285.152,5869.214,4692.277
+8,256,84.754,10.594,10.591,10.596,0.002,150864966445.284,4717.639,3771.624
+8,512,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,0.000,0.000,0.000,0.000
+8,1024,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,0.000,0.000,0.000,0.000
+16,4,231.012,28.876,28.811,28.957,0.044,55349338196.259,1696.207,1383.733
+16,8,208.845,26.106,26.064,26.144,0.033,61223912809.938,1876.236,1530.598
+16,16,208.717,26.090,26.053,26.129,0.032,61261695833.970,1877.394,1531.542
+16,32,208.738,26.092,26.048,26.136,0.035,61255505324.528,1877.204,1531.388
+16,64,208.699,26.087,26.048,26.129,0.033,61266907949.214,1877.553,1531.673
+16,128,208.793,26.099,26.065,26.138,0.031,61239299060.725,1876.707,1530.982
+16,256,231.497,28.937,28.914,28.994,0.028,55233196952.763,1692.647,1380.830
+16,512,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,0.000,0.000,0.000,0.000
+16,1024,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,0.000,0.000,0.000,0.000
+32,4,302.565,37.821,37.757,37.871,0.045,42259854861.008,1281.864,1056.496
+32,8,301.378,37.672,37.623,37.754,0.051,42426228327.174,1286.911,1060.656
+32,16,301.383,37.673,37.621,37.752,0.054,42425513066.053,1286.889,1060.638
+32,32,301.424,37.678,37.622,37.751,0.054,42419724857.150,1286.713,1060.493
+32,64,301.464,37.683,37.620,37.745,0.051,42414155035.754,1286.545,1060.354
+32,128,302.236,37.779,37.760,37.817,0.022,42305864447.000,1283.260,1057.647
+32,256,339.681,42.460,42.352,42.535,0.065,37642144177.891,1141.796,941.054
+32,512,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,0.000,0.000,0.000,0.000
+32,1024,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,0.000,0.000,0.000,0.000
+64,4,515.554,64.444,61.885,67.077,2.549,24801178307.839,748.416,620.029
+64,8,475.193,59.399,59.355,59.438,0.025,26907655362.171,811.982,672.691
+64,16,476.394,59.549,59.452,59.714,0.104,26839806280.126,809.935,670.995
+64,32,477.246,59.656,59.557,59.782,0.069,26791921689.617,808.490,669.798
+64,64,490.886,61.361,61.105,61.615,0.227,26047461065.854,786.024,651.187
+64,128,671.657,83.957,83.839,84.063,0.070,19037013558.880,574.473,475.925
+64,256,909.231,113.654,113.554,113.736,0.062,14062797384.033,424.368,351.570
+64,512,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,0.000,0.000,0.000,0.000
+64,1024,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,0.000,0.000,0.000,0.000
+# best: { min_ms: 5.461, max_ms: 5.466, sum_ms: 43.705, avg_ms: 5.463, ppwi: 4, wgsize: 128 }
 # (ppwi=64,wgsize=256,valid=1)
+# Device and kernel cc: sm_90
+# Verification failed for ppwi=64, wgsize=512; difference exceeded tolerance (0.025%)
+# Bad energies (failed/total=58671/65536, showing first 8): 
+# index,actual,expected,difference_%
+# 0,0,865.523,100
+# 1,0,25.0715,100
+# 2,0,368.434,100
+# 3,0,14.6651,100
+# 4,0,574.987,100
+# 5,0,707.354,100
+# 6,0,33.947,100
+# 7,0,135.588,100
+# (ppwi=64,wgsize=512,valid=0)
+# Device and kernel cc: sm_90
+# Verification failed for ppwi=64, wgsize=1024; difference exceeded tolerance (0.025%)
+# Bad energies (failed/total=58671/65536, showing first 8): 
+# index,actual,expected,difference_%
+# 0,0,865.523,100
+# 1,0,25.0715,100
+# 2,0,368.434,100
+# 3,0,14.6651,100
+# 4,0,574.987,100
+# 5,0,707.354,100
+# 6,0,33.947,100
+# 7,0,135.588,100
+# (ppwi=64,wgsize=1024,valid=0)
+ppwi,wgsize,sum_ms,avg_ms,min_ms,max_ms,stddev_ms,interactions/s,gflops/s,gfinst/s
+1,4,470.150,58.769,58.763,58.779,0.005,27196291909.981,1088.463,679.907
+1,8,239.251,29.906,29.862,29.952,0.035,53443097753.127,2138.925,1336.077
+1,16,123.055,15.382,15.357,15.438,0.034,103907172325.642,4158.622,2597.679
+1,32,65.134,8.142,8.119,8.161,0.018,196309321139.323,7856.784,4907.733
+1,64,65.011,8.126,8.118,8.158,0.013,196680598955.916,7871.643,4917.015
+1,128,65.265,8.158,8.154,8.166,0.004,195912915027.494,7840.919,4897.823
+1,256,63.509,7.939,7.935,7.943,0.002,201331691566.310,8057.792,5033.292
+1,512,60.194,7.524,7.497,7.532,0.011,212417882218.756,8501.488,5310.447
+1,1024,115.944,14.493,14.480,14.541,0.020,110279832548.447,4413.671,2756.996
+2,4,283.203,35.400,35.357,35.439,0.033,45149061769.152,1581.184,1128.727
+2,8,147.702,18.463,18.401,18.495,0.036,86568580328.878,3031.753,2164.215
+2,16,80.571,10.071,10.043,10.114,0.028,158696963396.090,5557.790,3967.424
+2,32,47.594,5.949,5.946,5.954,0.002,268651907392.114,9408.567,6716.298
+2,64,47.440,5.930,5.926,5.936,0.004,269525663392.829,9439.167,6738.142
+2,128,47.478,5.935,5.922,5.949,0.011,269310680994.815,9431.638,6732.767
+2,256,52.400,6.550,6.547,6.553,0.002,244015396039.699,8545.762,6100.385
+2,512,76.374,9.547,9.540,9.553,0.004,167416848561.532,5863.173,4185.421
+2,1024,130.888,16.361,16.324,16.384,0.027,97689139088.896,3421.211,2442.228
+4,4,194.503,24.313,24.273,24.349,0.033,65738656565.931,2137.878,1643.466
+4,8,103.292,12.912,12.866,12.939,0.025,123787848031.394,4025.689,3094.696
+4,16,58.131,7.266,7.261,7.272,0.004,219957200198.304,7153.200,5498.930
+4,32,44.263,5.533,5.528,5.537,0.003,288869700435.799,9394.294,7221.743
+4,64,44.221,5.528,5.508,5.535,0.009,289146236946.247,9403.287,7228.656
+4,128,44.088,5.511,5.508,5.513,0.001,290019726176.490,9431.694,7250.493
+4,256,58.511,7.314,7.298,7.340,0.012,218528586569.059,7106.740,5463.215
+4,512,91.686,11.461,11.454,11.465,0.003,139457422174.446,4535.277,3486.436
+4,1024,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,0.000,0.000,0.000,0.000
+8,4,171.883,21.485,21.424,21.532,0.047,74389888286.147,2326.217,1859.747
+8,8,85.895,10.737,10.706,10.749,0.013,148860437771.847,4654.956,3721.511
+8,16,68.588,8.573,8.568,8.578,0.004,186423344430.378,5829.571,4660.584
+8,32,68.424,8.553,8.551,8.555,0.001,186868919177.442,5843.504,4671.723
+8,64,68.364,8.545,8.538,8.556,0.007,187033956801.030,5848.665,4675.849
+8,128,68.546,8.568,8.566,8.576,0.003,186535647717.087,5833.082,4663.391
+8,256,85.391,10.674,10.672,10.677,0.001,149738125528.618,4682.402,3743.453
+8,512,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,0.000,0.000,0.000,0.000
+8,1024,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,0.000,0.000,0.000,0.000
+16,4,232.933,29.117,29.036,29.196,0.065,54892760877.747,1682.215,1372.319
+16,8,210.924,26.365,26.280,26.459,0.071,60620627338.842,1857.748,1515.516
+16,16,210.186,26.273,26.241,26.290,0.019,60833521170.413,1864.272,1520.838
+16,32,210.031,26.254,26.240,26.280,0.016,60878220469.595,1865.642,1521.956
+16,64,210.080,26.260,26.240,26.290,0.022,60864114274.767,1865.209,1521.603
+16,128,210.129,26.266,26.259,26.283,0.010,60849968282.085,1864.776,1521.249
+16,256,233.574,29.197,29.124,29.291,0.075,54742054020.178,1677.596,1368.551
+16,512,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,0.000,0.000,0.000,0.000
+16,1024,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,0.000,0.000,0.000,0.000
+32,4,304.913,38.114,38.039,38.296,0.092,41934322172.865,1271.990,1048.358
+32,8,303.453,37.932,37.906,37.954,0.017,42136192666.554,1278.113,1053.405
+32,16,303.369,37.921,37.905,37.957,0.022,42147792413.234,1278.465,1053.695
+32,32,303.495,37.937,37.906,37.962,0.021,42130265184.801,1277.933,1053.257
+32,64,303.438,37.930,37.905,37.959,0.022,42138197008.602,1278.174,1053.455
+32,128,303.739,37.967,37.952,37.998,0.016,42096489679.533,1276.909,1052.412
+32,256,342.727,42.841,42.734,42.980,0.088,37307631685.785,1131.649,932.691
+32,512,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,0.000,0.000,0.000,0.000
+32,1024,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,0.000,0.000,0.000,0.000
+64,4,528.491,66.061,64.813,67.290,1.191,24194044416.745,730.095,604.851
+64,8,478.546,59.818,59.682,59.883,0.072,26719162146.189,806.294,667.979
+64,16,479.533,59.942,59.881,60.055,0.058,26664117711.235,804.633,666.603
+64,32,480.547,60.068,59.998,60.215,0.068,26607867883.106,802.936,665.197
+64,64,495.494,61.937,61.516,62.333,0.368,25805210601.619,778.714,645.130
+64,128,678.020,84.753,84.638,84.882,0.075,18858338307.275,569.081,471.458
+64,256,926.785,115.848,115.789,115.947,0.047,13796439674.163,416.330,344.911
+64,512,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,0.000,0.000,0.000,0.000
+64,1024,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,0.000,0.000,0.000,0.000
+# best: { min_ms: 5.508, max_ms: 5.513, sum_ms: 44.088, avg_ms: 5.511, ppwi: 4, wgsize: 128 }
 # (ppwi=64,wgsize=256,valid=1)
+# Device and kernel cc: sm_90
+# Verification failed for ppwi=64, wgsize=512; difference exceeded tolerance (0.025%)
+# Bad energies (failed/total=58671/65536, showing first 8): 
+# index,actual,expected,difference_%
+# 0,0,865.523,100
+# 1,0,25.0715,100
+# 2,0,368.434,100
+# 3,0,14.6651,100
+# 4,0,574.987,100
+# 5,0,707.354,100
+# 6,0,33.947,100
+# 7,0,135.588,100
+# (ppwi=64,wgsize=512,valid=0)
+# Device and kernel cc: sm_90
+# Verification failed for ppwi=64, wgsize=1024; difference exceeded tolerance (0.025%)
+# Bad energies (failed/total=58671/65536, showing first 8): 
+# index,actual,expected,difference_%
+# 0,0,865.523,100
+# 1,0,25.0715,100
+# 2,0,368.434,100
+# 3,0,14.6651,100
+# 4,0,574.987,100
+# 5,0,707.354,100
+# 6,0,33.947,100
+# 7,0,135.588,100
+# (ppwi=64,wgsize=1024,valid=0)
+ppwi,wgsize,sum_ms,avg_ms,min_ms,max_ms,stddev_ms,interactions/s,gflops/s,gfinst/s
+1,4,470.121,58.765,58.752,58.789,0.011,27197956472.471,1088.529,679.949
+1,8,239.019,29.877,29.860,29.904,0.017,53495007171.724,2141.002,1337.375
+1,16,122.852,15.357,15.348,15.370,0.009,104078882721.287,4165.494,2601.972
+1,32,64.989,8.124,8.116,8.127,0.003,196747439746.140,7874.319,4918.686
+1,64,65.000,8.125,8.122,8.132,0.003,196714298153.937,7872.992,4917.857
+1,128,65.138,8.142,8.123,8.189,0.024,196297401699.204,7856.307,4907.435
+1,256,63.828,7.978,7.969,7.988,0.006,200325082504.631,8017.505,5008.127
+1,512,59.992,7.499,7.496,7.501,0.002,213132674239.595,8530.096,5328.317
+1,1024,116.301,14.538,14.489,14.554,0.026,109941907416.727,4400.147,2748.548
+2,4,283.012,35.377,35.363,35.396,0.012,45179465569.648,1582.248,1129.487
+2,8,147.586,18.448,18.409,18.493,0.037,86636439821.775,3034.130,2165.911
+2,16,80.459,10.057,10.045,10.099,0.017,158918079719.448,5565.534,3972.952
+2,32,47.533,5.942,5.923,5.954,0.013,268998577454.388,9420.708,6724.964
+2,64,47.616,5.952,5.948,5.955,0.003,268530298593.609,9404.308,6713.257
+2,128,47.401,5.925,5.921,5.928,0.002,269745752296.318,9446.875,6743.644
+2,256,52.256,6.532,6.521,6.554,0.013,244686737992.145,8569.273,6117.168
+2,512,76.591,9.574,9.559,9.586,0.009,166942262277.216,5846.552,4173.557
+2,1024,130.811,16.351,16.326,16.396,0.028,97746596805.295,3423.223,2443.665
+4,4,194.369,24.296,24.267,24.322,0.024,65783686856.059,2139.343,1644.592
+4,8,103.163,12.895,12.863,12.932,0.028,123943209716.039,4030.741,3098.580
+4,16,58.267,7.283,7.262,7.302,0.013,219442653362.377,7136.466,5486.066
+4,32,44.101,5.513,5.510,5.516,0.002,289931059034.386,9428.811,7248.276
+4,64,44.104,5.513,5.511,5.517,0.002,289913283468.318,9428.232,7247.832
+4,128,44.105,5.513,5.509,5.521,0.004,289908353501.417,9428.072,7247.709
+4,256,58.517,7.315,7.295,7.335,0.013,218507886387.837,7106.067,5462.697
+4,512,91.702,11.463,11.459,11.468,0.003,139433889761.288,4534.512,3485.847
+4,1024,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,0.000,0.000,0.000,0.000
+8,4,171.425,21.428,21.421,21.434,0.005,74588328818.581,2332.422,1864.708
+8,8,85.503,10.688,10.683,10.695,0.003,149542791225.594,4676.293,3738.570
+8,16,68.581,8.573,8.569,8.580,0.003,186442244819.419,5830.162,4661.056
+8,32,68.314,8.539,8.539,8.540,0.000,187169940588.352,5852.917,4679.249
+8,64,68.473,8.559,8.558,8.561,0.001,186736104853.148,5839.351,4668.403
+8,128,68.553,8.569,8.565,8.583,0.006,186518205768.816,5832.537,4662.955
+8,256,85.423,10.678,10.671,10.681,0.004,149683182358.367,4680.684,3742.080
+8,512,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,0.000,0.000,0.000,0.000
+8,1024,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,0.000,0.000,0.000,0.000
+16,4,232.945,29.118,29.033,29.208,0.074,54889845694.984,1682.125,1372.246
+16,8,210.291,26.286,26.260,26.322,0.025,60803115518.145,1863.340,1520.078
+16,16,210.195,26.274,26.243,26.308,0.027,60830946821.671,1864.193,1520.774
+16,32,210.176,26.272,26.241,26.308,0.031,60836428898.142,1864.361,1520.911
+16,64,210.193,26.274,26.243,26.306,0.026,60831461673.988,1864.209,1520.787
+16,128,210.304,26.288,26.260,26.310,0.022,60799234663.011,1863.221,1519.981
+16,256,233.112,29.139,29.110,29.153,0.017,54850509128.782,1680.920,1371.263
+16,512,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,0.000,0.000,0.000,0.000
+16,1024,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,0.000,0.000,0.000,0.000
+32,4,304.548,38.069,38.039,38.115,0.027,41984606619.803,1273.515,1049.615
+32,8,303.592,37.949,37.906,37.991,0.035,42116795509.736,1277.525,1052.920
+32,16,303.662,37.958,37.905,38.006,0.037,42107174969.713,1277.233,1052.679
+32,32,303.692,37.962,37.905,38.000,0.035,42102920332.816,1277.104,1052.573
+32,64,303.623,37.953,37.907,37.991,0.033,42112576654.997,1277.397,1052.814
+32,128,303.838,37.980,37.951,38.005,0.023,42082804330.235,1276.494,1052.070
+32,256,342.167,42.771,42.626,42.976,0.125,37368668424.094,1133.500,934.217
+32,512,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,0.000,0.000,0.000,0.000
+32,1024,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,0.000,0.000,0.000,0.000
+64,4,511.203,63.900,62.277,65.868,1.612,25012227410.803,754.785,625.306
+64,8,478.748,59.843,59.693,59.937,0.069,26707886072.497,805.954,667.697
+64,16,479.714,59.964,59.865,60.098,0.077,26654054575.502,804.329,666.351
+64,32,480.769,60.096,60.028,60.159,0.038,26595564339.104,802.564,664.889
+64,64,511.031,63.879,61.404,66.371,2.428,25020683435.153,755.040,625.517
+64,128,670.869,83.859,83.727,83.908,0.054,19059354143.148,575.147,476.484
+64,256,939.056,117.382,117.281,117.457,0.055,13616159833.068,410.890,340.404
+64,512,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,0.000,0.000,0.000,0.000
+64,1024,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,0.000,0.000,0.000,0.000
+# best: { min_ms: 5.510, max_ms: 5.516, sum_ms: 44.101, avg_ms: 5.513, ppwi: 4, wgsize: 32 }
 # (ppwi=64,wgsize=256,valid=1)
-# (ppwi=64,wgsize=512,valid=1)
-# (ppwi=64,wgsize=512,valid=1)
-# (ppwi=64,wgsize=512,valid=1)
-# (ppwi=64,wgsize=512,valid=1)
-# (ppwi=64,wgsize=1024,valid=1)
+# Device and kernel cc: sm_90
+# Verification failed for ppwi=64, wgsize=512; difference exceeded tolerance (0.025%)
+# Bad energies (failed/total=58671/65536, showing first 8): 
+# index,actual,expected,difference_%
+# 0,0,865.523,100
+# 1,0,25.0715,100
+# 2,0,368.434,100
+# 3,0,14.6651,100
+# 4,0,574.987,100
+# 5,0,707.354,100
+# 6,0,33.947,100
+# 7,0,135.588,100
+# (ppwi=64,wgsize=512,valid=0)
+# Device and kernel cc: sm_90
+# Verification failed for ppwi=64, wgsize=1024; difference exceeded tolerance (0.025%)
+# Bad energies (failed/total=58671/65536, showing first 8): 
+# index,actual,expected,difference_%
+# 0,0,865.523,100
+# 1,0,25.0715,100
+# 2,0,368.434,100
+# 3,0,14.6651,100
+# 4,0,574.987,100
+# 5,0,707.354,100
+# 6,0,33.947,100
+# 7,0,135.588,100
+# (ppwi=64,wgsize=1024,valid=0)
 ppwi,wgsize,sum_ms,avg_ms,min_ms,max_ms,stddev_ms,interactions/s,gflops/s,gfinst/s
-1,4,60.167,7.521,7.511,7.530,0.008,212513533030.311,8505.317,5312.838
-1,8,60.103,7.513,7.511,7.515,0.001,212739545434.482,8514.362,5318.489
-1,16,60.243,7.530,7.512,7.545,0.009,212247274828.835,8494.660,5306.182
-1,32,60.106,7.513,7.510,7.518,0.002,212728332671.757,8513.913,5318.208
-1,64,60.178,7.522,7.511,7.535,0.009,212474924122.305,8503.771,5311.873
-1,128,60.218,7.527,7.527,7.528,0.001,212332623589.296,8498.076,5308.316
-1,256,60.227,7.528,7.527,7.530,0.001,212301380412.549,8496.826,5307.535
-1,512,60.374,7.547,7.542,7.553,0.003,211785024333.106,8476.160,5294.626
-1,1024,60.322,7.540,7.524,7.553,0.011,211969116250.917,8483.528,5299.228
-2,4,61.941,7.743,7.729,7.765,0.012,206428167467.129,7229.404,5160.704
-2,8,62.050,7.756,7.750,7.760,0.003,206064455707.587,7216.667,5151.611
-2,16,61.902,7.738,7.731,7.746,0.005,206558570369.197,7233.971,5163.964
-2,32,62.026,7.753,7.729,7.760,0.010,206145441899.104,7219.503,5153.636
-2,64,61.968,7.746,7.728,7.762,0.013,206336273464.648,7226.186,5158.407
-2,128,61.898,7.737,7.729,7.755,0.008,206569839621.133,7234.366,5164.246
-2,256,62.045,7.756,7.751,7.760,0.003,206081397177.778,7217.260,5152.035
-2,512,61.872,7.734,7.731,7.737,0.002,206657833442.653,7237.447,5166.446
-2,1024,61.999,7.750,7.730,7.764,0.013,206235190041.641,7222.646,5155.880
-4,4,70.759,8.845,8.827,8.863,0.015,180701901811.432,5876.583,4517.548
-4,8,70.679,8.835,8.824,8.855,0.012,180906561483.851,5883.239,4522.664
-4,16,70.823,8.853,8.829,8.860,0.009,180540232961.384,5871.326,4513.506
-4,32,70.615,8.827,8.823,8.830,0.002,181071977209.038,5888.618,4526.799
-4,64,70.868,8.859,8.857,8.861,0.001,180423884018.118,5867.542,4510.597
-4,128,70.621,8.828,8.826,8.832,0.002,181056206025.621,5888.106,4526.405
-4,256,70.865,8.858,8.845,8.863,0.005,180432410652.142,5867.819,4510.810
-4,512,70.680,8.835,8.826,8.859,0.011,180905578624.443,5883.207,4522.639
-4,1024,70.795,8.849,8.826,8.863,0.014,180610847590.271,5873.622,4515.271
-8,4,107.562,13.445,13.433,13.477,0.018,118873638390.569,3717.251,2971.841
-8,8,107.793,13.474,13.440,13.482,0.013,118619494443.371,3709.303,2965.487
-8,16,107.617,13.452,13.435,13.479,0.020,118813138499.894,3715.359,2970.328
-8,32,107.555,13.444,13.435,13.478,0.015,118881938718.816,3717.510,2972.048
-8,64,107.769,13.471,13.435,13.484,0.016,118645993434.370,3710.132,2966.150
-8,128,107.666,13.458,13.436,13.480,0.019,118759575008.667,3713.684,2968.989
-8,256,107.540,13.443,13.434,13.484,0.016,118898165837.050,3718.018,2972.454
-8,512,107.741,13.468,13.434,13.482,0.019,118676794464.865,3711.095,2966.920
-8,1024,107.678,13.460,13.433,13.480,0.020,118745551514.305,3713.245,2968.639
-16,4,248.267,31.033,30.994,31.089,0.039,51502367274.401,1578.314,1287.559
-16,8,248.390,31.049,30.997,31.091,0.040,51476794022.330,1577.531,1286.920
-16,16,248.219,31.027,30.988,31.083,0.041,51512225615.819,1578.616,1287.806
-16,32,248.363,31.045,30.989,31.089,0.038,51482447778.828,1577.704,1287.061
-16,64,248.290,31.036,30.988,31.088,0.041,51497510970.663,1578.165,1287.438
-16,128,248.280,31.035,30.993,31.082,0.039,51499662922.895,1578.231,1287.492
-16,256,248.342,31.043,30.990,31.084,0.037,51486875604.741,1577.840,1287.172
-16,512,248.221,31.028,30.986,31.080,0.040,51511936324.861,1578.608,1287.798
-16,1024,248.336,31.042,30.985,31.082,0.041,51488110656.021,1577.877,1287.203
-32,4,145.586,18.198,18.183,18.229,0.018,87826387465.766,2664.029,2195.660
-32,8,145.583,18.198,18.184,18.222,0.017,87828244940.045,2664.086,2195.706
-32,16,145.570,18.196,18.181,18.224,0.018,87836104029.619,2664.324,2195.903
-32,32,145.624,18.203,18.186,18.231,0.019,87804021899.558,2663.351,2195.101
-32,64,145.653,18.207,18.185,18.234,0.021,87786049771.996,2662.806,2194.651
-32,128,145.705,18.213,18.184,18.228,0.015,87754724504.585,2661.856,2193.868
-32,256,145.716,18.214,18.188,18.241,0.018,87748477549.676,2661.666,2193.712
-32,512,145.696,18.212,18.182,18.229,0.017,87760247714.881,2662.023,2194.006
-32,1024,145.687,18.211,18.180,18.227,0.018,87765715594.821,2662.189,2194.143
-64,4,136.762,17.095,17.067,17.116,0.021,93493468176.437,2821.317,2337.337
-64,8,136.692,17.086,17.068,17.116,0.020,93541272360.247,2822.760,2338.532
-64,16,136.642,17.080,17.066,17.115,0.017,93575163359.422,2823.782,2339.379
-64,32,136.656,17.082,17.067,17.117,0.020,93566029465.515,2823.507,2339.151
-64,64,136.702,17.088,17.065,17.110,0.022,93534104637.570,2822.543,2338.353
-64,128,136.773,17.097,17.066,17.111,0.018,93485972171.625,2821.091,2337.149
-64,256,136.788,17.098,17.069,17.113,0.016,93475651580.961,2820.779,2336.891
-64,512,136.763,17.095,17.064,17.127,0.025,93492549396.639,2821.289,2337.314
-64,1024,136.692,17.087,17.068,17.112,0.019,93541025320.692,2822.752,2338.526
-# best: { min_ms: 7.511, max_ms: 7.515, sum_ms: 60.103, avg_ms: 7.513, ppwi: 1, wgsize: 8 }
-# (ppwi=64,wgsize=1024,valid=1)
-ppwi,wgsize,sum_ms,avg_ms,min_ms,max_ms,stddev_ms,interactions/s,gflops/s,gfinst/s
-1,4,60.543,7.568,7.566,7.573,0.002,211193464188.138,8452.484,5279.837
-1,8,60.689,7.586,7.567,7.603,0.012,210686059469.217,8432.177,5267.151
-1,16,60.719,7.590,7.568,7.617,0.017,210583767375.772,8428.083,5264.594
-1,32,60.542,7.568,7.565,7.571,0.002,211196122312.412,8452.590,5279.903
-1,64,60.544,7.568,7.566,7.569,0.001,211191584006.779,8452.409,5279.790
-1,128,60.739,7.592,7.567,7.601,0.010,210512031370.309,8425.211,5262.801
-1,256,60.693,7.587,7.574,7.597,0.009,210671202212.105,8431.582,5266.780
-1,512,60.602,7.575,7.569,7.586,0.005,210988756092.891,8444.291,5274.719
-1,1024,60.760,7.595,7.593,7.598,0.002,210439052354.597,8422.291,5260.976
-2,4,62.299,7.787,7.779,7.804,0.009,205242083936.736,7187.866,5131.052
-2,8,62.371,7.796,7.783,7.806,0.009,205005582575.823,7179.583,5125.140
-2,16,62.422,7.803,7.786,7.813,0.009,204838022475.232,7173.715,5120.951
-2,32,62.287,7.786,7.783,7.790,0.002,205282366845.787,7189.277,5132.059
-2,64,62.459,7.807,7.804,7.813,0.003,204715563774.917,7169.426,5117.889
-2,128,62.299,7.787,7.780,7.808,0.008,205240222573.052,7187.801,5131.006
-2,256,62.374,7.797,7.784,7.811,0.010,204994581942.757,7179.198,5124.865
-2,512,62.442,7.805,7.784,7.816,0.009,204770068341.057,7171.335,5119.252
-2,1024,62.272,7.784,7.782,7.788,0.002,205329869913.309,7190.940,5133.247
-4,4,71.279,8.910,8.909,8.911,0.001,179384142456.955,5833.729,4484.604
-4,8,71.092,8.886,8.883,8.894,0.003,179856400321.421,5849.087,4496.410
-4,16,71.260,8.908,8.888,8.912,0.008,179431467869.020,5835.268,4485.787
-4,32,71.154,8.894,8.886,8.913,0.011,179698896924.251,5843.965,4492.472
-4,64,71.203,8.900,8.886,8.914,0.012,179577044162.223,5840.002,4489.426
-4,128,71.226,8.903,8.888,8.914,0.011,179517434874.691,5838.063,4487.936
-4,256,71.146,8.893,8.886,8.911,0.010,179718890884.417,5844.615,4492.972
-4,512,71.262,8.908,8.888,8.913,0.008,179426195387.919,5835.096,4485.655
-4,1024,71.093,8.887,8.884,8.889,0.001,179854510495.816,5849.025,4496.363
-8,4,108.468,13.559,13.527,13.574,0.020,117880893363.250,3686.207,2947.022
-8,8,108.443,13.555,13.523,13.578,0.022,117908250646.035,3687.062,2947.706
-8,16,108.245,13.531,13.525,13.550,0.008,118123610941.935,3693.797,2953.090
-8,32,108.471,13.559,13.526,13.575,0.018,117877465765.935,3686.100,2946.937
-8,64,108.478,13.560,13.524,13.573,0.020,117870180881.913,3685.872,2946.755
-8,128,108.250,13.531,13.522,13.570,0.015,118118462612.456,3693.636,2952.962
-8,256,108.388,13.548,13.526,13.574,0.021,117968233887.536,3688.938,2949.206
-8,512,108.512,13.564,13.529,13.579,0.015,117833767792.088,3684.733,2945.844
-8,1024,108.290,13.536,13.522,13.571,0.020,118074734098.959,3692.268,2951.868
-16,4,250.026,31.253,31.213,31.306,0.035,51140092729.520,1567.212,1278.502
-16,8,250.149,31.269,31.221,31.302,0.034,51114887090.595,1566.440,1277.872
-16,16,250.041,31.255,31.219,31.311,0.038,51136922156.755,1567.115,1278.423
-16,32,250.168,31.271,31.218,31.315,0.036,51111039699.484,1566.322,1277.776
-16,64,250.011,31.251,31.216,31.305,0.038,51143055858.542,1567.303,1278.576
-16,128,250.121,31.265,31.215,31.306,0.035,51120616547.224,1566.615,1278.015
-16,256,250.056,31.257,31.218,31.298,0.034,51133863423.661,1567.021,1278.347
-16,512,250.032,31.254,31.218,31.289,0.028,51138827684.798,1567.173,1278.471
-16,1024,250.083,31.260,31.219,31.302,0.031,51128329104.181,1566.852,1278.208
-32,4,146.504,18.313,18.291,18.353,0.025,87276536834.544,2647.351,2181.913
-32,8,146.506,18.313,18.293,18.350,0.023,87274939118.011,2647.302,2181.873
-32,16,146.519,18.315,18.295,18.356,0.025,87267220028.416,2647.068,2181.681
-32,32,146.557,18.320,18.292,18.353,0.027,87245032347.740,2646.395,2181.126
-32,64,146.609,18.326,18.295,18.354,0.025,87213570227.982,2645.441,2180.339
-32,128,146.666,18.333,18.298,18.354,0.024,87180239915.411,2644.430,2179.506
-32,256,146.665,18.333,18.294,18.353,0.023,87180311245.312,2644.432,2179.508
-32,512,146.669,18.334,18.295,18.351,0.022,87177902736.915,2644.359,2179.448
-32,1024,146.668,18.333,18.295,18.353,0.021,87179005926.612,2644.392,2179.475
-64,4,137.635,17.204,17.174,17.230,0.024,92900039319.821,2803.409,2322.501
-64,8,137.568,17.196,17.176,17.229,0.023,92945302028.390,2804.775,2323.633
-64,16,137.533,17.192,17.177,17.227,0.019,92969017953.972,2805.491,2324.225
-64,32,137.546,17.193,17.176,17.226,0.021,92960429814.010,2805.232,2324.011
-64,64,137.655,17.207,17.174,17.231,0.022,92887150494.939,2803.020,2322.179
-64,128,137.689,17.211,17.179,17.226,0.019,92864202017.462,2802.328,2321.605
-64,256,137.705,17.213,17.178,17.227,0.017,92853081648.300,2801.992,2321.327
-64,512,137.662,17.208,17.175,17.230,0.023,92882049403.352,2802.866,2322.051
-64,1024,137.573,17.197,17.172,17.228,0.024,92942145593.268,2804.680,2323.554
-# best: { min_ms: 7.565, max_ms: 7.571, sum_ms: 60.542, avg_ms: 7.568, ppwi: 1, wgsize: 32 }
-# (ppwi=64,wgsize=1024,valid=1)
-ppwi,wgsize,sum_ms,avg_ms,min_ms,max_ms,stddev_ms,interactions/s,gflops/s,gfinst/s
-1,4,60.560,7.570,7.568,7.572,0.002,211134971000.417,8450.143,5278.374
-1,8,60.562,7.570,7.567,7.574,0.002,211127583627.841,8449.847,5278.190
-1,16,60.595,7.574,7.572,7.576,0.001,211011775124.850,8445.212,5275.294
-1,32,60.589,7.574,7.571,7.579,0.003,211033008897.995,8446.062,5275.825
-1,64,60.812,7.602,7.573,7.612,0.015,210258572017.384,8415.067,5256.464
-1,128,60.752,7.594,7.569,7.612,0.018,210467896299.564,8423.445,5261.697
-1,256,60.593,7.574,7.570,7.577,0.002,211021122055.630,8445.587,5275.528
-1,512,60.861,7.608,7.605,7.612,0.003,210092246148.365,8408.411,5252.306
-1,1024,60.601,7.575,7.569,7.602,0.010,210992188956.118,8444.429,5274.805
-2,4,62.298,7.787,7.779,7.810,0.010,205244525174.620,7187.951,5131.113
-2,8,62.266,7.783,7.776,7.790,0.004,205351812476.865,7191.709,5133.795
-2,16,62.228,7.779,7.774,7.783,0.003,205474297448.938,7195.998,5136.857
-2,32,62.282,7.785,7.780,7.791,0.004,205296971451.449,7189.788,5132.424
-2,64,62.230,7.779,7.773,7.784,0.003,205468783360.583,7195.805,5136.720
-2,128,62.254,7.782,7.777,7.795,0.006,205390449247.925,7193.062,5134.761
-2,256,62.273,7.784,7.777,7.794,0.005,205326889199.457,7190.836,5133.172
-2,512,62.272,7.784,7.779,7.786,0.002,205331765876.995,7191.007,5133.294
-2,1024,62.266,7.783,7.779,7.789,0.003,205351222136.120,7191.688,5133.781
-4,4,70.993,8.874,8.868,8.892,0.009,180107325201.916,5857.247,4502.683
-4,8,71.055,8.882,8.868,8.893,0.010,179949083374.473,5852.101,4498.727
-4,16,71.045,8.881,8.867,8.891,0.010,179975952375.892,5852.975,4499.399
-4,32,71.001,8.875,8.868,8.893,0.009,180085862391.592,5856.549,4502.147
-4,64,71.112,8.889,8.870,8.895,0.007,179805826393.919,5847.442,4495.146
-4,128,70.956,8.870,8.868,8.872,0.001,180199804908.462,5860.255,4504.995
-4,256,71.124,8.890,8.887,8.892,0.002,179776515847.701,5846.489,4494.413
-4,512,70.954,8.869,8.867,8.872,0.001,180207175081.754,5860.494,4505.179
-4,1024,71.121,8.890,8.885,8.893,0.002,179781912578.201,5846.664,4494.548
-8,4,108.094,13.512,13.507,13.521,0.005,118288846469.707,3698.964,2957.221
-8,8,108.228,13.528,13.508,13.543,0.015,118142799460.294,3694.397,2953.570
-8,16,108.231,13.529,13.507,13.540,0.013,118139673165.465,3694.299,2953.492
-8,32,108.101,13.513,13.508,13.539,0.010,118281757936.032,3698.742,2957.044
-8,64,108.209,13.526,13.508,13.541,0.014,118162848138.177,3695.024,2954.071
-8,128,108.257,13.532,13.509,13.539,0.011,118110448567.012,3693.385,2952.761
-8,256,108.112,13.514,13.508,13.533,0.009,118269862095.190,3698.370,2956.747
-8,512,108.174,13.522,13.507,13.539,0.014,118201166224.581,3696.222,2955.029
-8,1024,108.288,13.536,13.508,13.544,0.011,118077104577.931,3692.342,2951.928
-16,4,249.945,31.243,31.219,31.268,0.013,51156632426.270,1567.719,1278.916
-16,8,250.535,31.317,31.241,31.391,0.063,51036034405.798,1564.023,1275.901
-16,16,250.495,31.312,31.244,31.375,0.055,51044182797.824,1564.273,1276.105
-16,32,250.347,31.293,31.238,31.375,0.052,51074373499.642,1565.198,1276.859
-16,64,250.598,31.325,31.236,31.406,0.069,51023318057.653,1563.634,1275.583
-16,128,250.358,31.295,31.239,31.383,0.056,51072220834.542,1565.132,1276.806
-16,256,250.577,31.322,31.241,31.379,0.060,51027565028.496,1563.764,1275.689
-16,512,250.396,31.299,31.240,31.375,0.053,51064555173.068,1564.897,1276.614
-16,1024,250.486,31.311,31.238,31.373,0.054,51046044942.431,1564.330,1276.151
-32,4,146.837,18.355,18.297,18.381,0.034,87078650401.080,2641.348,2176.966
-32,8,146.767,18.346,18.297,18.383,0.038,87119905743.452,2642.600,2177.998
-32,16,146.720,18.340,18.298,18.384,0.039,87147994114.550,2643.452,2178.700
-32,32,146.625,18.328,18.297,18.383,0.038,87204359639.723,2645.162,2180.109
-32,64,146.620,18.328,18.299,18.386,0.035,87207031907.762,2645.243,2180.176
-32,128,146.652,18.332,18.297,18.402,0.039,87188179649.848,2644.671,2179.704
-32,256,146.614,18.327,18.298,18.381,0.033,87211091475.376,2645.366,2180.277
-32,512,146.651,18.331,18.300,18.386,0.039,87189072038.942,2644.698,2179.727
-32,1024,146.692,18.336,18.296,18.380,0.039,87164527594.709,2643.953,2179.113
-64,4,137.840,17.230,17.177,17.263,0.038,92762133613.794,2799.248,2319.053
-64,8,137.908,17.239,17.182,17.264,0.031,92716271223.228,2797.864,2317.907
-64,16,137.460,17.182,17.179,17.187,0.003,93018646096.850,2806.988,2325.466
-64,32,137.371,17.171,17.159,17.192,0.012,93078707832.116,2808.801,2326.968
-64,64,137.623,17.203,17.176,17.263,0.036,92908143739.381,2803.654,2322.704
-64,128,137.568,17.196,17.179,17.258,0.025,92945455396.603,2804.780,2323.636
-64,256,137.444,17.181,17.178,17.183,0.002,93029251139.795,2807.308,2325.731
-64,512,137.796,17.224,17.180,17.259,0.036,92792072243.952,2800.151,2319.802
-64,1024,138.885,17.361,17.179,18.241,0.334,92064223658.146,2778.187,2301.606
-# (ppwi=64,wgsize=1024,valid=1)
-ppwi,wgsize,sum_ms,avg_ms,min_ms,max_ms,stddev_ms,interactions/s,gflops/s,gfinst/s
-1,4,60.539,7.567,7.565,7.569,0.001,211206636861.313,8453.011,5280.166
-1,8,60.544,7.568,7.566,7.571,0.001,211191639818.730,8452.411,5279.791
-1,16,60.576,7.572,7.570,7.574,0.001,211077890054.385,8447.859,5276.947
-1,32,60.568,7.571,7.568,7.573,0.001,211106783926.422,8449.015,5277.670
-1,64,60.917,7.615,7.606,7.636,0.009,209897094749.848,8400.600,5247.427
-1,128,60.684,7.586,7.569,7.608,0.016,210703390955.116,8432.870,5267.585
-1,256,60.632,7.579,7.568,7.609,0.014,210883356132.525,8440.073,5272.084
-1,512,60.856,7.607,7.602,7.619,0.005,210107422346.880,8409.018,5252.686
-1,1024,60.568,7.571,7.570,7.574,0.001,211107460104.982,8449.042,5277.687
-2,4,62.499,7.812,7.781,7.842,0.018,204585915348.008,7164.886,5114.648
-2,8,62.482,7.810,7.777,7.846,0.025,204639669653.091,7166.769,5115.992
-2,16,62.275,7.784,7.776,7.810,0.010,205320924734.354,7190.627,5133.023
-2,32,62.567,7.821,7.816,7.826,0.003,204363876422.334,7157.110,5109.097
-2,64,62.270,7.784,7.781,7.787,0.002,205337450680.600,7191.206,5133.436
-2,128,62.277,7.785,7.780,7.787,0.002,205314482578.136,7190.401,5132.862
-2,256,62.251,7.781,7.778,7.792,0.004,205401010669.809,7193.432,5135.025
-2,512,62.232,7.779,7.774,7.790,0.005,205462199860.686,7195.575,5136.555
-2,1024,62.271,7.784,7.781,7.788,0.002,205334179571.860,7191.091,5133.354
-4,4,71.002,8.875,8.872,8.887,0.004,180084396379.883,5856.501,4502.110
-4,8,71.133,8.892,8.874,8.899,0.009,179753630738.914,5845.745,4493.841
-4,16,71.069,8.884,8.874,8.899,0.011,179915199550.632,5850.999,4497.880
-4,32,71.069,8.884,8.871,8.897,0.011,179915227397.885,5851.000,4497.881
-4,64,71.111,8.889,8.872,8.898,0.011,179808400434.634,5847.526,4495.210
-4,128,71.015,8.877,8.872,8.890,0.007,180050426088.439,5855.397,4501.261
-4,256,71.161,8.895,8.887,8.908,0.006,179682351472.919,5843.427,4492.059
-4,512,70.986,8.873,8.871,8.881,0.003,180125900331.149,5857.851,4503.148
-4,1024,71.168,8.896,8.892,8.900,0.002,179663880329.068,5842.826,4491.597
-8,4,108.106,13.513,13.505,13.533,0.009,118276027984.191,3698.563,2956.901
-8,8,108.188,13.523,13.510,13.539,0.012,118186456062.071,3695.762,2954.661
-8,16,108.271,13.534,13.509,13.541,0.010,118095216695.754,3692.909,2952.380
-8,32,108.123,13.515,13.507,13.535,0.011,118257255531.672,3697.976,2956.431
-8,64,108.187,13.523,13.509,13.546,0.014,118187761517.410,3695.803,2954.694
-8,128,108.278,13.535,13.521,13.540,0.006,118088090275.448,3692.686,2952.202
-8,256,108.168,13.521,13.510,13.542,0.013,118208281164.798,3696.444,2955.207
-8,512,108.167,13.521,13.509,13.542,0.013,118209122644.254,3696.471,2955.228
-8,1024,108.290,13.536,13.524,13.542,0.005,118074501853.839,3692.261,2951.863
-16,4,249.948,31.244,31.217,31.328,0.032,51155935528.634,1567.698,1278.898
-16,8,250.421,31.303,31.230,31.391,0.063,51059330062.475,1564.737,1276.483
-16,16,250.509,31.314,31.232,31.376,0.057,51041498231.185,1564.191,1276.037
-16,32,250.325,31.291,31.227,31.382,0.069,51078855876.775,1565.336,1276.971
-16,64,250.549,31.319,31.228,31.385,0.059,51033260055.871,1563.938,1275.832
-16,128,250.295,31.287,31.226,31.384,0.067,51085085869.473,1565.527,1277.127
-16,256,250.484,31.311,31.231,31.380,0.057,51046516307.870,1564.345,1276.163
-16,512,250.403,31.300,31.226,31.394,0.067,51063067302.431,1564.852,1276.577
-16,1024,250.357,31.295,31.226,31.368,0.061,51072504391.687,1565.141,1276.813
-32,4,146.798,18.350,18.293,18.382,0.035,87101511809.840,2642.042,2177.538
-32,8,146.826,18.353,18.294,18.383,0.038,87085164739.065,2641.546,2177.129
-32,16,146.749,18.344,18.289,18.385,0.043,87130651693.654,2642.926,2178.266
-32,32,146.707,18.338,18.291,18.389,0.044,87155718265.285,2643.686,2178.893
-# best: { min_ms: 7.568, max_ms: 7.572, sum_ms: 60.560, avg_ms: 7.570, ppwi: 1, wgsize: 4 }
-32,64,146.575,18.322,18.291,18.376,0.038,87234123663.110,2646.064,2180.853
-32,128,146.556,18.320,18.292,18.375,0.034,87245144859.438,2646.399,2181.129
-32,256,146.587,18.323,18.290,18.388,0.039,87226653975.451,2645.838,2180.666
-32,512,146.557,18.320,18.292,18.378,0.033,87244932932.884,2646.392,2181.123
-32,1024,146.608,18.326,18.291,18.381,0.042,87214416736.129,2645.467,2180.360
-64,4,137.730,17.216,17.169,17.256,0.039,92836274648.260,2801.485,2320.907
-64,8,137.888,17.236,17.176,17.264,0.035,92730019865.213,2798.279,2318.250
-64,16,137.878,17.235,17.173,17.262,0.031,92736753459.998,2798.482,2318.419
-64,32,137.770,17.221,17.172,17.258,0.038,92809046474.147,2800.663,2320.226
-64,64,137.653,17.207,17.171,17.260,0.041,92888176178.890,2803.051,2322.204
-64,128,137.570,17.196,17.171,17.256,0.030,92943887281.172,2804.732,2323.597
-64,256,137.584,17.198,17.172,17.265,0.037,92934868773.393,2804.460,2323.372
-64,512,137.707,17.213,17.172,17.260,0.039,92851899633.465,2801.957,2321.297
-64,1024,137.848,17.231,17.170,17.264,0.040,92756494472.570,2799.078,2318.912
-# best: { min_ms: 7.565, max_ms: 7.569, sum_ms: 60.539, avg_ms: 7.567, ppwi: 1, wgsize: 4 }
+1,4,470.106,58.763,58.752,58.771,0.006,27198844256.879,1088.565,679.971
+1,8,238.941,29.868,29.860,29.882,0.006,53512457545.429,2141.701,1337.811
+1,16,123.002,15.375,15.347,15.390,0.013,103952301113.925,4160.428,2598.808
+1,32,64.927,8.116,8.113,8.118,0.002,196935361230.668,7881.840,4923.384
+1,64,65.226,8.153,8.137,8.204,0.022,196030003669.372,7845.605,4900.750
+1,128,64.945,8.118,8.115,8.122,0.002,196880269436.493,7879.635,4922.007
+1,256,63.545,7.943,7.937,7.948,0.003,201217086605.425,8053.205,5030.427
+1,512,60.081,7.510,7.498,7.537,0.014,212819268689.239,8517.553,5320.482
+1,1024,115.977,14.497,14.478,14.525,0.020,110248890068.740,4412.433,2756.222
+2,4,283.053,35.382,35.352,35.409,0.017,45172946099.499,1582.020,1129.324
+2,8,147.610,18.451,18.414,18.470,0.023,86622668104.450,3033.647,2165.567
+2,16,80.453,10.057,10.048,10.095,0.015,158928440066.839,5565.897,3973.211
+2,32,47.544,5.943,5.939,5.948,0.003,268938281042.379,9418.596,6723.457
+2,64,47.483,5.935,5.928,5.942,0.005,269283116320.344,9430.673,6732.078
+2,128,47.405,5.926,5.924,5.930,0.002,269724948824.589,9446.146,6743.124
+2,256,52.323,6.540,6.538,6.541,0.001,244371747056.158,8558.242,6109.294
+2,512,76.448,9.556,9.544,9.568,0.008,167255154210.409,5857.510,4181.379
+2,1024,130.717,16.340,16.321,16.348,0.010,97817245096.223,3425.697,2445.431
+4,4,194.362,24.295,24.267,24.340,0.027,65786069268.833,2139.420,1644.652
+4,8,103.187,12.898,12.868,12.906,0.012,123914199510.190,4029.798,3097.855
+4,16,58.156,7.270,7.264,7.275,0.004,219862342962.940,7150.115,5496.559
+4,32,44.153,5.519,5.512,5.529,0.006,289594272770.213,9417.858,7239.857
+4,64,44.184,5.523,5.521,5.525,0.001,289385095316.231,9411.055,7234.627
+4,128,44.120,5.515,5.511,5.523,0.004,289811392135.456,9424.919,7245.285
+4,256,58.554,7.319,7.294,7.375,0.026,218368934892.072,7101.548,5459.223
+4,512,91.802,11.475,11.460,11.486,0.009,139282128346.712,4529.576,3482.053
+4,1024,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,0.000,0.000,0.000,0.000
+8,4,171.628,21.453,21.421,21.497,0.032,74500342793.960,2329.671,1862.509
+8,8,85.692,10.712,10.687,10.731,0.016,149212097653.568,4665.952,3730.302
+8,16,68.715,8.589,8.576,8.606,0.012,186076986203.611,5818.740,4651.925
+8,32,68.503,8.563,8.550,8.581,0.013,186653838174.963,5836.778,4666.346
+8,64,68.589,8.574,8.557,8.581,0.008,186420099157.259,5829.469,4660.502
+8,128,68.568,8.571,8.566,8.574,0.003,186475770971.239,5831.210,4661.894
+8,256,85.495,10.687,10.678,10.692,0.004,149556838603.974,4676.733,3738.921
+8,512,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,0.000,0.000,0.000,0.000
+8,1024,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,0.000,0.000,0.000,0.000
+16,4,232.455,29.057,29.032,29.103,0.026,55005669698.405,1685.675,1375.142
+16,8,210.498,26.312,26.259,26.382,0.044,60743313232.794,1861.507,1518.583
+16,16,210.305,26.288,26.241,26.340,0.045,60798866350.121,1863.210,1519.972
+16,32,210.296,26.287,26.240,26.342,0.044,60801681137.080,1863.296,1520.042
+16,64,210.318,26.290,26.241,26.335,0.041,60795179708.823,1863.097,1519.879
+16,128,210.384,26.298,26.260,26.340,0.037,60776202880.791,1862.515,1519.405
+16,256,233.192,29.149,29.109,29.186,0.032,54831745252.826,1680.345,1370.794
+16,512,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,0.000,0.000,0.000,0.000
+16,1024,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,0.000,0.000,0.000,0.000
+32,4,304.712,38.089,38.041,38.176,0.051,41962084606.002,1272.832,1049.052
+32,8,303.708,37.963,37.907,38.050,0.059,42100815377.804,1277.040,1052.520
+32,16,303.785,37.973,37.906,38.072,0.067,42090132760.433,1276.716,1052.253
+32,32,303.843,37.980,37.906,38.049,0.060,42082043539.896,1276.471,1052.051
+32,64,303.860,37.983,37.908,38.043,0.056,42079639606.598,1276.398,1051.991
+32,128,305.185,38.148,38.129,38.176,0.018,41897008539.409,1270.858,1047.425
+32,256,341.539,42.692,42.630,42.742,0.031,37437370159.917,1135.584,935.934
+32,512,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,0.000,0.000,0.000,0.000
+32,1024,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,0.000,0.000,0.000,0.000
+64,4,516.118,64.515,61.466,67.680,2.975,24774059945.505,747.597,619.351
+64,8,478.754,59.844,59.794,59.879,0.027,26707510073.481,805.942,667.688
+64,16,480.103,60.013,59.881,60.252,0.127,26632491346.990,803.679,665.812
+64,32,481.069,60.134,60.008,60.218,0.067,26578992766.854,802.064,664.475
+64,64,519.803,64.975,62.349,67.709,2.595,24598422196.744,742.297,614.961
+64,128,679.685,84.961,84.869,85.081,0.071,18812143390.802,567.687,470.304
+64,256,927.678,115.960,115.860,116.151,0.089,13783167898.142,415.929,344.579
+64,512,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,0.000,0.000,0.000,0.000
+64,1024,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,0.000,0.000,0.000,0.000
+# best: { min_ms: 5.511, max_ms: 5.523, sum_ms: 44.120, avg_ms: 5.515, ppwi: 4, wgsize: 128 }
++ cd /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE
++ result=/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/cuda-bude-bm1.out0
+++ tail -n1 /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/cuda-bude-bm1.out0
++ best='# best: { min_ms: 5.461, max_ms: 5.466, sum_ms: 43.705, avg_ms: 5.463, ppwi: 4, wgsize: 128 }'
+++ echo '# best: { min_ms: 5.461, max_ms: 5.466, sum_ms: 43.705, avg_ms: 5.463, ppwi: 4, wgsize: 128 }'
+++ grep -oP '(?<=ppwi: )\d+'
++ ppwi=4
+++ echo '# best: { min_ms: 5.461, max_ms: 5.466, sum_ms: 43.705, avg_ms: 5.463, ppwi: 4, wgsize: 128 }'
+++ grep -oP '(?<=wgsize: )\d+'
++ wgsize=128
++ echo ========================================
 ========================================
-best gflops/s = 8514.362
+++ awk -F, '{print $9}'
++++ grep '^4,128' /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/cuda-bude-bm1.out0
+++ echo 4,128,43.705,5.463,5.461,5.466,0.002,292558294564.924,9514.251,7313.957
++ echo best gflops/s = 9514.251
+best gflops/s = 9514.251
++ echo ========================================
 ========================================

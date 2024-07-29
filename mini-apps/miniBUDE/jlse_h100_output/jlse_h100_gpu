@@ -1,5 +1,3 @@
-Cloning into 'minibude'...
-Updating files:   1% (37/2207)Updating files:   2% (45/2207)Updating files:   3% (67/2207)Updating files:   4% (89/2207)Updating files:   5% (111/2207)Updating files:   6% (133/2207)Updating files:   7% (155/2207)Updating files:   8% (177/2207)Updating files:   9% (199/2207)Updating files:  10% (221/2207)Updating files:  11% (243/2207)Updating files:  12% (265/2207)Updating files:  13% (287/2207)Updating files:  14% (309/2207)Updating files:  14% (326/2207)Updating files:  15% (332/2207)Updating files:  16% (354/2207)Updating files:  17% (376/2207)Updating files:  18% (398/2207)Updating files:  19% (420/2207)Updating files:  20% (442/2207)Updating files:  21% (464/2207)Updating files:  22% (486/2207)Updating files:  23% (508/2207)Updating files:  24% (530/2207)Updating files:  25% (552/2207)Updating files:  26% (574/2207)Updating files:  27% (596/2207)Updating files:  28% (618/2207)Updating files:  29% (641/2207)Updating files:  30% (663/2207)Updating files:  31% (685/2207)Updating files:  32% (707/2207)Updating files:  33% (729/2207)Updating files:  34% (751/2207)Updating files:  35% (773/2207)Updating files:  36% (795/2207)Updating files:  37% (817/2207)Updating files:  38% (839/2207)Updating files:  39% (861/2207)Updating files:  40% (883/2207)Updating files:  41% (905/2207)Updating files:  42% (927/2207)Updating files:  43% (950/2207)Updating files:  44% (972/2207)Updating files:  45% (994/2207)Updating files:  46% (1016/2207)Updating files:  46% (1036/2207)Updating files:  47% (1038/2207)Updating files:  48% (1060/2207)Updating files:  49% (1082/2207)Updating files:  50% (1104/2207)Updating files:  51% (1126/2207)Updating files:  52% (1148/2207)Updating files:  53% (1170/2207)Updating files:  53% (1190/2207)Updating files:  54% (1192/2207)Updating files:  55% (1214/2207)Updating files:  56% (1236/2207)Updating files:  57% (1258/2207)Updating files:  58% (1281/2207)Updating files:  59% (1303/2207)Updating files:  60% (1325/2207)Updating files:  61% (1347/2207)Updating files:  62% (1369/2207)Updating files:  63% (1391/2207)Updating files:  64% (1413/2207)Updating files:  65% (1435/2207)Updating files:  66% (1457/2207)Updating files:  67% (1479/2207)Updating files:  68% (1501/2207)Updating files:  69% (1523/2207)Updating files:  70% (1545/2207)Updating files:  71% (1567/2207)Updating files:  72% (1590/2207)Updating files:  73% (1612/2207)Updating files:  73% (1621/2207)Updating files:  74% (1634/2207)Updating files:  75% (1656/2207)Updating files:  76% (1678/2207)Updating files:  77% (1700/2207)Updating files:  78% (1722/2207)Updating files:  79% (1744/2207)Updating files:  80% (1766/2207)Updating files:  81% (1788/2207)Updating files:  82% (1810/2207)Updating files:  83% (1832/2207)Updating files:  84% (1854/2207)Updating files:  85% (1876/2207)Updating files:  86% (1899/2207)Updating files:  87% (1921/2207)Updating files:  88% (1943/2207)Updating files:  89% (1965/2207)Updating files:  90% (1987/2207)Updating files:  91% (2009/2207)Updating files:  92% (2031/2207)Updating files:  93% (2053/2207)Updating files:  94% (2075/2207)Updating files:  95% (2097/2207)Updating files:  96% (2119/2207)Updating files:  97% (2141/2207)Updating files:  98% (2163/2207)Updating files:  99% (2185/2207)Updating files: 100% (2207/2207)Updating files: 100% (2207/2207), done.
 Currently Loaded Modulefiles:
  1) nvhpc/nvhpc/24.1   2) cuda/12.3.0   3) cmake/3.28.3   4) gcc/12.2.0  
 -- The CXX compiler identification is NVHPC 24.1.0
@@ -20,94 +18,90 @@ Currently Loaded Modulefiles:
 -- CXX_EXTRA_LINKER_FLAGS: 
         Append to linker flags (i.e GCC's `-Wl` or equivalent)
 -- Available models:  omp;ocl;std-indices;std-ranges;hip;cuda;kokkos;sycl;acc;raja;tbb;thrust
--- Selected model  :  acc
+-- Selected model  :  cuda
 -- Supported flags:
 
-   CMAKE_CXX_COMPILER (optional, default=c++): Any CXX compiler that supports OpenACC as per CMake detection
-   TARGET_DEVICE (optional, default=): [PGI/NVHPC only] This sets the `-target` flag, possible values are:
-             gpu       - Globally set the target device to an NVIDIA GPU
-             multicore - Globally set the target device to the host CPU
-         Refer to `nvc++ --help` for the full list
-   CUDA_ARCH (optional, default=): [PGI/NVHPC only] Only applicable if `TARGET_DEVICE` is set to `gpu`.
-         Nvidia architecture in ccXY format, for example, sm_70 becomes cc70, will be passed in via `-gpu=` (e.g `cc70`)
-         Possible values are:
-             cc35  - Compile for compute capability 3.5
-             cc50  - Compile for compute capability 5.0
-             cc60  - Compile for compute capability 6.0
-             cc62  - Compile for compute capability 6.2
-             cc70  - Compile for compute capability 7.0
-             cc72  - Compile for compute capability 7.2
-             cc75  - Compile for compute capability 7.5
-             cc80  - Compile for compute capability 8.0
-             ccall - Compile for all supported compute capabilities
-         Refer to `nvc++ --help` for the full list
-   TARGET_PROCESSOR (optional, default=): [PGI/NVHPC only] This sets the `-tp` (target processor) flag, possible values are:
-             px          - Generic x86 Processor
-             bulldozer   - AMD Bulldozer processor
-             piledriver  - AMD Piledriver processor
-             zen         - AMD Zen architecture (Epyc, Ryzen)
-             zen2        - AMD Zen 2 architecture (Ryzen 2)
-             sandybridge - Intel SandyBridge processor
-             haswell     - Intel Haswell processor
-             knl         - Intel Knights Landing processor
-             skylake     - Intel Skylake Xeon processor
-             host        - Link native version of HPC SDK cpu math library
-             native      - Alias for -tp host
-        Refer to `nvc++ --help` for the full list
+   CMAKE_CXX_COMPILER (optional, default=c++): Any CXX compiler that is supported by CMake detection, this is used for host compilation
+   MEM (optional, default=DEFAULT): Device memory mode:
+        DEFAULT   - allocate host and device memory pointers.
+        MANAGED   - use CUDA Managed Memory.
+        PAGEFAULT - shared memory, only host pointers allocated.
+   CMAKE_CUDA_COMPILER (required): Path to the CUDA nvcc compiler
+   CUDA_ARCH (required): Nvidia architecture, will be passed in via `-arch=` (e.g `sm_70`) for nvcc
+   CUDA_EXTRA_FLAGS (optional, default=): Additional CUDA flags passed to nvcc, this is appended after `CUDA_ARCH`
 
 -- Model-specific flags for this build:
 
    CMAKE_CXX_COMPILER = `/soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/bin/nvc++`
-   TARGET_DEVICE = `gpu`
-   CUDA_ARCH = `cc90`
-   TARGET_PROCESSOR = `native`
+   MEM = `DEFAULT`
+   CMAKE_CUDA_COMPILER = `/soft/compilers/cuda/cuda-12.3.0/bin/nvcc`
+   CUDA_ARCH = `sm_90`
+   CUDA_EXTRA_FLAGS = ``
 
--- Found OpenACC_CXX: -acc -Minfo=accel  
--- Default RELEASE flags are `-O3;-march=native;-target=gpu;-gpu=cc90;-tp=native`, set RELEASE_FLAGS to override (CXX_EXTRA_* flags are not affected)
+CMake Deprecation Warning at src/cuda/model.cmake:28 (cmake_policy):
+  The OLD behavior for policy CMP0104 will be removed from a future version
+  of CMake.
+
+  The cmake-policies(7) manual explains that the OLD behaviors of all
+  policies are deprecated and that a policy should be set to OLD only under
+  specific short-term circumstances.  Projects should be ported to the NEW
+  behavior and not rely on setting a policy to OLD.
+Call Stack (most recent call first):
+  CMakeLists.txt:194 (setup)
+
+
+-- The CUDA compiler identification is NVIDIA 12.3.52
+-- Detecting CUDA compiler ABI info
+-- Detecting CUDA compiler ABI info - done
+-- Check for working CUDA compiler: /soft/compilers/cuda/cuda-12.3.0/bin/nvcc - skipped
+-- Detecting CUDA compile features
+-- Detecting CUDA compile features - done
+-- NVCC flags:  -std=c++17 -forward-unknown-to-host-compiler -arch=sm_90 -use_fast_math -restrict -keep   -DNDEBUG
+-- Default RELEASE flags are `-O3;-march=native`, set RELEASE_FLAGS to override (CXX_EXTRA_* flags are not affected)
 -- PPWI not set, defaulting to 1,2,4,8,16,32,64,128
 -- CXX vendor  : NVHPC (/soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/bin/nvc++)
 -- Platform    : x86_64
 -- PPWI        : 1,2,4,8,16,32,64,128
--- Sources     : src/acc/fasten.hpp;src/main.cpp
--- Libraries   : OpenACC::OpenACC_CXX 
--- CXX Flags   : -fast  -DNDEBUG -O3;-march=native;-target=gpu;-gpu=cc90;-tp=native 
+-- Sources     : src/cuda/fasten.hpp;src/main.cpp
+-- Libraries   :  
+-- CXX Flags   : -fast  -DNDEBUG -O3;-march=native 
     CXX flags derived from (CMake + (Override ? Override : Default) + Extras), where:
         CMake                    = `-fast  -DNDEBUG`
-        Default                  = `-O3;-march=native;-target=gpu;-gpu=cc90;-tp=native`
+        Default                  = `-O3;-march=native`
         Override (RELEASE_FLAGS) = ``
         Extras (CXX_EXTRA_FLAGS) = ``
 -- Link Flags  :  
 -- Linker Flags:   
--- Defs        : ACC;restrict=__restrict
--- Executable  : acc-bude
--- Configuring done (2.8s)
+-- Defs        : CUDA;MEM=DEFAULT
+-- Executable  : cuda-bude
+-- Configuring done (2.9s)
 -- Generating done (0.1s)
 -- Build files have been written to: /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build
 Change Dir: '/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
 
-Run Build Command(s): /soft/buildtools/cmake/3.28.3/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile -j192
+Run Build Command(s): /soft/buildtools/cmake/3.28.3/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile -j1
 /soft/buildtools/cmake/3.28.3/bin/cmake -S/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude -B/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build --check-build-system CMakeFiles/Makefile.cmake 0
 /soft/buildtools/cmake/3.28.3/bin/cmake -E cmake_progress_start /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/CMakeFiles /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build//CMakeFiles/progress.marks
 /usr/bin/gmake  -f CMakeFiles/Makefile2 all
 gmake[1]: Entering directory '/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
 /usr/bin/gmake  -f CMakeFiles/extract_compile_commands.dir/build.make CMakeFiles/extract_compile_commands.dir/depend
-/usr/bin/gmake  -f CMakeFiles/check_git.dir/build.make CMakeFiles/check_git.dir/depend
-gmake[2]: Entering directory '/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
 gmake[2]: Entering directory '/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
 cd /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build && /soft/buildtools/cmake/3.28.3/bin/cmake -E cmake_depends "Unix Makefiles" /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/CMakeFiles/extract_compile_commands.dir/DependInfo.cmake "--color="
-cd /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build && /soft/buildtools/cmake/3.28.3/bin/cmake -E cmake_depends "Unix Makefiles" /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/CMakeFiles/check_git.dir/DependInfo.cmake "--color="
-gmake[2]: Leaving directory '/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
 gmake[2]: Leaving directory '/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
 /usr/bin/gmake  -f CMakeFiles/extract_compile_commands.dir/build.make CMakeFiles/extract_compile_commands.dir/build
-/usr/bin/gmake  -f CMakeFiles/check_git.dir/build.make CMakeFiles/check_git.dir/build
 gmake[2]: Entering directory '/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
 /soft/buildtools/cmake/3.28.3/bin/cmake -DCOMMAND_FILE=/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/compile_commands.json -DPRE_CONFIGURE_FILE="/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/meta_build.h.in" -DPOST_CONFIGURE_FILE="/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/generated/meta_build.h" -DSRC_DIR_PREFIX="/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src" -DOUT_DIR_PREFIX="CMakeFiles/bude.dir" -P /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/cmake/extract_compile_command.cmake
-gmake[2]: Entering directory '/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
 -- Transforming /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/compile_commands.json...
+gmake[2]: Leaving directory '/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+[  0%] Built target extract_compile_commands
+/usr/bin/gmake  -f CMakeFiles/check_git.dir/build.make CMakeFiles/check_git.dir/depend
+gmake[2]: Entering directory '/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+cd /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build && /soft/buildtools/cmake/3.28.3/bin/cmake -E cmake_depends "Unix Makefiles" /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/CMakeFiles/check_git.dir/DependInfo.cmake "--color="
+gmake[2]: Leaving directory '/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+/usr/bin/gmake  -f CMakeFiles/check_git.dir/build.make CMakeFiles/check_git.dir/build
+gmake[2]: Entering directory '/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
 [ 33%] Checking the git repository for changes...
 /soft/buildtools/cmake/3.28.3/bin/cmake -D_BUILD_TIME_CHECK_GIT=TRUE -DGIT_WORKING_DIR=/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude -DGIT_EXECUTABLE=/usr/bin/git -DGIT_STATE_FILE=/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/git-state-hash -DPRE_CONFIGURE_FILE=/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/meta_vcs.h.in -DPOST_CONFIGURE_FILE=/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/generated/meta_vcs.h -DGIT_FAIL_IF_NONZERO_EXIT=FALSE -DGIT_IGNORE_UNTRACKED=FALSE -P /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/cmake/git_watcher.cmake
-gmake[2]: Leaving directory '/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
-[ 33%] Built target extract_compile_commands
 gmake[2]: Leaving directory '/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
 [ 33%] Built target check_git
 /usr/bin/gmake  -f CMakeFiles/bude.dir/build.make CMakeFiles/bude.dir/depend
@@ -116,485 +110,338 @@ cd /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build && /
 gmake[2]: Leaving directory '/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
 /usr/bin/gmake  -f CMakeFiles/bude.dir/build.make CMakeFiles/bude.dir/build
 gmake[2]: Entering directory '/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
-[ 66%] Building CXX object CMakeFiles/bude.dir/src/main.cpp.o
-/soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/bin/nvc++ -DACC -DUSE_PPWI=1,2,4,8,16,32,64,128 -Drestrict=__restrict -I/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/acc -I/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/generated -fast  -DNDEBUG --c++17 -O3 -march=native -target=gpu -gpu=cc90 -tp=native -acc -Minfo=accel -MD -MT CMakeFiles/bude.dir/src/main.cpp.o -MF CMakeFiles/bude.dir/src/main.cpp.o.d -o CMakeFiles/bude.dir/src/main.cpp.o -c /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp
-AccBude<1ul>::fasten(Params const&, unsigned long, unsigned long) const:
-     74, include "fasten.hpp"
-         202, Generating copyin(poses_5[:nposes],protein[:natpro],forcefield[:ntypes]) [if not already present]
-              Generating copyout(energies[:nposes]) [if not already present]
-              Generating copyin(ligand[:natlig],poses_0[:nposes],poses_1[:nposes],poses_2[:nposes],poses_3[:nposes],poses_4[:nposes]) [if not already present]
-         205, Generating present(protein[:natpro])
-              Generating implicit firstprivate(nposes)
-              Generating NVIDIA GPU code
-              29, #pragma acc loop seq
-              57, #pragma acc loop seq
-              68, #pragma acc loop seq
-              77, #pragma acc loop seq
-             101, #pragma acc loop seq
-             133, #pragma acc loop seq
-             216, #pragma acc loop gang, vector(128) /* blockIdx.x threadIdx.x */
-         205, Local memory used for .inl_transform_61140,.inl_p_params_61162,.inl_lpos_y_61156,.inl_lpos_x_61155,.inl_l_params_61149,.inl_l_atom_61147,.inl_etot_61144,.inl_p_atom_61160,.inl_lpos_z_61157
-         216, Generating implicit firstprivate(ntypes,natpro,natlig)
-          29, Complex loop carried dependence of poses_0->,poses_1->,poses_2->,.inl_transform_61140,poses_3->,poses_4->,poses_5->,.inl_etot_61144 prevents parallelization
-          57, Complex loop carried dependence of ligand->x,ligand->y,ligand->z,forcefield->radius,forcefield->hphb,forcefield->elsc,.inl_lpos_x_61155,.inl_lpos_y_61156,.inl_lpos_z_61157,protein->x,protein->y,protein->z prevents parallelization
-              Loop carried reuse of .inl_etot_61144 prevents parallelization
-              Complex loop carried dependence of .inl_etot_61144 prevents parallelization
-          68, Loop is parallelizable
-          77, Complex loop carried dependence of protein->x,protein->y,protein->z,forcefield->radius,forcefield->hphb,forcefield->elsc prevents parallelization
-              Loop carried dependence of .inl_etot_61144 prevents parallelization
-              Loop carried backward dependence of .inl_etot_61144 prevents vectorization
-              Complex loop carried dependence of .inl_etot_61144 prevents parallelization
-         101, Loop is parallelizable
-         133, Complex loop carried dependence of energies->,.inl_etot_61144 prevents parallelization
-AccBude<2ul>::enumerateDevices[abi:cxx11]():
-     74, include "fasten.hpp"
-AccBude<2ul>::fasten(Params const&, unsigned long, unsigned long) const:
-     74, include "fasten.hpp"
-         202, Generating copyin(poses_5[:nposes],protein[:natpro],forcefield[:ntypes]) [if not already present]
-              Generating copyout(energies[:nposes]) [if not already present]
-              Generating copyin(ligand[:natlig],poses_0[:nposes],poses_1[:nposes],poses_2[:nposes],poses_3[:nposes],poses_4[:nposes]) [if not already present]
-         205, Generating present(protein[:natpro])
-              Generating implicit firstprivate(nposes)
-              Generating NVIDIA GPU code
-              29, #pragma acc loop seq
-              57, #pragma acc loop seq
-              68, #pragma acc loop seq
-              77, #pragma acc loop seq
-             101, #pragma acc loop seq
-             133, #pragma acc loop seq
-             216, #pragma acc loop gang, vector(128) /* blockIdx.x threadIdx.x */
-         205, Local memory used for .inl_transform_62102,.inl_p_params_62124,.inl_lpos_y_62118,.inl_lpos_x_62117,.inl_l_params_62111,.inl_l_atom_62109,.inl_etot_62106,.inl_p_atom_62122,.inl_lpos_z_62119
-         216, Generating implicit firstprivate(ntypes,natpro,natlig)
-          29, Complex loop carried dependence of poses_0->,poses_1->,poses_2->,.inl_transform_62102,poses_3->,poses_4->,poses_5->,.inl_etot_62106 prevents parallelization
-          57, Complex loop carried dependence of ligand->x,ligand->y,ligand->z,forcefield->radius,forcefield->hphb,forcefield->elsc,.inl_lpos_x_62117,.inl_lpos_y_62118,.inl_lpos_z_62119,protein->x,protein->y,protein->z prevents parallelization
-              Loop carried reuse of .inl_etot_62106 prevents parallelization
-              Complex loop carried dependence of .inl_etot_62106 prevents parallelization
-          68, Loop is parallelizable
-          77, Complex loop carried dependence of protein->x,protein->y,protein->z,forcefield->radius,forcefield->hphb,forcefield->elsc prevents parallelization
-              Loop carried dependence of .inl_etot_62106 prevents parallelization
-              Loop carried backward dependence of .inl_etot_62106 prevents vectorization
-              Complex loop carried dependence of .inl_etot_62106 prevents parallelization
-         101, Loop is parallelizable
-         133, Loop carried reuse of energies-> prevents parallelization
-              Complex loop carried dependence of energies->,.inl_etot_62106 prevents parallelization
-AccBude<4ul>::enumerateDevices[abi:cxx11]():
-     74, include "fasten.hpp"
-AccBude<4ul>::fasten(Params const&, unsigned long, unsigned long) const:
-     74, include "fasten.hpp"
-         202, Generating copyin(poses_5[:nposes],protein[:natpro],forcefield[:ntypes]) [if not already present]
-              Generating copyout(energies[:nposes]) [if not already present]
-              Generating copyin(ligand[:natlig],poses_0[:nposes],poses_1[:nposes],poses_2[:nposes],poses_3[:nposes],poses_4[:nposes]) [if not already present]
-         205, Generating present(protein[:natpro])
-              Generating implicit firstprivate(nposes)
-              Generating NVIDIA GPU code
-              29, #pragma acc loop seq
-              57, #pragma acc loop seq
-              68, #pragma acc loop seq
-              77, #pragma acc loop seq
-             101, #pragma acc loop seq
-             133, #pragma acc loop seq
-             216, #pragma acc loop gang, vector(128) /* blockIdx.x threadIdx.x */
-         205, Local memory used for .inl_transform_63064,.inl_p_params_63086,.inl_lpos_y_63080,.inl_lpos_x_63079,.inl_l_params_63073,.inl_l_atom_63071,.inl_etot_63068,.inl_p_atom_63084,.inl_lpos_z_63081
-         216, Generating implicit firstprivate(ntypes,natpro,natlig)
-          29, Complex loop carried dependence of poses_0->,poses_1->,poses_2->,.inl_transform_63064,poses_3->,poses_4->,poses_5->,.inl_etot_63068 prevents parallelization
-          57, Complex loop carried dependence of ligand->x,ligand->y,ligand->z,forcefield->radius,forcefield->hphb,forcefield->elsc,.inl_lpos_x_63079,.inl_lpos_y_63080,.inl_lpos_z_63081,protein->x,protein->y,protein->z prevents parallelization
-              Loop carried reuse of .inl_etot_63068 prevents parallelization
-              Complex loop carried dependence of .inl_etot_63068 prevents parallelization
-          68, Loop is parallelizable
-          77, Complex loop carried dependence of protein->x,protein->y,protein->z,forcefield->radius,forcefield->hphb,forcefield->elsc prevents parallelization
-              Loop carried dependence of .inl_etot_63068 prevents parallelization
-              Loop carried backward dependence of .inl_etot_63068 prevents vectorization
-              Complex loop carried dependence of .inl_etot_63068 prevents parallelization
-         101, Loop is parallelizable
-         133, Loop carried reuse of energies-> prevents parallelization
-              Complex loop carried dependence of energies->,.inl_etot_63068 prevents parallelization
-AccBude<8ul>::enumerateDevices[abi:cxx11]():
-     74, include "fasten.hpp"
-AccBude<8ul>::fasten(Params const&, unsigned long, unsigned long) const:
-     74, include "fasten.hpp"
-         202, Generating copyin(poses_5[:nposes],protein[:natpro],forcefield[:ntypes]) [if not already present]
-              Generating copyout(energies[:nposes]) [if not already present]
-              Generating copyin(ligand[:natlig],poses_0[:nposes],poses_1[:nposes],poses_2[:nposes],poses_3[:nposes],poses_4[:nposes]) [if not already present]
-         205, Generating present(protein[:natpro])
-              Generating implicit firstprivate(nposes)
-              Generating NVIDIA GPU code
-              29, #pragma acc loop seq
-              57, #pragma acc loop seq
-              68, #pragma acc loop seq
-              77, #pragma acc loop seq
-             101, #pragma acc loop seq
-             133, #pragma acc loop seq
-             216, #pragma acc loop gang, vector(128) /* blockIdx.x threadIdx.x */
-         205, Local memory used for .inl_transform_64026,.inl_p_params_64048,.inl_lpos_y_64042,.inl_lpos_x_64041,.inl_l_params_64035,.inl_l_atom_64033,.inl_etot_64030,.inl_p_atom_64046,.inl_lpos_z_64043
-         216, Generating implicit firstprivate(ntypes,natpro,natlig)
-          29, Complex loop carried dependence of poses_0->,poses_1->,poses_2->,.inl_transform_64026,poses_3->,poses_4->,poses_5->,.inl_etot_64030 prevents parallelization
-          57, Complex loop carried dependence of ligand->x,ligand->y,ligand->z,forcefield->radius,forcefield->hphb,forcefield->elsc,.inl_lpos_x_64041,.inl_lpos_y_64042,.inl_lpos_z_64043,protein->x,protein->y,protein->z prevents parallelization
-              Loop carried reuse of .inl_etot_64030 prevents parallelization
-              Complex loop carried dependence of .inl_etot_64030 prevents parallelization
-          68, Loop is parallelizable
-          77, Complex loop carried dependence of protein->x,protein->y,protein->z,forcefield->radius,forcefield->hphb,forcefield->elsc prevents parallelization
-              Loop carried dependence of .inl_etot_64030 prevents parallelization
-              Loop carried backward dependence of .inl_etot_64030 prevents vectorization
-              Complex loop carried dependence of .inl_etot_64030 prevents parallelization
-         101, Loop is parallelizable
-         133, Loop carried reuse of energies-> prevents parallelization
-              Complex loop carried dependence of energies->,.inl_etot_64030 prevents parallelization
-AccBude<16ul>::enumerateDevices[abi:cxx11]():
-     74, include "fasten.hpp"
-AccBude<16ul>::fasten(Params const&, unsigned long, unsigned long) const:
-     74, include "fasten.hpp"
-         202, Generating copyin(poses_5[:nposes],protein[:natpro],forcefield[:ntypes]) [if not already present]
-              Generating copyout(energies[:nposes]) [if not already present]
-              Generating copyin(ligand[:natlig],poses_0[:nposes],poses_1[:nposes],poses_2[:nposes],poses_3[:nposes],poses_4[:nposes]) [if not already present]
-         205, Generating present(protein[:natpro])
-              Generating implicit firstprivate(nposes)
-              Generating NVIDIA GPU code
-              29, #pragma acc loop seq
-              57, #pragma acc loop seq
-              68, #pragma acc loop vector(32) /* threadIdx.x */
-              77, #pragma acc loop seq
-             101, #pragma acc loop vector(32) /* threadIdx.x */
-             133, #pragma acc loop seq
-             216, #pragma acc loop gang /* blockIdx.x */
-         205, CUDA shared memory used for .inl_transform_64988,.inl_p_params_65010,.inl_lpos_y_65004,.inl_lpos_x_65003,.inl_l_params_64997,.inl_l_atom_64995,.inl_etot_64992,.inl_p_atom_65008,.inl_lpos_z_65005
-         216, Generating implicit firstprivate(ntypes,natpro,natlig)
-          29, Complex loop carried dependence of poses_0->,poses_1->,poses_2->,.inl_transform_64988,poses_3->,poses_4->,poses_5->,.inl_etot_64992 prevents parallelization
-          57, Complex loop carried dependence of ligand->x,ligand->y,ligand->z,forcefield->radius,forcefield->hphb,forcefield->elsc,.inl_lpos_x_65003,.inl_lpos_y_65004,.inl_lpos_z_65005,protein->x,protein->y,protein->z prevents parallelization
-              Loop carried reuse of .inl_etot_64992 prevents parallelization
-              Complex loop carried dependence of .inl_etot_64992 prevents parallelization
-          68, Loop is parallelizable
-          77, Complex loop carried dependence of protein->x,protein->y,protein->z,forcefield->radius,forcefield->hphb,forcefield->elsc prevents parallelization
-              Loop carried dependence of .inl_etot_64992 prevents parallelization
-              Loop carried backward dependence of .inl_etot_64992 prevents vectorization
-              Complex loop carried dependence of .inl_etot_64992 prevents parallelization
-         101, Loop is parallelizable
-         133, Loop carried reuse of energies-> prevents parallelization
-              Complex loop carried dependence of energies->,.inl_etot_64992 prevents parallelization
-AccBude<32ul>::enumerateDevices[abi:cxx11]():
-     74, include "fasten.hpp"
-AccBude<32ul>::fasten(Params const&, unsigned long, unsigned long) const:
-     74, include "fasten.hpp"
-         202, Generating copyin(poses_5[:nposes],protein[:natpro],forcefield[:ntypes]) [if not already present]
-              Generating copyout(energies[:nposes]) [if not already present]
-              Generating copyin(ligand[:natlig],poses_0[:nposes],poses_1[:nposes],poses_2[:nposes],poses_3[:nposes],poses_4[:nposes]) [if not already present]
-         205, Generating present(protein[:natpro])
-              Generating implicit firstprivate(nposes)
-              Generating NVIDIA GPU code
-              29, #pragma acc loop seq
-              57, #pragma acc loop seq
-              68, #pragma acc loop vector(32) /* threadIdx.x */
-              77, #pragma acc loop seq
-             101, #pragma acc loop vector(32) /* threadIdx.x */
-             133, #pragma acc loop seq
-             216, #pragma acc loop gang /* blockIdx.x */
-         205, CUDA shared memory used for .inl_transform_65950,.inl_p_params_65972,.inl_lpos_y_65966,.inl_lpos_x_65965,.inl_l_params_65959,.inl_l_atom_65957,.inl_etot_65954,.inl_p_atom_65970,.inl_lpos_z_65967
-         216, Generating implicit firstprivate(ntypes,natpro,natlig)
-          29, Complex loop carried dependence of poses_0->,poses_1->,poses_2->,.inl_transform_65950,poses_3->,poses_4->,poses_5->,.inl_etot_65954 prevents parallelization
-          57, Complex loop carried dependence of ligand->x,ligand->y,ligand->z,forcefield->radius,forcefield->hphb,forcefield->elsc,.inl_lpos_x_65965,.inl_lpos_y_65966,.inl_lpos_z_65967,protein->x,protein->y,protein->z prevents parallelization
-              Loop carried reuse of .inl_etot_65954 prevents parallelization
-              Complex loop carried dependence of .inl_etot_65954 prevents parallelization
-          68, Loop is parallelizable
-          77, Complex loop carried dependence of protein->x,protein->y,protein->z,forcefield->radius,forcefield->hphb,forcefield->elsc prevents parallelization
-              Loop carried dependence of .inl_etot_65954 prevents parallelization
-              Loop carried backward dependence of .inl_etot_65954 prevents vectorization
-              Complex loop carried dependence of .inl_etot_65954 prevents parallelization
-         101, Loop is parallelizable
-         133, Loop carried reuse of energies-> prevents parallelization
-              Complex loop carried dependence of energies->,.inl_etot_65954 prevents parallelization
-AccBude<64ul>::enumerateDevices[abi:cxx11]():
-     74, include "fasten.hpp"
-AccBude<64ul>::fasten(Params const&, unsigned long, unsigned long) const:
-     74, include "fasten.hpp"
-         202, Generating copyin(protein[:natpro],poses_5[:nposes],forcefield[:ntypes]) [if not already present]
-              Generating copyout(energies[:nposes]) [if not already present]
-              Generating copyin(ligand[:natlig],poses_0[:nposes],poses_1[:nposes],poses_2[:nposes],poses_3[:nposes],poses_4[:nposes]) [if not already present]
-         205, Generating present(protein[:natpro])
-              Generating implicit firstprivate(nposes)
-              Generating NVIDIA GPU code
-              29, #pragma acc loop seq
-              57, #pragma acc loop seq
-              68, #pragma acc loop vector(64) /* threadIdx.x */
-              77, #pragma acc loop seq
-             101, #pragma acc loop vector(64) /* threadIdx.x */
-             133, #pragma acc loop seq
-             216, #pragma acc loop gang /* blockIdx.x */
-         205, CUDA shared memory used for .inl_lpos_y_66928,.inl_lpos_x_66927,.inl_l_params_66921,.inl_l_atom_66919,.inl_etot_66916,.inl_p_params_66934,.inl_p_atom_66932,.inl_lpos_z_66929
-         216, Generating implicit firstprivate(ntypes,natpro,natlig)
-          29, Complex loop carried dependence of poses_0->,poses_1->,poses_2->,.inl_transform_66912,poses_3->,poses_4->,poses_5->,.inl_etot_66916 prevents parallelization
-          57, Complex loop carried dependence of ligand->x,ligand->y,ligand->z,forcefield->radius,forcefield->hphb,forcefield->elsc,.inl_lpos_x_66927,.inl_lpos_y_66928,.inl_lpos_z_66929,protein->x,protein->y,protein->z prevents parallelization
-              Loop carried reuse of .inl_etot_66916 prevents parallelization
-              Complex loop carried dependence of .inl_etot_66916 prevents parallelization
-          68, Loop is parallelizable
-          77, Complex loop carried dependence of protein->x,protein->y,protein->z,forcefield->radius,forcefield->hphb,forcefield->elsc prevents parallelization
-              Loop carried dependence of .inl_etot_66916 prevents parallelization
-              Loop carried backward dependence of .inl_etot_66916 prevents vectorization
-              Complex loop carried dependence of .inl_etot_66916 prevents parallelization
-         101, Loop is parallelizable
-         133, Loop carried reuse of energies-> prevents parallelization
-              Complex loop carried dependence of energies->,.inl_etot_66916 prevents parallelization
-AccBude<128ul>::enumerateDevices[abi:cxx11]():
-     74, include "fasten.hpp"
-AccBude<128ul>::fasten(Params const&, unsigned long, unsigned long) const:
-     74, include "fasten.hpp"
-         202, Generating copyin(protein[:natpro],poses_5[:nposes],forcefield[:ntypes]) [if not already present]
-              Generating copyout(energies[:nposes]) [if not already present]
-              Generating copyin(ligand[:natlig],poses_0[:nposes],poses_1[:nposes],poses_2[:nposes],poses_3[:nposes],poses_4[:nposes]) [if not already present]
-         205, Generating present(protein[:natpro])
-              Generating implicit firstprivate(nposes)
-              Generating NVIDIA GPU code
-              29, #pragma acc loop seq
-              57, #pragma acc loop seq
-              68, #pragma acc loop vector(128) /* threadIdx.x */
-              77, #pragma acc loop seq
-             101, #pragma acc loop vector(128) /* threadIdx.x */
-             133, #pragma acc loop seq
-             216, #pragma acc loop gang /* blockIdx.x */
-         205, CUDA shared memory used for .inl_lpos_y_67890,.inl_lpos_x_67889,.inl_l_params_67883,.inl_l_atom_67881,.inl_etot_67878,.inl_p_params_67896,.inl_p_atom_67894,.inl_lpos_z_67891
-         216, Generating implicit firstprivate(ntypes,natpro,natlig)
-          29, Complex loop carried dependence of poses_0->,poses_1->,poses_2->,.inl_transform_67874,poses_3->,poses_4->,poses_5->,.inl_etot_67878 prevents parallelization
-          57, Complex loop carried dependence of ligand->x,ligand->y,ligand->z,forcefield->radius,forcefield->hphb,forcefield->elsc,.inl_lpos_x_67889,.inl_lpos_y_67890,.inl_lpos_z_67891,protein->x,protein->y,protein->z prevents parallelization
-              Loop carried reuse of .inl_etot_67878 prevents parallelization
-              Complex loop carried dependence of .inl_etot_67878 prevents parallelization
-          68, Loop is parallelizable
-          77, Complex loop carried dependence of protein->x,protein->y,protein->z,forcefield->radius,forcefield->hphb,forcefield->elsc prevents parallelization
-              Loop carried dependence of .inl_etot_67878 prevents parallelization
-              Loop carried backward dependence of .inl_etot_67878 prevents vectorization
-              Complex loop carried dependence of .inl_etot_67878 prevents parallelization
-         101, Loop is parallelizable
-         133, Loop carried reuse of energies-> prevents parallelization
-              Complex loop carried dependence of energies->,.inl_etot_67878 prevents parallelization
-std::unique_ptr<Params, std::default_delete<Params>>::~unique_ptr():
-     74, include "fasten.hpp"
-std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>>::basic_string(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>> const&):
-     74, include "fasten.hpp"
-std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>>::replace(unsigned long, unsigned long, char const*, unsigned long):
-     74, include "fasten.hpp"
-std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>>::find(char const*, unsigned long, unsigned long) const:
-     74, include "fasten.hpp"
-__gnu_cxx::char_traits<char>::compare(char const*, char const*, unsigned long):
-     74, include "fasten.hpp"
-__gnu_cxx::char_traits<char>::length(char const*):
-     74, include "fasten.hpp"
-__gnu_cxx::char_traits<char>::find(char const*, unsigned long, char const&):
-     74, include "fasten.hpp"
-std::abs(float):
-      1, include "cmath"
-          17, include "cmath"
-               47, include "std_abs.h"
-                    75, Generating implicit acc routine seq
-                        Generating acc routine seq
-                        Generating NVIDIA GPU code
-std::cos(float):
-      1, include "cmath"
-          17, include "cmath"
-              185, Generating implicit acc routine seq
-                   Generating acc routine seq
-                   Generating NVIDIA GPU code
-std::sin(float):
-      1, include "cmath"
-          17, include "cmath"
-              426, Generating implicit acc routine seq
-                   Generating acc routine seq
-                   Generating NVIDIA GPU code
-std::sqrt(float):
-      1, include "cmath"
-          17, include "cmath"
-              464, Generating implicit acc routine seq
-                   Generating acc routine seq
-                   Generating NVIDIA GPU code
-std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>> std::operator+<char, std::char_traits<char>, std::allocator<char>>(std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>>&&, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>>&&):
-     74, include "fasten.hpp"
-std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>> std::operator+<char, std::char_traits<char>, std::allocator<char>>(char const*, std::__cxx11::basic_string<char, std::char_traits<char>, std::allocator<char>>&&):
-     74, include "fasten.hpp"
-std::tuple_element<0ul, std::tuple<Params, std::vector<unsigned long, std::allocator<unsigned long>>, std::vector<unsigned long, std::allocator<unsigned long>>>>::type&& std::get<0ul, Params, std::vector<unsigned long, std::allocator<unsigned long>>, std::vector<unsigned long, std::allocator<unsigned long>>>(std::tuple<Params, std::vector<unsigned long, std::allocator<unsigned long>>, std::vector<unsigned long, std::allocator<unsigned long>>>&&):
-     74, include "fasten.hpp"
-std::tuple_element<1ul, std::tuple<Params, std::vector<unsigned long, std::allocator<unsigned long>>, std::vector<unsigned long, std::allocator<unsigned long>>>>::type&& std::get<1ul, Params, std::vector<unsigned long, std::allocator<unsigned long>>, std::vector<unsigned long, std::allocator<unsigned long>>>(std::tuple<Params, std::vector<unsigned long, std::allocator<unsigned long>>, std::vector<unsigned long, std::allocator<unsigned long>>>&&):
-     74, include "fasten.hpp"
-std::tuple_element<2ul, std::tuple<Params, std::vector<unsigned long, std::allocator<unsigned long>>, std::vector<unsigned long, std::allocator<unsigned long>>>>::type&& std::get<2ul, Params, std::vector<unsigned long, std::allocator<unsigned long>>, std::vector<unsigned long, std::allocator<unsigned long>>>(std::tuple<Params, std::vector<unsigned long, std::allocator<unsigned long>>, std::vector<unsigned long, std::allocator<unsigned long>>>&&):
-     74, include "fasten.hpp"
-std::basic_ostream<char, std::char_traits<char>>& std::operator<<<char, std::char_traits<char>>(std::basic_ostream<char, std::char_traits<char>>&, std::_Put_time<char>):
-     74, include "fasten.hpp"
-_ZSt10__fill_n_aIPfmfEN9__gnu_cxx11__enable_ifIXsrSt11__is_scalarIT1_E7__valueET_E6__typeES6_T0_RKS4_:
-      1, include "cmath"
-          17, include "cmath"
-double std::accumulate<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double>>>, double>(__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double>>>, __gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double>>>, double):
-     74, include "fasten.hpp"
-double std::accumulate<__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double>>>, double, SummaryStats<double>::SummaryStats(std::vector<double, std::allocator<double>> const&)::'lambda'(auto, auto)>(__gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double>>>, __gnu_cxx::__normal_iterator<double const*, std::vector<double, std::allocator<double>>>, double, SummaryStats<double>::SummaryStats(std::vector<double, std::allocator<double>> const&)::'lambda'(auto, auto)):
-     74, include "fasten.hpp"
-_ZSt10__fill_n_aIP4AtommS0_EN9__gnu_cxx11__enable_ifIXntsrSt11__is_scalarIT1_E7__valueET_E6__typeES7_T0_RKS5_:
-      1, include "cmath"
-          17, include "cmath"
-_ZSt10__fill_n_aIP8FFParamsmS0_EN9__gnu_cxx11__enable_ifIXntsrSt11__is_scalarIT1_E7__valueET_E6__typeES7_T0_RKS5_:
-      1, include "cmath"
-          17, include "cmath"
-_ZSt8__fill_aIPfdEN9__gnu_cxx11__enable_ifIXsrSt11__is_scalarIT0_E7__valueEvE6__typeET_S8_RKS4_:
-      1, include "cmath"
-          17, include "cmath"
-__gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float>>> std::__copy_move_a2<false, float*, __gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float>>>>(float*, float*, __gnu_cxx::__normal_iterator<float*, std::vector<float, std::allocator<float>>>):
-      1, include "cmath"
-          17, include "cmath"
-__gnu_cxx::__normal_iterator<Result*, std::vector<Result, std::allocator<Result>>> std::__min_element<__gnu_cxx::__normal_iterator<Result*, std::vector<Result, std::allocator<Result>>>, __gnu_cxx::__ops::_Iter_comp_iter<bool run<1ul, 2ul, 4ul, 8ul, 16ul, 32ul, 64ul, 128ul>(Params const&, std::vector<unsigned long, std::allocator<unsigned long>> const&, std::vector<unsigned long, std::allocator<unsigned long>> const&)::'lambda15'(Result const&, Result const&)>>(__gnu_cxx::__normal_iterator<Result*, std::vector<Result, std::allocator<Result>>>, __gnu_cxx::__normal_iterator<Result*, std::vector<Result, std::allocator<Result>>>, __gnu_cxx::__ops::_Iter_comp_iter<bool run<1ul, 2ul, 4ul, 8ul, 16ul, 32ul, 64ul, 128ul>(Params const&, std::vector<unsigned long, std::allocator<unsigned long>> const&, std::vector<unsigned long, std::allocator<unsigned long>> const&)::'lambda15'(Result const&, Result const&)>):
-      1, include "cmath"
-          17, include "cmath"
-__gnu_cxx::__normal_iterator<Result*, std::vector<Result, std::allocator<Result>>> std::__find_if<__gnu_cxx::__normal_iterator<Result*, std::vector<Result, std::allocator<Result>>>, __gnu_cxx::__ops::_Iter_negate<bool run<1ul, 2ul, 4ul, 8ul, 16ul, 32ul, 64ul, 128ul>(Params const&, std::vector<unsigned long, std::allocator<unsigned long>> const&, std::vector<unsigned long, std::allocator<unsigned long>> const&)::'lambda16'(auto&)>>(__gnu_cxx::__normal_iterator<Result*, std::vector<Result, std::allocator<Result>>>, __gnu_cxx::__normal_iterator<Result*, std::vector<Result, std::allocator<Result>>>, __gnu_cxx::__ops::_Iter_negate<bool run<1ul, 2ul, 4ul, 8ul, 16ul, 32ul, 64ul, 128ul>(Params const&, std::vector<unsigned long, std::allocator<unsigned long>> const&, std::vector<unsigned long, std::allocator<unsigned long>> const&)::'lambda16'(auto&)>, std::random_access_iterator_tag):
-      1, include "cmath"
-          17, include "cmath"
-[100%] Linking CXX executable acc-bude
+[ 66%] Building CUDA object CMakeFiles/bude.dir/src/main.cpp.o
+/soft/compilers/cuda/cuda-12.3.0/bin/nvcc -forward-unknown-to-host-compiler -DCUDA -DMEM=DEFAULT -DUSE_PPWI="1\\,2\\,4\\,8\\,16\\,32\\,64\\,128" --options-file CMakeFiles/bude.dir/includes_CUDA.rsp -std=c++17 -forward-unknown-to-host-compiler -arch=sm_90 -use_fast_math -restrict -keep   -DNDEBUG -std=c++17 -O3 -march=native -MD -MT CMakeFiles/bude.dir/src/main.cpp.o -MF CMakeFiles/bude.dir/src/main.cpp.o.d -x cu -c /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp -o CMakeFiles/bude.dir/src/main.cpp.o
+[100%] Linking CUDA executable cuda-bude
 /soft/buildtools/cmake/3.28.3/bin/cmake -E cmake_link_script CMakeFiles/bude.dir/link.txt --verbose=1
-/soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/bin/nvc++ -fast  -DNDEBUG -acc -Minfo=accel CMakeFiles/bude.dir/src/main.cpp.o -o acc-bude 
-/usr/bin/ld: warning: /tmp/pgcudafatAJZoouemg8SN.o: missing .note.GNU-stack section implies executable stack
-/usr/bin/ld: NOTE: This behaviour is deprecated and will be removed in a future version of the linker
+/soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin/g++ @CMakeFiles/bude.dir/objects1.rsp -o cuda-bude @CMakeFiles/bude.dir/linkLibs.rsp -L"/soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/lib/stubs" -L"/soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/lib"
 gmake[2]: Leaving directory '/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
 [100%] Built target bude
 gmake[1]: Leaving directory '/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
 /soft/buildtools/cmake/3.28.3/bin/cmake -E cmake_progress_start /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/CMakeFiles 0
 
-	linux-vdso.so.1 (0x00007ffe1e7d9000)
-	libacchost.so => /soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/lib/libacchost.so (0x00007f975e200000)
-	libaccdevaux.so => /soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/lib/libaccdevaux.so (0x00007f975de00000)
-	libaccdevice.so => /soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/lib/libaccdevice.so (0x00007f975da00000)
-	libdl.so.2 => /lib64/libdl.so.2 (0x00007f975e544000)
-	libcudadevice.so => /soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/lib/libcudadevice.so (0x00007f975d600000)
-	libatomic.so.1 => /soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib64/libatomic.so.1 (0x00007f975d200000)
-	libnvhpcatm.so => /soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/lib/libnvhpcatm.so (0x00007f975ce00000)
-	libstdc++.so.6 => /soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib64/libstdc++.so.6 (0x00007f975c800000)
-	libnvomp.so => /soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/lib/libnvomp.so (0x00007f975b600000)
-	libpthread.so.0 => /lib64/libpthread.so.0 (0x00007f975e51e000)
-	libnvcpumath.so => /soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/lib/libnvcpumath.so (0x00007f975b000000)
-	libnvc.so => /soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/lib/libnvc.so (0x00007f975ac00000)
-	libc.so.6 => /lib64/libc.so.6 (0x00007f975d409000)
-	libgcc_s.so.1 => /soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib64/libgcc_s.so.1 (0x00007f975a800000)
-	libm.so.6 => /lib64/libm.so.6 (0x00007f975e0b4000)
-	/lib64/ld-linux-x86-64.so.2 (0x00007f975e55f000)
-[hopper01:60681] MCW rank 0 bound to socket 0[core 0[hwt 0-1]], socket 0[core 1[hwt 0-1]], socket 0[core 2[hwt 0-1]], socket 0[core 3[hwt 0-1]], socket 0[core 4[hwt 0-1]], socket 0[core 5[hwt 0-1]], socket 0[core 6[hwt 0-1]], socket 0[core 7[hwt 0-1]], socket 0[core 8[hwt 0-1]], socket 0[core 9[hwt 0-1]], socket 0[core 10[hwt 0-1]], socket 0[core 11[hwt 0-1]], socket 0[core 12[hwt 0-1]], socket 0[core 13[hwt 0-1]], socket 0[core 14[hwt 0-1]], socket 0[core 15[hwt 0-1]], socket 0[core 16[hwt 0-1]], socket 0[core 17[hwt 0-1]], socket 0[core 18[hwt 0-1]], socket 0[core 19[hwt 0-1]], socket 0[core 20[hwt 0-1]], socket 0[core 21[hwt 0-1]], socket 0[core 22[hwt 0-1]], socket 0[core 23[hwt 0-1]]: [BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/../../../../../../../../../../../../../../../../../../../../../../../..][../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../..]
+	linux-vdso.so.1 (0x00007ffd36311000)
+	librt.so.1 => /lib64/librt.so.1 (0x00007fe7bd8cf000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x00007fe7bd8ab000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x00007fe7bd8a6000)
+	libstdc++.so.6 => /soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib64/libstdc++.so.6 (0x00007fe7bd400000)
+	libm.so.6 => /lib64/libm.so.6 (0x00007fe7bd2b4000)
+	libgcc_s.so.1 => /soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib64/libgcc_s.so.1 (0x00007fe7bd000000)
+	libc.so.6 => /lib64/libc.so.6 (0x00007fe7bce09000)
+	/lib64/ld-linux-x86-64.so.2 (0x00007fe7bd8ed000)
++ cd /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude
++ mkdir -p results
++ BENCHMARK_EXE=/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/cuda-bude
++ DECK=/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/data/bm1
++ cd /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE
++ mpirun -n 1 -report-bindings --map-by node:PE=24 /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/../gpu_tile_compact.sh sh -c '/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/cuda-bude --deck /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/data/bm1 --wgsize 4,8,16,32,64,128,256,512,1024 --ppwi 1,2,4,8,16,32,64 --csv | tee /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/cuda-bude-bm1.out${RANK}'
+[hopper01:16904] MCW rank 0 bound to socket 0[core 0[hwt 0-1]], socket 0[core 1[hwt 0-1]], socket 0[core 2[hwt 0-1]], socket 0[core 3[hwt 0-1]], socket 0[core 4[hwt 0-1]], socket 0[core 5[hwt 0-1]], socket 0[core 6[hwt 0-1]], socket 0[core 7[hwt 0-1]], socket 0[core 8[hwt 0-1]], socket 0[core 9[hwt 0-1]], socket 0[core 10[hwt 0-1]], socket 0[core 11[hwt 0-1]], socket 0[core 12[hwt 0-1]], socket 0[core 13[hwt 0-1]], socket 0[core 14[hwt 0-1]], socket 0[core 15[hwt 0-1]], socket 0[core 16[hwt 0-1]], socket 0[core 17[hwt 0-1]], socket 0[core 18[hwt 0-1]], socket 0[core 19[hwt 0-1]], socket 0[core 20[hwt 0-1]], socket 0[core 21[hwt 0-1]], socket 0[core 22[hwt 0-1]], socket 0[core 23[hwt 0-1]]: [BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/../../../../../../../../../../../../../../../../../../../../../../../..][../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../..]
+# Device and kernel cc: sm_90
 # (ppwi=1,wgsize=4,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=1,wgsize=8,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=1,wgsize=16,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=1,wgsize=32,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=1,wgsize=64,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=1,wgsize=128,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=1,wgsize=256,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=1,wgsize=512,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=1,wgsize=1024,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=2,wgsize=4,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=2,wgsize=8,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=2,wgsize=16,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=2,wgsize=32,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=2,wgsize=64,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=2,wgsize=128,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=2,wgsize=256,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=2,wgsize=512,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=2,wgsize=1024,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=4,wgsize=4,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=4,wgsize=8,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=4,wgsize=16,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=4,wgsize=32,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=4,wgsize=64,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=4,wgsize=128,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=4,wgsize=256,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=4,wgsize=512,valid=1)
-# (ppwi=4,wgsize=1024,valid=1)
+# Device and kernel cc: sm_90
+# Verification failed for ppwi=4, wgsize=1024; difference exceeded tolerance (0.025%)
+# Bad energies (failed/total=58671/65536, showing first 8): 
+# index,actual,expected,difference_%
+# 0,0,865.523,100
+# 1,0,25.0715,100
+# 2,0,368.434,100
+# 3,0,14.6651,100
+# 4,0,574.987,100
+# 5,0,707.354,100
+# 6,0,33.947,100
+# 7,0,135.588,100
+# (ppwi=4,wgsize=1024,valid=0)
+# Device and kernel cc: sm_90
 # (ppwi=8,wgsize=4,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=8,wgsize=8,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=8,wgsize=16,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=8,wgsize=32,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=8,wgsize=64,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=8,wgsize=128,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=8,wgsize=256,valid=1)
-# (ppwi=8,wgsize=512,valid=1)
-# (ppwi=8,wgsize=1024,valid=1)
+# Device and kernel cc: sm_90
+# Verification failed for ppwi=8, wgsize=512; difference exceeded tolerance (0.025%)
+# Bad energies (failed/total=58671/65536, showing first 8): 
+# index,actual,expected,difference_%
+# 0,0,865.523,100
+# 1,0,25.0715,100
+# 2,0,368.434,100
+# 3,0,14.6651,100
+# 4,0,574.987,100
+# 5,0,707.354,100
+# 6,0,33.947,100
+# 7,0,135.588,100
+# (ppwi=8,wgsize=512,valid=0)
+# Device and kernel cc: sm_90
+# Verification failed for ppwi=8, wgsize=1024; difference exceeded tolerance (0.025%)
+# Bad energies (failed/total=58671/65536, showing first 8): 
+# index,actual,expected,difference_%
+# 0,0,865.523,100
+# 1,0,25.0715,100
+# 2,0,368.434,100
+# 3,0,14.6651,100
+# 4,0,574.987,100
+# 5,0,707.354,100
+# 6,0,33.947,100
+# 7,0,135.588,100
+# (ppwi=8,wgsize=1024,valid=0)
+# Device and kernel cc: sm_90
 # (ppwi=16,wgsize=4,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=16,wgsize=8,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=16,wgsize=16,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=16,wgsize=32,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=16,wgsize=64,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=16,wgsize=128,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=16,wgsize=256,valid=1)
-# (ppwi=16,wgsize=512,valid=1)
-# (ppwi=16,wgsize=1024,valid=1)
+# Device and kernel cc: sm_90
+# Verification failed for ppwi=16, wgsize=512; difference exceeded tolerance (0.025%)
+# Bad energies (failed/total=58671/65536, showing first 8): 
+# index,actual,expected,difference_%
+# 0,0,865.523,100
+# 1,0,25.0715,100
+# 2,0,368.434,100
+# 3,0,14.6651,100
+# 4,0,574.987,100
+# 5,0,707.354,100
+# 6,0,33.947,100
+# 7,0,135.588,100
+# (ppwi=16,wgsize=512,valid=0)
+# Device and kernel cc: sm_90
+# Verification failed for ppwi=16, wgsize=1024; difference exceeded tolerance (0.025%)
+# Bad energies (failed/total=58671/65536, showing first 8): 
+# index,actual,expected,difference_%
+# 0,0,865.523,100
+# 1,0,25.0715,100
+# 2,0,368.434,100
+# 3,0,14.6651,100
+# 4,0,574.987,100
+# 5,0,707.354,100
+# 6,0,33.947,100
+# 7,0,135.588,100
+# (ppwi=16,wgsize=1024,valid=0)
+# Device and kernel cc: sm_90
 # (ppwi=32,wgsize=4,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=32,wgsize=8,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=32,wgsize=16,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=32,wgsize=32,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=32,wgsize=64,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=32,wgsize=128,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=32,wgsize=256,valid=1)
-# (ppwi=32,wgsize=512,valid=1)
-# (ppwi=32,wgsize=1024,valid=1)
+# Device and kernel cc: sm_90
+# Verification failed for ppwi=32, wgsize=512; difference exceeded tolerance (0.025%)
+# Bad energies (failed/total=58671/65536, showing first 8): 
+# index,actual,expected,difference_%
+# 0,0,865.523,100
+# 1,0,25.0715,100
+# 2,0,368.434,100
+# 3,0,14.6651,100
+# 4,0,574.987,100
+# 5,0,707.354,100
+# 6,0,33.947,100
+# 7,0,135.588,100
+# (ppwi=32,wgsize=512,valid=0)
+# Device and kernel cc: sm_90
+# Verification failed for ppwi=32, wgsize=1024; difference exceeded tolerance (0.025%)
+# Bad energies (failed/total=58671/65536, showing first 8): 
+# index,actual,expected,difference_%
+# 0,0,865.523,100
+# 1,0,25.0715,100
+# 2,0,368.434,100
+# 3,0,14.6651,100
+# 4,0,574.987,100
+# 5,0,707.354,100
+# 6,0,33.947,100
+# 7,0,135.588,100
+# (ppwi=32,wgsize=1024,valid=0)
+# Device and kernel cc: sm_90
 # (ppwi=64,wgsize=4,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=64,wgsize=8,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=64,wgsize=16,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=64,wgsize=32,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=64,wgsize=64,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=64,wgsize=128,valid=1)
+# Device and kernel cc: sm_90
 # (ppwi=64,wgsize=256,valid=1)
-# (ppwi=64,wgsize=512,valid=1)
-# (ppwi=64,wgsize=1024,valid=1)
+# Device and kernel cc: sm_90
+# Verification failed for ppwi=64, wgsize=512; difference exceeded tolerance (0.025%)
+# Bad energies (failed/total=58671/65536, showing first 8): 
+# index,actual,expected,difference_%
+# 0,0,865.523,100
+# 1,0,25.0715,100
+# 2,0,368.434,100
+# 3,0,14.6651,100
+# 4,0,574.987,100
+# 5,0,707.354,100
+# 6,0,33.947,100
+# 7,0,135.588,100
+# (ppwi=64,wgsize=512,valid=0)
+# Device and kernel cc: sm_90
+# Verification failed for ppwi=64, wgsize=1024; difference exceeded tolerance (0.025%)
+# Bad energies (failed/total=58671/65536, showing first 8): 
+# index,actual,expected,difference_%
+# 0,0,865.523,100
+# 1,0,25.0715,100
+# 2,0,368.434,100
+# 3,0,14.6651,100
+# 4,0,574.987,100
+# 5,0,707.354,100
+# 6,0,33.947,100
+# 7,0,135.588,100
+# (ppwi=64,wgsize=1024,valid=0)
 ppwi,wgsize,sum_ms,avg_ms,min_ms,max_ms,stddev_ms,interactions/s,gflops/s,gfinst/s
-1,4,60.175,7.522,7.512,7.532,0.007,212487526183.007,8504.276,5312.188
-1,8,60.110,7.514,7.511,7.516,0.002,212717188328.591,8513.467,5317.930
-1,16,60.098,7.512,7.511,7.513,0.001,212757740373.785,8515.090,5318.944
-1,32,60.211,7.526,7.512,7.532,0.006,212357622636.296,8499.077,5308.941
-1,64,60.227,7.528,7.526,7.533,0.002,212303157029.096,8496.897,5307.579
-1,128,60.237,7.530,7.524,7.538,0.004,212268761519.171,8495.520,5306.719
-1,256,60.387,7.548,7.546,7.555,0.003,211739182793.995,8474.325,5293.480
-1,512,60.223,7.528,7.525,7.532,0.003,212315544820.908,8497.393,5307.889
-1,1024,60.306,7.538,7.528,7.547,0.008,212022647655.901,8485.670,5300.566
-2,4,62.023,7.753,7.739,7.760,0.007,206155406364.185,7219.852,5153.885
-2,8,61.883,7.735,7.733,7.739,0.002,206620000536.493,7236.123,5165.500
-2,16,62.054,7.757,7.753,7.761,0.002,206053072179.337,7216.268,5151.327
-2,32,61.910,7.739,7.730,7.757,0.009,206530474341.330,7232.987,5163.262
-2,64,61.955,7.744,7.730,7.762,0.011,206381630612.568,7227.774,5159.541
-2,128,62.074,7.759,7.749,7.772,0.006,205986224320.100,7213.927,5149.656
-2,256,61.904,7.738,7.732,7.743,0.004,206549968255.851,7233.670,5163.749
-2,512,62.074,7.759,7.753,7.779,0.008,205984263157.528,7213.858,5149.607
-2,1024,61.953,7.744,7.731,7.762,0.013,206387003919.507,7227.963,5159.675
-4,4,70.747,8.843,8.829,8.859,0.013,180732654262.281,5877.583,4518.316
-4,8,70.818,8.852,8.828,8.861,0.013,180551575012.013,5871.694,4513.789
-4,16,70.662,8.833,8.828,8.859,0.010,180950276251.851,5884.661,4523.757
-4,32,70.881,8.860,8.856,8.864,0.002,180390531210.206,5866.457,4509.763
-4,64,70.629,8.829,8.825,8.833,0.002,181034675399.447,5887.405,4525.867
-4,128,70.889,8.861,8.856,8.879,0.007,180371005827.329,5865.822,4509.275
-4,256,70.643,8.830,8.827,8.843,0.005,180999185015.450,5886.251,4524.980
-4,512,70.833,8.854,8.829,8.863,0.011,180512970962.048,5870.439,4512.824
-4,1024,70.727,8.841,8.828,8.860,0.014,180784827096.494,5879.280,4519.621
-8,4,107.760,13.470,13.436,13.484,0.019,118655901538.641,3710.442,2966.398
-8,8,107.567,13.446,13.434,13.484,0.015,118868513986.341,3717.090,2971.713
-8,16,107.673,13.459,13.433,13.484,0.022,118751738428.348,3713.439,2968.793
-8,32,107.766,13.471,13.438,13.482,0.013,118648735916.563,3710.218,2966.218
-8,64,107.564,13.446,13.435,13.479,0.016,118871724284.936,3717.191,2971.793
-8,128,107.632,13.454,13.434,13.478,0.019,118797267909.254,3714.862,2969.932
-8,256,107.784,13.473,13.438,13.482,0.013,118629255041.293,3709.609,2965.731
-8,512,107.591,13.449,13.435,13.482,0.019,118841805058.680,3716.255,2971.045
-8,1024,107.631,13.454,13.434,13.485,0.023,118798167464.207,3714.890,2969.954
-16,4,248.393,31.049,30.994,31.091,0.039,51476233439.982,1577.513,1286.906
-16,8,248.246,31.031,30.993,31.088,0.042,51506726530.956,1578.448,1287.668
-16,16,248.372,31.046,30.989,31.087,0.041,51480636567.889,1577.648,1287.016
-16,32,248.277,31.035,30.994,31.089,0.037,51500180455.342,1578.247,1287.505
-16,64,248.317,31.040,30.992,31.083,0.041,51492090507.509,1577.999,1287.302
-16,128,248.345,31.043,30.991,31.087,0.040,51486256131.801,1577.821,1287.156
-16,256,248.223,31.028,30.990,31.084,0.036,51511547841.685,1578.596,1287.789
-16,512,248.394,31.049,30.984,31.110,0.048,51476121532.213,1577.510,1286.903
-16,1024,248.231,31.029,30.990,31.085,0.040,51509897061.064,1578.545,1287.747
-32,4,145.695,18.212,18.183,18.230,0.019,87760996443.460,2662.046,2194.025
-32,8,145.724,18.215,18.190,18.230,0.016,87743764466.730,2661.523,2193.594
-32,16,145.723,18.215,18.185,18.232,0.018,87744032413.027,2661.531,2193.601
-32,32,145.714,18.214,18.185,18.229,0.017,87749295932.646,2661.691,2193.732
-32,64,145.670,18.209,18.182,18.229,0.019,87775905608.382,2662.498,2194.398
-32,128,145.656,18.207,18.186,18.233,0.020,87784573169.191,2662.761,2194.614
-32,256,145.603,18.200,18.186,18.225,0.017,87816261118.457,2663.722,2195.407
-32,512,145.633,18.204,18.187,18.232,0.018,87798049463.666,2663.170,2194.951
-32,1024,145.598,18.200,18.183,18.228,0.018,87819566340.841,2663.823,2195.489
-64,4,136.688,17.086,17.066,17.117,0.022,93544272523.700,2822.850,2338.607
-64,8,136.749,17.094,17.067,17.116,0.021,93501969796.966,2821.574,2337.549
-64,16,136.846,17.106,17.069,17.118,0.016,93436139891.230,2819.587,2335.903
-64,32,136.858,17.107,17.067,17.135,0.023,93427844795.684,2819.337,2335.696
-64,64,136.564,17.070,17.065,17.073,0.002,93629096440.922,2825.410,2340.727
-64,128,136.683,17.085,17.067,17.115,0.020,93547295465.135,2822.941,2338.682
-64,256,136.604,17.076,17.069,17.111,0.014,93601338939.828,2824.572,2340.033
-64,512,136.563,17.070,17.067,17.073,0.002,93629795765.796,2825.431,2340.745
-64,1024,136.729,17.091,17.067,17.113,0.021,93516196633.346,2822.003,2337.905
-# best: { min_ms: 7.511, max_ms: 7.513, sum_ms: 60.098, avg_ms: 7.512, ppwi: 1, wgsize: 16 }
+1,4,466.588,58.323,58.310,58.337,0.009,27403913098.022,1096.772,685.098
+1,8,237.121,29.640,29.638,29.645,0.002,53923246697.787,2158.142,1348.081
+1,16,122.063,15.258,15.231,15.269,0.014,104752040456.525,4192.435,2618.801
+1,32,64.449,8.056,8.054,8.060,0.002,198395064614.021,7940.261,4959.877
+1,64,64.570,8.071,8.055,8.089,0.011,198024014202.840,7925.410,4950.600
+1,128,64.510,8.064,8.056,8.076,0.008,198207743450.453,7932.763,4955.194
+1,256,63.067,7.883,7.875,7.896,0.009,202742446016.564,8114.253,5068.561
+1,512,59.596,7.450,7.448,7.452,0.001,214550071972.058,8586.824,5363.752
+1,1024,115.135,14.392,14.374,14.420,0.021,111055258459.127,4444.706,2776.381
+2,4,280.751,35.094,35.088,35.101,0.005,45543379096.923,1594.993,1138.584
+2,8,146.281,18.285,18.261,18.312,0.022,87409246970.516,3061.195,2185.231
+2,16,79.961,9.995,9.992,9.999,0.002,159906817568.083,5600.161,3997.670
+2,32,47.033,5.879,5.874,5.894,0.006,271861360385.231,9520.967,6796.534
+2,64,47.070,5.884,5.879,5.891,0.004,271646521225.933,9513.443,6791.163
+2,128,47.125,5.891,5.886,5.894,0.002,271328534301.416,9502.306,6783.213
+2,256,51.851,6.481,6.478,6.483,0.002,246595600372.487,8636.124,6164.890
+2,512,75.892,9.486,9.465,9.517,0.018,168481505548.939,5900.459,4212.038
+2,1024,129.746,16.218,16.201,16.256,0.023,98549258618.196,3451.333,2463.731
+4,4,192.844,24.106,24.084,24.155,0.023,66303879699.773,2156.260,1657.597
+4,8,102.203,12.775,12.759,12.794,0.014,125107323179.052,4068.599,3127.683
+4,16,57.733,7.217,7.205,7.227,0.007,221474880461.094,7202.556,5536.872
+4,32,43.831,5.479,5.473,5.490,0.005,291721022460.583,9487.022,7293.026
+4,64,43.720,5.465,5.462,5.468,0.002,292458214957.502,9510.996,7311.455
+4,128,43.715,5.464,5.462,5.468,0.002,292491966438.469,9512.093,7312.299
+4,256,58.090,7.261,7.253,7.278,0.009,220112097637.827,7158.237,5502.802
+4,512,91.020,11.377,11.373,11.382,0.003,140478550413.688,4568.485,3511.964
+4,1024,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,0.000,0.000,0.000,0.000
+8,4,170.528,21.316,21.297,21.345,0.022,74980730434.815,2344.693,1874.518
+8,8,85.026,10.628,10.611,10.634,0.007,150382062189.195,4702.538,3759.552
+8,16,68.037,8.505,8.503,8.506,0.001,187931644532.733,5876.736,4698.291
+8,32,68.013,8.502,8.498,8.505,0.002,187998184408.085,5878.817,4699.955
+8,64,67.848,8.481,8.478,8.483,0.001,188456602823.621,5893.152,4711.415
+8,128,68.134,8.517,8.502,8.522,0.007,187663278160.956,5868.344,4691.582
+8,256,84.754,10.594,10.593,10.595,0.001,150863556663.742,4717.595,3771.589
+8,512,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,0.000,0.000,0.000,0.000
+8,1024,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,0.000,0.000,0.000,0.000
+16,4,231.072,28.884,28.840,28.942,0.039,55334735825.336,1695.759,1383.368
+16,8,208.825,26.103,26.066,26.143,0.034,61229871454.933,1876.418,1530.747
+16,16,208.723,26.090,26.053,26.129,0.033,61259866109.265,1877.337,1531.497
+16,32,208.747,26.093,26.050,26.133,0.035,61252789795.862,1877.121,1531.320
+16,64,208.705,26.088,26.048,26.130,0.035,61265132513.227,1877.499,1531.628
+16,128,208.999,26.125,26.066,26.141,0.022,61178913325.861,1874.857,1529.473
+16,256,231.620,28.953,28.923,28.995,0.028,55203920171.546,1691.750,1380.098
+16,512,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,0.000,0.000,0.000,0.000
+16,1024,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,0.000,0.000,0.000,0.000
+32,4,303.020,37.878,37.795,37.933,0.045,42196281638.270,1279.936,1054.907
+32,8,301.467,37.683,37.624,37.752,0.054,42413713824.003,1286.531,1060.343
+32,16,301.389,37.674,37.622,37.753,0.053,42424740960.226,1286.866,1060.619
+32,32,301.373,37.672,37.623,37.755,0.049,42426968248.724,1286.933,1060.674
+32,64,301.401,37.675,37.622,37.748,0.052,42422993866.611,1286.813,1060.575
+32,128,302.940,37.868,37.835,37.919,0.032,42207429498.245,1280.274,1055.186
+32,256,339.377,42.422,42.361,42.501,0.055,37675900284.665,1142.819,941.898
+32,512,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,0.000,0.000,0.000,0.000
+32,1024,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,0.000,0.000,0.000,0.000
+64,4,494.349,61.794,61.697,61.877,0.068,25865020137.785,780.519,646.626
+64,8,474.894,59.362,59.235,59.451,0.073,26924628261.739,812.494,673.116
+64,16,475.883,59.485,59.445,59.552,0.039,26868642126.277,810.805,671.716
+64,32,476.963,59.620,59.573,59.697,0.051,26807830425.808,808.970,670.196
+64,64,511.338,63.917,60.947,66.950,2.956,25005657746.239,754.586,625.141
+64,128,682.908,85.363,85.179,85.501,0.128,18723377582.383,565.008,468.084
+64,256,920.773,115.097,114.989,115.212,0.073,13886523448.333,419.048,347.163
+64,512,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,0.000,0.000,0.000,0.000
+64,1024,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,0.000,0.000,0.000,0.000
+# best: { min_ms: 5.462, max_ms: 5.468, sum_ms: 43.715, avg_ms: 5.464, ppwi: 4, wgsize: 128 }
++ cd /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE
++ result=/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/cuda-bude-bm1.out0
+++ tail -n1 /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/cuda-bude-bm1.out0
++ best='# best: { min_ms: 5.462, max_ms: 5.468, sum_ms: 43.715, avg_ms: 5.464, ppwi: 4, wgsize: 128 }'
+++ echo '# best: { min_ms: 5.462, max_ms: 5.468, sum_ms: 43.715, avg_ms: 5.464, ppwi: 4, wgsize: 128 }'
+++ grep -oP '(?<=ppwi: )\d+'
++ ppwi=4
+++ echo '# best: { min_ms: 5.462, max_ms: 5.468, sum_ms: 43.715, avg_ms: 5.464, ppwi: 4, wgsize: 128 }'
+++ grep -oP '(?<=wgsize: )\d+'
++ wgsize=128
++ echo ========================================
 ========================================
-best gflops/s = 8515.090
+++ awk -F, '{print $9}'
++++ grep '^4,128' /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/cuda-bude-bm1.out0
+++ echo 4,128,43.715,5.464,5.462,5.468,0.002,292491966438.469,9512.093,7312.299
++ echo best gflops/s = 9512.093
+best gflops/s = 9512.093
++ echo ========================================
 ========================================
