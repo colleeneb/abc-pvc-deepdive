@@ -1,15 +1,14 @@
 Unknown MPI, adjust this script.
-for AMD 0 for 
-mem bw = 2276.724570
-n       42, reps =     1000, bytes         1008, bandwidth =  2276.724570
-mem bw = 4269.541076
-n       85, reps =     1000, bytes         2040, bandwidth =  4269.541076
-mem bw = 5320.339753
-n      170, reps =     1000, bytes         4080, bandwidth =  5320.339753
-mem bw = 7229.799267
-n      341, reps =     1000, bytes         8184, bandwidth =  7229.799267
-mem bw = 8020.675049
-n      682, reps =     1000, bytes        16368, bandwidth =  8020.675049
+mem bw = 2275.586179
+n       42, reps =     1000, bytes         1008, bandwidth =  2275.586179
+mem bw = 4264.153310
+n       85, reps =     1000, bytes         2040, bandwidth =  4264.153310
+mem bw = 5314.490605
+n      170, reps =     1000, bytes         4080, bandwidth =  5314.490605
+mem bw = 7251.071243
+n      341, reps =     1000, bytes         8184, bandwidth =  7251.071243
+mem bw = 8030.945393
+n      682, reps =     1000, bytes        16368, bandwidth =  8030.945393
 n     1365, reps =     1000, bytes        32760, bandwidth =    -1.000000
 n     2730, reps =     1000, bytes        65520, bandwidth =    -1.000000
 n     5461, reps =     1000, bytes       131064, bandwidth =    -1.000000
