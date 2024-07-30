@@ -1,0 +1,10 @@
+Unknown MPI, adjust this script.
+RANK  has ZAM of 0.0
+n       42, reps =     1000, bytes         1008, bandwidth =  1137.647697
+n       85, reps =     1000, bytes         2040, bandwidth =  2127.099030
+n      170, reps =     1000, bytes         4080, bandwidth =  3112.652721
+n      341, reps =     1000, bytes         8184, bandwidth =  5301.894759
+n      682, reps =     1000, bytes        16368, bandwidth = 16998.323097
+n     1365, reps =     1000, bytes        32760, bandwidth = 34060.513047
+n     2730, reps =     1000, bytes        65520, bandwidth = 42302.224406
+n     5461, reps =     1000, bytes       131064, bandwidth = 45615.984893

@@ -1,0 +1,1137 @@
+-- The CXX compiler identification is IntelLLVM 2024.1.0
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/local/dawn/software/spack/spack-views/dawn-2024-04-15/intel-oneapi-compilers-2024.1.0/gcc-13.2.0/wadpqv2pkfepzdf7m6gsclizcp5bffsw/compiler/2024.1/bin/icpx - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- CXX_EXTRA_FLAGS: 
+        Appends to common compile flags. These will be appended at link phase as well.
+        To use separate flags at link phase, set `CXX_EXTRA_LINK_FLAGS`
+-- CXX_EXTRA_LINK_FLAGS: 
+        Appends to link flags which appear *before* the objects.
+        Do not use this for linking libraries, as the link line is order-dependent
+-- CXX_EXTRA_LIBRARIES: 
+        Append to link flags which appear *after* the objects.
+        Use this for linking extra libraries (e.g `-lmylib`, or simply `mylib`)
+-- CXX_EXTRA_LINKER_FLAGS: 
+        Append to linker flags (i.e GCC's `-Wl` or equivalent)
+-- Available models:  omp;ocl;std-indices;std-ranges;hip;cuda;kokkos;sycl;acc;raja;tbb;thrust
+-- Selected model  :  sycl
+-- Supported flags:
+
+   CMAKE_CXX_COMPILER (optional, default=c++): Any CXX compiler that is supported by CMake detection, this is used for host compilation when required by the SYCL compiler
+   SYCL_COMPILER (required): Compile using the specified SYCL compiler implementation
+        Supported values are
+           ONEAPI-ICPX  - icpx as a standalone compiler
+           ONEAPI-Clang - oneAPI's Clang driver (enabled via `source /opt/intel/oneapi/setvars.sh  --include-intel-llvm`)
+           DPCPP        - dpc++ as a standalone compiler (https://github.com/intel/llvm)
+           HIPSYCL      - hipSYCL compiler (https://github.com/illuhad/hipSYCL)
+           COMPUTECPP   - ComputeCpp compiler (https://developer.codeplay.com/products/computecpp/ce/home)
+   SYCL_COMPILER_DIR (optional, default=): Absolute path to the selected SYCL compiler directory, most are packaged differently so set the path according to `SYCL_COMPILER`:
+           ONEAPI-ICPX              - `icpx` must be used for OneAPI 2023 and later on releases (i.e `source /opt/intel/oneapi/setvars.sh` first)
+           ONEAPI-Clang             - set to the directory that contains the Intel clang++ binary.
+           HIPSYCL|DPCPP|COMPUTECPP - set to the root of the binary distribution that contains at least `bin/`, `include/`, and `lib/`
+   OpenCL_LIBRARY (optional, default=): [ComputeCpp only] Path to OpenCL library, usually called libOpenCL.so
+
+-- Model-specific flags for this build:
+
+   CMAKE_CXX_COMPILER = `/usr/local/dawn/software/spack/spack-views/dawn-2024-04-15/intel-oneapi-compilers-2024.1.0/gcc-13.2.0/wadpqv2pkfepzdf7m6gsclizcp5bffsw/compiler/2024.1/bin/icpx`
+   SYCL_COMPILER = `ONEAPI-ICPX`
+   SYCL_COMPILER_DIR = ``
+   OpenCL_LIBRARY = ``
+
+-- Default RELEASE flags are `-O3;-march=native;-fsycl`, set RELEASE_FLAGS to override (CXX_EXTRA_* flags are not affected)
+-- PPWI not set, defaulting to 1,2,4,8,16,32,64,128
+-- CXX vendor  : IntelLLVM (icpx)
+-- Platform    : x86_64
+-- PPWI        : 1,2,4,8,16,32,64,128
+-- Sources     : src/sycl/fasten.hpp;src/main.cpp
+-- Libraries   :  
+-- CXX Flags   :  -DNDEBUG -O3;-march=native;-fsycl 
+    CXX flags derived from (CMake + (Override ? Override : Default) + Extras), where:
+        CMake                    = ` -DNDEBUG`
+        Default                  = `-O3;-march=native;-fsycl`
+        Override (RELEASE_FLAGS) = ``
+        Extras (CXX_EXTRA_FLAGS) = ``
+-- Link Flags  : -fsycl 
+-- Linker Flags:   
+-- Defs        : SYCL
+-- Executable  : sycl-bude
+-- Configuring done (1.2s)
+-- Generating done (0.1s)
+-- Build files have been written to: /home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build
+/usr/bin/cmake -S/home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude -B/home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build --check-build-system CMakeFiles/Makefile.cmake 0
+/usr/bin/cmake -E cmake_progress_start /home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/CMakeFiles /home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build//CMakeFiles/progress.marks
+/usr/bin/gmake  -f CMakeFiles/Makefile2 all
+gmake[1]: Entering directory '/rds/user/dn-sad1/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+/usr/bin/gmake  -f CMakeFiles/extract_compile_commands.dir/build.make CMakeFiles/extract_compile_commands.dir/depend
+/usr/bin/gmake  -f CMakeFiles/check_git.dir/build.make CMakeFiles/check_git.dir/depend
+gmake[2]: Entering directory '/rds/user/dn-sad1/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+cd /home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build && /usr/bin/cmake -E cmake_depends "Unix Makefiles" /home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude /home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude /home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build /home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build /home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/CMakeFiles/extract_compile_commands.dir/DependInfo.cmake --color=
+gmake[2]: Entering directory '/rds/user/dn-sad1/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+cd /home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build && /usr/bin/cmake -E cmake_depends "Unix Makefiles" /home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude /home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude /home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build /home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build /home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/CMakeFiles/check_git.dir/DependInfo.cmake --color=
+gmake[2]: Leaving directory '/rds/user/dn-sad1/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+/usr/bin/gmake  -f CMakeFiles/extract_compile_commands.dir/build.make CMakeFiles/extract_compile_commands.dir/build
+gmake[2]: Leaving directory '/rds/user/dn-sad1/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+/usr/bin/gmake  -f CMakeFiles/check_git.dir/build.make CMakeFiles/check_git.dir/build
+gmake[2]: Entering directory '/rds/user/dn-sad1/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+/usr/bin/cmake -DCOMMAND_FILE=/home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/compile_commands.json -DPRE_CONFIGURE_FILE="/home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/meta_build.h.in" -DPOST_CONFIGURE_FILE="/home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/generated/meta_build.h" -DSRC_DIR_PREFIX="/home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src" -DOUT_DIR_PREFIX="CMakeFiles/bude.dir" -P /home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/cmake/extract_compile_command.cmake
+gmake[2]: Entering directory '/rds/user/dn-sad1/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+-- Transforming /home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/compile_commands.json...
+[ 33%] Checking the git repository for changes...
+/usr/bin/cmake -D_BUILD_TIME_CHECK_GIT=TRUE -DGIT_WORKING_DIR=/home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude -DGIT_EXECUTABLE=/usr/bin/git -DGIT_STATE_FILE=/home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/git-state-hash -DPRE_CONFIGURE_FILE=/home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/meta_vcs.h.in -DPOST_CONFIGURE_FILE=/home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/generated/meta_vcs.h -DGIT_FAIL_IF_NONZERO_EXIT=FALSE -DGIT_IGNORE_UNTRACKED=FALSE -P /home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/cmake/git_watcher.cmake
+gmake[2]: Leaving directory '/rds/user/dn-sad1/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+[ 33%] Built target extract_compile_commands
+gmake[2]: Leaving directory '/rds/user/dn-sad1/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+[ 33%] Built target check_git
+/usr/bin/gmake  -f CMakeFiles/bude.dir/build.make CMakeFiles/bude.dir/depend
+gmake[2]: Entering directory '/rds/user/dn-sad1/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+cd /home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build && /usr/bin/cmake -E cmake_depends "Unix Makefiles" /home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude /home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude /home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build /home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build /home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/CMakeFiles/bude.dir/DependInfo.cmake --color=
+gmake[2]: Leaving directory '/rds/user/dn-sad1/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+/usr/bin/gmake  -f CMakeFiles/bude.dir/build.make CMakeFiles/bude.dir/build
+gmake[2]: Entering directory '/rds/user/dn-sad1/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+[ 66%] Building CXX object CMakeFiles/bude.dir/src/main.cpp.o
+icpx -DSYCL -DUSE_PPWI=1,2,4,8,16,32,64,128 -I/home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl -I/home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/generated -DNDEBUG -std=c++17 -O3 -march=native -fsycl -MD -MT CMakeFiles/bude.dir/src/main.cpp.o -MF CMakeFiles/bude.dir/src/main.cpp.o.d -o CMakeFiles/bude.dir/src/main.cpp.o -c /home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp
+[100%] Linking CXX executable sycl-bude
+/usr/bin/cmake -E cmake_link_script CMakeFiles/bude.dir/link.txt --verbose=1
+icpx  -DNDEBUG -fsycl CMakeFiles/bude.dir/src/main.cpp.o -o sycl-bude 
+gmake[2]: Leaving directory '/rds/user/dn-sad1/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+[100%] Built target bude
+gmake[1]: Leaving directory '/rds/user/dn-sad1/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+/usr/bin/cmake -E cmake_progress_start /home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/CMakeFiles 0
+	linux-vdso.so.1 (0x00007ffc2aff9000)
+	libstdc++.so.6 => /usr/local/dawn/software/spack/spack-views/dawn-2024-04-15/gcc-runtime-13.2.0/gcc-13.2.0/ayevhr77cuf2t7ueefdspf4embreh46h/lib/libstdc++.so.6 (0x000014cc5827d000)
+	libm.so.6 => /lib64/libm.so.6 (0x000014cc57efb000)
+	libgcc_s.so.1 => /usr/local/dawn/software/spack/spack-views/dawn-2024-04-15/gcc-runtime-13.2.0/gcc-13.2.0/ayevhr77cuf2t7ueefdspf4embreh46h/lib/libgcc_s.so.1 (0x000014cc586cd000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x000014cc57cf7000)
+	libsycl.so.7 => /usr/local/dawn/software/spack/opt-2024-04-15/linux-rocky8-sapphirerapids/gcc-13.2.0/intel-oneapi-compilers-2024.1.0-wadpqv2pkfepzdf7m6gsclizcp5bffsw/compiler/2024.1/lib/libsycl.so.7 (0x000014cc57962000)
+	libc.so.6 => /lib64/libc.so.6 (0x000014cc5759d000)
+	/lib64/ld-linux-x86-64.so.2 (0x000014cc584e0000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x000014cc5737d000)
+# (ppwi=1,wgsize=4,valid=1)
+# (ppwi=1,wgsize=4,valid=1)
+# (ppwi=1,wgsize=4,valid=1)
+# (ppwi=1,wgsize=4,valid=1)
+# (ppwi=1,wgsize=4,valid=1)
+# (ppwi=1,wgsize=8,valid=1)
+# (ppwi=1,wgsize=8,valid=1)
+# (ppwi=1,wgsize=4,valid=1)
+# (ppwi=1,wgsize=4,valid=1)
+# (ppwi=1,wgsize=8,valid=1)
+# (ppwi=1,wgsize=4,valid=1)
+# (ppwi=1,wgsize=16,valid=1)
+# (ppwi=1,wgsize=8,valid=1)
+# (ppwi=1,wgsize=16,valid=1)
+# (ppwi=1,wgsize=8,valid=1)
+# (ppwi=1,wgsize=16,valid=1)
+# (ppwi=1,wgsize=32,valid=1)
+# (ppwi=1,wgsize=16,valid=1)
+# (ppwi=1,wgsize=32,valid=1)
+# (ppwi=1,wgsize=8,valid=1)
+# (ppwi=1,wgsize=16,valid=1)
+# (ppwi=1,wgsize=8,valid=1)
+# (ppwi=1,wgsize=8,valid=1)
+# (ppwi=1,wgsize=32,valid=1)
+# (ppwi=1,wgsize=64,valid=1)
+# (ppwi=1,wgsize=32,valid=1)
+# (ppwi=1,wgsize=64,valid=1)
+# (ppwi=1,wgsize=16,valid=1)
+# (ppwi=1,wgsize=32,valid=1)
+# (ppwi=1,wgsize=16,valid=1)
+# (ppwi=1,wgsize=16,valid=1)
+# (ppwi=1,wgsize=64,valid=1)
+# (ppwi=1,wgsize=64,valid=1)
+# (ppwi=1,wgsize=128,valid=1)
+# (ppwi=1,wgsize=32,valid=1)
+# (ppwi=1,wgsize=64,valid=1)
+# (ppwi=1,wgsize=32,valid=1)
+# (ppwi=1,wgsize=128,valid=1)
+# (ppwi=1,wgsize=32,valid=1)
+# (ppwi=1,wgsize=128,valid=1)
+# (ppwi=1,wgsize=128,valid=1)
+# (ppwi=1,wgsize=256,valid=1)
+# (ppwi=1,wgsize=64,valid=1)
+# (ppwi=1,wgsize=64,valid=1)
+# (ppwi=1,wgsize=128,valid=1)
+# (ppwi=1,wgsize=256,valid=1)
+# (ppwi=1,wgsize=64,valid=1)
+# (ppwi=1,wgsize=256,valid=1)
+# (ppwi=1,wgsize=256,valid=1)
+# (ppwi=1,wgsize=512,valid=1)
+# (ppwi=1,wgsize=128,valid=1)
+# (ppwi=1,wgsize=128,valid=1)
+# (ppwi=1,wgsize=256,valid=1)
+# (ppwi=1,wgsize=512,valid=1)
+# (ppwi=1,wgsize=128,valid=1)
+# (ppwi=1,wgsize=512,valid=1)
+# (ppwi=1,wgsize=512,valid=1)
+# (ppwi=1,wgsize=1024,valid=1)
+# (ppwi=1,wgsize=256,valid=1)
+# (ppwi=1,wgsize=256,valid=1)
+# (ppwi=1,wgsize=512,valid=1)
+# (ppwi=1,wgsize=1024,valid=1)
+# (ppwi=1,wgsize=256,valid=1)
+# (ppwi=1,wgsize=1024,valid=1)
+# (ppwi=1,wgsize=1024,valid=1)
+# (ppwi=1,wgsize=512,valid=1)
+# (ppwi=1,wgsize=512,valid=1)
+# (ppwi=1,wgsize=1024,valid=1)
+# (ppwi=1,wgsize=512,valid=1)
+# (ppwi=1,wgsize=1024,valid=1)
+# (ppwi=1,wgsize=1024,valid=1)
+# (ppwi=1,wgsize=1024,valid=1)
+# (ppwi=2,wgsize=4,valid=1)
+# (ppwi=2,wgsize=4,valid=1)
+# (ppwi=2,wgsize=4,valid=1)
+# (ppwi=2,wgsize=4,valid=1)
+# (ppwi=2,wgsize=4,valid=1)
+# (ppwi=2,wgsize=8,valid=1)
+# (ppwi=2,wgsize=8,valid=1)
+# (ppwi=2,wgsize=8,valid=1)
+# (ppwi=2,wgsize=4,valid=1)
+# (ppwi=2,wgsize=4,valid=1)
+# (ppwi=2,wgsize=8,valid=1)
+# (ppwi=2,wgsize=4,valid=1)
+# (ppwi=2,wgsize=8,valid=1)
+# (ppwi=2,wgsize=16,valid=1)
+# (ppwi=2,wgsize=16,valid=1)
+# (ppwi=2,wgsize=16,valid=1)
+# (ppwi=2,wgsize=8,valid=1)
+# (ppwi=2,wgsize=8,valid=1)
+# (ppwi=2,wgsize=16,valid=1)
+# (ppwi=2,wgsize=8,valid=1)
+# (ppwi=2,wgsize=32,valid=1)
+# (ppwi=2,wgsize=16,valid=1)
+# (ppwi=2,wgsize=32,valid=1)
+# (ppwi=2,wgsize=32,valid=1)
+# (ppwi=2,wgsize=16,valid=1)
+# (ppwi=2,wgsize=32,valid=1)
+# (ppwi=2,wgsize=16,valid=1)
+# (ppwi=2,wgsize=64,valid=1)
+# (ppwi=2,wgsize=16,valid=1)
+# (ppwi=2,wgsize=32,valid=1)
+# (ppwi=2,wgsize=64,valid=1)
+# (ppwi=2,wgsize=64,valid=1)
+# (ppwi=2,wgsize=32,valid=1)
+# (ppwi=2,wgsize=64,valid=1)
+# (ppwi=2,wgsize=32,valid=1)
+# (ppwi=2,wgsize=32,valid=1)
+# (ppwi=2,wgsize=128,valid=1)
+# (ppwi=2,wgsize=64,valid=1)
+# (ppwi=2,wgsize=128,valid=1)
+# (ppwi=2,wgsize=64,valid=1)
+# (ppwi=2,wgsize=128,valid=1)
+# (ppwi=2,wgsize=64,valid=1)
+# (ppwi=2,wgsize=128,valid=1)
+# (ppwi=2,wgsize=64,valid=1)
+# (ppwi=2,wgsize=128,valid=1)
+# (ppwi=2,wgsize=256,valid=1)
+# (ppwi=2,wgsize=256,valid=1)
+# (ppwi=2,wgsize=128,valid=1)
+# (ppwi=2,wgsize=128,valid=1)
+# (ppwi=2,wgsize=256,valid=1)
+# (ppwi=2,wgsize=128,valid=1)
+# (ppwi=2,wgsize=256,valid=1)
+# (ppwi=2,wgsize=256,valid=1)
+# (ppwi=2,wgsize=512,valid=1)
+# (ppwi=2,wgsize=512,valid=1)
+# (ppwi=2,wgsize=256,valid=1)
+# (ppwi=2,wgsize=256,valid=1)
+# (ppwi=2,wgsize=256,valid=1)
+# (ppwi=2,wgsize=512,valid=1)
+# (ppwi=2,wgsize=512,valid=1)
+# (ppwi=2,wgsize=512,valid=1)
+# (ppwi=2,wgsize=1024,valid=1)
+# (ppwi=2,wgsize=1024,valid=1)
+# (ppwi=2,wgsize=512,valid=1)
+# (ppwi=2,wgsize=512,valid=1)
+# (ppwi=2,wgsize=512,valid=1)
+# (ppwi=2,wgsize=1024,valid=1)
+# (ppwi=2,wgsize=1024,valid=1)
+# (ppwi=2,wgsize=1024,valid=1)
+# (ppwi=2,wgsize=1024,valid=1)
+# (ppwi=2,wgsize=1024,valid=1)
+# (ppwi=2,wgsize=1024,valid=1)
+# (ppwi=4,wgsize=4,valid=1)
+# (ppwi=4,wgsize=4,valid=1)
+# (ppwi=4,wgsize=4,valid=1)
+# (ppwi=4,wgsize=4,valid=1)
+# (ppwi=4,wgsize=4,valid=1)
+# (ppwi=4,wgsize=4,valid=1)
+# (ppwi=4,wgsize=4,valid=1)
+# (ppwi=4,wgsize=4,valid=1)
+# (ppwi=4,wgsize=8,valid=1)
+# (ppwi=4,wgsize=8,valid=1)
+# (ppwi=4,wgsize=8,valid=1)
+# (ppwi=4,wgsize=8,valid=1)
+# (ppwi=4,wgsize=8,valid=1)
+# (ppwi=4,wgsize=8,valid=1)
+# (ppwi=4,wgsize=8,valid=1)
+# (ppwi=4,wgsize=8,valid=1)
+# (ppwi=4,wgsize=16,valid=1)
+# (ppwi=4,wgsize=16,valid=1)
+# (ppwi=4,wgsize=16,valid=1)
+# (ppwi=4,wgsize=16,valid=1)
+# (ppwi=4,wgsize=16,valid=1)
+# (ppwi=4,wgsize=16,valid=1)
+# (ppwi=4,wgsize=16,valid=1)
+# (ppwi=4,wgsize=16,valid=1)
+# (ppwi=4,wgsize=32,valid=1)
+# (ppwi=4,wgsize=32,valid=1)
+# (ppwi=4,wgsize=32,valid=1)
+# (ppwi=4,wgsize=32,valid=1)
+# (ppwi=4,wgsize=32,valid=1)
+# (ppwi=4,wgsize=32,valid=1)
+# (ppwi=4,wgsize=32,valid=1)
+# (ppwi=4,wgsize=32,valid=1)
+# (ppwi=4,wgsize=64,valid=1)
+# (ppwi=4,wgsize=64,valid=1)
+# (ppwi=4,wgsize=64,valid=1)
+# (ppwi=4,wgsize=64,valid=1)
+# (ppwi=4,wgsize=64,valid=1)
+# (ppwi=4,wgsize=64,valid=1)
+# (ppwi=4,wgsize=64,valid=1)
+# (ppwi=4,wgsize=64,valid=1)
+# (ppwi=4,wgsize=128,valid=1)
+# (ppwi=4,wgsize=128,valid=1)
+# (ppwi=4,wgsize=128,valid=1)
+# (ppwi=4,wgsize=128,valid=1)
+# (ppwi=4,wgsize=128,valid=1)
+# (ppwi=4,wgsize=128,valid=1)
+# (ppwi=4,wgsize=128,valid=1)
+# (ppwi=4,wgsize=128,valid=1)
+# (ppwi=4,wgsize=256,valid=1)
+# (ppwi=4,wgsize=256,valid=1)
+# (ppwi=4,wgsize=256,valid=1)
+# (ppwi=4,wgsize=256,valid=1)
+# (ppwi=4,wgsize=256,valid=1)
+# (ppwi=4,wgsize=256,valid=1)
+# (ppwi=4,wgsize=256,valid=1)
+# (ppwi=4,wgsize=256,valid=1)
+# (ppwi=4,wgsize=512,valid=1)
+# (ppwi=4,wgsize=512,valid=1)
+# (ppwi=4,wgsize=512,valid=1)
+# (ppwi=4,wgsize=512,valid=1)
+# (ppwi=4,wgsize=512,valid=1)
+# (ppwi=4,wgsize=512,valid=1)
+# (ppwi=4,wgsize=512,valid=1)
+# (ppwi=4,wgsize=512,valid=1)
+# (ppwi=4,wgsize=1024,valid=1)
+# (ppwi=4,wgsize=1024,valid=1)
+# (ppwi=4,wgsize=1024,valid=1)
+# (ppwi=4,wgsize=1024,valid=1)
+# (ppwi=4,wgsize=1024,valid=1)
+# (ppwi=4,wgsize=1024,valid=1)
+# (ppwi=4,wgsize=1024,valid=1)
+# (ppwi=4,wgsize=1024,valid=1)
+# (ppwi=8,wgsize=4,valid=1)
+# (ppwi=8,wgsize=4,valid=1)
+# (ppwi=8,wgsize=4,valid=1)
+# (ppwi=8,wgsize=4,valid=1)
+# (ppwi=8,wgsize=4,valid=1)
+# (ppwi=8,wgsize=4,valid=1)
+# (ppwi=8,wgsize=4,valid=1)
+# (ppwi=8,wgsize=4,valid=1)
+# (ppwi=8,wgsize=8,valid=1)
+# (ppwi=8,wgsize=8,valid=1)
+# (ppwi=8,wgsize=8,valid=1)
+# (ppwi=8,wgsize=8,valid=1)
+# (ppwi=8,wgsize=8,valid=1)
+# (ppwi=8,wgsize=8,valid=1)
+# (ppwi=8,wgsize=8,valid=1)
+# (ppwi=8,wgsize=8,valid=1)
+# (ppwi=8,wgsize=16,valid=1)
+# (ppwi=8,wgsize=16,valid=1)
+# (ppwi=8,wgsize=16,valid=1)
+# (ppwi=8,wgsize=16,valid=1)
+# (ppwi=8,wgsize=16,valid=1)
+# (ppwi=8,wgsize=16,valid=1)
+# (ppwi=8,wgsize=16,valid=1)
+# (ppwi=8,wgsize=16,valid=1)
+# (ppwi=8,wgsize=32,valid=1)
+# (ppwi=8,wgsize=32,valid=1)
+# (ppwi=8,wgsize=32,valid=1)
+# (ppwi=8,wgsize=32,valid=1)
+# (ppwi=8,wgsize=32,valid=1)
+# (ppwi=8,wgsize=32,valid=1)
+# (ppwi=8,wgsize=32,valid=1)
+# (ppwi=8,wgsize=32,valid=1)
+# (ppwi=8,wgsize=64,valid=1)
+# (ppwi=8,wgsize=64,valid=1)
+# (ppwi=8,wgsize=64,valid=1)
+# (ppwi=8,wgsize=64,valid=1)
+# (ppwi=8,wgsize=64,valid=1)
+# (ppwi=8,wgsize=64,valid=1)
+# (ppwi=8,wgsize=64,valid=1)
+# (ppwi=8,wgsize=64,valid=1)
+# (ppwi=8,wgsize=128,valid=1)
+# (ppwi=8,wgsize=128,valid=1)
+# (ppwi=8,wgsize=128,valid=1)
+# (ppwi=8,wgsize=128,valid=1)
+# (ppwi=8,wgsize=128,valid=1)
+# (ppwi=8,wgsize=128,valid=1)
+# (ppwi=8,wgsize=128,valid=1)
+# (ppwi=8,wgsize=128,valid=1)
+# (ppwi=8,wgsize=256,valid=1)
+# (ppwi=8,wgsize=256,valid=1)
+# (ppwi=8,wgsize=256,valid=1)
+# (ppwi=8,wgsize=256,valid=1)
+# (ppwi=8,wgsize=256,valid=1)
+# (ppwi=8,wgsize=256,valid=1)
+# (ppwi=8,wgsize=256,valid=1)
+# (ppwi=8,wgsize=256,valid=1)
+# (ppwi=8,wgsize=512,valid=1)
+# (ppwi=8,wgsize=512,valid=1)
+# (ppwi=8,wgsize=512,valid=1)
+# (ppwi=8,wgsize=512,valid=1)
+# (ppwi=8,wgsize=512,valid=1)
+# (ppwi=8,wgsize=512,valid=1)
+# (ppwi=8,wgsize=512,valid=1)
+# (ppwi=8,wgsize=512,valid=1)
+# (ppwi=8,wgsize=1024,valid=1)
+# (ppwi=8,wgsize=1024,valid=1)
+# (ppwi=8,wgsize=1024,valid=1)
+# (ppwi=8,wgsize=1024,valid=1)
+# (ppwi=8,wgsize=1024,valid=1)
+# (ppwi=8,wgsize=1024,valid=1)
+# (ppwi=8,wgsize=1024,valid=1)
+# (ppwi=8,wgsize=1024,valid=1)
+# (ppwi=16,wgsize=4,valid=1)
+# (ppwi=16,wgsize=4,valid=1)
+# (ppwi=16,wgsize=4,valid=1)
+# (ppwi=16,wgsize=4,valid=1)
+# (ppwi=16,wgsize=4,valid=1)
+# (ppwi=16,wgsize=4,valid=1)
+# (ppwi=16,wgsize=4,valid=1)
+# (ppwi=16,wgsize=4,valid=1)
+# (ppwi=16,wgsize=8,valid=1)
+# (ppwi=16,wgsize=8,valid=1)
+# (ppwi=16,wgsize=8,valid=1)
+# (ppwi=16,wgsize=8,valid=1)
+# (ppwi=16,wgsize=8,valid=1)
+# (ppwi=16,wgsize=8,valid=1)
+# (ppwi=16,wgsize=8,valid=1)
+# (ppwi=16,wgsize=8,valid=1)
+# (ppwi=16,wgsize=16,valid=1)
+# (ppwi=16,wgsize=16,valid=1)
+# (ppwi=16,wgsize=16,valid=1)
+# (ppwi=16,wgsize=16,valid=1)
+# (ppwi=16,wgsize=16,valid=1)
+# (ppwi=16,wgsize=16,valid=1)
+# (ppwi=16,wgsize=16,valid=1)
+# (ppwi=16,wgsize=16,valid=1)
+# (ppwi=16,wgsize=32,valid=1)
+# (ppwi=16,wgsize=32,valid=1)
+# (ppwi=16,wgsize=32,valid=1)
+# (ppwi=16,wgsize=32,valid=1)
+# (ppwi=16,wgsize=32,valid=1)
+# (ppwi=16,wgsize=32,valid=1)
+# (ppwi=16,wgsize=32,valid=1)
+# (ppwi=16,wgsize=32,valid=1)
+# (ppwi=16,wgsize=64,valid=1)
+# (ppwi=16,wgsize=64,valid=1)
+# (ppwi=16,wgsize=64,valid=1)
+# (ppwi=16,wgsize=64,valid=1)
+# (ppwi=16,wgsize=64,valid=1)
+# (ppwi=16,wgsize=64,valid=1)
+# (ppwi=16,wgsize=64,valid=1)
+# (ppwi=16,wgsize=64,valid=1)
+# (ppwi=16,wgsize=128,valid=1)
+# (ppwi=16,wgsize=128,valid=1)
+# (ppwi=16,wgsize=128,valid=1)
+# (ppwi=16,wgsize=128,valid=1)
+# (ppwi=16,wgsize=128,valid=1)
+# (ppwi=16,wgsize=128,valid=1)
+# (ppwi=16,wgsize=128,valid=1)
+# (ppwi=16,wgsize=128,valid=1)
+# (ppwi=16,wgsize=256,valid=1)
+# (ppwi=16,wgsize=256,valid=1)
+# (ppwi=16,wgsize=256,valid=1)
+# (ppwi=16,wgsize=256,valid=1)
+# (ppwi=16,wgsize=256,valid=1)
+# (ppwi=16,wgsize=256,valid=1)
+# (ppwi=16,wgsize=256,valid=1)
+# (ppwi=16,wgsize=256,valid=1)
+# (ppwi=16,wgsize=512,valid=1)
+# (ppwi=16,wgsize=512,valid=1)
+# (ppwi=16,wgsize=512,valid=1)
+# (ppwi=16,wgsize=512,valid=1)
+# (ppwi=16,wgsize=512,valid=1)
+# (ppwi=16,wgsize=512,valid=1)
+# (ppwi=16,wgsize=512,valid=1)
+# (ppwi=16,wgsize=512,valid=1)
+# (ppwi=16,wgsize=1024,valid=1)
+# (ppwi=16,wgsize=1024,valid=1)
+# (ppwi=16,wgsize=1024,valid=1)
+# (ppwi=16,wgsize=1024,valid=1)
+# (ppwi=16,wgsize=1024,valid=1)
+# (ppwi=16,wgsize=1024,valid=1)
+# (ppwi=16,wgsize=1024,valid=1)
+# (ppwi=16,wgsize=1024,valid=1)
+# (ppwi=32,wgsize=4,valid=1)
+# (ppwi=32,wgsize=4,valid=1)
+# (ppwi=32,wgsize=4,valid=1)
+# (ppwi=32,wgsize=4,valid=1)
+# (ppwi=32,wgsize=4,valid=1)
+# (ppwi=32,wgsize=4,valid=1)
+# (ppwi=32,wgsize=4,valid=1)
+# (ppwi=32,wgsize=4,valid=1)
+# (ppwi=32,wgsize=8,valid=1)
+# (ppwi=32,wgsize=8,valid=1)
+# (ppwi=32,wgsize=8,valid=1)
+# (ppwi=32,wgsize=8,valid=1)
+# (ppwi=32,wgsize=8,valid=1)
+# (ppwi=32,wgsize=8,valid=1)
+# (ppwi=32,wgsize=8,valid=1)
+# (ppwi=32,wgsize=8,valid=1)
+# (ppwi=32,wgsize=16,valid=1)
+# (ppwi=32,wgsize=16,valid=1)
+# (ppwi=32,wgsize=16,valid=1)
+# (ppwi=32,wgsize=16,valid=1)
+# (ppwi=32,wgsize=16,valid=1)
+# (ppwi=32,wgsize=16,valid=1)
+# (ppwi=32,wgsize=16,valid=1)
+# (ppwi=32,wgsize=16,valid=1)
+# (ppwi=32,wgsize=32,valid=1)
+# (ppwi=32,wgsize=32,valid=1)
+# (ppwi=32,wgsize=32,valid=1)
+# (ppwi=32,wgsize=32,valid=1)
+# (ppwi=32,wgsize=32,valid=1)
+# (ppwi=32,wgsize=32,valid=1)
+# (ppwi=32,wgsize=32,valid=1)
+# (ppwi=32,wgsize=32,valid=1)
+# (ppwi=32,wgsize=64,valid=1)
+# (ppwi=32,wgsize=64,valid=1)
+# (ppwi=32,wgsize=64,valid=1)
+# (ppwi=32,wgsize=64,valid=1)
+# (ppwi=32,wgsize=64,valid=1)
+# (ppwi=32,wgsize=64,valid=1)
+# (ppwi=32,wgsize=64,valid=1)
+# (ppwi=32,wgsize=64,valid=1)
+# (ppwi=32,wgsize=128,valid=1)
+# (ppwi=32,wgsize=128,valid=1)
+# (ppwi=32,wgsize=128,valid=1)
+# (ppwi=32,wgsize=128,valid=1)
+# (ppwi=32,wgsize=128,valid=1)
+# (ppwi=32,wgsize=128,valid=1)
+# (ppwi=32,wgsize=128,valid=1)
+# (ppwi=32,wgsize=128,valid=1)
+# (ppwi=32,wgsize=256,valid=1)
+# (ppwi=32,wgsize=256,valid=1)
+# (ppwi=32,wgsize=256,valid=1)
+# (ppwi=32,wgsize=256,valid=1)
+# (ppwi=32,wgsize=256,valid=1)
+# (ppwi=32,wgsize=256,valid=1)
+# (ppwi=32,wgsize=256,valid=1)
+# (ppwi=32,wgsize=256,valid=1)
+# (ppwi=32,wgsize=512,valid=1)
+# (ppwi=32,wgsize=512,valid=1)
+# (ppwi=32,wgsize=512,valid=1)
+# (ppwi=32,wgsize=512,valid=1)
+# (ppwi=32,wgsize=512,valid=1)
+# (ppwi=32,wgsize=512,valid=1)
+# (ppwi=32,wgsize=512,valid=1)
+# (ppwi=32,wgsize=512,valid=1)
+# (ppwi=32,wgsize=1024,valid=1)
+# (ppwi=32,wgsize=1024,valid=1)
+# (ppwi=32,wgsize=1024,valid=1)
+# (ppwi=32,wgsize=1024,valid=1)
+# (ppwi=32,wgsize=1024,valid=1)
+# (ppwi=32,wgsize=1024,valid=1)
+# (ppwi=32,wgsize=1024,valid=1)
+# (ppwi=32,wgsize=1024,valid=1)
+# (ppwi=64,wgsize=4,valid=1)
+# (ppwi=64,wgsize=4,valid=1)
+# (ppwi=64,wgsize=4,valid=1)
+# (ppwi=64,wgsize=4,valid=1)
+# (ppwi=64,wgsize=4,valid=1)
+# (ppwi=64,wgsize=4,valid=1)
+# (ppwi=64,wgsize=4,valid=1)
+# (ppwi=64,wgsize=4,valid=1)
+# (ppwi=64,wgsize=8,valid=1)
+# (ppwi=64,wgsize=8,valid=1)
+# (ppwi=64,wgsize=8,valid=1)
+# (ppwi=64,wgsize=8,valid=1)
+# (ppwi=64,wgsize=8,valid=1)
+# (ppwi=64,wgsize=8,valid=1)
+# (ppwi=64,wgsize=8,valid=1)
+# (ppwi=64,wgsize=8,valid=1)
+# (ppwi=64,wgsize=16,valid=1)
+# (ppwi=64,wgsize=16,valid=1)
+# (ppwi=64,wgsize=16,valid=1)
+# (ppwi=64,wgsize=16,valid=1)
+# (ppwi=64,wgsize=16,valid=1)
+# (ppwi=64,wgsize=16,valid=1)
+# (ppwi=64,wgsize=16,valid=1)
+# (ppwi=64,wgsize=16,valid=1)
+# (ppwi=64,wgsize=32,valid=1)
+# (ppwi=64,wgsize=32,valid=1)
+# (ppwi=64,wgsize=32,valid=1)
+# (ppwi=64,wgsize=32,valid=1)
+# (ppwi=64,wgsize=32,valid=1)
+# (ppwi=64,wgsize=32,valid=1)
+# (ppwi=64,wgsize=32,valid=1)
+# (ppwi=64,wgsize=32,valid=1)
+# (ppwi=64,wgsize=64,valid=1)
+# (ppwi=64,wgsize=64,valid=1)
+# (ppwi=64,wgsize=64,valid=1)
+# (ppwi=64,wgsize=64,valid=1)
+# (ppwi=64,wgsize=64,valid=1)
+# (ppwi=64,wgsize=64,valid=1)
+# (ppwi=64,wgsize=64,valid=1)
+# (ppwi=64,wgsize=64,valid=1)
+# (ppwi=64,wgsize=128,valid=1)
+# (ppwi=64,wgsize=128,valid=1)
+# (ppwi=64,wgsize=128,valid=1)
+# (ppwi=64,wgsize=128,valid=1)
+# (ppwi=64,wgsize=128,valid=1)
+# (ppwi=64,wgsize=128,valid=1)
+# (ppwi=64,wgsize=128,valid=1)
+# (ppwi=64,wgsize=128,valid=1)
+# (ppwi=64,wgsize=256,valid=1)
+# (ppwi=64,wgsize=256,valid=1)
+# (ppwi=64,wgsize=256,valid=1)
+# (ppwi=64,wgsize=256,valid=1)
+# (ppwi=64,wgsize=256,valid=1)
+# (ppwi=64,wgsize=256,valid=1)
+# (ppwi=64,wgsize=256,valid=1)
+# (ppwi=64,wgsize=256,valid=1)
+# (ppwi=64,wgsize=512,valid=1)
+# (ppwi=64,wgsize=512,valid=1)
+# (ppwi=64,wgsize=512,valid=1)
+# (ppwi=64,wgsize=512,valid=1)
+# (ppwi=64,wgsize=512,valid=1)
+# (ppwi=64,wgsize=512,valid=1)
+# (ppwi=64,wgsize=512,valid=1)
+# (ppwi=64,wgsize=512,valid=1)
+# (ppwi=64,wgsize=1024,valid=1)
+ppwi,wgsize,sum_ms,avg_ms,min_ms,max_ms,stddev_ms,interactions/s,gflops/s,gfinst/s
+1,4,292.088,36.511,36.410,36.769,0.126,43775610101.667,1752.008,1094.390
+1,8,147.950,18.494,18.271,18.749,0.126,86423119768.775,3458.867,2160.578
+1,16,73.564,9.196,9.140,9.294,0.041,173811837708.104,6956.379,4345.296
+1,32,71.733,8.967,8.562,9.133,0.234,178248158304.074,7133.932,4456.204
+1,64,71.815,8.977,8.560,9.127,0.240,178046034705.895,7125.842,4451.151
+1,128,78.840,9.855,9.835,9.859,0.008,162180952381.556,6490.882,4054.524
+1,256,78.853,9.857,9.838,9.861,0.007,162153398210.237,6489.780,4053.835
+1,512,77.555,9.694,8.587,9.882,0.419,164868235739.707,6598.434,4121.706
+1,1024,78.808,9.851,9.839,9.860,0.010,162245665489.158,6493.472,4056.142
+2,4,224.390,28.049,27.988,28.157,0.061,56982618480.436,1995.611,1424.565
+2,8,112.489,14.061,14.057,14.074,0.006,113667912861.938,3980.810,2841.698
+2,16,100.371,12.546,12.541,12.551,0.003,127391089371.748,4461.415,3184.777
+2,32,91.973,11.497,11.490,11.503,0.005,139022973416.083,4868.780,3475.574
+2,64,95.421,11.928,11.509,12.356,0.416,133999313295.132,4692.844,3349.983
+2,128,98.981,12.373,12.368,12.378,0.003,129179160871.134,4524.036,3229.479
+2,256,116.737,14.592,14.587,14.608,0.007,109531203203.538,3835.937,2738.280
+2,512,127.818,15.977,15.972,15.986,0.004,100035131421.908,3503.371,2500.878
+2,1024,127.796,15.975,15.972,15.980,0.003,100052684297.413,3503.985,2501.317
+4,4,358.941,44.868,44.762,45.017,0.100,35622378061.159,1158.471,890.559
+4,8,315.059,39.382,39.325,39.415,0.026,40583938546.929,1319.825,1014.598
+4,16,245.802,30.725,30.626,30.886,0.080,52018936934.484,1691.701,1300.473
+4,32,229.226,28.653,28.631,28.683,0.014,55780386040.741,1814.027,1394.510
+4,64,243.858,30.482,30.459,30.496,0.010,52433537465.139,1705.184,1310.838
+4,128,259.859,32.482,32.431,32.543,0.035,49204893482.496,1600.186,1230.122
+4,256,285.503,35.688,35.663,35.734,0.020,44785225749.684,1456.455,1119.631
+4,512,310.475,38.809,38.794,38.825,0.011,41183094444.161,1339.310,1029.577
+4,1024,375.799,46.975,46.956,46.995,0.013,34024434884.703,1106.504,850.611
+8,4,600.211,75.026,74.958,75.151,0.073,21303059618.164,666.160,532.576
+8,8,452.925,56.616,56.484,56.803,0.105,28230599044.051,882.788,705.765
+8,16,414.260,51.782,50.570,52.026,0.461,30865513362.361,965.183,771.638
+8,32,421.460,52.683,52.620,52.756,0.042,30338175104.753,948.693,758.454
+8,64,421.197,52.650,52.627,52.682,0.017,30357131048.284,949.286,758.928
+8,128,451.396,56.425,56.378,56.458,0.028,28326180837.038,885.777,708.155
+8,256,451.332,56.416,56.371,56.447,0.027,28330251036.723,885.904,708.256
+8,512,487.647,60.956,60.874,61.104,0.071,26220451303.433,819.929,655.511
+8,1024,487.569,60.946,60.893,60.983,0.033,26224676152.469,820.061,655.617
+16,4,901.838,112.730,112.565,113.156,0.190,14178091141.119,434.494,354.452
+16,8,787.165,98.396,96.796,99.396,1.230,16243530518.154,497.791,406.088
+16,16,773.519,96.690,96.678,96.698,0.009,16530078694.825,506.572,413.252
+16,32,780.896,97.612,97.597,97.619,0.008,16373918623.019,501.786,409.348
+16,64,805.376,100.672,100.456,100.715,0.084,15876226181.063,486.534,396.906
+16,128,805.921,100.740,100.677,100.819,0.055,15865504928.430,486.206,396.638
+16,256,807.598,100.950,100.935,100.977,0.015,15832544272.314,485.196,395.814
+16,512,807.643,100.955,100.938,100.973,0.011,15831661218.181,485.169,395.792
+16,1024,964.704,120.588,120.553,120.627,0.021,13254157207.140,406.180,331.354
+32,4,1246.765,155.846,155.828,155.863,0.012,10255611866.266,311.082,256.390
+32,8,1274.595,159.324,159.310,159.342,0.011,10031682041.318,304.290,250.792
+32,16,1325.874,165.734,165.723,165.747,0.010,9643706300.284,292.522,241.093
+32,32,1481.110,185.139,185.120,185.153,0.009,8632939874.238,261.862,215.823
+32,64,1481.497,185.187,185.172,185.197,0.010,8630684845.908,261.794,215.767
+32,128,1483.824,185.478,185.463,185.497,0.011,8617150206.292,261.383,215.429
+32,256,1483.733,185.467,185.451,185.483,0.010,8617681929.166,261.399,215.442
+32,512,1511.800,188.975,188.881,189.067,0.055,8457690404.123,256.546,211.442
+32,1024,2033.592,254.199,250.976,256.416,1.921,6287561093.607,190.720,157.189
+64,4,3473.765,434.221,434.207,434.248,0.016,3680829007.831,111.075,92.021
+64,8,3551.754,443.969,443.934,443.992,0.017,3600006260.794,108.636,90.000
+64,16,3713.552,464.194,464.174,464.203,0.008,3443155551.138,103.903,86.079
+64,32,4064.715,508.089,508.072,508.103,0.011,3145690524.646,94.926,78.642
+64,64,4078.263,509.783,509.768,509.813,0.014,3135240310.056,94.611,78.381
+64,128,4078.171,509.771,509.758,509.781,0.006,3135311525.772,94.613,78.383
+64,256,4121.194,515.149,515.068,515.224,0.043,3102580510.543,93.625,77.565
+64,512,6184.112,773.014,772.308,773.882,0.550,2067610780.541,62.394,51.690
+64,1024,10446.033,1305.754,1305.433,1305.936,0.164,1224037518.193,36.937,30.601
+# best: { min_ms: 8.562, max_ms: 9.133, sum_ms: 71.733, avg_ms: 8.967, ppwi: 1, wgsize: 32 }
+# (ppwi=64,wgsize=1024,valid=1)
+ppwi,wgsize,sum_ms,avg_ms,min_ms,max_ms,stddev_ms,interactions/s,gflops/s,gfinst/s
+1,4,292.481,36.560,36.441,36.873,0.140,43716843653.464,1749.656,1092.921
+1,8,146.529,18.316,18.268,18.391,0.041,87261292403.944,3492.412,2181.532
+1,16,73.434,9.179,9.139,9.194,0.022,174121211681.317,6968.761,4353.030
+1,32,72.621,9.078,8.564,9.254,0.295,176070372540.860,7046.771,4401.759
+1,64,73.438,9.180,8.560,9.273,0.234,174109838064.128,6968.306,4352.746
+1,128,80.279,10.035,10.029,10.051,0.007,159274703818.926,6374.567,3981.868
+1,256,80.280,10.035,10.016,10.056,0.010,159271124715.221,6374.424,3981.778
+1,512,80.315,10.039,10.035,10.042,0.002,159202761792.829,6371.688,3980.069
+1,1024,80.274,10.034,10.018,10.056,0.011,159282933986.855,6374.896,3982.073
+2,4,224.733,28.092,27.988,28.458,0.148,56895679873.530,1992.567,1422.392
+2,8,112.805,14.101,14.053,14.313,0.082,113348572822.830,3969.626,2833.714
+2,16,103.080,12.885,12.875,12.900,0.008,124043389172.218,4344.174,3101.085
+2,32,93.062,11.633,11.626,11.641,0.005,137396171759.187,4811.807,3434.904
+2,64,95.794,11.974,11.645,12.522,0.416,133477423198.840,4674.567,3336.936
+2,128,100.371,12.546,12.541,12.551,0.003,127390786032.319,4461.404,3184.770
+2,256,118.593,14.824,14.818,14.839,0.006,107816605245.448,3775.889,2695.415
+2,512,129.801,16.225,16.218,16.242,0.008,98507471822.044,3449.870,2462.687
+2,1024,129.855,16.232,16.219,16.241,0.010,98466059395.669,3448.420,2461.651
+4,4,358.696,44.837,44.763,45.113,0.109,35646739107.101,1159.263,891.168
+4,8,324.729,40.591,40.565,40.615,0.018,39375432681.098,1280.523,984.386
+4,16,250.974,31.372,31.195,31.485,0.086,50946802674.615,1656.834,1273.670
+4,32,240.569,30.071,29.013,30.797,0.812,53150305591.268,1728.494,1328.758
+4,64,247.041,30.880,30.777,30.921,0.043,51758034506.369,1683.216,1293.951
+4,128,263.355,32.919,32.874,32.968,0.029,48551633902.984,1578.941,1213.791
+4,256,290.381,36.298,36.262,36.326,0.018,44033026699.189,1431.992,1100.826
+4,512,317.049,39.631,39.624,39.651,0.008,40329269665.251,1311.543,1008.232
+4,1024,385.571,48.196,48.186,48.213,0.009,33162106386.851,1078.461,829.053
+8,4,613.354,76.669,76.644,76.692,0.018,20846571150.521,651.885,521.164
+8,8,461.962,57.745,57.480,58.028,0.179,27678352112.026,865.519,691.959
+8,16,420.818,52.602,51.144,53.501,1.129,30384471128.430,950.141,759.612
+8,32,425.810,53.226,53.127,53.343,0.062,30028296837.941,939.003,750.707
+8,64,426.187,53.273,53.208,53.374,0.056,30001732020.726,938.172,750.043
+8,128,457.505,57.188,57.093,57.357,0.083,27947967147.737,873.950,698.699
+8,256,457.810,57.226,57.133,57.289,0.048,27929331742.864,873.367,698.233
+8,512,494.417,61.802,61.758,61.854,0.031,25861463450.421,808.704,646.537
+8,1024,494.441,61.805,61.763,61.864,0.033,25860209031.686,808.664,646.505
+16,4,896.627,112.078,112.021,112.185,0.059,14260478863.630,437.019,356.512
+16,8,778.682,97.335,97.248,97.380,0.045,16420484647.266,503.213,410.512
+16,16,780.353,97.544,97.521,97.568,0.015,16385316278.284,502.136,409.633
+16,32,789.112,98.639,98.623,98.650,0.010,16203456356.896,496.563,405.086
+16,64,813.894,101.737,101.301,102.017,0.219,15710075493.716,481.443,392.752
+16,128,814.313,101.789,101.745,101.898,0.049,15701997268.501,481.195,392.550
+16,256,815.853,101.982,101.886,102.059,0.051,15672356652.385,480.287,391.809
+16,512,815.874,101.984,101.909,102.060,0.047,15671942788.493,480.274,391.799
+16,1024,963.373,120.422,120.375,120.457,0.025,13272466314.616,406.741,331.812
+32,4,1254.712,156.839,156.822,156.859,0.014,10190652095.050,309.112,254.766
+32,8,1286.548,160.819,160.738,160.905,0.063,9938482613.198,301.463,248.462
+32,16,1345.818,168.227,168.202,168.258,0.020,9500788410.984,288.187,237.520
+32,32,1494.254,186.782,186.506,186.901,0.154,8557002660.232,259.559,213.925
+32,64,1494.663,186.833,186.590,186.916,0.096,8554661308.566,259.488,213.867
+32,128,1496.575,187.072,186.852,187.158,0.117,8543732536.946,259.156,213.593
+32,256,1496.859,187.107,186.884,187.154,0.085,8542112778.862,259.107,213.553
+32,512,1524.365,190.546,190.493,190.628,0.049,8387973138.980,254.432,209.699
+32,1024,2037.254,254.657,251.838,257.375,1.560,6276259459.836,190.377,156.906
+64,4,3495.692,436.961,436.911,437.017,0.034,3657741146.696,110.378,91.444
+64,8,3574.447,446.806,446.601,447.304,0.207,3577151086.857,107.946,89.429
+64,16,3739.378,467.422,467.023,467.702,0.262,3419374827.042,103.185,85.484
+64,32,4097.024,512.128,511.636,512.428,0.256,3120883654.891,94.178,78.022
+64,64,4109.648,513.706,513.346,513.837,0.204,3111297341.838,93.888,77.782
+64,128,4109.922,513.740,513.355,513.878,0.216,3111089350.332,93.882,77.777
+64,256,4140.648,517.581,517.524,517.666,0.042,3088003884.633,93.186,77.200
+64,512,6201.793,775.224,774.778,776.372,0.492,2061715872.441,62.216,51.543
+64,1024,10426.625,1303.328,1303.046,1303.686,0.219,1226315876.272,37.006,30.658
+# best: { min_ms: 8.564, max_ms: 9.254, sum_ms: 72.621, avg_ms: 9.078, ppwi: 1, wgsize: 32 }
+# (ppwi=64,wgsize=1024,valid=1)
+ppwi,wgsize,sum_ms,avg_ms,min_ms,max_ms,stddev_ms,interactions/s,gflops/s,gfinst/s
+1,4,292.166,36.521,36.424,36.678,0.071,43763902144.992,1751.539,1094.098
+1,8,146.394,18.299,18.251,18.426,0.054,87342028584.821,3495.644,2183.551
+1,16,74.132,9.266,9.142,9.441,0.103,172480782967.192,6903.107,4312.020
+1,32,73.220,9.152,8.560,9.249,0.224,174629963742.767,6989.122,4365.749
+1,64,72.616,9.077,8.557,9.262,0.298,176080645847.841,7047.182,4402.016
+1,128,80.106,10.013,10.005,10.031,0.009,159617844816.455,6388.300,3990.446
+1,256,80.182,10.023,10.013,10.036,0.010,159466291387.375,6382.235,3986.657
+1,512,80.222,10.028,10.016,10.055,0.013,159387605469.666,6379.086,3984.690
+1,1024,80.175,10.022,10.013,10.033,0.009,159480456897.890,6382.802,3987.011
+2,4,224.222,28.028,27.988,28.195,0.065,57025337271.751,1997.107,1425.633
+2,8,112.489,14.061,14.035,14.108,0.026,113667236851.810,3980.786,2841.681
+2,16,102.934,12.867,12.858,12.878,0.008,124218651767.556,4350.312,3105.466
+2,32,92.976,11.622,11.605,11.675,0.022,137523135100.112,4816.253,3438.078
+2,64,93.059,11.632,11.620,11.660,0.013,137400116805.301,4811.945,3435.003
+2,128,100.215,12.527,12.519,12.545,0.009,127589220516.690,4468.354,3189.731
+2,256,118.487,14.811,14.800,14.842,0.014,107913240303.073,3779.273,2697.831
+2,512,129.801,16.225,16.214,16.265,0.016,98507238836.170,3449.862,2462.681
+2,1024,129.804,16.225,16.216,16.241,0.010,98504951535.003,3449.782,2462.624
+4,4,358.821,44.853,44.730,45.133,0.148,35634301229.479,1158.859,890.858
+4,8,324.013,40.502,40.425,40.630,0.072,39462434110.252,1283.353,986.561
+4,16,250.915,31.364,31.201,31.461,0.079,50958861468.481,1657.227,1273.972
+4,32,241.934,30.242,28.986,30.773,0.723,52850590970.736,1718.747,1321.265
+4,64,247.031,30.879,30.838,30.915,0.027,51760139980.744,1683.285,1294.003
+4,128,263.480,32.935,32.873,33.047,0.053,48528710432.496,1578.196,1213.218
+4,256,290.534,36.317,36.294,36.348,0.018,44009733777.806,1431.235,1100.243
+4,512,317.025,39.628,39.618,39.642,0.007,40332206469.004,1311.638,1008.305
+4,1024,385.494,48.187,48.178,48.197,0.007,33168729626.109,1078.676,829.218
+8,4,613.228,76.653,76.608,76.696,0.026,20850869625.092,652.019,521.272
+8,8,462.630,57.829,57.701,57.919,0.066,27638392289.744,864.269,690.960
+8,16,427.993,53.499,53.410,53.525,0.035,29875122216.731,934.213,746.878
+8,32,425.187,53.148,53.011,53.350,0.098,30072293423.839,940.379,751.807
+8,64,426.054,53.257,53.197,53.311,0.033,30011081449.887,938.465,750.277
+8,128,457.093,57.137,57.060,57.194,0.042,27973131989.361,874.737,699.328
+8,256,457.973,57.247,57.168,57.307,0.047,27919415328.730,873.057,697.985
+8,512,494.179,61.772,61.737,61.826,0.030,25873874278.002,809.092,646.847
+8,1024,494.150,61.769,61.730,61.810,0.031,25875433151.947,809.140,646.886
+16,4,897.246,112.156,111.978,112.399,0.138,14250646233.844,436.718,356.266
+16,8,817.335,102.167,101.966,102.424,0.154,15643933303.405,479.416,391.098
+16,16,780.501,97.563,97.524,97.607,0.033,16382224294.818,502.041,409.556
+16,32,789.102,98.638,98.620,98.652,0.010,16203661841.189,496.569,405.092
+16,64,813.215,101.652,101.408,101.990,0.200,15723189337.344,481.845,393.080
+16,128,813.742,101.718,101.510,101.798,0.085,15713009266.905,481.533,392.825
+16,256,815.821,101.978,101.911,102.035,0.041,15672962840.603,480.305,391.824
+16,512,815.957,101.995,101.928,102.026,0.031,15670353443.127,480.225,391.759
+16,1024,963.205,120.401,120.370,120.423,0.014,13274786229.125,406.812,331.870
+32,4,1254.744,156.843,156.812,156.857,0.014,10190392817.987,309.104,254.760
+32,8,1286.343,160.793,160.735,160.899,0.049,9940063592.114,301.511,248.502
+32,16,1343.590,167.949,167.110,168.239,0.479,9516547153.678,288.665,237.914
+32,32,1494.618,186.827,186.566,186.881,0.099,8554920681.271,259.496,213.873
+32,64,1495.126,186.891,186.848,186.918,0.023,8552013368.721,259.407,213.800
+32,128,1496.607,187.076,186.869,187.158,0.105,8543547659.604,259.151,213.589
+32,256,1496.460,187.058,186.862,187.172,0.119,8544387273.159,259.176,213.610
+32,512,1524.470,190.559,190.471,190.628,0.050,8387396632.667,254.414,209.685
+32,1024,2044.844,255.606,254.156,257.642,1.322,6252963303.512,189.671,156.324
+64,4,3496.890,437.111,437.039,437.372,0.102,3656487467.599,110.340,91.412
+64,8,3577.207,447.151,446.907,447.663,0.264,3574390716.058,107.863,89.360
+64,16,3740.644,467.580,467.180,468.008,0.323,3418217886.003,103.150,85.455
+64,32,4100.144,512.518,512.070,512.855,0.345,3118509273.079,94.106,77.963
+64,64,4114.394,514.299,514.229,514.405,0.067,3107708203.541,93.780,77.693
+64,128,4114.330,514.291,514.230,514.405,0.066,3107756743.806,93.782,77.694
+64,256,4143.286,517.911,517.770,518.115,0.098,3086037199.103,93.126,77.151
+64,512,6200.177,775.022,774.618,775.449,0.249,2062253469.825,62.232,51.556
+64,1024,10458.710,1307.339,1306.923,1307.548,0.188,1222553788.538,36.893,30.564
+# best: { min_ms: 8.557, max_ms: 9.262, sum_ms: 72.616, avg_ms: 9.077, ppwi: 1, wgsize: 64 }
+# (ppwi=64,wgsize=1024,valid=1)
+ppwi,wgsize,sum_ms,avg_ms,min_ms,max_ms,stddev_ms,interactions/s,gflops/s,gfinst/s
+1,4,292.051,36.506,36.440,36.639,0.059,43781180625.335,1752.231,1094.530
+1,8,146.249,18.281,18.270,18.339,0.022,87428303162.734,3499.097,2185.708
+1,16,73.556,9.194,9.141,9.275,0.035,173832263475.916,6957.197,4345.807
+1,32,72.596,9.075,8.563,9.249,0.295,176128929713.289,7049.115,4403.223
+1,64,73.355,9.169,8.561,9.264,0.230,174307485981.403,6976.216,4357.687
+1,128,80.180,10.023,10.012,10.035,0.010,159470332736.726,6382.397,3986.758
+1,256,80.235,10.029,10.013,10.037,0.008,159361854218.342,6378.055,3984.046
+1,512,80.209,10.026,10.018,10.039,0.009,159412490557.028,6380.082,3985.312
+1,1024,80.192,10.024,10.015,10.037,0.009,159446749818.969,6381.453,3986.169
+2,4,224.165,28.021,27.992,28.089,0.031,57039814346.480,1997.614,1425.995
+2,8,112.637,14.080,14.039,14.115,0.029,113517804812.583,3975.553,2837.945
+2,16,102.962,12.870,12.858,12.880,0.009,124184442990.193,4349.114,3104.611
+2,32,92.966,11.621,11.607,11.632,0.008,137537648345.238,4816.762,3438.441
+2,64,95.648,11.956,11.622,12.506,0.419,133681277596.458,4681.706,3342.032
+2,128,100.319,12.540,12.527,12.546,0.006,127457244246.375,4463.732,3186.431
+2,256,118.491,14.811,14.797,14.837,0.013,107909770423.730,3779.152,2697.744
+2,512,129.857,16.232,16.217,16.238,0.008,98465083504.800,3448.385,2461.627
+2,1024,129.809,16.226,16.217,16.240,0.009,98501200560.673,3449.650,2462.530
+4,4,358.348,44.793,44.759,44.919,0.049,35681338174.557,1160.388,892.033
+4,8,325.363,40.670,40.643,40.697,0.021,39298650260.199,1278.026,982.466
+4,16,251.180,31.397,31.330,31.476,0.049,50905077120.600,1655.477,1272.627
+4,32,245.330,30.666,30.486,30.753,0.080,52118990130.714,1694.955,1302.975
+4,64,247.154,30.894,30.861,30.931,0.023,51734335069.772,1682.446,1293.358
+4,128,263.637,32.955,32.917,32.976,0.024,48499838577.082,1577.257,1212.496
+4,256,290.470,36.309,36.295,36.332,0.012,44019442670.032,1431.551,1100.486
+4,512,316.849,39.606,39.587,39.631,0.012,40354682604.932,1312.369,1008.867
+4,1024,385.422,48.178,48.165,48.189,0.009,33174937959.228,1078.878,829.373
+8,4,613.667,76.708,76.686,76.738,0.017,20835953909.095,651.553,520.899
+8,8,461.990,57.749,57.590,57.936,0.117,27676623796.841,865.465,691.916
+8,16,413.801,51.725,51.118,53.500,1.020,30899704611.559,966.252,772.493
+8,32,425.519,53.190,53.014,53.370,0.098,30048813266.842,939.645,751.220
+8,64,426.037,53.255,53.214,53.364,0.045,30012238606.627,938.501,750.306
+8,128,456.798,57.100,57.050,57.164,0.035,27991205528.134,875.302,699.780
+8,256,457.862,57.233,57.130,57.324,0.067,27926155076.944,873.268,698.154
+8,512,494.044,61.755,61.718,61.787,0.022,25880984670.514,809.314,647.025
+8,1024,494.111,61.764,61.705,61.836,0.034,25877453233.914,809.204,646.936
+16,4,897.297,112.162,112.026,112.386,0.108,14249842489.937,436.693,356.246
+16,8,817.769,102.221,102.122,102.393,0.076,15635632483.913,479.161,390.891
+16,16,780.595,97.574,97.533,97.605,0.025,16380241940.761,501.980,409.506
+16,32,789.122,98.640,98.627,98.659,0.014,16203252643.676,496.556,405.081
+16,64,813.220,101.652,101.477,101.882,0.154,15723100147.341,481.842,393.078
+16,128,814.626,101.828,101.729,101.939,0.075,15695957031.044,481.010,392.399
+16,256,816.065,102.008,101.924,102.079,0.054,15668290189.437,480.162,391.707
+16,512,815.908,101.988,101.928,102.027,0.028,15671298629.638,480.254,391.782
+16,1024,963.104,120.388,120.329,120.431,0.030,13276170902.815,406.855,331.904
+32,4,1261.037,157.630,157.557,157.720,0.052,10139541899.358,307.562,253.489
+32,8,1286.905,160.863,160.768,160.893,0.038,9935725087.232,301.379,248.393
+32,16,1345.891,168.236,168.201,168.255,0.018,9500272475.164,288.171,237.507
+32,32,1494.937,186.867,186.849,186.896,0.015,8553090870.250,259.440,213.827
+32,64,1495.206,186.901,186.831,186.931,0.030,8551554025.896,259.393,213.789
+32,128,1496.847,187.106,186.913,187.152,0.074,8542178172.356,259.109,213.554
+32,256,1497.199,187.150,187.122,187.181,0.018,8540169732.505,259.048,213.504
+32,512,1524.430,190.554,190.504,190.591,0.032,8387615809.845,254.421,209.690
+32,1024,2039.718,254.965,250.908,257.408,1.962,6268678794.157,190.147,156.717
+64,4,3501.380,437.673,437.576,437.856,0.089,3651798651.294,110.199,91.295
+64,8,3582.682,447.835,447.578,448.196,0.264,3568928087.932,107.698,89.223
+64,16,3745.246,468.156,467.780,468.696,0.385,3414017580.143,103.024,85.350
+64,32,4107.778,513.472,513.079,513.603,0.152,3112713293.373,93.931,77.818
+64,64,4119.858,514.982,514.686,515.217,0.227,3103586380.683,93.656,77.590
+64,128,4119.492,514.936,514.663,515.324,0.243,3103862513.413,93.664,77.597
+64,256,4150.102,518.763,518.583,518.942,0.124,3080968789.809,92.973,77.024
+64,512,6195.888,774.486,774.111,775.156,0.397,2063681063.080,62.275,51.592
+64,1024,10583.755,1322.969,1322.474,1323.379,0.347,1208109572.024,36.457,30.203
+# best: { min_ms: 8.563, max_ms: 9.249, sum_ms: 72.596, avg_ms: 9.075, ppwi: 1, wgsize: 32 }
+# (ppwi=64,wgsize=1024,valid=1)
+ppwi,wgsize,sum_ms,avg_ms,min_ms,max_ms,stddev_ms,interactions/s,gflops/s,gfinst/s
+1,4,291.996,36.499,36.449,36.599,0.047,43789493179.823,1752.564,1094.737
+1,8,146.449,18.306,18.270,18.346,0.026,87309355979.508,3494.336,2182.734
+1,16,74.581,9.323,9.181,9.512,0.087,171442759318.734,6861.563,4286.069
+1,32,72.660,9.083,8.572,9.265,0.295,175974094034.530,7042.918,4399.352
+1,64,73.430,9.179,8.566,9.275,0.232,174129888116.109,6969.108,4353.247
+1,128,80.322,10.040,10.024,10.061,0.011,159188013350.277,6371.097,3979.700
+1,256,80.302,10.038,10.024,10.051,0.010,159228017487.524,6372.699,3980.700
+1,512,80.380,10.047,10.045,10.050,0.002,159074549127.372,6366.556,3976.864
+1,1024,80.320,10.040,10.026,10.049,0.008,159192928533.502,6371.294,3979.823
+2,4,224.199,28.025,28.004,28.057,0.017,57031194731.434,1997.313,1425.780
+2,8,113.043,14.130,14.046,14.496,0.146,113110532760.063,3961.290,2827.763
+2,16,103.031,12.879,12.867,12.895,0.011,124101845398.202,4346.221,3102.546
+2,32,93.026,11.628,11.614,11.645,0.012,137448772292.526,4813.649,3436.219
+2,64,95.771,11.971,11.633,12.537,0.422,133509877330.971,4675.703,3337.747
+2,128,100.389,12.549,12.536,12.562,0.010,127367350765.912,4460.583,3184.184
+2,256,117.708,14.714,14.701,14.720,0.007,108627125154.549,3804.274,2715.678
+2,512,129.906,16.238,16.224,16.263,0.012,98427838196.612,3447.081,2460.696
+2,1024,129.971,16.246,16.230,16.253,0.006,98378072732.756,3445.338,2459.452
+4,4,360.043,45.005,44.824,45.322,0.186,35513329994.735,1154.924,887.833
+4,8,326.134,40.767,40.722,40.805,0.028,39205741551.855,1275.005,980.144
+4,16,251.640,31.455,31.400,31.516,0.040,50811932351.963,1652.448,1270.298
+4,32,242.166,30.271,28.989,30.818,0.723,52799888737.459,1717.098,1319.997
+4,64,246.983,30.873,30.830,30.894,0.018,51770119690.216,1683.609,1294.253
+4,128,261.797,32.725,32.679,32.739,0.019,48840644769.729,1588.340,1221.016
+4,256,288.606,36.076,36.053,36.101,0.012,44303823248.173,1440.799,1107.596
+4,512,315.601,39.450,39.432,39.465,0.011,40514287086.725,1317.560,1012.857
+4,1024,382.803,47.850,47.837,47.864,0.011,33401894177.793,1086.259,835.047
+8,4,616.069,77.009,76.775,77.166,0.157,20754706841.742,649.012,518.868
+8,8,461.593,57.699,57.521,57.985,0.151,27700433771.423,866.209,692.511
+8,16,411.502,51.438,51.138,53.430,0.753,31072367795.024,971.652,776.809
+8,32,425.724,53.215,53.095,53.345,0.083,30034357604.251,939.193,750.859
+8,64,425.890,53.236,53.183,53.392,0.062,30022645473.220,938.826,750.566
+8,128,453.305,56.663,56.587,56.761,0.058,28206884756.223,882.046,705.172
+8,256,454.048,56.756,56.642,56.803,0.049,28160754110.833,880.604,704.019
+8,512,491.284,61.410,61.343,61.611,0.080,26026366862.952,813.860,650.659
+8,1024,491.213,61.402,61.314,61.767,0.141,26030145092.832,813.978,650.754
+16,4,897.439,112.180,112.105,112.329,0.071,14247583636.884,436.624,356.190
+16,8,792.584,99.073,97.159,102.126,2.277,16132467756.935,494.387,403.312
+16,16,780.557,97.570,97.528,97.612,0.029,16381041439.705,502.005,409.526
+16,32,789.102,98.638,98.617,98.658,0.013,16203663935.690,496.569,405.092
+16,64,813.740,101.717,101.591,101.868,0.080,15713049102.651,481.534,392.826
+16,128,814.451,101.806,101.755,101.880,0.036,15699334515.489,481.114,392.483
+16,256,814.735,101.842,101.814,101.874,0.018,15693867690.415,480.946,392.347
+16,512,814.607,101.826,101.790,101.872,0.025,15696330466.897,481.021,392.408
+16,1024,960.094,120.012,119.963,120.085,0.039,13317795810.142,408.130,332.945
+32,4,1254.791,156.849,156.810,156.873,0.021,10190014744.140,309.093,254.750
+32,8,1286.592,160.824,160.729,160.927,0.067,9938142620.146,301.453,248.454
+32,16,1345.691,168.211,168.196,168.235,0.013,9501685989.629,288.214,237.542
+32,32,1493.041,186.630,186.413,186.849,0.204,8563955541.732,259.770,214.099
+32,64,1494.384,186.798,186.379,186.899,0.160,8556258627.054,259.536,213.906
+32,128,1490.515,186.314,186.301,186.331,0.009,8578467618.986,260.210,214.462
+32,256,1490.489,186.311,186.296,186.322,0.008,8578616380.642,260.214,214.465
+32,512,1518.240,189.780,189.722,189.838,0.033,8421815928.817,255.458,210.545
+32,1024,2037.965,254.746,250.216,259.734,3.051,6274071040.001,190.311,156.852
+64,4,3505.154,438.144,438.114,438.213,0.028,3647867494.015,110.080,91.197
+64,8,3594.525,449.316,449.027,449.419,0.157,3557170077.276,107.343,88.929
+64,16,3755.069,469.384,469.251,469.472,0.101,3405086456.863,102.754,85.127
+64,32,4110.706,513.838,513.666,514.007,0.157,3110496203.831,93.864,77.762
+64,64,4123.881,515.485,515.327,515.643,0.148,3100558800.548,93.564,77.514
+64,128,4123.275,515.409,515.319,515.624,0.122,3101014471.822,93.578,77.525
+64,256,4166.209,520.776,520.510,520.916,0.110,3069057476.856,92.614,76.726
+64,512,6209.051,776.131,775.517,776.808,0.404,2059305900.858,62.143,51.483
+64,1024,10597.581,1324.698,1324.002,1325.125,0.319,1206533374.102,36.409,30.163
+# best: { min_ms: 8.572, max_ms: 9.265, sum_ms: 72.660, avg_ms: 9.083, ppwi: 1, wgsize: 32 }
+# (ppwi=64,wgsize=1024,valid=1)
+ppwi,wgsize,sum_ms,avg_ms,min_ms,max_ms,stddev_ms,interactions/s,gflops/s,gfinst/s
+1,4,291.937,36.492,36.430,36.662,0.072,43798290921.566,1752.916,1094.957
+1,8,146.151,18.269,18.255,18.296,0.013,87487171957.207,3501.453,2187.179
+1,16,73.932,9.241,9.140,9.317,0.061,172948403309.252,6921.822,4323.710
+1,32,72.544,9.068,8.559,9.250,0.293,176256663766.765,7054.227,4406.417
+1,64,80.089,10.011,10.002,10.041,0.013,159650810966.367,6389.620,3991.270
+1,128,80.152,10.019,10.011,10.032,0.009,159525104064.441,6384.589,3988.128
+1,256,80.128,10.016,10.010,10.031,0.008,159574631379.925,6386.571,3989.366
+1,512,80.168,10.021,10.013,10.035,0.009,159494083780.569,6383.347,3987.352
+1,1024,80.146,10.018,10.009,10.032,0.009,159537852761.733,6385.099,3988.446
+2,4,223.966,27.996,27.985,28.006,0.008,57090478446.323,1999.389,1427.262
+2,8,112.525,14.066,14.036,14.132,0.030,113631215831.326,3979.525,2840.780
+2,16,103.020,12.878,12.868,12.890,0.009,124114878359.402,4346.677,3102.872
+2,32,93.360,11.670,11.632,11.869,0.076,136957460165.422,4796.443,3423.937
+2,64,100.179,12.522,12.519,12.528,0.003,127635219695.612,4469.965,3190.880
+2,128,108.766,13.596,13.592,13.601,0.003,117558575902.318,4117.066,2938.964
+2,256,129.884,16.236,16.230,16.243,0.004,98444072042.816,3447.650,2461.102
+2,512,129.934,16.242,16.235,16.257,0.007,98406719175.347,3446.341,2460.168
+2,1024,129.911,16.239,16.236,16.246,0.003,98423833984.151,3446.941,2460.596
+4,4,358.828,44.854,44.754,45.093,0.107,35633588798.035,1158.835,890.840
+4,8,323.822,40.478,40.467,40.492,0.008,39485722694.573,1284.110,987.143
+4,16,251.841,31.480,31.455,31.491,0.014,50771446407.053,1651.132,1269.286
+4,32,246.895,30.862,30.763,30.935,0.055,51788473997.257,1684.206,1294.712
+4,64,247.306,30.913,30.856,30.950,0.030,51702469554.602,1681.409,1292.562
+4,128,264.778,33.097,33.035,33.165,0.036,48290834105.192,1570.460,1207.271
+4,256,316.381,39.548,39.530,39.565,0.011,40414373513.834,1314.311,1010.359
+4,512,384.981,48.123,48.113,48.134,0.009,33212931808.727,1080.113,830.323
+4,1024,385.660,48.207,48.196,48.226,0.010,33154431102.624,1078.211,828.861
+8,4,610.727,76.341,76.281,76.439,0.053,20936241351.657,654.689,523.406
+8,8,469.193,58.649,58.625,58.681,0.021,27251775926.837,852.180,681.294
+8,16,429.694,53.712,53.695,53.728,0.011,29756855484.953,930.515,743.921
+8,32,425.232,53.154,53.148,53.170,0.009,30069102123.007,940.279,751.728
+8,64,425.750,53.219,53.203,53.240,0.013,30032486198.161,939.134,750.812
+8,128,457.028,57.128,56.988,57.232,0.075,27977159692.985,874.863,699.429
+8,256,493.515,61.689,61.636,61.759,0.034,25908697973.586,810.181,647.717
+8,512,494.483,61.810,61.755,61.948,0.058,25858003070.934,808.595,646.450
+8,1024,494.020,61.752,61.706,61.787,0.031,25882240110.232,809.353,647.056
+16,4,898.753,112.344,112.334,112.371,0.011,14226753269.143,435.986,355.669
+16,8,818.338,102.292,102.211,102.336,0.045,15624752253.641,478.828,390.619
+16,16,780.169,97.521,97.512,97.540,0.010,16389179979.325,502.254,409.729
+16,32,788.783,98.598,98.588,98.610,0.009,16210209778.808,496.770,405.255
+16,64,812.529,101.566,101.483,101.636,0.043,15736474645.357,482.252,393.412
+16,128,814.425,101.803,101.779,101.830,0.018,15699826280.323,481.129,392.496
+16,256,814.742,101.843,101.802,101.878,0.023,15693731389.767,480.942,392.343
+16,512,814.707,101.838,101.817,101.858,0.014,15694400318.110,480.962,392.360
+16,1024,962.802,120.350,120.331,120.369,0.013,13280337692.359,406.982,332.008
+32,4,1268.465,158.558,158.550,158.570,0.008,10080164184.077,305.761,252.004
+32,8,1289.201,161.150,161.136,161.161,0.009,9918028855.858,300.843,247.951
+32,16,1336.829,167.104,167.093,167.115,0.009,9564676828.847,290.124,239.117
+32,32,1492.140,186.517,186.507,186.535,0.010,8569127359.203,259.927,214.228
+32,64,1494.248,186.781,186.768,186.794,0.010,8557035994.929,259.560,213.926
+32,128,1494.378,186.797,186.781,186.808,0.010,8556292866.334,259.537,213.907
+32,256,1494.443,186.805,186.793,186.820,0.010,8555923136.686,259.526,213.898
+32,512,1523.651,190.456,190.412,190.508,0.034,8391908198.763,254.551,209.798
+32,1024,2045.950,255.744,254.659,257.167,0.874,6249582926.198,189.568,156.240
+64,4,3474.467,434.308,434.297,434.320,0.009,3680085641.731,111.053,92.002
+64,8,3557.987,444.748,444.702,444.773,0.020,3593699509.221,108.446,89.842
+64,16,3725.188,465.648,465.624,465.673,0.014,3432400143.665,103.578,85.810
+64,32,4082.607,510.326,510.301,510.356,0.018,3131904821.054,94.510,78.298
+64,64,4113.253,514.157,514.139,514.179,0.014,3108570037.422,93.806,77.714
+64,128,4113.610,514.201,514.177,514.234,0.016,3108300098.216,93.798,77.708
+64,256,4155.537,519.442,519.386,519.486,0.030,3076939341.265,92.852,76.923
+64,512,6251.991,781.499,780.756,782.239,0.488,2045162152.630,61.716,51.129
+64,1024,10418.041,1302.255,1301.942,1302.512,0.203,1227326245.882,37.037,30.683
+# best: { min_ms: 8.559, max_ms: 9.250, sum_ms: 72.544, avg_ms: 9.068, ppwi: 1, wgsize: 32 }
+# (ppwi=64,wgsize=1024,valid=1)
+ppwi,wgsize,sum_ms,avg_ms,min_ms,max_ms,stddev_ms,interactions/s,gflops/s,gfinst/s
+1,4,292.630,36.579,36.472,36.718,0.091,43694576478.440,1748.765,1092.364
+1,8,147.585,18.448,18.285,18.752,0.201,86636839586.258,3467.420,2165.921
+1,16,73.516,9.190,9.146,9.246,0.030,173925135506.308,6960.914,4348.128
+1,32,73.380,9.172,8.572,9.261,0.227,174248630349.196,6973.861,4356.216
+1,64,72.799,9.100,8.572,9.292,0.304,175639445121.951,7029.524,4390.986
+1,128,80.244,10.030,10.017,10.039,0.009,159343200039.878,6377.308,3983.580
+1,256,80.331,10.041,10.027,10.046,0.005,159170632288.173,6370.402,3979.266
+1,512,80.354,10.044,10.026,10.052,0.007,159124329723.785,6368.549,3978.108
+1,1024,80.219,10.027,9.982,10.046,0.019,159392850901.016,6379.296,3984.821
+2,4,224.297,28.037,27.999,28.079,0.027,57006299494.361,1996.441,1425.157
+2,8,112.466,14.058,14.042,14.087,0.014,113690519875.152,3981.602,2842.263
+2,16,103.078,12.885,12.872,12.891,0.005,124045686458.477,4344.254,3101.142
+2,32,93.051,11.631,11.617,11.660,0.013,137412837873.724,4812.391,3435.321
+2,64,95.208,11.901,11.628,12.345,0.336,134299068167.917,4703.342,3357.477
+2,128,100.166,12.521,12.506,12.533,0.011,127650841765.612,4470.512,3191.271
+2,256,118.596,14.824,14.807,14.835,0.010,107814506108.949,3775.815,2695.363
+2,512,129.920,16.240,16.229,16.252,0.010,98417290809.693,3446.712,2460.432
+2,1024,129.910,16.239,16.227,16.251,0.010,98424623436.016,3446.968,2460.616
+4,4,360.005,45.001,44.899,45.198,0.101,35517096524.656,1155.047,887.927
+4,8,325.310,40.664,40.627,40.684,0.017,39305020954.243,1278.234,982.626
+4,16,251.427,31.428,31.339,31.556,0.061,50855069157.538,1653.851,1271.377
+4,32,231.939,28.992,28.969,29.004,0.010,55128037623.428,1792.812,1378.201
+4,64,246.982,30.873,30.830,30.952,0.042,51770343345.174,1683.617,1294.259
+4,128,263.652,32.956,32.915,33.050,0.040,48497026103.979,1577.166,1212.426
+4,256,292.008,36.501,36.461,36.552,0.025,43787677013.055,1424.013,1094.692
+4,512,317.688,39.711,39.698,39.729,0.011,40248112439.533,1308.904,1006.203
+4,1024,385.996,48.250,48.229,48.283,0.019,33125532793.857,1077.271,828.138
+8,4,614.730,76.841,76.794,76.883,0.032,20799933004.697,650.426,519.998
+8,8,459.558,57.445,57.363,57.604,0.078,27823093371.025,870.045,695.577
+8,16,416.044,52.005,51.885,52.111,0.067,30733134635.912,961.044,768.328
+8,32,423.586,52.948,52.762,53.218,0.155,30185893011.983,943.931,754.647
+8,64,425.705,53.213,53.134,53.260,0.039,30035669801.610,939.234,750.892
+8,128,457.027,57.128,57.041,57.266,0.082,27977189566.163,874.864,699.430
+8,256,457.720,57.215,57.154,57.362,0.062,27934867701.332,873.540,698.372
+8,512,494.698,61.837,61.783,61.879,0.028,25846753668.902,808.244,646.169
+8,1024,494.630,61.829,61.784,61.888,0.036,25850293820.521,808.354,646.257
+16,4,897.566,112.196,112.039,112.347,0.110,14245566438.450,436.562,356.139
+16,8,782.135,97.767,97.144,99.396,0.896,16347991688.979,500.992,408.700
+16,16,773.461,96.683,96.674,96.694,0.008,16531317112.754,506.610,413.283
+16,32,789.111,98.639,98.625,98.662,0.010,16203464590.952,496.563,405.087
+16,64,813.784,101.723,101.422,101.990,0.189,15712189985.210,481.507,392.805
+16,128,814.561,101.820,101.725,101.892,0.059,15697219069.425,481.049,392.430
+16,256,815.932,101.992,101.940,102.025,0.031,15670831255.776,480.240,391.771
+16,512,815.964,101.995,101.914,102.047,0.041,15670229726.301,480.222,391.756
+16,1024,964.366,120.546,120.512,120.577,0.020,13258804367.496,406.322,331.470
+32,4,1254.533,156.817,156.772,156.847,0.023,10192105180.873,309.156,254.803
+32,8,1282.259,160.282,160.187,160.314,0.038,9971728718.665,302.471,249.293
+32,16,1343.556,167.944,167.144,168.222,0.453,9516789388.830,288.672,237.920
+32,32,1494.602,186.825,186.492,186.920,0.129,8555009761.989,259.498,213.875
+32,64,1494.940,186.867,186.583,186.920,0.108,8553077939.973,259.440,213.827
+32,128,1496.767,187.096,186.853,187.159,0.093,8542636126.071,259.123,213.566
+32,256,1497.080,187.135,187.122,187.155,0.011,8540850736.198,259.069,213.521
+32,512,1524.184,190.523,190.487,190.566,0.028,8388973542.952,254.462,209.724
+32,1024,2063.595,257.949,256.255,261.432,1.803,6196144874.137,187.947,154.904
+64,4,3491.095,436.387,436.239,436.582,0.135,3662557432.014,110.524,91.564
+64,8,3579.755,447.469,447.371,447.631,0.077,3571846815.679,107.786,89.296
+64,16,3762.031,470.254,469.960,470.404,0.138,3398785625.635,102.564,84.970
+64,32,4062.285,507.786,507.777,507.799,0.009,3147572126.475,94.983,78.689
+64,64,4128.633,516.079,515.789,516.356,0.225,3096990035.411,93.457,77.425
+64,128,4128.884,516.110,515.779,516.479,0.205,3096802132.304,93.451,77.420
+64,256,4168.045,521.006,520.818,521.182,0.132,3067705869.072,92.573,76.693
+64,512,6194.008,774.251,773.073,774.798,0.512,2064307217.207,62.294,51.608
+64,1024,10514.576,1314.322,1313.736,1314.669,0.341,1216058098.096,36.697,30.401
+# best: { min_ms: 8.572, max_ms: 9.292, sum_ms: 72.799, avg_ms: 9.100, ppwi: 1, wgsize: 64 }
+# (ppwi=64,wgsize=1024,valid=1)
+ppwi,wgsize,sum_ms,avg_ms,min_ms,max_ms,stddev_ms,interactions/s,gflops/s,gfinst/s
+1,4,291.978,36.497,36.433,36.663,0.074,43792105449.005,1752.668,1094.803
+1,8,146.158,18.270,18.251,18.327,0.023,87483005244.074,3501.286,2187.075
+1,16,73.403,9.175,9.141,9.241,0.028,174194024269.198,6971.675,4354.851
+1,32,73.249,9.156,8.562,9.252,0.225,174560201264.566,6986.330,4364.005
+1,64,72.616,9.077,8.562,9.261,0.297,176080985321.448,7047.196,4402.025
+1,128,80.100,10.013,10.005,10.026,0.007,159629649760.946,6388.773,3990.741
+1,256,80.210,10.026,10.016,10.053,0.013,159410485234.222,6380.001,3985.262
+1,512,80.237,10.030,10.018,10.079,0.020,159357637630.547,6377.886,3983.941
+1,1024,80.210,10.026,10.014,10.081,0.021,159410874767.706,6380.017,3985.272
+2,4,224.136,28.017,27.990,28.125,0.042,57047113543.828,1997.870,1426.178
+2,8,112.385,14.048,14.037,14.064,0.010,113772917266.633,3984.487,2844.323
+2,16,102.927,12.866,12.858,12.880,0.010,124227105825.385,4350.608,3105.678
+2,32,92.911,11.614,11.605,11.631,0.009,137618907174.631,4819.607,3440.473
+2,64,94.754,11.844,11.620,12.484,0.369,134942178530.970,4725.865,3373.554
+2,128,100.258,12.532,12.518,12.557,0.013,127533863500.936,4466.415,3188.347
+2,256,118.482,14.810,14.802,14.822,0.009,107917940933.840,3779.438,2697.949
+2,512,129.812,16.227,16.218,16.239,0.009,98498553878.754,3449.558,2462.464
+2,1024,129.811,16.226,16.218,16.256,0.012,98499267133.390,3449.583,2462.482
+4,4,358.190,44.774,44.735,44.819,0.031,35697034996.587,1160.899,892.426
+4,8,324.758,40.595,40.533,40.646,0.040,39371844183.290,1280.407,984.296
+4,16,251.396,31.425,31.252,31.491,0.080,50861264099.062,1654.053,1271.532
+4,32,238.403,29.800,28.963,30.719,0.819,53633314338.036,1744.202,1340.833
+4,64,247.130,30.891,30.863,30.938,0.023,51739337684.026,1682.608,1293.483
+4,128,263.647,32.956,32.924,33.011,0.027,48497862876.754,1577.193,1212.447
+4,256,290.505,36.313,36.291,36.353,0.019,44014166792.066,1431.379,1100.354
+4,512,317.025,39.628,39.618,39.643,0.010,40332208758.977,1311.639,1008.305
+4,1024,385.546,48.193,48.176,48.208,0.013,33164222143.025,1078.529,829.106
+8,4,613.366,76.671,76.647,76.714,0.025,20846175336.020,651.873,521.154
+8,8,462.405,57.801,57.609,58.002,0.118,27651838857.282,864.690,691.296
+8,16,427.722,53.465,53.388,53.534,0.045,29894001925.782,934.804,747.350
+8,32,425.168,53.146,53.035,53.253,0.073,30073581493.623,940.419,751.840
+8,64,426.044,53.255,53.211,53.377,0.049,30011781777.226,938.487,750.295
+8,128,457.153,57.144,57.029,57.256,0.076,27969498350.163,874.623,699.237
+8,256,457.667,57.208,57.117,57.284,0.057,27938047021.326,873.640,698.451
+8,512,494.144,61.768,61.685,61.849,0.045,25875743933.400,809.150,646.894
+8,1024,494.175,61.772,61.725,61.856,0.036,25874114495.293,809.099,646.853
+16,4,896.188,112.024,111.824,112.229,0.147,14267462816.904,437.233,356.687
+16,8,812.263,101.533,97.361,102.268,1.581,15741620821.436,482.409,393.541
+16,16,780.440,97.555,97.538,97.592,0.017,16383488897.690,502.080,409.587
+16,32,789.137,98.642,98.633,98.656,0.009,16202937073.861,496.547,405.073
+16,64,813.252,101.657,101.411,101.888,0.155,15722474086.367,481.823,393.062
+16,128,814.298,101.787,101.633,101.963,0.095,15702282867.034,481.204,392.557
+16,256,815.832,101.979,101.938,102.051,0.032,15672765120.693,480.299,391.819
+16,512,816.096,102.012,101.978,102.058,0.027,15667686167.253,480.144,391.692
+16,1024,963.332,120.416,120.376,120.464,0.031,13273031639.814,406.758,331.826
+32,4,1259.362,157.420,156.825,157.690,0.339,10153028801.821,307.971,253.826
+32,8,1286.760,160.845,160.761,160.908,0.051,9936849084.067,301.413,248.421
+32,16,1345.804,168.225,168.204,168.258,0.015,9500892603.107,288.190,237.522
+32,32,1495.005,186.876,186.837,186.905,0.019,8552705387.405,259.428,213.818
+32,64,1495.143,186.893,186.857,186.930,0.022,8551914649.606,259.404,213.798
+32,128,1496.614,187.077,186.860,187.142,0.101,8543507282.795,259.149,213.588
+32,256,1496.960,187.120,186.929,187.180,0.076,8541537137.895,259.090,213.538
+32,512,1524.806,190.601,190.495,190.675,0.046,8385548651.474,254.358,209.639
+32,1024,2042.365,255.296,250.269,257.926,2.345,6260555213.801,189.901,156.514
+64,4,3499.111,437.389,437.265,437.642,0.121,3654166819.174,110.270,91.354
+64,8,3579.599,447.450,447.266,448.011,0.225,3572002637.506,107.791,89.300
+64,16,3741.910,467.739,467.531,468.010,0.146,3417061407.069,103.115,85.427
+64,32,4104.534,513.067,512.596,513.258,0.186,3115173597.414,94.005,77.879
+64,64,4116.771,514.596,514.220,514.812,0.195,3105913717.419,93.726,77.648
+64,128,4117.615,514.702,514.635,514.821,0.057,3105277512.732,93.707,77.632
+64,256,4146.558,518.320,518.102,518.462,0.116,3083602353.110,93.053,77.090
+64,512,6197.077,774.635,774.245,774.954,0.211,2063285043.026,62.263,51.582
+64,1024,10530.156,1316.270,1315.781,1316.670,0.275,1214258852.319,36.642,30.356
+# best: { min_ms: 8.562, max_ms: 9.261, sum_ms: 72.616, avg_ms: 9.077, ppwi: 1, wgsize: 64 }
+========================================
+best gflops/s = 7054.227
+========================================

@@ -1,0 +1,1320 @@
+Currently Loaded Modulefiles:
+ 1) nvhpc/nvhpc/24.1   2) cuda/12.3.0   3) cmake/3.28.3   4) gcc/12.2.0  
+-- The CXX compiler identification is NVHPC 24.1.0
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/bin/nvc++ - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- CXX_EXTRA_FLAGS: 
+        Appends to common compile flags. These will be appended at link phase as well.
+        To use separate flags at link phase, set `CXX_EXTRA_LINK_FLAGS`
+-- CXX_EXTRA_LINK_FLAGS: 
+        Appends to link flags which appear *before* the objects.
+        Do not use this for linking libraries, as the link line is order-dependent
+-- CXX_EXTRA_LIBRARIES: 
+        Append to link flags which appear *after* the objects.
+        Use this for linking extra libraries (e.g `-lmylib`, or simply `mylib`)
+-- CXX_EXTRA_LINKER_FLAGS: 
+        Append to linker flags (i.e GCC's `-Wl` or equivalent)
+-- Available models:  omp;ocl;std-indices;std-ranges;hip;cuda;kokkos;sycl;acc;raja;tbb;thrust
+-- Selected model  :  cuda
+-- Supported flags:
+
+   CMAKE_CXX_COMPILER (optional, default=c++): Any CXX compiler that is supported by CMake detection, this is used for host compilation
+   MEM (optional, default=DEFAULT): Device memory mode:
+        DEFAULT   - allocate host and device memory pointers.
+        MANAGED   - use CUDA Managed Memory.
+        PAGEFAULT - shared memory, only host pointers allocated.
+   CMAKE_CUDA_COMPILER (required): Path to the CUDA nvcc compiler
+   CUDA_ARCH (required): Nvidia architecture, will be passed in via `-arch=` (e.g `sm_70`) for nvcc
+   CUDA_EXTRA_FLAGS (optional, default=): Additional CUDA flags passed to nvcc, this is appended after `CUDA_ARCH`
+
+-- Model-specific flags for this build:
+
+   CMAKE_CXX_COMPILER = `/soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/bin/nvc++`
+   MEM = `DEFAULT`
+   CMAKE_CUDA_COMPILER = `/soft/compilers/cuda/cuda-12.3.0/bin/nvcc`
+   CUDA_ARCH = `sm_90`
+   CUDA_EXTRA_FLAGS = ``
+
+CMake Deprecation Warning at src/cuda/model.cmake:28 (cmake_policy):
+  The OLD behavior for policy CMP0104 will be removed from a future version
+  of CMake.
+
+  The cmake-policies(7) manual explains that the OLD behaviors of all
+  policies are deprecated and that a policy should be set to OLD only under
+  specific short-term circumstances.  Projects should be ported to the NEW
+  behavior and not rely on setting a policy to OLD.
+Call Stack (most recent call first):
+  CMakeLists.txt:194 (setup)
+
+
+-- The CUDA compiler identification is NVIDIA 12.3.52
+-- Detecting CUDA compiler ABI info
+-- Detecting CUDA compiler ABI info - done
+-- Check for working CUDA compiler: /soft/compilers/cuda/cuda-12.3.0/bin/nvcc - skipped
+-- Detecting CUDA compile features
+-- Detecting CUDA compile features - done
+-- NVCC flags:  -std=c++17 -forward-unknown-to-host-compiler -arch=sm_90 -use_fast_math -restrict -keep   -DNDEBUG
+-- Default RELEASE flags are `-O3;-march=native`, set RELEASE_FLAGS to override (CXX_EXTRA_* flags are not affected)
+-- PPWI not set, defaulting to 1,2,4,8,16,32,64,128
+-- CXX vendor  : NVHPC (/soft/compilers/nvhpc/Linux_x86_64/24.1/compilers/bin/nvc++)
+-- Platform    : x86_64
+-- PPWI        : 1,2,4,8,16,32,64,128
+-- Sources     : src/cuda/fasten.hpp;src/main.cpp
+-- Libraries   :  
+-- CXX Flags   : -fast  -DNDEBUG -O3;-march=native 
+    CXX flags derived from (CMake + (Override ? Override : Default) + Extras), where:
+        CMake                    = `-fast  -DNDEBUG`
+        Default                  = `-O3;-march=native`
+        Override (RELEASE_FLAGS) = ``
+        Extras (CXX_EXTRA_FLAGS) = ``
+-- Link Flags  :  
+-- Linker Flags:   
+-- Defs        : CUDA;MEM=DEFAULT
+-- Executable  : cuda-bude
+-- Configuring done (2.8s)
+-- Generating done (0.1s)
+-- Build files have been written to: /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build
+Change Dir: '/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+
+Run Build Command(s): /soft/buildtools/cmake/3.28.3/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile -j1
+/soft/buildtools/cmake/3.28.3/bin/cmake -S/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude -B/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build --check-build-system CMakeFiles/Makefile.cmake 0
+/soft/buildtools/cmake/3.28.3/bin/cmake -E cmake_progress_start /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/CMakeFiles /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build//CMakeFiles/progress.marks
+/usr/bin/gmake  -f CMakeFiles/Makefile2 all
+gmake[1]: Entering directory '/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+/usr/bin/gmake  -f CMakeFiles/extract_compile_commands.dir/build.make CMakeFiles/extract_compile_commands.dir/depend
+gmake[2]: Entering directory '/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+cd /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build && /soft/buildtools/cmake/3.28.3/bin/cmake -E cmake_depends "Unix Makefiles" /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/CMakeFiles/extract_compile_commands.dir/DependInfo.cmake "--color="
+gmake[2]: Leaving directory '/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+/usr/bin/gmake  -f CMakeFiles/extract_compile_commands.dir/build.make CMakeFiles/extract_compile_commands.dir/build
+gmake[2]: Entering directory '/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+/soft/buildtools/cmake/3.28.3/bin/cmake -DCOMMAND_FILE=/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/compile_commands.json -DPRE_CONFIGURE_FILE="/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/meta_build.h.in" -DPOST_CONFIGURE_FILE="/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/generated/meta_build.h" -DSRC_DIR_PREFIX="/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src" -DOUT_DIR_PREFIX="CMakeFiles/bude.dir" -P /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/cmake/extract_compile_command.cmake
+-- Transforming /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/compile_commands.json...
+gmake[2]: Leaving directory '/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+[  0%] Built target extract_compile_commands
+/usr/bin/gmake  -f CMakeFiles/check_git.dir/build.make CMakeFiles/check_git.dir/depend
+gmake[2]: Entering directory '/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+cd /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build && /soft/buildtools/cmake/3.28.3/bin/cmake -E cmake_depends "Unix Makefiles" /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/CMakeFiles/check_git.dir/DependInfo.cmake "--color="
+gmake[2]: Leaving directory '/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+/usr/bin/gmake  -f CMakeFiles/check_git.dir/build.make CMakeFiles/check_git.dir/build
+gmake[2]: Entering directory '/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+[ 33%] Checking the git repository for changes...
+/soft/buildtools/cmake/3.28.3/bin/cmake -D_BUILD_TIME_CHECK_GIT=TRUE -DGIT_WORKING_DIR=/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude -DGIT_EXECUTABLE=/usr/bin/git -DGIT_STATE_FILE=/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/git-state-hash -DPRE_CONFIGURE_FILE=/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/meta_vcs.h.in -DPOST_CONFIGURE_FILE=/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/generated/meta_vcs.h -DGIT_FAIL_IF_NONZERO_EXIT=FALSE -DGIT_IGNORE_UNTRACKED=FALSE -P /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/cmake/git_watcher.cmake
+gmake[2]: Leaving directory '/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+[ 33%] Built target check_git
+/usr/bin/gmake  -f CMakeFiles/bude.dir/build.make CMakeFiles/bude.dir/depend
+gmake[2]: Entering directory '/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+cd /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build && /soft/buildtools/cmake/3.28.3/bin/cmake -E cmake_depends "Unix Makefiles" /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/CMakeFiles/bude.dir/DependInfo.cmake "--color="
+gmake[2]: Leaving directory '/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+/usr/bin/gmake  -f CMakeFiles/bude.dir/build.make CMakeFiles/bude.dir/build
+gmake[2]: Entering directory '/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+[ 66%] Building CUDA object CMakeFiles/bude.dir/src/main.cpp.o
+/soft/compilers/cuda/cuda-12.3.0/bin/nvcc -forward-unknown-to-host-compiler -DCUDA -DMEM=DEFAULT -DUSE_PPWI="1\\,2\\,4\\,8\\,16\\,32\\,64\\,128" --options-file CMakeFiles/bude.dir/includes_CUDA.rsp -std=c++17 -forward-unknown-to-host-compiler -arch=sm_90 -use_fast_math -restrict -keep   -DNDEBUG -std=c++17 -O3 -march=native -MD -MT CMakeFiles/bude.dir/src/main.cpp.o -MF CMakeFiles/bude.dir/src/main.cpp.o.d -x cu -c /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp -o CMakeFiles/bude.dir/src/main.cpp.o
+[100%] Linking CUDA executable cuda-bude
+/soft/buildtools/cmake/3.28.3/bin/cmake -E cmake_link_script CMakeFiles/bude.dir/link.txt --verbose=1
+/soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin/g++ @CMakeFiles/bude.dir/objects1.rsp -o cuda-bude @CMakeFiles/bude.dir/linkLibs.rsp -L"/soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/lib/stubs" -L"/soft/compilers/cuda/cuda-12.3.0/targets/x86_64-linux/lib"
+gmake[2]: Leaving directory '/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+[100%] Built target bude
+gmake[1]: Leaving directory '/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+/soft/buildtools/cmake/3.28.3/bin/cmake -E cmake_progress_start /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/CMakeFiles 0
+
+	linux-vdso.so.1 (0x00007ffd2db8c000)
+	librt.so.1 => /lib64/librt.so.1 (0x00007f130e6f3000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x00007f130e6cf000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x00007f130e6ca000)
+	libstdc++.so.6 => /soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib64/libstdc++.so.6 (0x00007f130e200000)
+	libm.so.6 => /lib64/libm.so.6 (0x00007f130e0b4000)
+	libgcc_s.so.1 => /soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib64/libgcc_s.so.1 (0x00007f130de00000)
+	libc.so.6 => /lib64/libc.so.6 (0x00007f130dc09000)
+	/lib64/ld-linux-x86-64.so.2 (0x00007f130e711000)
++ cd /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude
++ mkdir -p results
++ BENCHMARK_EXE=/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/cuda-bude
++ DECK=/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/data/bm1
++ cd /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE
++ mpirun -n 4 -report-bindings --map-by node:PE=24 /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/../gpu_tile_compact.sh sh -c '/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/cuda-bude --deck /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/data/bm1 --wgsize 4,8,16,32,64,128,256,512,1024 --ppwi 1,2,4,8,16,32,64 --csv | tee /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/cuda-bude-bm1.out${RANK}'
+[hopper01:17720] MCW rank 0 bound to socket 0[core 0[hwt 0-1]], socket 0[core 1[hwt 0-1]], socket 0[core 2[hwt 0-1]], socket 0[core 3[hwt 0-1]], socket 0[core 4[hwt 0-1]], socket 0[core 5[hwt 0-1]], socket 0[core 6[hwt 0-1]], socket 0[core 7[hwt 0-1]], socket 0[core 8[hwt 0-1]], socket 0[core 9[hwt 0-1]], socket 0[core 10[hwt 0-1]], socket 0[core 11[hwt 0-1]], socket 0[core 12[hwt 0-1]], socket 0[core 13[hwt 0-1]], socket 0[core 14[hwt 0-1]], socket 0[core 15[hwt 0-1]], socket 0[core 16[hwt 0-1]], socket 0[core 17[hwt 0-1]], socket 0[core 18[hwt 0-1]], socket 0[core 19[hwt 0-1]], socket 0[core 20[hwt 0-1]], socket 0[core 21[hwt 0-1]], socket 0[core 22[hwt 0-1]], socket 0[core 23[hwt 0-1]]: [BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/../../../../../../../../../../../../../../../../../../../../../../../..][../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../..]
+[hopper01:17720] MCW rank 1 bound to socket 0[core 24[hwt 0-1]], socket 0[core 25[hwt 0-1]], socket 0[core 26[hwt 0-1]], socket 0[core 27[hwt 0-1]], socket 0[core 28[hwt 0-1]], socket 0[core 29[hwt 0-1]], socket 0[core 30[hwt 0-1]], socket 0[core 31[hwt 0-1]], socket 0[core 32[hwt 0-1]], socket 0[core 33[hwt 0-1]], socket 0[core 34[hwt 0-1]], socket 0[core 35[hwt 0-1]], socket 0[core 36[hwt 0-1]], socket 0[core 37[hwt 0-1]], socket 0[core 38[hwt 0-1]], socket 0[core 39[hwt 0-1]], socket 0[core 40[hwt 0-1]], socket 0[core 41[hwt 0-1]], socket 0[core 42[hwt 0-1]], socket 0[core 43[hwt 0-1]], socket 0[core 44[hwt 0-1]], socket 0[core 45[hwt 0-1]], socket 0[core 46[hwt 0-1]], socket 0[core 47[hwt 0-1]]: [../../../../../../../../../../../../../../../../../../../../../../../../BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB][../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../..]
+[hopper01:17720] MCW rank 2 bound to socket 1[core 48[hwt 0-1]], socket 1[core 49[hwt 0-1]], socket 1[core 50[hwt 0-1]], socket 1[core 51[hwt 0-1]], socket 1[core 52[hwt 0-1]], socket 1[core 53[hwt 0-1]], socket 1[core 54[hwt 0-1]], socket 1[core 55[hwt 0-1]], socket 1[core 56[hwt 0-1]], socket 1[core 57[hwt 0-1]], socket 1[core 58[hwt 0-1]], socket 1[core 59[hwt 0-1]], socket 1[core 60[hwt 0-1]], socket 1[core 61[hwt 0-1]], socket 1[core 62[hwt 0-1]], socket 1[core 63[hwt 0-1]], socket 1[core 64[hwt 0-1]], socket 1[core 65[hwt 0-1]], socket 1[core 66[hwt 0-1]], socket 1[core 67[hwt 0-1]], socket 1[core 68[hwt 0-1]], socket 1[core 69[hwt 0-1]], socket 1[core 70[hwt 0-1]], socket 1[core 71[hwt 0-1]]: [../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../..][BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/../../../../../../../../../../../../../../../../../../../../../../../..]
+[hopper01:17720] MCW rank 3 bound to socket 1[core 72[hwt 0-1]], socket 1[core 73[hwt 0-1]], socket 1[core 74[hwt 0-1]], socket 1[core 75[hwt 0-1]], socket 1[core 76[hwt 0-1]], socket 1[core 77[hwt 0-1]], socket 1[core 78[hwt 0-1]], socket 1[core 79[hwt 0-1]], socket 1[core 80[hwt 0-1]], socket 1[core 81[hwt 0-1]], socket 1[core 82[hwt 0-1]], socket 1[core 83[hwt 0-1]], socket 1[core 84[hwt 0-1]], socket 1[core 85[hwt 0-1]], socket 1[core 86[hwt 0-1]], socket 1[core 87[hwt 0-1]], socket 1[core 88[hwt 0-1]], socket 1[core 89[hwt 0-1]], socket 1[core 90[hwt 0-1]], socket 1[core 91[hwt 0-1]], socket 1[core 92[hwt 0-1]], socket 1[core 93[hwt 0-1]], socket 1[core 94[hwt 0-1]], socket 1[core 95[hwt 0-1]]: [../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../..][../../../../../../../../../../../../../../../../../../../../../../../../BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB]
+# Device and kernel cc: sm_90
+# Device and kernel cc: sm_90
+# Device and kernel cc: sm_90
+# Device and kernel cc: sm_90
+# (ppwi=1,wgsize=4,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=1,wgsize=4,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=1,wgsize=4,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=1,wgsize=4,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=1,wgsize=8,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=1,wgsize=8,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=1,wgsize=8,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=1,wgsize=8,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=1,wgsize=16,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=1,wgsize=16,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=1,wgsize=16,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=1,wgsize=16,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=1,wgsize=32,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=1,wgsize=32,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=1,wgsize=32,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=1,wgsize=32,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=1,wgsize=64,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=1,wgsize=64,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=1,wgsize=64,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=1,wgsize=64,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=1,wgsize=128,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=1,wgsize=128,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=1,wgsize=128,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=1,wgsize=128,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=1,wgsize=256,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=1,wgsize=256,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=1,wgsize=256,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=1,wgsize=256,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=1,wgsize=512,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=1,wgsize=512,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=1,wgsize=512,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=1,wgsize=512,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=1,wgsize=1024,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=1,wgsize=1024,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=1,wgsize=1024,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=1,wgsize=1024,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=2,wgsize=4,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=2,wgsize=4,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=2,wgsize=4,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=2,wgsize=4,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=2,wgsize=8,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=2,wgsize=8,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=2,wgsize=8,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=2,wgsize=8,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=2,wgsize=16,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=2,wgsize=16,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=2,wgsize=16,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=2,wgsize=16,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=2,wgsize=32,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=2,wgsize=32,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=2,wgsize=32,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=2,wgsize=32,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=2,wgsize=64,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=2,wgsize=64,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=2,wgsize=64,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=2,wgsize=64,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=2,wgsize=128,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=2,wgsize=128,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=2,wgsize=128,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=2,wgsize=128,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=2,wgsize=256,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=2,wgsize=256,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=2,wgsize=256,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=2,wgsize=256,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=2,wgsize=512,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=2,wgsize=512,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=2,wgsize=512,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=2,wgsize=512,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=2,wgsize=1024,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=2,wgsize=1024,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=2,wgsize=1024,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=2,wgsize=1024,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=4,wgsize=4,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=4,wgsize=4,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=4,wgsize=4,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=4,wgsize=4,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=4,wgsize=8,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=4,wgsize=8,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=4,wgsize=8,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=4,wgsize=8,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=4,wgsize=16,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=4,wgsize=16,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=4,wgsize=16,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=4,wgsize=16,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=4,wgsize=32,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=4,wgsize=32,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=4,wgsize=32,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=4,wgsize=32,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=4,wgsize=64,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=4,wgsize=64,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=4,wgsize=64,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=4,wgsize=64,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=4,wgsize=128,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=4,wgsize=128,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=4,wgsize=128,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=4,wgsize=128,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=4,wgsize=256,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=4,wgsize=256,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=4,wgsize=256,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=4,wgsize=256,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=4,wgsize=512,valid=1)
+# Device and kernel cc: sm_90
+# Verification failed for ppwi=4, wgsize=1024; difference exceeded tolerance (0.025%)
+# Bad energies (failed/total=58671/65536, showing first 8): 
+# index,actual,expected,difference_%
+# 0,0,865.523,100
+# 1,0,25.0715,100
+# 2,0,368.434,100
+# 3,0,14.6651,100
+# 4,0,574.987,100
+# 5,0,707.354,100
+# 6,0,33.947,100
+# 7,0,135.588,100
+# (ppwi=4,wgsize=1024,valid=0)
+# Device and kernel cc: sm_90
+# (ppwi=4,wgsize=512,valid=1)
+# Device and kernel cc: sm_90
+# Verification failed for ppwi=4, wgsize=1024; difference exceeded tolerance (0.025%)
+# Bad energies (failed/total=58671/65536, showing first 8): 
+# index,actual,expected,difference_%
+# 0,0,865.523,100
+# 1,0,25.0715,100
+# 2,0,368.434,100
+# 3,0,14.6651,100
+# 4,0,574.987,100
+# 5,0,707.354,100
+# 6,0,33.947,100
+# 7,0,135.588,100
+# (ppwi=4,wgsize=1024,valid=0)
+# Device and kernel cc: sm_90
+# (ppwi=4,wgsize=512,valid=1)
+# Device and kernel cc: sm_90
+# Verification failed for ppwi=4, wgsize=1024; difference exceeded tolerance (0.025%)
+# Bad energies (failed/total=58671/65536, showing first 8): 
+# index,actual,expected,difference_%
+# 0,0,865.523,100
+# 1,0,25.0715,100
+# 2,0,368.434,100
+# 3,0,14.6651,100
+# 4,0,574.987,100
+# 5,0,707.354,100
+# (ppwi=4,wgsize=512,valid=1)
+# 6,0,33.947,100
+# 7,0,135.588,100
+# (ppwi=4,wgsize=1024,valid=0)
+# Device and kernel cc: sm_90
+# Device and kernel cc: sm_90
+# Verification failed for ppwi=4, wgsize=1024; difference exceeded tolerance (0.025%)
+# Bad energies (failed/total=58671/65536, showing first 8): 
+# index,actual,expected,difference_%
+# 0,0,865.523,100
+# 1,0,25.0715,100
+# 2,0,368.434,100
+# 3,0,14.6651,100
+# 4,0,574.987,100
+# 5,0,707.354,100
+# 6,0,33.947,100
+# 7,0,135.588,100
+# (ppwi=4,wgsize=1024,valid=0)
+# Device and kernel cc: sm_90
+# (ppwi=8,wgsize=4,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=8,wgsize=4,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=8,wgsize=4,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=8,wgsize=4,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=8,wgsize=8,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=8,wgsize=8,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=8,wgsize=8,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=8,wgsize=8,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=8,wgsize=16,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=8,wgsize=16,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=8,wgsize=16,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=8,wgsize=16,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=8,wgsize=32,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=8,wgsize=32,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=8,wgsize=32,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=8,wgsize=32,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=8,wgsize=64,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=8,wgsize=64,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=8,wgsize=64,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=8,wgsize=64,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=8,wgsize=128,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=8,wgsize=128,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=8,wgsize=128,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=8,wgsize=128,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=8,wgsize=256,valid=1)
+# Device and kernel cc: sm_90
+# Verification failed for ppwi=8, wgsize=512; difference exceeded tolerance (0.025%)
+# Bad energies (failed/total=58671/65536, showing first 8): 
+# index,actual,expected,difference_%
+# 0,0,865.523,100
+# 1,0,25.0715,100
+# 2,0,368.434,100
+# 3,0,14.6651,100
+# 4,0,574.987,100
+# 5,0,707.354,100
+# 6,0,33.947,100
+# 7,0,135.588,100
+# (ppwi=8,wgsize=512,valid=0)
+# Device and kernel cc: sm_90
+# Verification failed for ppwi=8, wgsize=1024; difference exceeded tolerance (0.025%)
+# Bad energies (failed/total=58671/65536, showing first 8): 
+# index,actual,expected,difference_%
+# 0,0,865.523,100
+# 1,0,25.0715,100
+# 2,0,368.434,100
+# 3,0,14.6651,100
+# 4,0,574.987,100
+# 5,0,707.354,100
+# 6,0,33.947,100
+# 7,0,135.588,100
+# (ppwi=8,wgsize=1024,valid=0)
+# Device and kernel cc: sm_90
+# (ppwi=8,wgsize=256,valid=1)
+# Device and kernel cc: sm_90
+# Verification failed for ppwi=8, wgsize=512; difference exceeded tolerance (0.025%)
+# Bad energies (failed/total=58671/65536, showing first 8): 
+# index,actual,expected,difference_%
+# 0,0,865.523,100
+# 1,0,25.0715,100
+# 2,0,368.434,100
+# 3,0,14.6651,100
+# 4,0,574.987,100
+# 5,0,707.354,100
+# 6,0,33.947,100
+# 7,0,135.588,100
+# (ppwi=8,wgsize=512,valid=0)
+# Device and kernel cc: sm_90
+# Verification failed for ppwi=8, wgsize=1024; difference exceeded tolerance (0.025%)
+# Bad energies (failed/total=58671/65536, showing first 8): 
+# index,actual,expected,difference_%
+# 0,0,865.523,100
+# 1,0,25.0715,100
+# 2,0,368.434,100
+# 3,0,14.6651,100
+# 4,0,574.987,100
+# 5,0,707.354,100
+# 6,0,33.947,100
+# 7,0,135.588,100
+# (ppwi=8,wgsize=1024,valid=0)
+# Device and kernel cc: sm_90
+# (ppwi=8,wgsize=256,valid=1)
+# Device and kernel cc: sm_90
+# Verification failed for ppwi=8, wgsize=512; difference exceeded tolerance (0.025%)
+# Bad energies (failed/total=58671/65536, showing first 8): 
+# index,actual,expected,difference_%
+# 0,0,865.523,100
+# 1,0,25.0715,100
+# 2,0,368.434,100
+# 3,0,14.6651,100
+# 4,0,574.987,100
+# 5,0,707.354,100
+# 6,0,33.947,100
+# 7,0,135.588,100
+# (ppwi=8,wgsize=512,valid=0)
+# Device and kernel cc: sm_90
+# Verification failed for ppwi=8, wgsize=1024; difference exceeded tolerance (0.025%)
+# Bad energies (failed/total=58671/65536, showing first 8): 
+# index,actual,expected,difference_%
+# 0,0,865.523,100
+# 1,0,25.0715,100
+# 2,0,368.434,100
+# 3,0,14.6651,100
+# 4,0,574.987,100
+# 5,0,707.354,100
+# 6,0,33.947,100
+# 7,0,135.588,100
+# (ppwi=8,wgsize=1024,valid=0)
+# (ppwi=8,wgsize=256,valid=1)
+# Device and kernel cc: sm_90
+# Device and kernel cc: sm_90
+# Verification failed for ppwi=8, wgsize=512; difference exceeded tolerance (0.025%)
+# Bad energies (failed/total=58671/65536, showing first 8): 
+# index,actual,expected,difference_%
+# 0,0,865.523,100
+# 1,0,25.0715,100
+# 2,0,368.434,100
+# 3,0,14.6651,100
+# 4,0,574.987,100
+# 5,0,707.354,100
+# 6,0,33.947,100
+# 7,0,135.588,100
+# (ppwi=8,wgsize=512,valid=0)
+# Device and kernel cc: sm_90
+# Verification failed for ppwi=8, wgsize=1024; difference exceeded tolerance (0.025%)
+# Bad energies (failed/total=58671/65536, showing first 8): 
+# index,actual,expected,difference_%
+# 0,0,865.523,100
+# 1,0,25.0715,100
+# 2,0,368.434,100
+# 3,0,14.6651,100
+# 4,0,574.987,100
+# 5,0,707.354,100
+# 6,0,33.947,100
+# 7,0,135.588,100
+# (ppwi=8,wgsize=1024,valid=0)
+# Device and kernel cc: sm_90
+# (ppwi=16,wgsize=4,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=16,wgsize=4,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=16,wgsize=4,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=16,wgsize=4,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=16,wgsize=8,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=16,wgsize=8,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=16,wgsize=8,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=16,wgsize=8,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=16,wgsize=16,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=16,wgsize=16,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=16,wgsize=16,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=16,wgsize=16,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=16,wgsize=32,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=16,wgsize=32,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=16,wgsize=32,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=16,wgsize=32,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=16,wgsize=64,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=16,wgsize=64,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=16,wgsize=64,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=16,wgsize=64,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=16,wgsize=128,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=16,wgsize=128,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=16,wgsize=128,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=16,wgsize=128,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=16,wgsize=256,valid=1)
+# Device and kernel cc: sm_90
+# Verification failed for ppwi=16, wgsize=512; difference exceeded tolerance (0.025%)
+# Bad energies (failed/total=58671/65536, showing first 8): 
+# index,actual,expected,difference_%
+# 0,0,865.523,100
+# 1,0,25.0715,100
+# 2,0,368.434,100
+# 3,0,14.6651,100
+# 4,0,574.987,100
+# 5,0,707.354,100
+# 6,0,33.947,100
+# 7,0,135.588,100
+# (ppwi=16,wgsize=512,valid=0)
+# Device and kernel cc: sm_90
+# Verification failed for ppwi=16, wgsize=1024; difference exceeded tolerance (0.025%)
+# Bad energies (failed/total=58671/65536, showing first 8): 
+# index,actual,expected,difference_%
+# 0,0,865.523,100
+# 1,0,25.0715,100
+# 2,0,368.434,100
+# 3,0,14.6651,100
+# 4,0,574.987,100
+# 5,0,707.354,100
+# 6,0,33.947,100
+# 7,0,135.588,100
+# (ppwi=16,wgsize=1024,valid=0)
+# Device and kernel cc: sm_90
+# (ppwi=16,wgsize=256,valid=1)
+# Device and kernel cc: sm_90
+# Verification failed for ppwi=16, wgsize=512; difference exceeded tolerance (0.025%)
+# Bad energies (failed/total=58671/65536, showing first 8): 
+# index,actual,expected,difference_%
+# 0,0,865.523,100
+# 1,0,25.0715,100
+# 2,0,368.434,100
+# 3,0,14.6651,100
+# 4,0,574.987,100
+# 5,0,707.354,100
+# 6,0,33.947,100
+# 7,0,135.588,100
+# (ppwi=16,wgsize=512,valid=0)
+# Device and kernel cc: sm_90
+# Verification failed for ppwi=16, wgsize=1024; difference exceeded tolerance (0.025%)
+# Bad energies (failed/total=58671/65536, showing first 8): 
+# index,actual,expected,difference_%
+# 0,0,865.523,100
+# 1,0,25.0715,100
+# 2,0,368.434,100
+# 3,0,14.6651,100
+# 4,0,574.987,100
+# 5,0,707.354,100
+# 6,0,33.947,100
+# 7,0,135.588,100
+# (ppwi=16,wgsize=1024,valid=0)
+# Device and kernel cc: sm_90
+# (ppwi=16,wgsize=256,valid=1)
+# Device and kernel cc: sm_90
+# Verification failed for ppwi=16, wgsize=512; difference exceeded tolerance (0.025%)
+# Bad energies (failed/total=58671/65536, showing first 8): 
+# index,actual,expected,difference_%
+# 0,0,865.523,100
+# 1,0,25.0715,100
+# 2,0,368.434,100
+# 3,0,14.6651,100
+# 4,0,574.987,100
+# 5,0,707.354,100
+# 6,0,33.947,100
+# 7,0,135.588,100
+# (ppwi=16,wgsize=512,valid=0)
+# Device and kernel cc: sm_90
+# Verification failed for ppwi=16, wgsize=1024; difference exceeded tolerance (0.025%)
+# Bad energies (failed/total=58671/65536, showing first 8): 
+# index,actual,expected,difference_%
+# 0,0,865.523,100
+# 1,0,25.0715,100
+# 2,0,368.434,100
+# 3,0,14.6651,100
+# 4,0,574.987,100
+# 5,0,707.354,100
+# 6,0,33.947,100
+# 7,0,135.588,100
+# (ppwi=16,wgsize=1024,valid=0)
+# Device and kernel cc: sm_90
+# (ppwi=16,wgsize=256,valid=1)
+# Device and kernel cc: sm_90
+# Verification failed for ppwi=16, wgsize=512; difference exceeded tolerance (0.025%)
+# Bad energies (failed/total=58671/65536, showing first 8): 
+# index,actual,expected,difference_%
+# 0,0,865.523,100
+# 1,0,25.0715,100
+# 2,0,368.434,100
+# 3,0,14.6651,100
+# 4,0,574.987,100
+# 5,0,707.354,100
+# 6,0,33.947,100
+# 7,0,135.588,100
+# (ppwi=16,wgsize=512,valid=0)
+# Device and kernel cc: sm_90
+# Verification failed for ppwi=16, wgsize=1024; difference exceeded tolerance (0.025%)
+# Bad energies (failed/total=58671/65536, showing first 8): 
+# index,actual,expected,difference_%
+# 0,0,865.523,100
+# 1,0,25.0715,100
+# 2,0,368.434,100
+# 3,0,14.6651,100
+# 4,0,574.987,100
+# 5,0,707.354,100
+# 6,0,33.947,100
+# 7,0,135.588,100
+# (ppwi=16,wgsize=1024,valid=0)
+# Device and kernel cc: sm_90
+# (ppwi=32,wgsize=4,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=32,wgsize=4,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=32,wgsize=4,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=32,wgsize=4,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=32,wgsize=8,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=32,wgsize=8,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=32,wgsize=8,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=32,wgsize=8,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=32,wgsize=16,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=32,wgsize=16,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=32,wgsize=16,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=32,wgsize=16,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=32,wgsize=32,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=32,wgsize=32,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=32,wgsize=32,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=32,wgsize=32,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=32,wgsize=64,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=32,wgsize=64,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=32,wgsize=64,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=32,wgsize=64,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=32,wgsize=128,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=32,wgsize=128,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=32,wgsize=128,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=32,wgsize=128,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=32,wgsize=256,valid=1)
+# Device and kernel cc: sm_90
+# Verification failed for ppwi=32, wgsize=512; difference exceeded tolerance (0.025%)
+# Bad energies (failed/total=58671/65536, showing first 8): 
+# index,actual,expected,difference_%
+# 0,0,865.523,100
+# 1,0,25.0715,100
+# 2,0,368.434,100
+# 3,0,14.6651,100
+# 4,0,574.987,100
+# 5,0,707.354,100
+# 6,0,33.947,100
+# 7,0,135.588,100
+# (ppwi=32,wgsize=512,valid=0)
+# Device and kernel cc: sm_90
+# Verification failed for ppwi=32, wgsize=1024; difference exceeded tolerance (0.025%)
+# Bad energies (failed/total=58671/65536, showing first 8): 
+# index,actual,expected,difference_%
+# 0,0,865.523,100
+# 1,0,25.0715,100
+# 2,0,368.434,100
+# 3,0,14.6651,100
+# 4,0,574.987,100
+# 5,0,707.354,100
+# 6,0,33.947,100
+# 7,0,135.588,100
+# (ppwi=32,wgsize=1024,valid=0)
+# Device and kernel cc: sm_90
+# (ppwi=32,wgsize=256,valid=1)
+# Device and kernel cc: sm_90
+# Verification failed for ppwi=32, wgsize=512; difference exceeded tolerance (0.025%)
+# Bad energies (failed/total=58671/65536, showing first 8): 
+# index,actual,expected,difference_%
+# 0,0,865.523,100
+# 1,0,25.0715,100
+# 2,0,368.434,100
+# 3,0,14.6651,100
+# 4,0,574.987,100
+# 5,0,707.354,100
+# 6,0,33.947,100
+# 7,0,135.588,100
+# (ppwi=32,wgsize=512,valid=0)
+# Device and kernel cc: sm_90
+# Verification failed for ppwi=32, wgsize=1024; difference exceeded tolerance (0.025%)
+# Bad energies (failed/total=58671/65536, showing first 8): 
+# index,actual,expected,difference_%
+# 0,0,865.523,100
+# 1,0,25.0715,100
+# 2,0,368.434,100
+# 3,0,14.6651,100
+# 4,0,574.987,100
+# 5,0,707.354,100
+# 6,0,33.947,100
+# 7,0,135.588,100
+# (ppwi=32,wgsize=1024,valid=0)
+# (ppwi=32,wgsize=256,valid=1)
+# Device and kernel cc: sm_90
+# Device and kernel cc: sm_90
+# Verification failed for ppwi=32, wgsize=512; difference exceeded tolerance (0.025%)
+# Bad energies (failed/total=58671/65536, showing first 8): 
+# index,actual,expected,difference_%
+# 0,0,865.523,100
+# 1,0,25.0715,100
+# 2,0,368.434,100
+# 3,0,14.6651,100
+# 4,0,574.987,100
+# 5,0,707.354,100
+# 6,0,33.947,100
+# 7,0,135.588,100
+# (ppwi=32,wgsize=512,valid=0)
+# Device and kernel cc: sm_90
+# Verification failed for ppwi=32, wgsize=1024; difference exceeded tolerance (0.025%)
+# Bad energies (failed/total=58671/65536, showing first 8): 
+# index,actual,expected,difference_%
+# 0,0,865.523,100
+# 1,0,25.0715,100
+# 2,0,368.434,100
+# 3,0,14.6651,100
+# 4,0,574.987,100
+# 5,0,707.354,100
+# 6,0,33.947,100
+# 7,0,135.588,100
+# (ppwi=32,wgsize=1024,valid=0)
+# Device and kernel cc: sm_90
+# (ppwi=32,wgsize=256,valid=1)
+# Device and kernel cc: sm_90
+# Verification failed for ppwi=32, wgsize=512; difference exceeded tolerance (0.025%)
+# Bad energies (failed/total=58671/65536, showing first 8): 
+# index,actual,expected,difference_%
+# 0,0,865.523,100
+# 1,0,25.0715,100
+# 2,0,368.434,100
+# 3,0,14.6651,100
+# 4,0,574.987,100
+# 5,0,707.354,100
+# 6,0,33.947,100
+# 7,0,135.588,100
+# (ppwi=32,wgsize=512,valid=0)
+# Device and kernel cc: sm_90
+# Verification failed for ppwi=32, wgsize=1024; difference exceeded tolerance (0.025%)
+# Bad energies (failed/total=58671/65536, showing first 8): 
+# index,actual,expected,difference_%
+# 0,0,865.523,100
+# 1,0,25.0715,100
+# 2,0,368.434,100
+# 3,0,14.6651,100
+# 4,0,574.987,100
+# 5,0,707.354,100
+# 6,0,33.947,100
+# 7,0,135.588,100
+# (ppwi=32,wgsize=1024,valid=0)
+# Device and kernel cc: sm_90
+# (ppwi=64,wgsize=4,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=64,wgsize=4,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=64,wgsize=4,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=64,wgsize=4,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=64,wgsize=8,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=64,wgsize=8,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=64,wgsize=8,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=64,wgsize=8,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=64,wgsize=16,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=64,wgsize=16,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=64,wgsize=16,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=64,wgsize=16,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=64,wgsize=32,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=64,wgsize=32,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=64,wgsize=32,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=64,wgsize=32,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=64,wgsize=64,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=64,wgsize=64,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=64,wgsize=64,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=64,wgsize=64,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=64,wgsize=128,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=64,wgsize=128,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=64,wgsize=128,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=64,wgsize=128,valid=1)
+# Device and kernel cc: sm_90
+# (ppwi=64,wgsize=256,valid=1)
+# Device and kernel cc: sm_90
+# Verification failed for ppwi=64, wgsize=512; difference exceeded tolerance (0.025%)
+# Bad energies (failed/total=58671/65536, showing first 8): 
+# index,actual,expected,difference_%
+# 0,0,865.523,100
+# 1,0,25.0715,100
+# 2,0,368.434,100
+# 3,0,14.6651,100
+# 4,0,574.987,100
+# 5,0,707.354,100
+# 6,0,33.947,100
+# 7,0,135.588,100
+# (ppwi=64,wgsize=512,valid=0)
+# Device and kernel cc: sm_90
+# Verification failed for ppwi=64, wgsize=1024; difference exceeded tolerance (0.025%)
+# Bad energies (failed/total=58671/65536, showing first 8): 
+# index,actual,expected,difference_%
+# 0,0,865.523,100
+# 1,0,25.0715,100
+# 2,0,368.434,100
+# 3,0,14.6651,100
+# 4,0,574.987,100
+# 5,0,707.354,100
+# 6,0,33.947,100
+# 7,0,135.588,100
+# (ppwi=64,wgsize=1024,valid=0)
+ppwi,wgsize,sum_ms,avg_ms,min_ms,max_ms,stddev_ms,interactions/s,gflops/s,gfinst/s
+1,4,466.559,58.320,58.309,58.330,0.008,27405600177.697,1096.840,685.140
+1,8,237.158,29.645,29.638,29.683,0.014,53914927800.590,2157.809,1347.873
+1,16,122.092,15.262,15.256,15.267,0.003,104726766261.123,4191.424,2618.169
+1,32,64.454,8.057,8.054,8.061,0.002,198379584884.319,7939.641,4959.490
+1,64,64.603,8.075,8.063,8.082,0.005,197921454303.395,7921.305,4948.036
+1,128,64.508,8.063,8.055,8.077,0.009,198214137576.904,7933.019,4955.353
+1,256,63.057,7.882,7.874,7.896,0.009,202774099884.095,8115.520,5069.352
+1,512,59.587,7.448,7.447,7.451,0.001,214583813555.360,8588.174,5364.595
+1,1024,115.119,14.390,14.372,14.418,0.021,111070725506.812,4445.325,2776.768
+2,4,280.786,35.098,35.091,35.103,0.004,45537684264.918,1594.794,1138.442
+2,8,146.580,18.322,18.304,18.347,0.017,87231317024.312,3054.963,2180.783
+2,16,79.922,9.990,9.987,9.994,0.002,159984259543.760,5602.873,3999.606
+2,32,47.043,5.880,5.876,5.890,0.005,271801657427.899,9518.876,6795.041
+2,64,47.055,5.882,5.876,5.885,0.003,271732706025.405,9516.461,6793.318
+2,128,47.114,5.889,5.884,5.893,0.003,271391151615.756,9504.499,6784.779
+2,256,51.837,6.480,6.477,6.483,0.002,246663670049.918,8638.508,6166.592
+2,512,75.871,9.484,9.462,9.506,0.015,168526915128.075,5902.049,4213.173
+2,1024,129.752,16.219,16.200,16.251,0.024,98544051367.586,3451.151,2463.601
+4,4,192.917,24.115,24.084,24.167,0.028,66278892337.629,2155.447,1656.972
+4,8,102.200,12.775,12.758,12.802,0.016,125111331033.561,4068.729,3127.783
+4,16,57.734,7.217,7.198,7.231,0.012,221467898771.355,7202.329,5536.697
+4,32,43.805,5.476,5.473,5.479,0.002,291889973655.487,9492.516,7297.249
+4,64,43.734,5.467,5.464,5.472,0.002,292367823454.166,9508.056,7309.196
+4,128,43.705,5.463,5.461,5.466,0.002,292558294564.924,9514.251,7313.957
+4,256,58.067,7.258,7.248,7.278,0.010,220198903377.636,7161.060,5504.973
+4,512,90.999,11.375,11.371,11.377,0.002,140510181467.882,4569.513,3512.755
+4,1024,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,0.000,0.000,0.000,0.000
+8,4,170.527,21.316,21.296,21.355,0.023,74981496394.333,2344.717,1874.537
+8,8,85.012,10.627,10.613,10.634,0.006,150405813826.065,4703.281,3760.145
+8,16,68.027,8.503,8.502,8.505,0.001,187961094104.177,5877.657,4699.027
+8,32,68.008,8.501,8.498,8.505,0.003,188011179563.460,5879.223,4700.279
+8,64,67.843,8.480,8.477,8.487,0.003,188470469843.689,5893.586,4711.762
+8,128,68.124,8.516,8.503,8.523,0.007,187691095285.152,5869.214,4692.277
+8,256,84.754,10.594,10.591,10.596,0.002,150864966445.284,4717.639,3771.624
+8,512,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,0.000,0.000,0.000,0.000
+8,1024,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,0.000,0.000,0.000,0.000
+16,4,231.012,28.876,28.811,28.957,0.044,55349338196.259,1696.207,1383.733
+16,8,208.845,26.106,26.064,26.144,0.033,61223912809.938,1876.236,1530.598
+16,16,208.717,26.090,26.053,26.129,0.032,61261695833.970,1877.394,1531.542
+16,32,208.738,26.092,26.048,26.136,0.035,61255505324.528,1877.204,1531.388
+16,64,208.699,26.087,26.048,26.129,0.033,61266907949.214,1877.553,1531.673
+16,128,208.793,26.099,26.065,26.138,0.031,61239299060.725,1876.707,1530.982
+16,256,231.497,28.937,28.914,28.994,0.028,55233196952.763,1692.647,1380.830
+16,512,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,0.000,0.000,0.000,0.000
+16,1024,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,0.000,0.000,0.000,0.000
+32,4,302.565,37.821,37.757,37.871,0.045,42259854861.008,1281.864,1056.496
+32,8,301.378,37.672,37.623,37.754,0.051,42426228327.174,1286.911,1060.656
+32,16,301.383,37.673,37.621,37.752,0.054,42425513066.053,1286.889,1060.638
+32,32,301.424,37.678,37.622,37.751,0.054,42419724857.150,1286.713,1060.493
+32,64,301.464,37.683,37.620,37.745,0.051,42414155035.754,1286.545,1060.354
+32,128,302.236,37.779,37.760,37.817,0.022,42305864447.000,1283.260,1057.647
+32,256,339.681,42.460,42.352,42.535,0.065,37642144177.891,1141.796,941.054
+32,512,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,0.000,0.000,0.000,0.000
+32,1024,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,0.000,0.000,0.000,0.000
+64,4,515.554,64.444,61.885,67.077,2.549,24801178307.839,748.416,620.029
+64,8,475.193,59.399,59.355,59.438,0.025,26907655362.171,811.982,672.691
+64,16,476.394,59.549,59.452,59.714,0.104,26839806280.126,809.935,670.995
+64,32,477.246,59.656,59.557,59.782,0.069,26791921689.617,808.490,669.798
+64,64,490.886,61.361,61.105,61.615,0.227,26047461065.854,786.024,651.187
+64,128,671.657,83.957,83.839,84.063,0.070,19037013558.880,574.473,475.925
+64,256,909.231,113.654,113.554,113.736,0.062,14062797384.033,424.368,351.570
+64,512,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,0.000,0.000,0.000,0.000
+64,1024,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,0.000,0.000,0.000,0.000
+# best: { min_ms: 5.461, max_ms: 5.466, sum_ms: 43.705, avg_ms: 5.463, ppwi: 4, wgsize: 128 }
+# (ppwi=64,wgsize=256,valid=1)
+# Device and kernel cc: sm_90
+# Verification failed for ppwi=64, wgsize=512; difference exceeded tolerance (0.025%)
+# Bad energies (failed/total=58671/65536, showing first 8): 
+# index,actual,expected,difference_%
+# 0,0,865.523,100
+# 1,0,25.0715,100
+# 2,0,368.434,100
+# 3,0,14.6651,100
+# 4,0,574.987,100
+# 5,0,707.354,100
+# 6,0,33.947,100
+# 7,0,135.588,100
+# (ppwi=64,wgsize=512,valid=0)
+# Device and kernel cc: sm_90
+# Verification failed for ppwi=64, wgsize=1024; difference exceeded tolerance (0.025%)
+# Bad energies (failed/total=58671/65536, showing first 8): 
+# index,actual,expected,difference_%
+# 0,0,865.523,100
+# 1,0,25.0715,100
+# 2,0,368.434,100
+# 3,0,14.6651,100
+# 4,0,574.987,100
+# 5,0,707.354,100
+# 6,0,33.947,100
+# 7,0,135.588,100
+# (ppwi=64,wgsize=1024,valid=0)
+ppwi,wgsize,sum_ms,avg_ms,min_ms,max_ms,stddev_ms,interactions/s,gflops/s,gfinst/s
+1,4,470.150,58.769,58.763,58.779,0.005,27196291909.981,1088.463,679.907
+1,8,239.251,29.906,29.862,29.952,0.035,53443097753.127,2138.925,1336.077
+1,16,123.055,15.382,15.357,15.438,0.034,103907172325.642,4158.622,2597.679
+1,32,65.134,8.142,8.119,8.161,0.018,196309321139.323,7856.784,4907.733
+1,64,65.011,8.126,8.118,8.158,0.013,196680598955.916,7871.643,4917.015
+1,128,65.265,8.158,8.154,8.166,0.004,195912915027.494,7840.919,4897.823
+1,256,63.509,7.939,7.935,7.943,0.002,201331691566.310,8057.792,5033.292
+1,512,60.194,7.524,7.497,7.532,0.011,212417882218.756,8501.488,5310.447
+1,1024,115.944,14.493,14.480,14.541,0.020,110279832548.447,4413.671,2756.996
+2,4,283.203,35.400,35.357,35.439,0.033,45149061769.152,1581.184,1128.727
+2,8,147.702,18.463,18.401,18.495,0.036,86568580328.878,3031.753,2164.215
+2,16,80.571,10.071,10.043,10.114,0.028,158696963396.090,5557.790,3967.424
+2,32,47.594,5.949,5.946,5.954,0.002,268651907392.114,9408.567,6716.298
+2,64,47.440,5.930,5.926,5.936,0.004,269525663392.829,9439.167,6738.142
+2,128,47.478,5.935,5.922,5.949,0.011,269310680994.815,9431.638,6732.767
+2,256,52.400,6.550,6.547,6.553,0.002,244015396039.699,8545.762,6100.385
+2,512,76.374,9.547,9.540,9.553,0.004,167416848561.532,5863.173,4185.421
+2,1024,130.888,16.361,16.324,16.384,0.027,97689139088.896,3421.211,2442.228
+4,4,194.503,24.313,24.273,24.349,0.033,65738656565.931,2137.878,1643.466
+4,8,103.292,12.912,12.866,12.939,0.025,123787848031.394,4025.689,3094.696
+4,16,58.131,7.266,7.261,7.272,0.004,219957200198.304,7153.200,5498.930
+4,32,44.263,5.533,5.528,5.537,0.003,288869700435.799,9394.294,7221.743
+4,64,44.221,5.528,5.508,5.535,0.009,289146236946.247,9403.287,7228.656
+4,128,44.088,5.511,5.508,5.513,0.001,290019726176.490,9431.694,7250.493
+4,256,58.511,7.314,7.298,7.340,0.012,218528586569.059,7106.740,5463.215
+4,512,91.686,11.461,11.454,11.465,0.003,139457422174.446,4535.277,3486.436
+4,1024,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,0.000,0.000,0.000,0.000
+8,4,171.883,21.485,21.424,21.532,0.047,74389888286.147,2326.217,1859.747
+8,8,85.895,10.737,10.706,10.749,0.013,148860437771.847,4654.956,3721.511
+8,16,68.588,8.573,8.568,8.578,0.004,186423344430.378,5829.571,4660.584
+8,32,68.424,8.553,8.551,8.555,0.001,186868919177.442,5843.504,4671.723
+8,64,68.364,8.545,8.538,8.556,0.007,187033956801.030,5848.665,4675.849
+8,128,68.546,8.568,8.566,8.576,0.003,186535647717.087,5833.082,4663.391
+8,256,85.391,10.674,10.672,10.677,0.001,149738125528.618,4682.402,3743.453
+8,512,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,0.000,0.000,0.000,0.000
+8,1024,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,0.000,0.000,0.000,0.000
+16,4,232.933,29.117,29.036,29.196,0.065,54892760877.747,1682.215,1372.319
+16,8,210.924,26.365,26.280,26.459,0.071,60620627338.842,1857.748,1515.516
+16,16,210.186,26.273,26.241,26.290,0.019,60833521170.413,1864.272,1520.838
+16,32,210.031,26.254,26.240,26.280,0.016,60878220469.595,1865.642,1521.956
+16,64,210.080,26.260,26.240,26.290,0.022,60864114274.767,1865.209,1521.603
+16,128,210.129,26.266,26.259,26.283,0.010,60849968282.085,1864.776,1521.249
+16,256,233.574,29.197,29.124,29.291,0.075,54742054020.178,1677.596,1368.551
+16,512,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,0.000,0.000,0.000,0.000
+16,1024,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,0.000,0.000,0.000,0.000
+32,4,304.913,38.114,38.039,38.296,0.092,41934322172.865,1271.990,1048.358
+32,8,303.453,37.932,37.906,37.954,0.017,42136192666.554,1278.113,1053.405
+32,16,303.369,37.921,37.905,37.957,0.022,42147792413.234,1278.465,1053.695
+32,32,303.495,37.937,37.906,37.962,0.021,42130265184.801,1277.933,1053.257
+32,64,303.438,37.930,37.905,37.959,0.022,42138197008.602,1278.174,1053.455
+32,128,303.739,37.967,37.952,37.998,0.016,42096489679.533,1276.909,1052.412
+32,256,342.727,42.841,42.734,42.980,0.088,37307631685.785,1131.649,932.691
+32,512,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,0.000,0.000,0.000,0.000
+32,1024,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,0.000,0.000,0.000,0.000
+64,4,528.491,66.061,64.813,67.290,1.191,24194044416.745,730.095,604.851
+64,8,478.546,59.818,59.682,59.883,0.072,26719162146.189,806.294,667.979
+64,16,479.533,59.942,59.881,60.055,0.058,26664117711.235,804.633,666.603
+64,32,480.547,60.068,59.998,60.215,0.068,26607867883.106,802.936,665.197
+64,64,495.494,61.937,61.516,62.333,0.368,25805210601.619,778.714,645.130
+64,128,678.020,84.753,84.638,84.882,0.075,18858338307.275,569.081,471.458
+64,256,926.785,115.848,115.789,115.947,0.047,13796439674.163,416.330,344.911
+64,512,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,0.000,0.000,0.000,0.000
+64,1024,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,0.000,0.000,0.000,0.000
+# best: { min_ms: 5.508, max_ms: 5.513, sum_ms: 44.088, avg_ms: 5.511, ppwi: 4, wgsize: 128 }
+# (ppwi=64,wgsize=256,valid=1)
+# Device and kernel cc: sm_90
+# Verification failed for ppwi=64, wgsize=512; difference exceeded tolerance (0.025%)
+# Bad energies (failed/total=58671/65536, showing first 8): 
+# index,actual,expected,difference_%
+# 0,0,865.523,100
+# 1,0,25.0715,100
+# 2,0,368.434,100
+# 3,0,14.6651,100
+# 4,0,574.987,100
+# 5,0,707.354,100
+# 6,0,33.947,100
+# 7,0,135.588,100
+# (ppwi=64,wgsize=512,valid=0)
+# Device and kernel cc: sm_90
+# Verification failed for ppwi=64, wgsize=1024; difference exceeded tolerance (0.025%)
+# Bad energies (failed/total=58671/65536, showing first 8): 
+# index,actual,expected,difference_%
+# 0,0,865.523,100
+# 1,0,25.0715,100
+# 2,0,368.434,100
+# 3,0,14.6651,100
+# 4,0,574.987,100
+# 5,0,707.354,100
+# 6,0,33.947,100
+# 7,0,135.588,100
+# (ppwi=64,wgsize=1024,valid=0)
+ppwi,wgsize,sum_ms,avg_ms,min_ms,max_ms,stddev_ms,interactions/s,gflops/s,gfinst/s
+1,4,470.121,58.765,58.752,58.789,0.011,27197956472.471,1088.529,679.949
+1,8,239.019,29.877,29.860,29.904,0.017,53495007171.724,2141.002,1337.375
+1,16,122.852,15.357,15.348,15.370,0.009,104078882721.287,4165.494,2601.972
+1,32,64.989,8.124,8.116,8.127,0.003,196747439746.140,7874.319,4918.686
+1,64,65.000,8.125,8.122,8.132,0.003,196714298153.937,7872.992,4917.857
+1,128,65.138,8.142,8.123,8.189,0.024,196297401699.204,7856.307,4907.435
+1,256,63.828,7.978,7.969,7.988,0.006,200325082504.631,8017.505,5008.127
+1,512,59.992,7.499,7.496,7.501,0.002,213132674239.595,8530.096,5328.317
+1,1024,116.301,14.538,14.489,14.554,0.026,109941907416.727,4400.147,2748.548
+2,4,283.012,35.377,35.363,35.396,0.012,45179465569.648,1582.248,1129.487
+2,8,147.586,18.448,18.409,18.493,0.037,86636439821.775,3034.130,2165.911
+2,16,80.459,10.057,10.045,10.099,0.017,158918079719.448,5565.534,3972.952
+2,32,47.533,5.942,5.923,5.954,0.013,268998577454.388,9420.708,6724.964
+2,64,47.616,5.952,5.948,5.955,0.003,268530298593.609,9404.308,6713.257
+2,128,47.401,5.925,5.921,5.928,0.002,269745752296.318,9446.875,6743.644
+2,256,52.256,6.532,6.521,6.554,0.013,244686737992.145,8569.273,6117.168
+2,512,76.591,9.574,9.559,9.586,0.009,166942262277.216,5846.552,4173.557
+2,1024,130.811,16.351,16.326,16.396,0.028,97746596805.295,3423.223,2443.665
+4,4,194.369,24.296,24.267,24.322,0.024,65783686856.059,2139.343,1644.592
+4,8,103.163,12.895,12.863,12.932,0.028,123943209716.039,4030.741,3098.580
+4,16,58.267,7.283,7.262,7.302,0.013,219442653362.377,7136.466,5486.066
+4,32,44.101,5.513,5.510,5.516,0.002,289931059034.386,9428.811,7248.276
+4,64,44.104,5.513,5.511,5.517,0.002,289913283468.318,9428.232,7247.832
+4,128,44.105,5.513,5.509,5.521,0.004,289908353501.417,9428.072,7247.709
+4,256,58.517,7.315,7.295,7.335,0.013,218507886387.837,7106.067,5462.697
+4,512,91.702,11.463,11.459,11.468,0.003,139433889761.288,4534.512,3485.847
+4,1024,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,0.000,0.000,0.000,0.000
+8,4,171.425,21.428,21.421,21.434,0.005,74588328818.581,2332.422,1864.708
+8,8,85.503,10.688,10.683,10.695,0.003,149542791225.594,4676.293,3738.570
+8,16,68.581,8.573,8.569,8.580,0.003,186442244819.419,5830.162,4661.056
+8,32,68.314,8.539,8.539,8.540,0.000,187169940588.352,5852.917,4679.249
+8,64,68.473,8.559,8.558,8.561,0.001,186736104853.148,5839.351,4668.403
+8,128,68.553,8.569,8.565,8.583,0.006,186518205768.816,5832.537,4662.955
+8,256,85.423,10.678,10.671,10.681,0.004,149683182358.367,4680.684,3742.080
+8,512,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,0.000,0.000,0.000,0.000
+8,1024,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,0.000,0.000,0.000,0.000
+16,4,232.945,29.118,29.033,29.208,0.074,54889845694.984,1682.125,1372.246
+16,8,210.291,26.286,26.260,26.322,0.025,60803115518.145,1863.340,1520.078
+16,16,210.195,26.274,26.243,26.308,0.027,60830946821.671,1864.193,1520.774
+16,32,210.176,26.272,26.241,26.308,0.031,60836428898.142,1864.361,1520.911
+16,64,210.193,26.274,26.243,26.306,0.026,60831461673.988,1864.209,1520.787
+16,128,210.304,26.288,26.260,26.310,0.022,60799234663.011,1863.221,1519.981
+16,256,233.112,29.139,29.110,29.153,0.017,54850509128.782,1680.920,1371.263
+16,512,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,0.000,0.000,0.000,0.000
+16,1024,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,0.000,0.000,0.000,0.000
+32,4,304.548,38.069,38.039,38.115,0.027,41984606619.803,1273.515,1049.615
+32,8,303.592,37.949,37.906,37.991,0.035,42116795509.736,1277.525,1052.920
+32,16,303.662,37.958,37.905,38.006,0.037,42107174969.713,1277.233,1052.679
+32,32,303.692,37.962,37.905,38.000,0.035,42102920332.816,1277.104,1052.573
+32,64,303.623,37.953,37.907,37.991,0.033,42112576654.997,1277.397,1052.814
+32,128,303.838,37.980,37.951,38.005,0.023,42082804330.235,1276.494,1052.070
+32,256,342.167,42.771,42.626,42.976,0.125,37368668424.094,1133.500,934.217
+32,512,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,0.000,0.000,0.000,0.000
+32,1024,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,0.000,0.000,0.000,0.000
+64,4,511.203,63.900,62.277,65.868,1.612,25012227410.803,754.785,625.306
+64,8,478.748,59.843,59.693,59.937,0.069,26707886072.497,805.954,667.697
+64,16,479.714,59.964,59.865,60.098,0.077,26654054575.502,804.329,666.351
+64,32,480.769,60.096,60.028,60.159,0.038,26595564339.104,802.564,664.889
+64,64,511.031,63.879,61.404,66.371,2.428,25020683435.153,755.040,625.517
+64,128,670.869,83.859,83.727,83.908,0.054,19059354143.148,575.147,476.484
+64,256,939.056,117.382,117.281,117.457,0.055,13616159833.068,410.890,340.404
+64,512,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,0.000,0.000,0.000,0.000
+64,1024,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,0.000,0.000,0.000,0.000
+# best: { min_ms: 5.510, max_ms: 5.516, sum_ms: 44.101, avg_ms: 5.513, ppwi: 4, wgsize: 32 }
+# (ppwi=64,wgsize=256,valid=1)
+# Device and kernel cc: sm_90
+# Verification failed for ppwi=64, wgsize=512; difference exceeded tolerance (0.025%)
+# Bad energies (failed/total=58671/65536, showing first 8): 
+# index,actual,expected,difference_%
+# 0,0,865.523,100
+# 1,0,25.0715,100
+# 2,0,368.434,100
+# 3,0,14.6651,100
+# 4,0,574.987,100
+# 5,0,707.354,100
+# 6,0,33.947,100
+# 7,0,135.588,100
+# (ppwi=64,wgsize=512,valid=0)
+# Device and kernel cc: sm_90
+# Verification failed for ppwi=64, wgsize=1024; difference exceeded tolerance (0.025%)
+# Bad energies (failed/total=58671/65536, showing first 8): 
+# index,actual,expected,difference_%
+# 0,0,865.523,100
+# 1,0,25.0715,100
+# 2,0,368.434,100
+# 3,0,14.6651,100
+# 4,0,574.987,100
+# 5,0,707.354,100
+# 6,0,33.947,100
+# 7,0,135.588,100
+# (ppwi=64,wgsize=1024,valid=0)
+ppwi,wgsize,sum_ms,avg_ms,min_ms,max_ms,stddev_ms,interactions/s,gflops/s,gfinst/s
+1,4,470.106,58.763,58.752,58.771,0.006,27198844256.879,1088.565,679.971
+1,8,238.941,29.868,29.860,29.882,0.006,53512457545.429,2141.701,1337.811
+1,16,123.002,15.375,15.347,15.390,0.013,103952301113.925,4160.428,2598.808
+1,32,64.927,8.116,8.113,8.118,0.002,196935361230.668,7881.840,4923.384
+1,64,65.226,8.153,8.137,8.204,0.022,196030003669.372,7845.605,4900.750
+1,128,64.945,8.118,8.115,8.122,0.002,196880269436.493,7879.635,4922.007
+1,256,63.545,7.943,7.937,7.948,0.003,201217086605.425,8053.205,5030.427
+1,512,60.081,7.510,7.498,7.537,0.014,212819268689.239,8517.553,5320.482
+1,1024,115.977,14.497,14.478,14.525,0.020,110248890068.740,4412.433,2756.222
+2,4,283.053,35.382,35.352,35.409,0.017,45172946099.499,1582.020,1129.324
+2,8,147.610,18.451,18.414,18.470,0.023,86622668104.450,3033.647,2165.567
+2,16,80.453,10.057,10.048,10.095,0.015,158928440066.839,5565.897,3973.211
+2,32,47.544,5.943,5.939,5.948,0.003,268938281042.379,9418.596,6723.457
+2,64,47.483,5.935,5.928,5.942,0.005,269283116320.344,9430.673,6732.078
+2,128,47.405,5.926,5.924,5.930,0.002,269724948824.589,9446.146,6743.124
+2,256,52.323,6.540,6.538,6.541,0.001,244371747056.158,8558.242,6109.294
+2,512,76.448,9.556,9.544,9.568,0.008,167255154210.409,5857.510,4181.379
+2,1024,130.717,16.340,16.321,16.348,0.010,97817245096.223,3425.697,2445.431
+4,4,194.362,24.295,24.267,24.340,0.027,65786069268.833,2139.420,1644.652
+4,8,103.187,12.898,12.868,12.906,0.012,123914199510.190,4029.798,3097.855
+4,16,58.156,7.270,7.264,7.275,0.004,219862342962.940,7150.115,5496.559
+4,32,44.153,5.519,5.512,5.529,0.006,289594272770.213,9417.858,7239.857
+4,64,44.184,5.523,5.521,5.525,0.001,289385095316.231,9411.055,7234.627
+4,128,44.120,5.515,5.511,5.523,0.004,289811392135.456,9424.919,7245.285
+4,256,58.554,7.319,7.294,7.375,0.026,218368934892.072,7101.548,5459.223
+4,512,91.802,11.475,11.460,11.486,0.009,139282128346.712,4529.576,3482.053
+4,1024,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,0.000,0.000,0.000,0.000
+8,4,171.628,21.453,21.421,21.497,0.032,74500342793.960,2329.671,1862.509
+8,8,85.692,10.712,10.687,10.731,0.016,149212097653.568,4665.952,3730.302
+8,16,68.715,8.589,8.576,8.606,0.012,186076986203.611,5818.740,4651.925
+8,32,68.503,8.563,8.550,8.581,0.013,186653838174.963,5836.778,4666.346
+8,64,68.589,8.574,8.557,8.581,0.008,186420099157.259,5829.469,4660.502
+8,128,68.568,8.571,8.566,8.574,0.003,186475770971.239,5831.210,4661.894
+8,256,85.495,10.687,10.678,10.692,0.004,149556838603.974,4676.733,3738.921
+8,512,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,0.000,0.000,0.000,0.000
+8,1024,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,0.000,0.000,0.000,0.000
+16,4,232.455,29.057,29.032,29.103,0.026,55005669698.405,1685.675,1375.142
+16,8,210.498,26.312,26.259,26.382,0.044,60743313232.794,1861.507,1518.583
+16,16,210.305,26.288,26.241,26.340,0.045,60798866350.121,1863.210,1519.972
+16,32,210.296,26.287,26.240,26.342,0.044,60801681137.080,1863.296,1520.042
+16,64,210.318,26.290,26.241,26.335,0.041,60795179708.823,1863.097,1519.879
+16,128,210.384,26.298,26.260,26.340,0.037,60776202880.791,1862.515,1519.405
+16,256,233.192,29.149,29.109,29.186,0.032,54831745252.826,1680.345,1370.794
+16,512,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,0.000,0.000,0.000,0.000
+16,1024,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,0.000,0.000,0.000,0.000
+32,4,304.712,38.089,38.041,38.176,0.051,41962084606.002,1272.832,1049.052
+32,8,303.708,37.963,37.907,38.050,0.059,42100815377.804,1277.040,1052.520
+32,16,303.785,37.973,37.906,38.072,0.067,42090132760.433,1276.716,1052.253
+32,32,303.843,37.980,37.906,38.049,0.060,42082043539.896,1276.471,1052.051
+32,64,303.860,37.983,37.908,38.043,0.056,42079639606.598,1276.398,1051.991
+32,128,305.185,38.148,38.129,38.176,0.018,41897008539.409,1270.858,1047.425
+32,256,341.539,42.692,42.630,42.742,0.031,37437370159.917,1135.584,935.934
+32,512,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,0.000,0.000,0.000,0.000
+32,1024,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,0.000,0.000,0.000,0.000
+64,4,516.118,64.515,61.466,67.680,2.975,24774059945.505,747.597,619.351
+64,8,478.754,59.844,59.794,59.879,0.027,26707510073.481,805.942,667.688
+64,16,480.103,60.013,59.881,60.252,0.127,26632491346.990,803.679,665.812
+64,32,481.069,60.134,60.008,60.218,0.067,26578992766.854,802.064,664.475
+64,64,519.803,64.975,62.349,67.709,2.595,24598422196.744,742.297,614.961
+64,128,679.685,84.961,84.869,85.081,0.071,18812143390.802,567.687,470.304
+64,256,927.678,115.960,115.860,116.151,0.089,13783167898.142,415.929,344.579
+64,512,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,0.000,0.000,0.000,0.000
+64,1024,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,179769313486231570814527423731704356798070567525844996598917476803157260780028538760589558632766878171540458953514382464234321326889464182768467546703537516986049910576551282076245490090389328944075868508455133942304583236903222948165808559332123348274797826204144723168738177180919299881250404026184124858368.000,0.000,0.000,0.000,0.000
+# best: { min_ms: 5.511, max_ms: 5.523, sum_ms: 44.120, avg_ms: 5.515, ppwi: 4, wgsize: 128 }
++ cd /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE
++ result=/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/cuda-bude-bm1.out0
+++ tail -n1 /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/cuda-bude-bm1.out0
++ best='# best: { min_ms: 5.461, max_ms: 5.466, sum_ms: 43.705, avg_ms: 5.463, ppwi: 4, wgsize: 128 }'
+++ echo '# best: { min_ms: 5.461, max_ms: 5.466, sum_ms: 43.705, avg_ms: 5.463, ppwi: 4, wgsize: 128 }'
+++ grep -oP '(?<=ppwi: )\d+'
++ ppwi=4
+++ echo '# best: { min_ms: 5.461, max_ms: 5.466, sum_ms: 43.705, avg_ms: 5.463, ppwi: 4, wgsize: 128 }'
+++ grep -oP '(?<=wgsize: )\d+'
++ wgsize=128
++ echo ========================================
+========================================
+++ awk -F, '{print $9}'
++++ grep '^4,128' /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/cuda-bude-bm1.out0
+++ echo 4,128,43.705,5.463,5.461,5.466,0.002,292558294564.924,9514.251,7313.957
++ echo best gflops/s = 9514.251
+best gflops/s = 9514.251
++ echo ========================================
+========================================

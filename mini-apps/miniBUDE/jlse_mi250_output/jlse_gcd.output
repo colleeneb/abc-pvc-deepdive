@@ -1,0 +1,395 @@
++ BASE=/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE
++ BM=bm1
++ '[' '!' -e minibude/CMakeLists.txt ']'
++ source /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/../../environment/jlse_mi250.env gcd
+++ module load gcc/12.2.0
+++ local _mlredir=1
+++ '[' -n '' ']'
+++ case " $@ " in
+++ '[' 1 -eq 0 ']'
+++ _module_raw load gcc/12.2.0
++++ /usr/bin/tclsh /usr/lib64/Modules/modulecmd.tcl bash load gcc/12.2.0
+++ eval 'LD_LIBRARY_PATH=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib64; export LD_LIBRARY_PATH;
+__MODULES_LMCONFLICT=gcc/12.2.0\&gcc; export __MODULES_LMCONFLICT;
+MANPATH=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/share/man:/usr/local/man:/usr/share/man; export MANPATH;
+PATH=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin:/home/bertoni/miniconda3/bin:/home/bertoni/miniconda3/condabin:/home/bertoni/.local/bin:/home/bertoni/bin:/home/bertoni/bin/x86_64:/usr/local/bin:/usr/bin:/bin:/usr/lpp/mmfs/bin:/opt/rocm/bin:/opt/rocm/profiler/bin:/opt/rocm/opencl/bin:/home/bertoni/bin; export PATH;
+_LMFILES_=/soft/modulefiles/gcc/12.2.0; export _LMFILES_;
+LOADEDMODULES=gcc/12.2.0; export LOADEDMODULES;
+test 0;'
++++ LD_LIBRARY_PATH=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib64
++++ export LD_LIBRARY_PATH
++++ __MODULES_LMCONFLICT='gcc/12.2.0&gcc'
++++ export __MODULES_LMCONFLICT
++++ MANPATH=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/share/man:/usr/local/man:/usr/share/man
++++ export MANPATH
++++ PATH=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin:/home/bertoni/miniconda3/bin:/home/bertoni/miniconda3/condabin:/home/bertoni/.local/bin:/home/bertoni/bin:/home/bertoni/bin/x86_64:/usr/local/bin:/usr/bin:/bin:/usr/lpp/mmfs/bin:/opt/rocm/bin:/opt/rocm/profiler/bin:/opt/rocm/opencl/bin:/home/bertoni/bin
++++ export PATH
++++ _LMFILES_=/soft/modulefiles/gcc/12.2.0
++++ export _LMFILES_
++++ LOADEDMODULES=gcc/12.2.0
++++ export LOADEDMODULES
++++ test 0
+++ _mlstatus=0
+++ return 0
+++ module load rocm/6.1.0 cmake/3.28.3 openmpi/4.1.1-gcc
+++ local _mlredir=1
+++ '[' -n '' ']'
+++ case " $@ " in
+++ '[' 1 -eq 0 ']'
+++ _module_raw load rocm/6.1.0 cmake/3.28.3 openmpi/4.1.1-gcc
++++ /usr/bin/tclsh /usr/lib64/Modules/modulecmd.tcl bash load rocm/6.1.0 cmake/3.28.3 openmpi/4.1.1-gcc
+++ eval 'LD_LIBRARY_PATH=/soft/libraries/mpi/openmpi/4.1.1/lib:/soft/compilers/rocm/rocm-6.1.0/lib:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib64; export LD_LIBRARY_PATH;
+OMPI_FC=gfortran; export OMPI_FC;
+__MODULES_LMALTNAME=rocm/6.1.0\&as\|rocm/default\&as\|rocm/latest:cmake/3.28.3\&as\|cmake/default\&as\|cmake/latest; export __MODULES_LMALTNAME;
+__MODULES_LMCONFLICT=gcc/12.2.0\&gcc:rocm/6.1.0\&rocm\&aomp/rocm:cmake/3.28.3\&cmake:openmpi/4.1.1-gcc\&openmpi; export __MODULES_LMCONFLICT;
+PATH=/soft/libraries/mpi/openmpi/4.1.1/bin:/soft/buildtools/cmake/3.28.3/bin:/soft/compilers/rocm/rocm-6.1.0/bin:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin:/home/bertoni/miniconda3/bin:/home/bertoni/miniconda3/condabin:/home/bertoni/.local/bin:/home/bertoni/bin:/home/bertoni/bin/x86_64:/usr/local/bin:/usr/bin:/bin:/usr/lpp/mmfs/bin:/opt/rocm/bin:/opt/rocm/profiler/bin:/opt/rocm/opencl/bin:/home/bertoni/bin; export PATH;
+ROCM_PATH=/soft/compilers/rocm/rocm-6.1.0; export ROCM_PATH;
+OMPI_CC=gcc; export OMPI_CC;
+_LMFILES_=/soft/modulefiles/gcc/12.2.0:/soft/modulefiles/rocm/6.1.0:/soft/modulefiles/cmake/3.28.3:/soft/modulefiles/openmpi/4.1.1-gcc; export _LMFILES_;
+LOADEDMODULES=gcc/12.2.0:rocm/6.1.0:cmake/3.28.3:openmpi/4.1.1-gcc; export LOADEDMODULES;
+OMPI_CXX=g++; export OMPI_CXX;
+test 0;'
++++ LD_LIBRARY_PATH=/soft/libraries/mpi/openmpi/4.1.1/lib:/soft/compilers/rocm/rocm-6.1.0/lib:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib64
++++ export LD_LIBRARY_PATH
++++ OMPI_FC=gfortran
++++ export OMPI_FC
++++ __MODULES_LMALTNAME='rocm/6.1.0&as|rocm/default&as|rocm/latest:cmake/3.28.3&as|cmake/default&as|cmake/latest'
++++ export __MODULES_LMALTNAME
++++ __MODULES_LMCONFLICT='gcc/12.2.0&gcc:rocm/6.1.0&rocm&aomp/rocm:cmake/3.28.3&cmake:openmpi/4.1.1-gcc&openmpi'
++++ export __MODULES_LMCONFLICT
++++ PATH=/soft/libraries/mpi/openmpi/4.1.1/bin:/soft/buildtools/cmake/3.28.3/bin:/soft/compilers/rocm/rocm-6.1.0/bin:/soft/compilers/gcc/12.2.0/x86_64-suse-linux/bin:/home/bertoni/miniconda3/bin:/home/bertoni/miniconda3/condabin:/home/bertoni/.local/bin:/home/bertoni/bin:/home/bertoni/bin/x86_64:/usr/local/bin:/usr/bin:/bin:/usr/lpp/mmfs/bin:/opt/rocm/bin:/opt/rocm/profiler/bin:/opt/rocm/opencl/bin:/home/bertoni/bin
++++ export PATH
++++ ROCM_PATH=/soft/compilers/rocm/rocm-6.1.0
++++ export ROCM_PATH
++++ OMPI_CC=gcc
++++ export OMPI_CC
++++ _LMFILES_=/soft/modulefiles/gcc/12.2.0:/soft/modulefiles/rocm/6.1.0:/soft/modulefiles/cmake/3.28.3:/soft/modulefiles/openmpi/4.1.1-gcc
++++ export _LMFILES_
++++ LOADEDMODULES=gcc/12.2.0:rocm/6.1.0:cmake/3.28.3:openmpi/4.1.1-gcc
++++ export LOADEDMODULES
++++ OMPI_CXX=g++
++++ export OMPI_CXX
++++ test 0
+++ _mlstatus=0
+++ return 0
+++ module list
+++ local _mlredir=1
+++ '[' -n '' ']'
+++ case " $@ " in
+++ '[' 1 -eq 0 ']'
+++ _module_raw list
++++ /usr/bin/tclsh /usr/lib64/Modules/modulecmd.tcl bash list
+Currently Loaded Modulefiles:
+ 1) gcc/12.2.0   2) rocm/6.1.0   3) cmake/3.28.3   4) openmpi/4.1.1-gcc  
+++ eval ''
+++ _mlstatus=0
+++ return 0
+++ export OMPI_MCA_btl_openib_allow_ib=1
+++ OMPI_MCA_btl_openib_allow_ib=1
+++ export OMPI_MCA_orte_base_help_aggregate=0
+++ OMPI_MCA_orte_base_help_aggregate=0
+++ export OMPI_MCA_mpi_warn_on_fork=0
+++ OMPI_MCA_mpi_warn_on_fork=0
+++ export MPIEXEC=mpirun
+++ MPIEXEC=mpirun
+++ export 'MPIBINDINGS=-report-bindings --map-by node:PE=16'
+++ MPIBINDINGS='-report-bindings --map-by node:PE=16'
+++ export OMP_NUM_THREADS=16
+++ OMP_NUM_THREADS=16
+++ case "$1" in
+++ export NP=1
+++ NP=1
+++ export 'MPICOMMAND=mpirun -n 1 -report-bindings --map-by node:PE=16'
+++ MPICOMMAND='mpirun -n 1 -report-bindings --map-by node:PE=16'
+++ export VENDOR=AMD
+++ VENDOR=AMD
+++ export ARCH=gfx90a
+++ ARCH=gfx90a
++++ nproc --all
+++ export NCPUS=256
+++ NCPUS=256
++ cd /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude
++ CMAKE_OPTS+='-DCMAKE_VERBOSE_MAKEFILE=ON '
++ '[' AMD = INTEL ']'
++ '[' AMD = NVIDIA ']'
++ '[' AMD = AMD ']'
++ MODEL=hip
++ CMAKE_OPTS+='-DCMAKE_C_COMPILER=gcc '
++ CMAKE_OPTS+='-DCMAKE_CXX_COMPILER=hipcc '
++ CMAKE_OPTS+='-DCXX_EXTRA_FLAGS=--offload-arch=gfx90a;--gcc-toolchain=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/ '
++ CMAKE_OPTS+='-DMODEL=hip '
++ BENCHMARK_EXE=hip-bude
++ rm -rf build
++ cmake -Bbuild -H. -DCMAKE_BUILD_TYPE=RELEASE -DCMAKE_VERBOSE_MAKEFILE=ON -DCMAKE_C_COMPILER=gcc -DCMAKE_CXX_COMPILER=hipcc '-DCXX_EXTRA_FLAGS=--offload-arch=gfx90a;--gcc-toolchain=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/' -DMODEL=hip
+-- The CXX compiler identification is Clang 17.0.0
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /soft/compilers/rocm/rocm-6.1.0/bin/hipcc - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- CXX_EXTRA_LINK_FLAGS: 
+        Appends to link flags which appear *before* the objects.
+        Do not use this for linking libraries, as the link line is order-dependent
+-- CXX_EXTRA_LIBRARIES: 
+        Append to link flags which appear *after* the objects.
+        Use this for linking extra libraries (e.g `-lmylib`, or simply `mylib`)
+-- CXX_EXTRA_LINKER_FLAGS: 
+        Append to linker flags (i.e GCC's `-Wl` or equivalent)
+-- Available models:  omp;ocl;std-indices;std-ranges;hip;cuda;kokkos;sycl;acc;raja;tbb;thrust
+-- Selected model  :  hip
+-- Supported flags:
+
+   CMAKE_CXX_COMPILER (required): Absolute path to the AMD HIP C++ compiler
+
+-- Model-specific flags for this build:
+
+   CMAKE_CXX_COMPILER = `/soft/compilers/rocm/rocm-6.1.0/bin/hipcc`
+
+-- Default RELEASE flags are `-O3;-march=native`, set RELEASE_FLAGS to override (CXX_EXTRA_* flags are not affected)
+-- PPWI not set, defaulting to 1,2,4,8,16,32,64,128
+-- CXX vendor  : Clang (/soft/compilers/rocm/rocm-6.1.0/bin/hipcc)
+-- Platform    : x86_64
+-- PPWI        : 1,2,4,8,16,32,64,128
+-- Sources     : src/hip/fasten.hpp;src/main.cpp
+-- Libraries   :  
+-- CXX Flags   :  -DNDEBUG -O3;-march=native --offload-arch=gfx90a;--gcc-toolchain=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/
+    CXX flags derived from (CMake + (Override ? Override : Default) + Extras), where:
+        CMake                    = ` -DNDEBUG`
+        Default                  = `-O3;-march=native`
+        Override (RELEASE_FLAGS) = ``
+        Extras (CXX_EXTRA_FLAGS) = `--offload-arch=gfx90a;--gcc-toolchain=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/`
+-- Link Flags  :  --offload-arch=gfx90a;--gcc-toolchain=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/
+-- Linker Flags:   
+-- Defs        : HIP
+-- Executable  : hip-bude
+-- Configuring done (2.3s)
+-- Generating done (0.1s)
+CMake Warning:
+  Manually-specified variables were not used by the project:
+
+    CMAKE_C_COMPILER
+
+
+-- Build files have been written to: /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build
++ cmake --build build --config RELEASE -j 256
+Change Dir: '/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+
+Run Build Command(s): /soft/buildtools/cmake/3.28.3/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile -j256
+/soft/buildtools/cmake/3.28.3/bin/cmake -S/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude -B/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build --check-build-system CMakeFiles/Makefile.cmake 0
+/soft/buildtools/cmake/3.28.3/bin/cmake -E cmake_progress_start /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/CMakeFiles /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build//CMakeFiles/progress.marks
+/usr/bin/gmake  -f CMakeFiles/Makefile2 all
+gmake[1]: Entering directory '/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+/usr/bin/gmake  -f CMakeFiles/extract_compile_commands.dir/build.make CMakeFiles/extract_compile_commands.dir/depend
+/usr/bin/gmake  -f CMakeFiles/check_git.dir/build.make CMakeFiles/check_git.dir/depend
+gmake[2]: Entering directory '/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+gmake[2]: Entering directory '/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+cd /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build && /soft/buildtools/cmake/3.28.3/bin/cmake -E cmake_depends "Unix Makefiles" /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/CMakeFiles/extract_compile_commands.dir/DependInfo.cmake "--color="
+cd /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build && /soft/buildtools/cmake/3.28.3/bin/cmake -E cmake_depends "Unix Makefiles" /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/CMakeFiles/check_git.dir/DependInfo.cmake "--color="
+gmake[2]: Leaving directory '/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+gmake[2]: Leaving directory '/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+/usr/bin/gmake  -f CMakeFiles/extract_compile_commands.dir/build.make CMakeFiles/extract_compile_commands.dir/build
+/usr/bin/gmake  -f CMakeFiles/check_git.dir/build.make CMakeFiles/check_git.dir/build
+gmake[2]: Entering directory '/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+/soft/buildtools/cmake/3.28.3/bin/cmake -DCOMMAND_FILE=/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/compile_commands.json -DPRE_CONFIGURE_FILE="/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/meta_build.h.in" -DPOST_CONFIGURE_FILE="/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/generated/meta_build.h" -DSRC_DIR_PREFIX="/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src" -DOUT_DIR_PREFIX="CMakeFiles/bude.dir" -P /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/cmake/extract_compile_command.cmake
+gmake[2]: Entering directory '/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+-- Transforming /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/compile_commands.json...
+[ 33%] Checking the git repository for changes...
+/soft/buildtools/cmake/3.28.3/bin/cmake -D_BUILD_TIME_CHECK_GIT=TRUE -DGIT_WORKING_DIR=/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude -DGIT_EXECUTABLE=/usr/bin/git -DGIT_STATE_FILE=/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/git-state-hash -DPRE_CONFIGURE_FILE=/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/meta_vcs.h.in -DPOST_CONFIGURE_FILE=/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/generated/meta_vcs.h -DGIT_FAIL_IF_NONZERO_EXIT=FALSE -DGIT_IGNORE_UNTRACKED=FALSE -P /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/cmake/git_watcher.cmake
+gmake[2]: Leaving directory '/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+[ 33%] Built target extract_compile_commands
+gmake[2]: Leaving directory '/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+[ 33%] Built target check_git
+/usr/bin/gmake  -f CMakeFiles/bude.dir/build.make CMakeFiles/bude.dir/depend
+gmake[2]: Entering directory '/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+cd /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build && /soft/buildtools/cmake/3.28.3/bin/cmake -E cmake_depends "Unix Makefiles" /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/CMakeFiles/bude.dir/DependInfo.cmake "--color="
+gmake[2]: Leaving directory '/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+/usr/bin/gmake  -f CMakeFiles/bude.dir/build.make CMakeFiles/bude.dir/build
+gmake[2]: Entering directory '/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+[ 66%] Building CXX object CMakeFiles/bude.dir/src/main.cpp.o
+/soft/compilers/rocm/rocm-6.1.0/bin/hipcc -DHIP -DUSE_PPWI=1,2,4,8,16,32,64,128 -I/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/hip -I/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/generated -DNDEBUG -std=c++17 -O3 -march=native --offload-arch=gfx90a --gcc-toolchain=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/ -MD -MT CMakeFiles/bude.dir/src/main.cpp.o -MF CMakeFiles/bude.dir/src/main.cpp.o.d -o CMakeFiles/bude.dir/src/main.cpp.o -c /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp
+[100%] Linking CXX executable hip-bude
+/soft/buildtools/cmake/3.28.3/bin/cmake -E cmake_link_script CMakeFiles/bude.dir/link.txt --verbose=1
+/soft/compilers/rocm/rocm-6.1.0/bin/hipcc  -DNDEBUG --offload-arch=gfx90a --gcc-toolchain=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/ CMakeFiles/bude.dir/src/main.cpp.o -o hip-bude 
+gmake[2]: Leaving directory '/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+[100%] Built target bude
+gmake[1]: Leaving directory '/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+/soft/buildtools/cmake/3.28.3/bin/cmake -E cmake_progress_start /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/CMakeFiles 0
+
++ ldd /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/hip-bude
+	linux-vdso.so.1 (0x00007ffdac3d4000)
+	libamdhip64.so.6 => /soft/compilers/rocm/rocm-6.1.0/lib/llvm/bin/../../../lib/libamdhip64.so.6 (0x00007f507138d000)
+	libstdc++.so.6 => /soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib64/libstdc++.so.6 (0x00007f5070e00000)
+	libm.so.6 => /lib64/libm.so.6 (0x00007f5071230000)
+	libgcc_s.so.1 => /soft/compilers/gcc/12.2.0/x86_64-suse-linux/lib64/libgcc_s.so.1 (0x00007f5070a00000)
+	libc.so.6 => /lib64/libc.so.6 (0x00007f5070809000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x00007f5071229000)
+	librt.so.1 => /lib64/librt.so.1 (0x00007f5070df6000)
+	libamd_comgr.so.2 => /soft/compilers/rocm/rocm-6.1.0/lib/llvm/bin/../../../lib/libamd_comgr.so.2 (0x00007f50684b8000)
+	libhsa-runtime64.so.1 => /soft/compilers/rocm/rocm-6.1.0/lib/llvm/bin/../../../lib/libhsa-runtime64.so.1 (0x00007f50681e0000)
+	libnuma.so.1 => /usr/lib64/libnuma.so.1 (0x00007f5067e00000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x00007f5070dd2000)
+	/lib64/ld-linux-x86-64.so.2 (0x00007f5072abe000)
+	libz.so.1 => /lib64/libz.so.1 (0x00007f5070dba000)
+	libzstd.so.1 => /usr/lib64/libzstd.so.1 (0x00007f5070c89000)
+	libtinfo.so.6 => /lib64/libtinfo.so.6 (0x00007f5070c5a000)
+	libelf.so.1 => /usr/lib64/libelf.so.1 (0x00007f5067a00000)
+	librocprofiler-register.so.0 => /soft/compilers/rocm/rocm-6.1.0/lib/llvm/bin/../../../lib/librocprofiler-register.so.0 (0x00007f5068142000)
+	libdrm.so.2 => /usr/lib64/libdrm.so.2 (0x00007f5067600000)
+	libdrm_amdgpu.so.1 => /usr/lib64/libdrm_amdgpu.so.1 (0x00007f5067200000)
++ OUT=/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/hip-bude-bm1.out
++ RUN bm1
++ cd /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude
++ mkdir -p results
++ BENCHMARK_EXE=/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/hip-bude
++ DECK=/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/data/bm1
++ cd /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE
++ mpirun -n 1 -report-bindings --map-by node:PE=16 /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/../gpu_tile_compact.sh sh -c '/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/hip-bude --deck /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/data/bm1 --wgsize 4,8,16,32,64,128,256,512,1024 --ppwi 1,2,4,8,16,32,64 --csv | tee /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/hip-bude-bm1.out${RANK}'
+[amdgpu05:226623] MCW rank 0 bound to socket 0[core 0[hwt 0-1]], socket 0[core 1[hwt 0-1]], socket 0[core 2[hwt 0-1]], socket 0[core 3[hwt 0-1]], socket 0[core 4[hwt 0-1]], socket 0[core 5[hwt 0-1]], socket 0[core 6[hwt 0-1]], socket 0[core 7[hwt 0-1]], socket 0[core 8[hwt 0-1]], socket 0[core 9[hwt 0-1]], socket 0[core 10[hwt 0-1]], socket 0[core 11[hwt 0-1]], socket 0[core 12[hwt 0-1]], socket 0[core 13[hwt 0-1]], socket 0[core 14[hwt 0-1]], socket 0[core 15[hwt 0-1]]: [BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/BB/../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../..][../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../../..]
+for AMD 0 for 0
+# (ppwi=1,wgsize=4,valid=1)
+# (ppwi=1,wgsize=8,valid=1)
+# (ppwi=1,wgsize=16,valid=1)
+# (ppwi=1,wgsize=32,valid=1)
+# (ppwi=1,wgsize=64,valid=1)
+# (ppwi=1,wgsize=128,valid=1)
+# (ppwi=1,wgsize=256,valid=1)
+# (ppwi=1,wgsize=512,valid=1)
+# (ppwi=1,wgsize=1024,valid=1)
+# (ppwi=2,wgsize=4,valid=1)
+# (ppwi=2,wgsize=8,valid=1)
+# (ppwi=2,wgsize=16,valid=1)
+# (ppwi=2,wgsize=32,valid=1)
+# (ppwi=2,wgsize=64,valid=1)
+# (ppwi=2,wgsize=128,valid=1)
+# (ppwi=2,wgsize=256,valid=1)
+# (ppwi=2,wgsize=512,valid=1)
+# (ppwi=2,wgsize=1024,valid=1)
+# (ppwi=4,wgsize=4,valid=1)
+# (ppwi=4,wgsize=8,valid=1)
+# (ppwi=4,wgsize=16,valid=1)
+# (ppwi=4,wgsize=32,valid=1)
+# (ppwi=4,wgsize=64,valid=1)
+# (ppwi=4,wgsize=128,valid=1)
+# (ppwi=4,wgsize=256,valid=1)
+# (ppwi=4,wgsize=512,valid=1)
+# (ppwi=4,wgsize=1024,valid=1)
+# (ppwi=8,wgsize=4,valid=1)
+# (ppwi=8,wgsize=8,valid=1)
+# (ppwi=8,wgsize=16,valid=1)
+# (ppwi=8,wgsize=32,valid=1)
+# (ppwi=8,wgsize=64,valid=1)
+# (ppwi=8,wgsize=128,valid=1)
+# (ppwi=8,wgsize=256,valid=1)
+# (ppwi=8,wgsize=512,valid=1)
+# (ppwi=8,wgsize=1024,valid=1)
+# (ppwi=16,wgsize=4,valid=1)
+# (ppwi=16,wgsize=8,valid=1)
+# (ppwi=16,wgsize=16,valid=1)
+# (ppwi=16,wgsize=32,valid=1)
+# (ppwi=16,wgsize=64,valid=1)
+# (ppwi=16,wgsize=128,valid=1)
+# (ppwi=16,wgsize=256,valid=1)
+# (ppwi=16,wgsize=512,valid=1)
+# (ppwi=16,wgsize=1024,valid=1)
+# (ppwi=32,wgsize=4,valid=1)
+# (ppwi=32,wgsize=8,valid=1)
+# (ppwi=32,wgsize=16,valid=1)
+# (ppwi=32,wgsize=32,valid=1)
+# (ppwi=32,wgsize=64,valid=1)
+# (ppwi=32,wgsize=128,valid=1)
+# (ppwi=32,wgsize=256,valid=1)
+# (ppwi=32,wgsize=512,valid=1)
+# (ppwi=32,wgsize=1024,valid=1)
+# (ppwi=64,wgsize=4,valid=1)
+# (ppwi=64,wgsize=8,valid=1)
+# (ppwi=64,wgsize=16,valid=1)
+# (ppwi=64,wgsize=32,valid=1)
+# (ppwi=64,wgsize=64,valid=1)
+# (ppwi=64,wgsize=128,valid=1)
+# (ppwi=64,wgsize=256,valid=1)
+# (ppwi=64,wgsize=512,valid=1)
+# (ppwi=64,wgsize=1024,valid=1)
+ppwi,wgsize,sum_ms,avg_ms,min_ms,max_ms,stddev_ms,interactions/s,gflops/s,gfinst/s
+1,4,1837.408,229.676,228.598,236.693,2.652,6958897096.912,278.512,173.972
+1,8,931.415,116.427,116.405,116.440,0.010,13727860773.111,549.423,343.197
+1,16,498.850,62.356,60.726,73.670,4.276,25631643645.908,1025.842,640.791
+1,32,259.799,32.475,32.445,32.501,0.018,49216282437.292,1969.757,1230.407
+1,64,168.761,21.095,21.079,21.137,0.017,75765956277.460,3032.341,1894.149
+1,128,168.641,21.080,21.069,21.110,0.014,75820075490.287,3034.507,1895.502
+1,256,168.139,21.017,21.002,21.037,0.012,76046397623.408,3043.565,1901.160
+1,512,209.855,26.232,26.217,26.250,0.011,60929250379.564,2438.539,1523.231
+1,1024,209.983,26.248,26.209,26.284,0.024,60892312615.496,2437.061,1522.308
+2,4,1234.984,154.373,154.361,154.385,0.009,10353440726.561,362.592,258.836
+2,8,631.447,78.931,78.903,78.955,0.014,20249259758.225,709.158,506.231
+2,16,332.118,41.515,41.504,41.529,0.008,38499406443.926,1348.303,962.485
+2,32,209.968,26.246,26.233,26.259,0.008,60896725960.594,2132.689,1522.418
+2,64,148.794,18.599,18.580,18.631,0.015,85933019463.593,3009.495,2148.325
+2,128,156.921,19.615,18.573,26.809,2.719,81482515000.313,2853.632,2037.063
+2,256,147.431,18.429,18.413,18.450,0.015,86727748167.790,3037.328,2168.194
+2,512,147.509,18.439,18.409,18.458,0.014,86681448522.998,3035.706,2167.036
+2,1024,262.261,32.783,32.743,32.817,0.020,48754206194.343,1707.441,1218.855
+4,4,960.973,120.122,120.105,120.150,0.016,13305613094.601,432.710,332.640
+4,8,496.022,62.003,61.992,62.010,0.005,25777736994.676,838.314,644.443
+4,16,311.040,38.880,38.875,38.887,0.004,41108306473.970,1336.878,1027.708
+4,32,215.750,26.969,26.961,26.982,0.006,59264557481.649,1927.335,1481.614
+4,64,131.211,16.401,16.391,16.412,0.008,97448910335.859,3169.123,2436.223
+4,128,212.937,26.617,26.603,26.628,0.009,60047366782.890,1952.793,1501.184
+4,256,130.817,16.352,16.336,16.395,0.019,97741988077.319,3178.655,2443.550
+4,512,211.942,26.493,26.441,26.520,0.029,60329419916.105,1961.965,1508.235
+4,1024,390.669,48.834,48.770,48.854,0.026,32729298440.005,1064.385,818.232
+8,4,839.673,104.959,104.945,104.969,0.008,15227754546.170,476.181,380.694
+8,8,520.812,65.101,65.082,65.123,0.012,24550772584.999,767.717,613.769
+8,16,362.254,45.282,45.274,45.290,0.005,35296571764.317,1103.745,882.414
+8,32,215.373,26.922,26.907,26.934,0.009,59368360832.964,1856.485,1484.209
+8,64,215.365,26.921,26.907,26.938,0.009,59370604188.502,1856.555,1484.265
+8,128,214.640,26.830,26.815,26.856,0.013,59571033496.235,1862.822,1489.276
+8,256,221.274,27.659,26.600,34.861,2.722,57785046878.911,1806.973,1444.626
+8,512,354.833,44.354,44.321,44.386,0.022,36034785951.749,1126.830,900.870
+8,1024,659.427,82.428,82.405,82.451,0.016,19390077727.209,606.339,484.752
+16,4,951.880,118.985,118.917,119.073,0.051,13432712496.234,411.652,335.818
+16,8,655.768,81.971,81.941,81.997,0.020,19498273380.665,597.534,487.457
+16,16,384.784,48.098,48.054,48.129,0.026,33229920316.141,1018.347,830.748
+16,32,381.209,47.651,47.628,47.680,0.017,33541498635.783,1027.895,838.537
+16,64,378.887,47.361,47.343,47.377,0.012,33747093553.780,1034.196,843.677
+16,128,379.460,47.432,47.399,47.475,0.021,33696162225.436,1032.635,842.404
+16,256,375.471,46.934,46.882,46.990,0.042,34054162247.512,1043.606,851.354
+16,512,644.766,80.596,80.559,80.706,0.047,19830959335.978,607.729,495.774
+16,1024,1200.716,150.089,150.010,150.216,0.066,10648928614.781,326.341,266.223
+32,4,1365.993,170.749,170.478,171.248,0.222,9360467139.672,283.930,234.012
+32,8,986.837,123.355,123.034,123.595,0.193,12956887303.402,393.020,323.922
+32,16,971.148,121.393,119.919,122.662,0.857,13166210948.835,399.369,329.155
+32,32,781.375,97.672,97.637,97.703,0.025,16363901561.106,496.365,409.098
+32,64,779.965,97.496,97.459,97.551,0.026,16393467075.152,497.261,409.837
+32,128,985.236,123.155,121.758,124.650,0.828,12977935718.607,393.658,324.448
+32,256,982.276,122.785,120.837,124.178,1.150,13017043880.957,394.845,325.426
+32,512,1418.112,177.264,176.849,177.804,0.307,9016450063.554,273.495,225.411
+32,1024,2458.129,307.266,306.772,308.056,0.358,5201652713.283,157.781,130.041
+64,4,2829.167,353.646,349.896,361.442,3.379,4519469912.477,136.382,112.987
+64,8,2461.751,307.719,306.975,308.792,0.649,5193999534.046,156.737,129.850
+64,16,2443.183,305.398,302.310,306.711,1.368,5233473535.183,157.929,130.837
+64,32,2433.608,304.201,299.621,307.166,2.428,5254065545.336,158.550,131.352
+64,64,2453.801,306.725,299.577,318.378,5.184,5210828443.801,157.245,130.271
+64,128,2457.400,307.175,303.261,313.336,3.311,5203197331.671,157.015,130.080
+64,256,2472.410,309.051,307.685,311.337,1.168,5171607631.922,156.062,129.290
+64,512,3100.086,387.511,385.642,389.227,1.469,4124510513.238,124.464,103.113
+64,1024,5255.083,656.885,655.017,663.302,2.905,2433136695.298,73.424,60.828
+# best: { min_ms: 16.336, max_ms: 16.395, sum_ms: 130.817, avg_ms: 16.352, ppwi: 4, wgsize: 256 }
++ cd /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE
++ result=/home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/hip-bude-bm1.out0
+++ tail -n1 /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/hip-bude-bm1.out0
++ best='# best: { min_ms: 16.336, max_ms: 16.395, sum_ms: 130.817, avg_ms: 16.352, ppwi: 4, wgsize: 256 }'
+++ echo '# best: { min_ms: 16.336, max_ms: 16.395, sum_ms: 130.817, avg_ms: 16.352, ppwi: 4, wgsize: 256 }'
+++ grep -oP '(?<=ppwi: )\d+'
++ ppwi=4
+++ echo '# best: { min_ms: 16.336, max_ms: 16.395, sum_ms: 130.817, avg_ms: 16.352, ppwi: 4, wgsize: 256 }'
+++ grep -oP '(?<=wgsize: )\d+'
++ wgsize=256
++ echo ========================================
+========================================
+++ awk -F, '{print $9}'
++++ grep '^4,256' /home/bertoni/new_abc/abc-pvc-deepdive/mini-apps/miniBUDE/hip-bude-bm1.out0
+++ echo 4,256,130.817,16.352,16.336,16.395,0.019,97741988077.319,3178.655,2443.550
++ echo best gflops/s = 3178.655
+best gflops/s = 3178.655
++ echo ========================================
+========================================

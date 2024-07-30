@@ -1,0 +1,72 @@
+miniqmc git branch: OMP_offload
+miniqmc git commit: f88e00e6376f519529d3876ff3319838bafcb2ee-dirty
+
+number of ranks : 1, number of accelerators : 1
+Number of orbitals/splines = 768
+Tile size = 768
+Number of tiles = 1
+Number of electrons = 1536
+Rmax = 1.7
+AcceptanceRatio = 0.5
+Iterations = 1
+MPI processes = 1
+OpenMP threads = 1
+Number of walkers per rank = 320
+Number of batches = 1
+
+SPO coefficients size = 196608000 bytes (187.5 MB)
+delayed update rank = 32
+Using SoA distance table, Jastrow + einspline, 
+and determinant update.
+
+================================== 
+
+Use --enable-timers=<value> command line option to increase or decrease level of timing information
+Stack timer profile
+Timer                                 Inclusive_time  Exclusive_time  Calls       Time_per_call
+Setup                                    0.0354     0.0354              1       0.035408133
+  ParticleSet:::update                   0.0000     0.0000              1       0.000034516
+Total                                   56.1844     0.1185              1      56.184352625
+  Diffusion                             23.3323     0.0439              1      23.332334300
+    Complete Updates                     0.3960     0.0006              1       0.395978058
+      Determinant::update                0.3954     0.3954            640       0.000617754
+    Current Gradient                     3.3134     0.1199           1536       0.002157189
+      Determinant::ratio                 3.1460     3.1460         491520       0.000006400
+      OneBodyJastrow                     0.0257     0.0257           1536       0.000016743
+      TwoBodyJastrow                     0.0219     0.0219           1536       0.000014244
+    Kinetic Energy                       0.8143     0.8143              1       0.814288971
+    New Gradient                         7.9588     0.0869           1536       0.005181534
+      Determinant::ratio                 0.5756     0.5756         491520       0.000001171
+      Determinant::spovgl                3.1113     1.0986           1536       0.002025595
+        Single-Particle Orbitals         2.0127     2.0127           1536       0.001310350
+      OneBodyJastrow                     0.3838     0.3838           1536       0.000249844
+      TwoBodyJastrow                     3.8013     3.8013           1536       0.002474791
+    ParticleSet:::acceptMove             0.3348     0.2135           1536       0.000217972
+      DTABOMPTarget::update_ion_e        0.1213     0.1213         245470       0.000000494
+    ParticleSet:::computeNewPosDT        0.7166     0.0006           1536       0.000466568
+      ParticleSet:::dt_move              0.6729     0.0809           1536       0.000438104
+        DTAAOMPTarget::move_e_e          0.0960     0.0005           1536       0.000062472
+          DTAAOMPTarget::offload_e_e     0.0954     0.0954           1536       0.000062138
+        DTABOMPTarget::move_ion_e        0.4961     0.4961         491520       0.000001009
+      ParticleSet:::mw_copy              0.0431     0.0431           1536       0.000028045
+    ParticleSet:::donePbyP               0.0000     0.0000              1       0.000033634
+    Update                               9.7544     0.0639           1536       0.006350519
+      Determinant::update                7.7316     7.7316         245470       0.000031497
+      OneBodyJastrow                     0.0316     0.0316           1536       0.000020588
+      TwoBodyJastrow                     1.9272     1.9272           1536       0.001254701
+  Initialization                        32.7335     2.7027              1      32.733492117
+    Determinant::inverse                 5.9374     5.9374            640       0.009277203
+    Determinant::spovgl                 22.0129     1.7323            640       0.034395157
+      Single-Particle Orbitals          20.2806    20.2806         491520       0.000041261
+    OneBodyJastrow                       0.0782     0.0782              1       0.078217795
+    ParticleSet:::update                 0.9752     0.1705            640       0.001523798
+      DTAAOMPTarget::evaluate_e_e        0.6930     0.6930            320       0.002165570
+      DTABOMPTarget::evaluate_ion_e      0.1117     0.0047            320       0.000349153
+        DTABOMPTarget::offload_ion_e     0.1071     0.1071            320       0.000334581
+    TwoBodyJastrow                       1.0270     1.0270              1       1.027045871
+
+========== Throughput ============ 
+
+Total throughput ( N_walkers * N_elec^3 / Total time ) = 2.06399e+10
+Diffusion throughput ( N_walkers * N_elec^3 / Diffusion time ) = 4.9701e+10
+

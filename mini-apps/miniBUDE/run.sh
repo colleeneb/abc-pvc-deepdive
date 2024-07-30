@@ -13,7 +13,7 @@ if [ ! -e minibude/CMakeLists.txt ]; then
 fi
 
 # Setting the environment
-source $BASE/../../environment/$1.env nompi
+source $BASE/../../environment/$1.env $2
 
 # Compiling the code
 cd "$BASE/minibude"

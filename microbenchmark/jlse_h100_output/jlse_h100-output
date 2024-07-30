@@ -1,0 +1,138 @@
+> ./run_lats.sh jlse_h100 gpu
+Cloning into 'lats'...
+remote: Enumerating objects: 88, done.        
+remote: Counting objects: 100% (78/78), done.        
+remote: Compressing objects: 100% (55/55), done.        
+remote: Total 88 (delta 47), reused 46 (delta 22), pack-reused 10        
+Receiving objects: 100% (88/88), 22.19 KiB | 1.71 MiB/s, done.
+Resolving deltas: 100% (48/48), done.
+WARNING: terminal is not fully functional
+Press RETURN to continue 
+
+Currently Loaded Modulefiles:
+ 1) nvhpc/nvhpc/24.1   2) cuda/12.3.0   3) cmake/3.28.3   4) gcc/12.2.0  
+nvc -O3 -std=gnu99 -c profiler.c -o profiler.o
+nvc++ -O3 -cuda -gpu=sm_90 -fast -DENABLE_PROFILING -c cuda.cpp -o obj_gpu.o
+nvc++ -O3 -cuda -gpu=sm_90 -Xlinker -z,noexecstack obj_gpu.o profiler.o -lrt -o run.cuda
+Unknown MPI, adjust this script.
+Allocating 4096 MiB
+Elapsed Clock Cycles 6614
+Array Size 0.000MB Stride 5 Cache Lines 4 Time 0.000023119000s
+Loads = 0
+Cycles / Load = 33.0700
+Elapsed Clock Cycles 13147
+Array Size 0.001MB Stride 5 Cache Lines 8 Time 0.000016148000s
+Loads = 0
+Cycles / Load = 32.8675
+Elapsed Clock Cycles 25880
+Array Size 0.002MB Stride 5 Cache Lines 16 Time 0.000023783000s
+Loads = 0
+Cycles / Load = 32.3500
+Elapsed Clock Cycles 51473
+Array Size 0.004MB Stride 5 Cache Lines 32 Time 0.000038814000s
+Loads = 0
+Cycles / Load = 32.1706
+Elapsed Clock Cycles 102691
+Array Size 0.008MB Stride 5 Cache Lines 64 Time 0.000068519000s
+Loads = 0
+Cycles / Load = 32.0909
+Elapsed Clock Cycles 205117
+Array Size 0.016MB Stride 5 Cache Lines 128 Time 0.000129396000s
+Loads = 0
+Cycles / Load = 32.0495
+Elapsed Clock Cycles 409881
+Array Size 0.031MB Stride 5 Cache Lines 256 Time 0.000250600000s
+Loads = 0
+Cycles / Load = 32.0220
+Elapsed Clock Cycles 819476
+Array Size 0.062MB Stride 5 Cache Lines 512 Time 0.000493398000s
+Loads = 0
+Cycles / Load = 32.0108
+Elapsed Clock Cycles 1638681
+Array Size 0.125MB Stride 5 Cache Lines 1024 Time 0.000978241000s
+Loads = 0
+Cycles / Load = 32.0055
+Elapsed Clock Cycles 16376170
+Array Size 0.250MB Stride 5 Cache Lines 2048 Time 0.008531020000s
+Loads = 0
+Cycles / Load = 159.9235
+Elapsed Clock Cycles 58288572
+Array Size 0.500MB Stride 5 Cache Lines 4096 Time 0.029883836000s
+Loads = 0
+Cycles / Load = 284.6122
+Elapsed Clock Cycles 116340639
+Array Size 1.000MB Stride 5 Cache Lines 8192 Time 0.059645271000s
+Loads = 0
+Cycles / Load = 284.0348
+Elapsed Clock Cycles 232911322
+Array Size 2.000MB Stride 5 Cache Lines 16384 Time 0.119377497000s
+Loads = 0
+Cycles / Load = 284.3156
+Elapsed Clock Cycles 466247252
+Array Size 4.000MB Stride 5 Cache Lines 32768 Time 0.238668890000s
+Loads = 0
+Cycles / Load = 284.5747
+Elapsed Clock Cycles 932286651
+Array Size 8.000MB Stride 5 Cache Lines 65536 Time 0.477208133000s
+Loads = 0
+Cycles / Load = 284.5113
+Elapsed Clock Cycles 1864219523
+Array Size 16.000MB Stride 5 Cache Lines 131072 Time 0.954350073000s
+Loads = 0
+Cycles / Load = 284.4573
+Elapsed Clock Cycles 7056645152
+Array Size 32.000MB Stride 5 Cache Lines 262144 Time 3.598257653000s
+Loads = 0
+Cycles / Load = 538.3793
+Elapsed Clock Cycles 18344093954
+Array Size 64.000MB Stride 5 Cache Lines 524288 Time 9.368326429000s
+Loads = 0
+Cycles / Load = 699.7717
+Elapsed Clock Cycles 36691536319
+Array Size 128.000MB Stride 5 Cache Lines 1048576 Time 18.776889808000s
+Loads = 0
+Cycles / Load = 699.8355
+Elapsed Clock Cycles 73377344667
+Array Size 256.000MB Stride 5 Cache Lines 2097152 Time 37.560823995000s
+Loads = 0
+Cycles / Load = 699.7809
+Elapsed Clock Cycles 146766368412
+Array Size 512.000MB Stride 5 Cache Lines 4194304 Time 75.132018066000s
+Loads = 0
+Cycles / Load = 699.8366
+Elapsed Clock Cycles 293551362289
+Array Size 1024.000MB Stride 5 Cache Lines 8388608 Time 150.277253302000s
+Loads = 0
+Cycles / Load = 699.8810
+Elapsed Clock Cycles 587132565532
+Array Size 2048.000MB Stride 5 Cache Lines 16777216 Time 300.569349483000s
+Loads = 0
+Cycles / Load = 699.9166
+Elapsed Clock Cycles 1174258833881
+Array Size 4096.000MB Stride 5 Cache Lines 33554432 Time 601.109635984000s
+Loads = 0
+Cycles / Load = 699.9128
+5,512,33.0700
+5,1024,32.8675
+5,2048,32.3500
+5,4096,32.1706
+5,8192,32.0909
+5,16384,32.0495
+5,32768,32.0220
+5,65536,32.0108
+5,131072,32.0055
+5,262144,159.9235
+5,524288,284.6122
+5,1048576,284.0348
+5,2097152,284.3156
+5,4194304,284.5747
+5,8388608,284.5113
+5,16777216,284.4573
+5,33554432,538.3793
+5,67108864,699.7717
+5,134217728,699.8355
+5,268435456,699.7809
+5,536870912,699.8366
+5,1073741824,699.8810
+5,2147483648,699.9166
+5,4294967296,699.9128

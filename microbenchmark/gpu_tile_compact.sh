@@ -37,7 +37,7 @@ elif [ "$VENDOR" = "NVIDIA" ]; then
   gpu_id=$((_MPI_RANKID % num_gpu))
   export CUDA_VISIBLE_DEVICES=$gpu_id
 elif [ "$VENDOR" = "AMD" ]; then
-  num_gpu=4
+  num_gpu=8
   gpu_id=$((_MPI_RANKID % num_gpu))
   export HIP_VISIBLE_DEVICES=$gpu_id
 else

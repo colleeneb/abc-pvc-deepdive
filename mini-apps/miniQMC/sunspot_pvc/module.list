@@ -1,0 +1,9 @@
+
+Currently Loaded Modules:
+  1) libfabric/1.15.2.0            5) gmp/6.2.1-pcxzkau    9) mpich/icc-all-pmix-gpu/20231026       13) cmake/3.27.7
+  2) cray-pals/1.3.3               6) mpfr/4.2.0-w7v7yjv  10) mpich-config/collective-tuning/1024
+  3) cray-libpals/1.3.3            7) mpc/1.3.1-dfagrna   11) intel_compute_runtime/release/803.29
+  4) spack-pe-gcc/0.7.0-24.086.0   8) gcc/12.2.0          12) oneapi/release/2024.1
+
+ 
+

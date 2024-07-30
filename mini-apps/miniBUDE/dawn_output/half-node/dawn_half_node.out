@@ -1,0 +1,625 @@
+-- The CXX compiler identification is IntelLLVM 2024.1.0
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /usr/local/dawn/software/spack/spack-views/dawn-2024-04-15/intel-oneapi-compilers-2024.1.0/gcc-13.2.0/wadpqv2pkfepzdf7m6gsclizcp5bffsw/compiler/2024.1/bin/icpx - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- CXX_EXTRA_FLAGS: 
+        Appends to common compile flags. These will be appended at link phase as well.
+        To use separate flags at link phase, set `CXX_EXTRA_LINK_FLAGS`
+-- CXX_EXTRA_LINK_FLAGS: 
+        Appends to link flags which appear *before* the objects.
+        Do not use this for linking libraries, as the link line is order-dependent
+-- CXX_EXTRA_LIBRARIES: 
+        Append to link flags which appear *after* the objects.
+        Use this for linking extra libraries (e.g `-lmylib`, or simply `mylib`)
+-- CXX_EXTRA_LINKER_FLAGS: 
+        Append to linker flags (i.e GCC's `-Wl` or equivalent)
+-- Available models:  omp;ocl;std-indices;std-ranges;hip;cuda;kokkos;sycl;acc;raja;tbb;thrust
+-- Selected model  :  sycl
+-- Supported flags:
+
+   CMAKE_CXX_COMPILER (optional, default=c++): Any CXX compiler that is supported by CMake detection, this is used for host compilation when required by the SYCL compiler
+   SYCL_COMPILER (required): Compile using the specified SYCL compiler implementation
+        Supported values are
+           ONEAPI-ICPX  - icpx as a standalone compiler
+           ONEAPI-Clang - oneAPI's Clang driver (enabled via `source /opt/intel/oneapi/setvars.sh  --include-intel-llvm`)
+           DPCPP        - dpc++ as a standalone compiler (https://github.com/intel/llvm)
+           HIPSYCL      - hipSYCL compiler (https://github.com/illuhad/hipSYCL)
+           COMPUTECPP   - ComputeCpp compiler (https://developer.codeplay.com/products/computecpp/ce/home)
+   SYCL_COMPILER_DIR (optional, default=): Absolute path to the selected SYCL compiler directory, most are packaged differently so set the path according to `SYCL_COMPILER`:
+           ONEAPI-ICPX              - `icpx` must be used for OneAPI 2023 and later on releases (i.e `source /opt/intel/oneapi/setvars.sh` first)
+           ONEAPI-Clang             - set to the directory that contains the Intel clang++ binary.
+           HIPSYCL|DPCPP|COMPUTECPP - set to the root of the binary distribution that contains at least `bin/`, `include/`, and `lib/`
+   OpenCL_LIBRARY (optional, default=): [ComputeCpp only] Path to OpenCL library, usually called libOpenCL.so
+
+-- Model-specific flags for this build:
+
+   CMAKE_CXX_COMPILER = `/usr/local/dawn/software/spack/spack-views/dawn-2024-04-15/intel-oneapi-compilers-2024.1.0/gcc-13.2.0/wadpqv2pkfepzdf7m6gsclizcp5bffsw/compiler/2024.1/bin/icpx`
+   SYCL_COMPILER = `ONEAPI-ICPX`
+   SYCL_COMPILER_DIR = ``
+   OpenCL_LIBRARY = ``
+
+-- Default RELEASE flags are `-O3;-march=native;-fsycl`, set RELEASE_FLAGS to override (CXX_EXTRA_* flags are not affected)
+-- PPWI not set, defaulting to 1,2,4,8,16,32,64,128
+-- CXX vendor  : IntelLLVM (icpx)
+-- Platform    : x86_64
+-- PPWI        : 1,2,4,8,16,32,64,128
+-- Sources     : src/sycl/fasten.hpp;src/main.cpp
+-- Libraries   :  
+-- CXX Flags   :  -DNDEBUG -O3;-march=native;-fsycl 
+    CXX flags derived from (CMake + (Override ? Override : Default) + Extras), where:
+        CMake                    = ` -DNDEBUG`
+        Default                  = `-O3;-march=native;-fsycl`
+        Override (RELEASE_FLAGS) = ``
+        Extras (CXX_EXTRA_FLAGS) = ``
+-- Link Flags  : -fsycl 
+-- Linker Flags:   
+-- Defs        : SYCL
+-- Executable  : sycl-bude
+-- Configuring done (1.1s)
+-- Generating done (0.4s)
+-- Build files have been written to: /home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build
+/usr/bin/cmake -S/home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude -B/home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build --check-build-system CMakeFiles/Makefile.cmake 0
+/usr/bin/cmake -E cmake_progress_start /home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/CMakeFiles /home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build//CMakeFiles/progress.marks
+/usr/bin/gmake  -f CMakeFiles/Makefile2 all
+gmake[1]: Entering directory '/rds/user/dn-sad1/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+/usr/bin/gmake  -f CMakeFiles/extract_compile_commands.dir/build.make CMakeFiles/extract_compile_commands.dir/depend
+/usr/bin/gmake  -f CMakeFiles/check_git.dir/build.make CMakeFiles/check_git.dir/depend
+gmake[2]: Entering directory '/rds/user/dn-sad1/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+cd /home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build && /usr/bin/cmake -E cmake_depends "Unix Makefiles" /home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude /home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude /home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build /home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build /home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/CMakeFiles/extract_compile_commands.dir/DependInfo.cmake --color=
+gmake[2]: Entering directory '/rds/user/dn-sad1/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+cd /home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build && /usr/bin/cmake -E cmake_depends "Unix Makefiles" /home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude /home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude /home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build /home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build /home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/CMakeFiles/check_git.dir/DependInfo.cmake --color=
+gmake[2]: Leaving directory '/rds/user/dn-sad1/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+/usr/bin/gmake  -f CMakeFiles/extract_compile_commands.dir/build.make CMakeFiles/extract_compile_commands.dir/build
+gmake[2]: Leaving directory '/rds/user/dn-sad1/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+/usr/bin/gmake  -f CMakeFiles/check_git.dir/build.make CMakeFiles/check_git.dir/build
+gmake[2]: Entering directory '/rds/user/dn-sad1/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+/usr/bin/cmake -DCOMMAND_FILE=/home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/compile_commands.json -DPRE_CONFIGURE_FILE="/home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/meta_build.h.in" -DPOST_CONFIGURE_FILE="/home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/generated/meta_build.h" -DSRC_DIR_PREFIX="/home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src" -DOUT_DIR_PREFIX="CMakeFiles/bude.dir" -P /home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/cmake/extract_compile_command.cmake
+gmake[2]: Entering directory '/rds/user/dn-sad1/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+-- Transforming /home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/compile_commands.json...
+[ 33%] Checking the git repository for changes...
+/usr/bin/cmake -D_BUILD_TIME_CHECK_GIT=TRUE -DGIT_WORKING_DIR=/home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude -DGIT_EXECUTABLE=/usr/bin/git -DGIT_STATE_FILE=/home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/git-state-hash -DPRE_CONFIGURE_FILE=/home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/meta_vcs.h.in -DPOST_CONFIGURE_FILE=/home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/generated/meta_vcs.h -DGIT_FAIL_IF_NONZERO_EXIT=FALSE -DGIT_IGNORE_UNTRACKED=FALSE -P /home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/cmake/git_watcher.cmake
+gmake[2]: Leaving directory '/rds/user/dn-sad1/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+[ 33%] Built target extract_compile_commands
+gmake[2]: Leaving directory '/rds/user/dn-sad1/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+[ 33%] Built target check_git
+/usr/bin/gmake  -f CMakeFiles/bude.dir/build.make CMakeFiles/bude.dir/depend
+gmake[2]: Entering directory '/rds/user/dn-sad1/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+cd /home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build && /usr/bin/cmake -E cmake_depends "Unix Makefiles" /home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude /home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude /home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build /home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build /home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/CMakeFiles/bude.dir/DependInfo.cmake --color=
+gmake[2]: Leaving directory '/rds/user/dn-sad1/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+/usr/bin/gmake  -f CMakeFiles/bude.dir/build.make CMakeFiles/bude.dir/build
+gmake[2]: Entering directory '/rds/user/dn-sad1/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+[ 66%] Building CXX object CMakeFiles/bude.dir/src/main.cpp.o
+icpx -DSYCL -DUSE_PPWI=1,2,4,8,16,32,64,128 -I/home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl -I/home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/generated -DNDEBUG -std=c++17 -O3 -march=native -fsycl -MD -MT CMakeFiles/bude.dir/src/main.cpp.o -MF CMakeFiles/bude.dir/src/main.cpp.o.d -o CMakeFiles/bude.dir/src/main.cpp.o -c /home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp
+[100%] Linking CXX executable sycl-bude
+/usr/bin/cmake -E cmake_link_script CMakeFiles/bude.dir/link.txt --verbose=1
+icpx  -DNDEBUG -fsycl CMakeFiles/bude.dir/src/main.cpp.o -o sycl-bude 
+gmake[2]: Leaving directory '/rds/user/dn-sad1/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+[100%] Built target bude
+gmake[1]: Leaving directory '/rds/user/dn-sad1/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+/usr/bin/cmake -E cmake_progress_start /home/dn-sad1/rds/hpc-work/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/CMakeFiles 0
+	linux-vdso.so.1 (0x00007fffea6a8000)
+	libstdc++.so.6 => /usr/local/dawn/software/spack/spack-views/dawn-2024-04-15/gcc-runtime-13.2.0/gcc-13.2.0/ayevhr77cuf2t7ueefdspf4embreh46h/lib/libstdc++.so.6 (0x0000147b1587e000)
+	libm.so.6 => /lib64/libm.so.6 (0x0000147b154fc000)
+	libgcc_s.so.1 => /usr/local/dawn/software/spack/spack-views/dawn-2024-04-15/gcc-runtime-13.2.0/gcc-13.2.0/ayevhr77cuf2t7ueefdspf4embreh46h/lib/libgcc_s.so.1 (0x0000147b15cce000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x0000147b152f8000)
+	libsycl.so.7 => /usr/local/dawn/software/spack/opt-2024-04-15/linux-rocky8-sapphirerapids/gcc-13.2.0/intel-oneapi-compilers-2024.1.0-wadpqv2pkfepzdf7m6gsclizcp5bffsw/compiler/2024.1/lib/libsycl.so.7 (0x0000147b14f63000)
+	libc.so.6 => /lib64/libc.so.6 (0x0000147b14b9e000)
+	/lib64/ld-linux-x86-64.so.2 (0x0000147b15ae1000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x0000147b1497e000)
+# (ppwi=1,wgsize=4,valid=1)
+# (ppwi=1,wgsize=4,valid=1)
+# (ppwi=1,wgsize=4,valid=1)
+# (ppwi=1,wgsize=4,valid=1)
+# (ppwi=1,wgsize=8,valid=1)
+# (ppwi=1,wgsize=8,valid=1)
+# (ppwi=1,wgsize=8,valid=1)
+# (ppwi=1,wgsize=8,valid=1)
+# (ppwi=1,wgsize=16,valid=1)
+# (ppwi=1,wgsize=16,valid=1)
+# (ppwi=1,wgsize=16,valid=1)
+# (ppwi=1,wgsize=16,valid=1)
+# (ppwi=1,wgsize=32,valid=1)
+# (ppwi=1,wgsize=32,valid=1)
+# (ppwi=1,wgsize=32,valid=1)
+# (ppwi=1,wgsize=32,valid=1)
+# (ppwi=1,wgsize=64,valid=1)
+# (ppwi=1,wgsize=64,valid=1)
+# (ppwi=1,wgsize=64,valid=1)
+# (ppwi=1,wgsize=64,valid=1)
+# (ppwi=1,wgsize=128,valid=1)
+# (ppwi=1,wgsize=128,valid=1)
+# (ppwi=1,wgsize=128,valid=1)
+# (ppwi=1,wgsize=128,valid=1)
+# (ppwi=1,wgsize=256,valid=1)
+# (ppwi=1,wgsize=256,valid=1)
+# (ppwi=1,wgsize=256,valid=1)
+# (ppwi=1,wgsize=256,valid=1)
+# (ppwi=1,wgsize=512,valid=1)
+# (ppwi=1,wgsize=512,valid=1)
+# (ppwi=1,wgsize=512,valid=1)
+# (ppwi=1,wgsize=512,valid=1)
+# (ppwi=1,wgsize=1024,valid=1)
+# (ppwi=1,wgsize=1024,valid=1)
+# (ppwi=1,wgsize=1024,valid=1)
+# (ppwi=1,wgsize=1024,valid=1)
+# (ppwi=2,wgsize=4,valid=1)
+# (ppwi=2,wgsize=4,valid=1)
+# (ppwi=2,wgsize=4,valid=1)
+# (ppwi=2,wgsize=4,valid=1)
+# (ppwi=2,wgsize=8,valid=1)
+# (ppwi=2,wgsize=8,valid=1)
+# (ppwi=2,wgsize=8,valid=1)
+# (ppwi=2,wgsize=8,valid=1)
+# (ppwi=2,wgsize=16,valid=1)
+# (ppwi=2,wgsize=16,valid=1)
+# (ppwi=2,wgsize=16,valid=1)
+# (ppwi=2,wgsize=16,valid=1)
+# (ppwi=2,wgsize=32,valid=1)
+# (ppwi=2,wgsize=32,valid=1)
+# (ppwi=2,wgsize=32,valid=1)
+# (ppwi=2,wgsize=32,valid=1)
+# (ppwi=2,wgsize=64,valid=1)
+# (ppwi=2,wgsize=64,valid=1)
+# (ppwi=2,wgsize=64,valid=1)
+# (ppwi=2,wgsize=64,valid=1)
+# (ppwi=2,wgsize=128,valid=1)
+# (ppwi=2,wgsize=128,valid=1)
+# (ppwi=2,wgsize=128,valid=1)
+# (ppwi=2,wgsize=128,valid=1)
+# (ppwi=2,wgsize=256,valid=1)
+# (ppwi=2,wgsize=256,valid=1)
+# (ppwi=2,wgsize=256,valid=1)
+# (ppwi=2,wgsize=256,valid=1)
+# (ppwi=2,wgsize=512,valid=1)
+# (ppwi=2,wgsize=512,valid=1)
+# (ppwi=2,wgsize=512,valid=1)
+# (ppwi=2,wgsize=512,valid=1)
+# (ppwi=2,wgsize=1024,valid=1)
+# (ppwi=2,wgsize=1024,valid=1)
+# (ppwi=2,wgsize=1024,valid=1)
+# (ppwi=2,wgsize=1024,valid=1)
+# (ppwi=4,wgsize=4,valid=1)
+# (ppwi=4,wgsize=4,valid=1)
+# (ppwi=4,wgsize=4,valid=1)
+# (ppwi=4,wgsize=4,valid=1)
+# (ppwi=4,wgsize=8,valid=1)
+# (ppwi=4,wgsize=8,valid=1)
+# (ppwi=4,wgsize=8,valid=1)
+# (ppwi=4,wgsize=8,valid=1)
+# (ppwi=4,wgsize=16,valid=1)
+# (ppwi=4,wgsize=16,valid=1)
+# (ppwi=4,wgsize=16,valid=1)
+# (ppwi=4,wgsize=16,valid=1)
+# (ppwi=4,wgsize=32,valid=1)
+# (ppwi=4,wgsize=32,valid=1)
+# (ppwi=4,wgsize=32,valid=1)
+# (ppwi=4,wgsize=32,valid=1)
+# (ppwi=4,wgsize=64,valid=1)
+# (ppwi=4,wgsize=64,valid=1)
+# (ppwi=4,wgsize=64,valid=1)
+# (ppwi=4,wgsize=64,valid=1)
+# (ppwi=4,wgsize=128,valid=1)
+# (ppwi=4,wgsize=128,valid=1)
+# (ppwi=4,wgsize=128,valid=1)
+# (ppwi=4,wgsize=128,valid=1)
+# (ppwi=4,wgsize=256,valid=1)
+# (ppwi=4,wgsize=256,valid=1)
+# (ppwi=4,wgsize=256,valid=1)
+# (ppwi=4,wgsize=256,valid=1)
+# (ppwi=4,wgsize=512,valid=1)
+# (ppwi=4,wgsize=512,valid=1)
+# (ppwi=4,wgsize=512,valid=1)
+# (ppwi=4,wgsize=512,valid=1)
+# (ppwi=4,wgsize=1024,valid=1)
+# (ppwi=4,wgsize=1024,valid=1)
+# (ppwi=4,wgsize=1024,valid=1)
+# (ppwi=4,wgsize=1024,valid=1)
+# (ppwi=8,wgsize=4,valid=1)
+# (ppwi=8,wgsize=4,valid=1)
+# (ppwi=8,wgsize=4,valid=1)
+# (ppwi=8,wgsize=4,valid=1)
+# (ppwi=8,wgsize=8,valid=1)
+# (ppwi=8,wgsize=8,valid=1)
+# (ppwi=8,wgsize=8,valid=1)
+# (ppwi=8,wgsize=8,valid=1)
+# (ppwi=8,wgsize=16,valid=1)
+# (ppwi=8,wgsize=16,valid=1)
+# (ppwi=8,wgsize=16,valid=1)
+# (ppwi=8,wgsize=16,valid=1)
+# (ppwi=8,wgsize=32,valid=1)
+# (ppwi=8,wgsize=32,valid=1)
+# (ppwi=8,wgsize=32,valid=1)
+# (ppwi=8,wgsize=32,valid=1)
+# (ppwi=8,wgsize=64,valid=1)
+# (ppwi=8,wgsize=64,valid=1)
+# (ppwi=8,wgsize=64,valid=1)
+# (ppwi=8,wgsize=64,valid=1)
+# (ppwi=8,wgsize=128,valid=1)
+# (ppwi=8,wgsize=128,valid=1)
+# (ppwi=8,wgsize=128,valid=1)
+# (ppwi=8,wgsize=128,valid=1)
+# (ppwi=8,wgsize=256,valid=1)
+# (ppwi=8,wgsize=256,valid=1)
+# (ppwi=8,wgsize=256,valid=1)
+# (ppwi=8,wgsize=256,valid=1)
+# (ppwi=8,wgsize=512,valid=1)
+# (ppwi=8,wgsize=512,valid=1)
+# (ppwi=8,wgsize=512,valid=1)
+# (ppwi=8,wgsize=512,valid=1)
+# (ppwi=8,wgsize=1024,valid=1)
+# (ppwi=8,wgsize=1024,valid=1)
+# (ppwi=8,wgsize=1024,valid=1)
+# (ppwi=8,wgsize=1024,valid=1)
+# (ppwi=16,wgsize=4,valid=1)
+# (ppwi=16,wgsize=4,valid=1)
+# (ppwi=16,wgsize=4,valid=1)
+# (ppwi=16,wgsize=4,valid=1)
+# (ppwi=16,wgsize=8,valid=1)
+# (ppwi=16,wgsize=8,valid=1)
+# (ppwi=16,wgsize=8,valid=1)
+# (ppwi=16,wgsize=8,valid=1)
+# (ppwi=16,wgsize=16,valid=1)
+# (ppwi=16,wgsize=16,valid=1)
+# (ppwi=16,wgsize=16,valid=1)
+# (ppwi=16,wgsize=16,valid=1)
+# (ppwi=16,wgsize=32,valid=1)
+# (ppwi=16,wgsize=32,valid=1)
+# (ppwi=16,wgsize=32,valid=1)
+# (ppwi=16,wgsize=32,valid=1)
+# (ppwi=16,wgsize=64,valid=1)
+# (ppwi=16,wgsize=64,valid=1)
+# (ppwi=16,wgsize=64,valid=1)
+# (ppwi=16,wgsize=64,valid=1)
+# (ppwi=16,wgsize=128,valid=1)
+# (ppwi=16,wgsize=128,valid=1)
+# (ppwi=16,wgsize=128,valid=1)
+# (ppwi=16,wgsize=128,valid=1)
+# (ppwi=16,wgsize=256,valid=1)
+# (ppwi=16,wgsize=256,valid=1)
+# (ppwi=16,wgsize=256,valid=1)
+# (ppwi=16,wgsize=256,valid=1)
+# (ppwi=16,wgsize=512,valid=1)
+# (ppwi=16,wgsize=512,valid=1)
+# (ppwi=16,wgsize=512,valid=1)
+# (ppwi=16,wgsize=512,valid=1)
+# (ppwi=16,wgsize=1024,valid=1)
+# (ppwi=16,wgsize=1024,valid=1)
+# (ppwi=16,wgsize=1024,valid=1)
+# (ppwi=16,wgsize=1024,valid=1)
+# (ppwi=32,wgsize=4,valid=1)
+# (ppwi=32,wgsize=4,valid=1)
+# (ppwi=32,wgsize=4,valid=1)
+# (ppwi=32,wgsize=4,valid=1)
+# (ppwi=32,wgsize=8,valid=1)
+# (ppwi=32,wgsize=8,valid=1)
+# (ppwi=32,wgsize=8,valid=1)
+# (ppwi=32,wgsize=8,valid=1)
+# (ppwi=32,wgsize=16,valid=1)
+# (ppwi=32,wgsize=16,valid=1)
+# (ppwi=32,wgsize=16,valid=1)
+# (ppwi=32,wgsize=16,valid=1)
+# (ppwi=32,wgsize=32,valid=1)
+# (ppwi=32,wgsize=32,valid=1)
+# (ppwi=32,wgsize=32,valid=1)
+# (ppwi=32,wgsize=32,valid=1)
+# (ppwi=32,wgsize=64,valid=1)
+# (ppwi=32,wgsize=64,valid=1)
+# (ppwi=32,wgsize=64,valid=1)
+# (ppwi=32,wgsize=64,valid=1)
+# (ppwi=32,wgsize=128,valid=1)
+# (ppwi=32,wgsize=128,valid=1)
+# (ppwi=32,wgsize=128,valid=1)
+# (ppwi=32,wgsize=128,valid=1)
+# (ppwi=32,wgsize=256,valid=1)
+# (ppwi=32,wgsize=256,valid=1)
+# (ppwi=32,wgsize=256,valid=1)
+# (ppwi=32,wgsize=256,valid=1)
+# (ppwi=32,wgsize=512,valid=1)
+# (ppwi=32,wgsize=512,valid=1)
+# (ppwi=32,wgsize=512,valid=1)
+# (ppwi=32,wgsize=512,valid=1)
+# (ppwi=32,wgsize=1024,valid=1)
+# (ppwi=32,wgsize=1024,valid=1)
+# (ppwi=32,wgsize=1024,valid=1)
+# (ppwi=32,wgsize=1024,valid=1)
+# (ppwi=64,wgsize=4,valid=1)
+# (ppwi=64,wgsize=4,valid=1)
+# (ppwi=64,wgsize=4,valid=1)
+# (ppwi=64,wgsize=4,valid=1)
+# (ppwi=64,wgsize=8,valid=1)
+# (ppwi=64,wgsize=8,valid=1)
+# (ppwi=64,wgsize=8,valid=1)
+# (ppwi=64,wgsize=8,valid=1)
+# (ppwi=64,wgsize=16,valid=1)
+# (ppwi=64,wgsize=16,valid=1)
+# (ppwi=64,wgsize=16,valid=1)
+# (ppwi=64,wgsize=16,valid=1)
+# (ppwi=64,wgsize=32,valid=1)
+# (ppwi=64,wgsize=32,valid=1)
+# (ppwi=64,wgsize=32,valid=1)
+# (ppwi=64,wgsize=32,valid=1)
+# (ppwi=64,wgsize=64,valid=1)
+# (ppwi=64,wgsize=64,valid=1)
+# (ppwi=64,wgsize=64,valid=1)
+# (ppwi=64,wgsize=64,valid=1)
+# (ppwi=64,wgsize=128,valid=1)
+# (ppwi=64,wgsize=128,valid=1)
+# (ppwi=64,wgsize=128,valid=1)
+# (ppwi=64,wgsize=128,valid=1)
+# (ppwi=64,wgsize=256,valid=1)
+# (ppwi=64,wgsize=256,valid=1)
+# (ppwi=64,wgsize=256,valid=1)
+# (ppwi=64,wgsize=256,valid=1)
+# (ppwi=64,wgsize=512,valid=1)
+# (ppwi=64,wgsize=512,valid=1)
+# (ppwi=64,wgsize=512,valid=1)
+# (ppwi=64,wgsize=512,valid=1)
+# (ppwi=64,wgsize=1024,valid=1)
+ppwi,wgsize,sum_ms,avg_ms,min_ms,max_ms,stddev_ms,interactions/s,gflops/s,gfinst/s
+1,4,293.822,36.728,36.538,36.991,0.135,43517281846.219,1741.669,1087.932
+1,8,146.459,18.307,18.268,18.415,0.061,87303048282.801,3494.084,2182.576
+1,16,74.584,9.323,9.265,9.415,0.053,171435555331.498,6861.274,4285.889
+1,32,72.292,9.037,8.574,9.115,0.175,176870474689.713,7078.793,4421.762
+1,64,72.452,9.057,8.572,9.146,0.184,176480057097.101,7063.168,4412.001
+1,128,77.525,9.691,8.590,9.866,0.416,164932164998.624,6600.993,4123.304
+1,256,78.788,9.849,9.842,9.863,0.007,162287252266.181,6495.137,4057.181
+1,512,78.808,9.851,9.845,9.867,0.009,162246101941.805,6493.490,4056.153
+1,1024,78.960,9.870,9.844,9.986,0.045,161934447855.330,6481.017,4048.361
+2,4,224.636,28.080,27.998,28.298,0.105,56920137250.408,1993.423,1423.003
+2,8,113.647,14.206,14.047,14.540,0.150,112509237543.704,3940.231,2812.731
+2,16,100.302,12.538,12.527,12.552,0.010,127478074082.796,4464.461,3186.952
+2,32,91.900,11.488,11.474,11.513,0.014,139132979943.103,4872.632,3478.324
+2,64,97.834,12.229,11.538,12.342,0.261,130693987950.261,4577.087,3267.350
+2,128,98.951,12.369,12.357,12.382,0.010,129219466638.979,4525.447,3230.487
+2,256,116.655,14.582,14.569,14.606,0.012,109608310371.998,3838.637,2740.208
+2,512,127.719,15.965,15.958,15.982,0.009,100112828281.944,3506.092,2502.821
+2,1024,127.713,15.964,15.959,15.979,0.006,100117995692.549,3506.273,2502.950
+4,4,361.330,45.166,44.935,45.403,0.172,35386909240.355,1150.813,884.673
+4,8,315.245,39.406,39.364,39.455,0.032,40560041442.354,1319.048,1014.001
+4,16,245.636,30.704,30.636,30.811,0.054,52054088257.217,1692.844,1301.352
+4,32,230.869,28.859,28.643,30.186,0.502,55383439505.167,1801.118,1384.586
+4,64,243.879,30.485,30.461,30.504,0.017,52428964888.536,1705.036,1310.724
+4,128,259.793,32.474,32.408,32.554,0.039,49217347491.586,1600.591,1230.434
+4,256,286.844,35.856,35.830,35.871,0.015,44575888963.728,1449.647,1114.397
+4,512,311.125,38.891,38.877,38.909,0.011,41097084323.928,1336.513,1027.427
+4,1024,376.367,47.046,47.028,47.063,0.011,33973036330.883,1104.833,849.326
+8,4,601.419,75.177,75.081,75.289,0.067,21260295133.168,664.822,531.507
+8,8,452.922,56.615,56.508,56.719,0.076,28230774814.514,882.793,705.769
+8,16,414.886,51.861,50.574,52.239,0.493,30818922036.839,963.726,770.473
+8,32,421.332,52.666,52.617,52.709,0.035,30347440118.948,948.983,758.686
+8,64,421.048,52.631,52.623,52.645,0.009,30367895791.480,949.622,759.197
+8,128,451.200,56.400,56.322,56.444,0.040,28338511578.290,886.162,708.463
+8,256,451.337,56.417,56.405,56.435,0.009,28329914465.956,885.894,708.248
+8,512,487.741,60.968,60.920,61.012,0.025,26215436072.989,819.773,655.386
+8,1024,487.572,60.946,60.914,60.966,0.016,26224521463.095,820.057,655.613
+16,4,903.270,112.909,112.642,113.095,0.149,14155602784.828,433.805,353.890
+16,8,775.155,96.894,96.864,96.925,0.020,16495206993.609,505.503,412.380
+16,16,773.451,96.681,96.675,96.697,0.009,16531539033.291,506.617,413.288
+16,32,780.885,97.611,97.604,97.626,0.009,16374158166.137,501.794,409.354
+16,64,805.463,100.683,100.645,100.708,0.019,15874508770.353,486.482,396.863
+16,128,805.545,100.693,100.667,100.723,0.015,15872895612.798,486.432,396.822
+16,256,807.520,100.940,100.922,100.980,0.018,15834075471.427,485.243,395.852
+16,512,807.661,100.958,100.930,100.988,0.021,15831306659.850,485.158,395.783
+16,1024,963.848,120.481,120.466,120.502,0.014,13265921793.408,406.540,331.648
+32,4,1243.002,155.375,155.139,155.858,0.284,10286656996.031,312.024,257.166
+32,8,1274.508,159.314,159.296,159.335,0.011,10032366820.124,304.311,250.809
+32,16,1325.926,165.741,165.728,165.765,0.013,9643323403.488,292.510,241.083
+32,32,1481.045,185.131,185.123,185.144,0.008,8633318388.798,261.874,215.833
+32,64,1481.477,185.185,185.177,185.200,0.009,8630804774.412,261.797,215.770
+32,128,1483.950,185.494,185.479,185.517,0.012,8616420638.815,261.361,215.411
+32,256,1483.793,185.474,185.459,185.488,0.009,8617330767.734,261.389,215.433
+32,512,1512.049,189.006,188.952,189.080,0.041,8456297978.778,256.504,211.407
+32,1024,2045.051,255.631,251.905,257.900,1.695,6252330296.272,189.651,156.308
+64,4,3473.552,434.194,434.169,434.232,0.020,3681054894.067,111.082,92.026
+64,8,3551.788,443.974,443.885,444.035,0.064,3599971098.842,108.635,89.999
+64,16,3713.960,464.245,464.234,464.261,0.010,3442777142.944,103.891,86.069
+64,32,4064.874,508.109,508.100,508.123,0.008,3145567465.910,94.923,78.639
+64,64,4078.497,509.812,509.788,509.841,0.017,3135060649.165,94.606,78.377
+64,128,4078.662,509.833,509.804,509.926,0.037,3134934253.230,94.602,78.373
+64,256,4121.772,515.221,515.167,515.328,0.050,3102145699.900,93.612,77.554
+64,512,6179.874,772.484,771.949,772.872,0.316,2069028642.156,62.436,51.726
+64,1024,10446.413,1305.802,1305.365,1305.999,0.201,1223992897.194,36.936,30.600
+# best: { min_ms: 8.574, max_ms: 9.115, sum_ms: 72.292, avg_ms: 9.037, ppwi: 1, wgsize: 32 }
+# (ppwi=64,wgsize=1024,valid=1)
+ppwi,wgsize,sum_ms,avg_ms,min_ms,max_ms,stddev_ms,interactions/s,gflops/s,gfinst/s
+1,4,292.678,36.585,36.471,36.871,0.125,43687379394.984,1748.477,1092.184
+1,8,146.212,18.277,18.249,18.316,0.022,87450495052.146,3499.985,2186.262
+1,16,73.512,9.189,9.137,9.240,0.028,173935406064.029,6961.325,4348.385
+1,32,72.633,9.079,8.564,9.252,0.297,176040786199.591,7045.587,4401.020
+1,64,73.391,9.174,8.561,9.273,0.232,174223078523.261,6972.838,4355.577
+1,128,80.127,10.016,10.006,10.032,0.010,159576585071.125,6386.649,3989.415
+1,256,80.259,10.032,10.013,10.078,0.021,159313945628.473,6376.138,3982.849
+1,512,80.259,10.032,10.018,10.045,0.011,159313157585.607,6376.106,3982.829
+1,1024,80.257,10.032,10.019,10.040,0.008,159317695390.123,6376.288,3982.942
+2,4,224.276,28.034,27.989,28.129,0.051,57011612602.951,1996.627,1425.290
+2,8,112.506,14.063,14.055,14.076,0.009,113650588724.545,3980.203,2841.265
+2,16,103.014,12.877,12.861,12.886,0.009,124122368822.429,4346.940,3103.059
+2,32,92.976,11.622,11.604,11.636,0.012,137523692733.201,4816.273,3438.092
+2,64,96.558,12.070,11.609,12.340,0.332,132421756590.512,4637.596,3310.544
+2,128,100.151,12.519,12.503,12.537,0.009,127670086632.753,4471.186,3191.752
+2,256,118.525,14.816,14.805,14.828,0.009,107878527883.682,3778.058,2696.963
+2,512,129.849,16.231,16.221,16.247,0.011,98470720735.690,3448.583,2461.768
+2,1024,129.829,16.229,16.219,16.246,0.010,98485973461.569,3449.117,2462.149
+4,4,358.857,44.857,44.763,44.930,0.058,35630760207.925,1158.743,890.769
+4,8,324.900,40.613,40.581,40.637,0.019,39354634623.696,1279.847,983.866
+4,16,251.316,31.414,31.328,31.520,0.062,50877583210.020,1654.583,1271.940
+4,32,234.161,29.270,28.938,30.181,0.515,54604937751.386,1775.800,1365.123
+4,64,247.018,30.877,30.817,30.959,0.045,51762799253.821,1683.371,1294.070
+4,128,263.729,32.966,32.928,33.055,0.039,48482903919.403,1576.706,1212.073
+4,256,290.547,36.318,36.301,36.347,0.015,44007771611.073,1431.171,1100.194
+4,512,317.105,39.638,39.626,39.651,0.009,40322059098.944,1311.308,1008.051
+4,1024,385.641,48.205,48.191,48.221,0.011,33156101030.060,1078.265,828.903
+8,4,613.344,76.668,76.643,76.698,0.022,20846933024.998,651.896,521.173
+8,8,459.894,57.487,57.338,57.701,0.132,27802774514.443,869.410,695.069
+8,16,412.633,51.579,51.104,52.134,0.463,30987207042.354,968.989,774.680
+8,32,423.107,52.888,52.681,53.005,0.103,30220131888.764,945.002,755.503
+8,64,425.704,53.213,53.144,53.302,0.042,30035744519.668,939.236,750.894
+8,128,457.179,57.147,57.042,57.305,0.083,27967885626.014,874.573,699.197
+8,256,457.893,57.237,57.188,57.305,0.046,27924310603.652,873.210,698.108
+8,512,494.516,61.815,61.764,61.864,0.034,25856255555.759,808.541,646.406
+8,1024,494.517,61.815,61.768,61.887,0.036,25856206407.042,808.539,646.405
+16,4,896.596,112.075,111.924,112.221,0.098,14260970936.402,437.034,356.524
+16,8,779.125,97.391,96.951,99.245,0.710,16411140407.951,502.927,410.279
+16,16,774.172,96.772,96.674,97.386,0.233,16516141405.934,506.145,412.904
+16,32,789.101,98.638,98.627,98.655,0.009,16203669028.203,496.569,405.092
+16,64,813.173,101.647,101.401,102.031,0.225,15723998512.647,481.869,393.100
+16,128,814.768,101.846,101.718,101.996,0.111,15693221169.424,480.926,392.331
+16,256,815.992,101.999,101.915,102.054,0.046,15669686370.994,480.205,391.742
+16,512,816.061,102.008,101.975,102.049,0.028,15668353645.092,480.164,391.709
+16,1024,963.324,120.416,120.376,120.453,0.026,13273135018.851,406.761,331.828
+32,4,1254.794,156.849,156.831,156.879,0.016,10189985184.194,309.092,254.750
+32,8,1283.311,160.414,160.239,160.794,0.197,9963548368.672,302.223,249.089
+32,16,1341.405,167.676,167.076,168.254,0.547,9532043638.604,289.135,238.301
+32,32,1493.574,186.697,186.485,186.905,0.197,8560900335.821,259.677,214.023
+32,64,1494.323,186.790,186.549,186.927,0.146,8556609552.583,259.547,213.915
+32,128,1496.882,187.110,186.847,187.162,0.100,8541978171.513,259.103,213.549
+32,256,1496.813,187.102,186.884,187.149,0.083,8542374866.772,259.115,213.559
+32,512,1524.412,190.551,190.484,190.674,0.057,8387717947.153,254.424,209.693
+32,1024,2065.116,258.139,254.757,260.700,1.836,6191583821.454,187.809,154.790
+64,4,3490.805,436.351,436.212,436.551,0.114,3662861193.613,110.533,91.572
+64,8,3579.813,447.477,447.286,447.642,0.121,3571788371.032,107.785,89.295
+64,16,3762.746,470.343,470.215,470.486,0.086,3398139805.486,102.544,84.953
+64,32,4062.263,507.783,507.776,507.797,0.008,3147589107.696,94.984,78.690
+64,64,4130.066,516.258,515.810,516.510,0.210,3095915909.091,93.424,77.398
+64,128,4128.072,516.009,515.759,516.178,0.168,3097411352.294,93.469,77.435
+64,256,4167.747,520.968,520.771,521.161,0.141,3067924827.336,92.580,76.698
+64,512,6192.023,774.003,772.671,775.005,0.814,2064969111.613,62.314,51.624
+64,1024,10512.244,1314.030,1313.593,1314.564,0.315,1216327941.865,36.705,30.408
+# best: { min_ms: 8.564, max_ms: 9.252, sum_ms: 72.633, avg_ms: 9.079, ppwi: 1, wgsize: 32 }
+# (ppwi=64,wgsize=1024,valid=1)
+ppwi,wgsize,sum_ms,avg_ms,min_ms,max_ms,stddev_ms,interactions/s,gflops/s,gfinst/s
+1,4,292.089,36.511,36.454,36.563,0.045,43775496349.688,1752.003,1094.387
+1,8,146.621,18.328,18.268,18.406,0.058,87206808865.550,3490.232,2180.170
+1,16,73.490,9.186,9.149,9.230,0.025,173986713130.849,6963.378,4349.668
+1,32,73.297,9.162,8.570,9.254,0.224,174446181941.853,6981.767,4361.155
+1,64,72.672,9.084,8.564,9.270,0.300,175946188795.459,7041.801,4398.655
+1,128,80.207,10.026,10.017,10.039,0.008,159417169177.259,6380.269,3985.429
+1,256,80.278,10.035,10.019,10.059,0.013,159275191890.986,6374.587,3981.880
+1,512,80.243,10.030,10.023,10.042,0.009,159345386362.474,6377.396,3983.635
+1,1024,80.231,10.029,10.020,10.041,0.008,159369662347.105,6378.368,3984.242
+2,4,224.401,28.050,27.997,28.200,0.070,56979934668.111,1995.517,1424.498
+2,8,112.501,14.063,14.042,14.149,0.034,113654887188.264,3980.354,2841.372
+2,16,103.013,12.877,12.866,12.887,0.009,124123225518.164,4346.970,3103.081
+2,32,93.032,11.629,11.611,11.651,0.014,137440291806.907,4813.352,3436.007
+2,64,94.847,11.856,11.628,12.520,0.379,134809970998.905,4721.234,3370.249
+2,128,100.327,12.541,12.528,12.556,0.010,127446990670.420,4463.373,3186.175
+2,256,118.584,14.823,14.809,14.851,0.015,107825306305.934,3776.194,2695.633
+2,512,129.872,16.234,16.226,16.246,0.008,98453102931.094,3447.966,2461.328
+2,1024,129.901,16.238,16.224,16.254,0.011,98431085749.893,3447.195,2460.777
+4,4,359.886,44.986,44.885,45.254,0.121,35528868947.428,1155.430,888.222
+4,8,324.020,40.503,40.391,40.597,0.087,39461515448.505,1283.323,986.538
+4,16,251.527,31.441,31.293,31.523,0.068,50834866184.029,1653.194,1270.872
+4,32,245.696,30.712,30.612,30.785,0.054,52041247413.610,1692.427,1301.031
+4,64,247.195,30.899,30.836,30.938,0.032,51725650148.378,1682.163,1293.141
+4,128,263.586,32.948,32.911,32.992,0.025,48509222959.865,1577.562,1212.731
+4,256,292.223,36.528,36.512,36.546,0.011,43755436841.565,1422.965,1093.886
+4,512,317.937,39.742,39.721,39.763,0.015,40216579256.773,1307.878,1005.414
+4,1024,385.943,48.243,48.228,48.264,0.015,33130117839.175,1077.420,828.253
+8,4,613.872,76.734,76.724,76.738,0.005,20829009468.206,651.336,520.725
+8,8,462.740,57.842,57.672,57.975,0.129,27631801635.411,864.063,690.795
+8,16,428.054,53.507,53.476,53.532,0.018,29870831213.109,934.079,746.771
+8,32,425.788,53.223,53.093,53.294,0.073,30029851895.185,939.052,750.746
+8,64,426.002,53.250,53.182,53.331,0.052,30014734331.166,938.579,750.368
+8,128,457.044,57.130,57.064,57.272,0.068,27976188359.741,874.832,699.405
+8,256,457.796,57.224,57.145,57.293,0.049,27930232408.535,873.395,698.256
+8,512,494.809,61.851,61.771,61.941,0.052,25840967294.852,808.063,646.024
+8,1024,494.591,61.824,61.775,61.862,0.031,25852317192.275,808.418,646.308
+16,4,897.789,112.224,112.064,112.402,0.141,14242024758.817,436.454,356.051
+16,8,788.145,98.518,97.154,102.281,2.117,16223337825.208,497.172,405.583
+16,16,780.594,97.574,97.539,97.606,0.022,16380256294.036,501.981,409.506
+16,32,789.185,98.648,98.637,98.657,0.008,16201943958.195,496.516,405.049
+16,64,813.199,101.650,101.451,102.021,0.159,15723495816.057,481.854,393.087
+16,128,814.722,101.840,101.727,101.979,0.088,15694100712.991,480.953,392.353
+16,256,815.999,102.000,101.923,102.095,0.050,15669546150.192,480.201,391.739
+16,512,816.062,102.008,101.956,102.103,0.042,15668339225.925,480.164,391.708
+16,1024,964.499,120.562,120.530,120.622,0.028,13256964726.323,406.266,331.424
+32,4,1255.647,156.956,156.840,157.677,0.273,10183068270.604,308.882,254.577
+32,8,1286.559,160.820,160.721,160.881,0.058,9938398512.692,301.460,248.460
+32,16,1345.752,168.219,168.175,168.237,0.019,9501256012.108,288.201,237.531
+32,32,1494.166,186.771,186.532,186.870,0.129,8557506092.790,259.574,213.938
+32,64,1495.268,186.909,186.890,186.932,0.017,8551198796.868,259.383,213.780
+32,128,1496.822,187.103,186.897,187.155,0.080,8542319343.312,259.113,213.558
+32,256,1497.139,187.142,187.117,187.170,0.018,8540514330.908,259.059,213.513
+32,512,1524.562,190.570,190.518,190.606,0.029,8386890064.489,254.399,209.672
+32,1024,2054.160,256.770,252.899,258.787,1.876,6224604908.166,188.810,155.615
+64,4,3497.154,437.144,437.016,437.380,0.137,3656211999.929,110.332,91.405
+64,8,3578.988,447.373,447.049,447.703,0.295,3572612386.142,107.809,89.315
+64,16,3740.583,467.573,467.259,468.060,0.225,3418273264.378,103.152,85.457
+64,32,4101.492,512.687,512.176,512.900,0.208,3117483659.150,94.075,77.937
+64,64,4114.300,514.287,513.849,514.476,0.181,3107779371.220,93.782,77.694
+64,128,4114.364,514.295,513.911,514.469,0.158,3107731025.880,93.781,77.693
+64,256,4144.278,518.035,517.900,518.164,0.068,3085298675.961,93.104,77.132
+64,512,6199.025,774.878,774.643,775.586,0.284,2062636444.260,62.243,51.566
+64,1024,10460.358,1307.545,1307.352,1307.721,0.125,1222361180.849,36.887,30.559
+# best: { min_ms: 8.564, max_ms: 9.270, sum_ms: 72.672, avg_ms: 9.084, ppwi: 1, wgsize: 64 }
+# (ppwi=64,wgsize=1024,valid=1)
+ppwi,wgsize,sum_ms,avg_ms,min_ms,max_ms,stddev_ms,interactions/s,gflops/s,gfinst/s
+1,4,292.217,36.527,36.422,36.728,0.109,43756367003.630,1751.238,1093.909
+1,8,146.116,18.265,18.250,18.303,0.017,87508040224.855,3502.288,2187.701
+1,16,73.512,9.189,9.140,9.237,0.025,173936402190.475,6961.364,4348.410
+1,32,72.551,9.069,8.556,9.249,0.295,176238066704.012,7053.483,4405.952
+1,64,80.124,10.016,10.005,10.027,0.009,159581554154.724,6386.848,3989.539
+1,128,80.174,10.022,10.010,10.035,0.010,159482851877.649,6382.898,3987.071
+1,256,80.181,10.023,10.013,10.034,0.009,159468487055.704,6382.323,3986.712
+1,512,78.720,9.840,8.574,10.036,0.479,162427523498.940,6500.751,4060.688
+1,1024,80.159,10.020,10.012,10.035,0.008,159511416162.828,6384.041,3987.785
+2,4,224.039,28.005,27.988,28.056,0.021,57071981782.795,1998.741,1426.800
+2,8,112.461,14.058,14.035,14.107,0.023,113695347063.184,3981.771,2842.384
+2,16,103.018,12.877,12.868,12.891,0.010,124117446967.078,4346.767,3102.936
+2,32,93.003,11.625,11.612,11.646,0.011,137483222095.023,4814.855,3437.081
+2,64,100.168,12.521,12.503,12.545,0.015,127649080587.363,4470.450,3191.227
+2,128,108.704,13.588,13.576,13.598,0.008,117625074519.912,4119.395,2940.627
+2,256,129.775,16.222,16.212,16.235,0.009,98527205246.953,3450.561,2463.180
+2,512,129.842,16.230,16.219,16.244,0.011,98476012767.350,3448.768,2461.900
+2,1024,129.798,16.225,16.216,16.238,0.009,98509460215.384,3449.940,2462.737
+4,4,358.276,44.784,44.723,44.968,0.074,35688527010.636,1160.622,892.213
+4,8,323.722,40.465,40.459,40.474,0.005,39497893034.569,1284.506,987.447
+4,16,252.054,31.507,31.472,31.634,0.049,50728535011.788,1649.736,1268.213
+4,32,246.947,30.868,30.808,30.928,0.039,51777641593.837,1683.854,1294.441
+4,64,247.487,30.936,30.904,30.967,0.018,51664628496.851,1680.179,1291.616
+4,128,264.731,33.091,33.058,33.134,0.027,48299431508.029,1570.740,1207.486
+4,256,316.352,39.544,39.530,39.563,0.012,40418005221.891,1314.429,1010.450
+4,512,384.984,48.123,48.109,48.138,0.011,33212664196.090,1080.105,830.317
+4,1024,385.671,48.209,48.199,48.223,0.008,33153484879.346,1078.180,828.837
+8,4,610.765,76.346,76.275,76.448,0.059,20934942874.354,654.648,523.374
+8,8,469.257,58.657,58.628,58.688,0.021,27248070027.534,852.064,681.202
+8,16,429.715,53.714,53.702,53.740,0.011,29755390822.677,930.469,743.885
+8,32,425.360,53.170,53.152,53.192,0.012,30060056784.839,939.996,751.501
+8,64,425.743,53.218,53.201,53.236,0.012,30032965102.975,939.149,750.824
+8,128,457.011,57.126,57.022,57.245,0.067,27978178600.261,874.895,699.454
+8,256,493.568,61.696,61.645,61.741,0.031,25905915128.721,810.094,647.648
+8,512,494.240,61.780,61.747,61.809,0.019,25870707784.980,808.993,646.768
+8,1024,494.230,61.779,61.702,61.857,0.045,25871211400.594,809.008,646.780
+16,4,898.712,112.339,112.319,112.365,0.013,14227400580.142,436.005,355.685
+16,8,818.536,102.317,102.258,102.371,0.039,15620983541.595,478.712,390.525
+16,16,780.186,97.523,97.509,97.534,0.010,16388822066.323,502.243,409.721
+16,32,788.803,98.600,98.587,98.636,0.016,16209789893.386,496.757,405.245
+16,64,812.718,101.590,101.561,101.624,0.019,15732812059.460,482.139,393.320
+16,128,814.368,101.796,101.773,101.838,0.021,15700928087.255,481.162,392.523
+16,256,814.708,101.838,101.814,101.871,0.017,15694384868.508,480.962,392.360
+16,512,814.614,101.827,101.801,101.850,0.014,15696181753.251,481.017,392.405
+16,1024,962.761,120.345,120.320,120.361,0.012,13280907978.437,407.000,332.023
+32,4,1268.493,158.562,158.550,158.577,0.009,10079939185.049,305.754,251.998
+32,8,1289.186,161.148,161.134,161.169,0.013,9918146177.900,300.846,247.954
+32,16,1336.785,167.098,167.079,167.121,0.015,9564993236.693,290.134,239.125
+32,32,1492.152,186.519,186.512,186.531,0.008,8569059094.549,259.924,214.226
+32,64,1494.262,186.783,186.769,186.794,0.009,8556958846.201,259.557,213.924
+32,128,1494.356,186.795,186.782,186.820,0.012,8556418185.581,259.541,213.910
+32,256,1494.492,186.812,186.796,186.825,0.011,8555639573.174,259.517,213.891
+32,512,1523.907,190.488,190.431,190.540,0.038,8390497269.706,254.508,209.762
+32,1024,2048.176,256.022,251.935,258.359,1.859,6242791723.463,189.362,156.070
+64,4,3474.632,434.329,434.317,434.342,0.010,3679910649.165,111.047,91.998
+64,8,3558.173,444.772,444.741,444.797,0.017,3593511849.038,108.440,89.838
+64,16,3725.169,465.646,465.631,465.666,0.011,3432417289.221,103.579,85.810
+64,32,4082.801,510.350,510.316,510.370,0.017,3131756079.378,94.506,78.294
+64,64,4113.360,514.170,514.131,514.193,0.018,3108489118.147,93.804,77.712
+64,128,4113.504,514.188,514.165,514.214,0.016,3108380245.953,93.800,77.710
+64,256,4155.497,519.437,519.405,519.503,0.030,3076969039.989,92.853,76.924
+64,512,6250.562,781.320,780.428,782.254,0.682,2045629723.320,61.730,51.141
+64,1024,10419.363,1302.420,1302.202,1302.777,0.161,1227170599.029,37.032,30.679
+# best: { min_ms: 8.556, max_ms: 9.249, sum_ms: 72.551, avg_ms: 9.069, ppwi: 1, wgsize: 32 }
+========================================
+best gflops/s = 7053.483
+========================================

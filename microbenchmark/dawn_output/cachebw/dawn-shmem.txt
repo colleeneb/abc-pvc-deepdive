@@ -1,0 +1,9 @@
+Unknown MPI, adjust this script.
+n       42, reps =     1000, bytes         1008, bandwidth =  1300.119846
+n       85, reps =     1000, bytes         2040, bandwidth =  2419.798666
+n      170, reps =     1000, bytes         4080, bandwidth =  3566.502217
+n      341, reps =     1000, bytes         8184, bandwidth =  6055.654947
+n      682, reps =     1000, bytes        16368, bandwidth = 19406.345615
+n     1365, reps =     1000, bytes        32760, bandwidth = 38799.379687
+n     2730, reps =     1000, bytes        65520, bandwidth = 48284.816524
+n     5461, reps =     1000, bytes       131064, bandwidth = 52170.324061

@@ -12,23 +12,29 @@ if [ ! -d lats ]; then
 fi
 
 # Setting the environment
-case "$1" in
-dawn)
-  source ../environment/dawn.env
-  export ONEAPI_DEVICE_SELECTOR=level_zero:0.0
-  ;;
-*) echo "Unknown System" && exit ;;
-esac
+source $BASE/../environment/$1.env tile
 
 # Compiling the code
+if [ "$VENDOR" = "INTEL" ]; then
+  MODEL="sycl-usm"
+elif [ "$VENDOR" = "NVIDIA" ]; then
+  MODEL="cuda"
+elif [ "$VENDOR" = "AMD" ]; then
+  MODEL="hip"
+  export HIPOPTS="--offload-arch=gfx90a --gcc-toolchain=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/"
+else
+  echo "VENDOR variable is either unset or not set to INTEL/NVIDIA/AMD"
+fi
+
 cd $BASE/lats
-make sycl-usm
+make $MODEL
 
 # Running the code
 cd $BASE/lats
-./run.sycl
+$BASE/gpu_tile_compact.sh ./run.sycl
 
 # Extracting the results
 cd $BASE/lats
 cat lat.csv
+cp lat.csv $BASE/$1-lat.csv
 

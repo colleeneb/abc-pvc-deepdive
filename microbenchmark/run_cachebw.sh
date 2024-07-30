@@ -12,35 +12,39 @@ if [ ! -d cachebw ]; then
 fi
 
 # Setting the environment
-case "$1" in
-dawn)
-  source ../environment/dawn.env
-  export ONEAPI_DEVICE_SELECTOR=level_zero:0.0
-  ;;
-*) echo "Unknown System" && exit ;;
-esac
+source $BASE/../environment/$1.env tile
 
 # Compiling the code
 cd $BASE/cachebw
-sed -i 's/SHMEM=1/SHMEM=0/g' Makefile
-make
+
+if [ "$VENDOR" = "INTEL" ]; then
+  export COMPILER="INTEL"
+  export MODEL="USM"
+elif [ "$VENDOR" = "NVIDIA" ]; then
+  export COMPILER=$VENDOR
+elif [ "$VENDOR" = "AMD" ]; then
+  export COMPILER=$VENDOR
+  export HIPOPTS="--offload-arch=gfx90a --gcc-toolchain=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/"
+else
+  echo "VENDOR variable is either unset or not set to INTEL/NVIDIA/AMD"
+fi
+
+SHMEM=0 make
 
 # Running the code
 cd $BASE/cachebw
-./benchmark.sh -n 14 -r 1000 | tee results/$1.txt
+$BASE/gpu_tile_compact.sh ./benchmark.sh -n 14 -r 1000 | tee results/$1.txt
 
 # Compiling the code
 cd $BASE/cachebw
-sed -i 's/SHMEM=0/SHMEM=1/g' Makefile
-make
+SHMEM=1 make
 
 # Running the code
 cd $BASE/cachebw
-./benchmark.sh -n 7 -r 1000 | tee results/$1-shmem.txt
+$BASE/gpu_tile_compact.sh ./benchmark.sh -n 7 -r 1000 | tee results/$1-shmem.txt
 
 # Extracting the results
 cd $BASE/cachebw
-cat results/$1.txt
-echo \n
-cat results/$1-shmem.txt
+cp results/$1.txt $BASE/$1-cachebw.txt
+cp results/$1-shmem.txt $BASE/$1-cachebw-shmem.txt
 
