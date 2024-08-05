@@ -1,5 +1,5 @@
 #!/bin/bash -x
-
+export VENDOR=INTEL
 ./run.sh |& tee log.txt
 ./gen_mk_table.py log.txt micro | column -t -s "|" -o "|" -R 0
 ./gen_mk_table.py log.txt GEMM | column -t -s "|" -o "|" -R 0
