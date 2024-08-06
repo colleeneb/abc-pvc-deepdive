@@ -93,7 +93,7 @@ void run_gemm_example(
 int main(int argc, char **argv) {
 
   MPI_Init(NULL, NULL);
-  int size = 16384;
+  int size = 20480;
   sycl::queue Q;
   run_gemm_example<double, double, double>(Q, size, "DGEMM");
   run_gemm_example<float, float, float>(Q, size, "SGEMM");
