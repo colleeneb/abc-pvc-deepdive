@@ -16,7 +16,8 @@ int main() {
   MPI_Comm_size(MPI_COMM_WORLD, &world_size);
   MPI_Comm_rank(MPI_COMM_WORLD, &world_rank);
 
-  const int globalWI{65536000};
+  // size is from 192*1024*1024 Bytes (LLC) * 4 (STREAM factor) / 8 (doubles)
+  const int globalWI{100663296};
   const int num_iteration{100};
 
   std::vector<double> A(globalWI), B(globalWI), C(globalWI);
