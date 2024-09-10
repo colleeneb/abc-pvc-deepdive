@@ -8,7 +8,7 @@
 #include <list>
 #include <random>
 #include <vector>
-
+#include <unistd.h>
 #include "mkl.h"
 #include "oneapi/mkl/blas.hpp"
 #include <sycl/sycl.hpp>
@@ -55,7 +55,7 @@ void run_gemm_example(
 
   unsigned long min_time = std::numeric_limits<unsigned long>::max();
 
-  int niter = 100;
+  int niter = 40;
   for (int i = 0; i < niter; i++) {
     MPI_Barrier(MPI_COMM_WORLD);
     const unsigned long l_start = std::chrono::duration_cast<std::chrono::nanoseconds>(
@@ -71,9 +71,10 @@ void run_gemm_example(
     unsigned long start, end;
     MPI_Reduce(&l_start, &start, 1, MPI_UNSIGNED_LONG, MPI_MIN, 0, MPI_COMM_WORLD);
     MPI_Reduce(&l_end, &end, 1, MPI_UNSIGNED_LONG, MPI_MAX, 0, MPI_COMM_WORLD);
-
+    
     const unsigned long time = end - start;
     min_time = std::min(time, min_time);
+    sleep(1);
   }
 
   free(A, Q);
@@ -86,6 +87,8 @@ void run_gemm_example(
 
   const double flops = (2. * size * size * size * world_size) / min_time;
   if (world_rank == 0) {
+    std::cout << "Memory FootPrint: " << (size * size) * 2 * sizeof(fp_ab) + (size * size) * sizeof(fp_c)
+              << " bytes" << std::endl;
     std::cout << name << ": " << flops << " GFlop/s" << std::endl;
   }
 }
@@ -95,13 +98,16 @@ int main(int argc, char **argv) {
   MPI_Init(NULL, NULL);
   int size = 20480;
   sycl::queue Q;
-  run_gemm_example<double, double, double>(Q, size, "DGEMM");
-  run_gemm_example<float, float, float>(Q, size, "SGEMM");
-  run_gemm_example<sycl::half, sycl::half, sycl::half>(Q, size, "HGEMM");
+  // Roughly following Stream guidelines to have the array size be outside of cache
+  // -- 4 Times LLC per Array si
+  // ~800 * 3 ~ Total Memory FootPrint >= 2.4 G for GPU.
+  run_gemm_example<double, double, double>(Q, 12000, "DGEMM");
+  run_gemm_example<float, float, float>(Q, 7168*2, "SGEMM");
+  run_gemm_example<sycl::half, sycl::half, sycl::half>(Q, 7168*3, "HGEMM");
 
-  run_gemm_example<oneapi::mkl::bfloat16, float, float>(Q, size, "BF16GEMM");
-  run_gemm_example<float, float, float>(Q, size, "TF32GEMM",
+  run_gemm_example<oneapi::mkl::bfloat16, float, float>(Q, 7168*3, "BF16GEMM");
+  run_gemm_example<float, float, float>(Q, 7168*2, "TF32GEMM",
                                         oneapi::mkl::blas::compute_mode::float_to_tf32);
-  run_gemm_example<std::int8_t, float, float>(Q, size, "I8GEMM");
+  run_gemm_example<std::int8_t, float, float>(Q, 13824*2, "I8GEMM");
   MPI_Finalize();
 }
