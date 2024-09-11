@@ -23,7 +23,7 @@ CMAKE_OPTS+="-DCMAKE_VERBOSE_MAKEFILE=ON "
 if [ "$VENDOR" = "INTEL" ]; then
   MODEL="sycl"
   CMAKE_OPTS+="-DSYCL_COMPILER=ONEAPI-ICPX "
-  CMAKE_OPTS+="-DCXX_EXTRA_FLAGS=-march=native"
+  CMAKE_OPTS+="-DCXX_EXTRA_FLAGS=-march=native "
 elif [ "$VENDOR" = "NVIDIA" ]; then
   # MODEL="cuda"
   # CMAKE_OPTS+="-DCMAKE_CUDA_COMPILER=$(which nvcc) "
@@ -34,7 +34,7 @@ elif [ "$VENDOR" = "NVIDIA" ]; then
   CMAKE_OPTS+="-DCMAKE_CXX_COMPILER=nvc++ "
   CMAKE_OPTS+="-DTARGET_DEVICE=gpu "
   CMAKE_OPTS+="-DTARGET_PROCESSOR=native "
-  CMAKE_OPTS+="-DCXX_EXTRA_FLAGS=-march=native"
+  CMAKE_OPTS+="-DCXX_EXTRA_FLAGS=-march=native "
 elif [ "$VENDOR" = "AMD" ]; then
   MODEL="hip"
   CMAKE_OPTS+="-DCMAKE_C_COMPILER=gcc "
