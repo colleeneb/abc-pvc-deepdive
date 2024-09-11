@@ -66,7 +66,7 @@ RUN() {
   cd "$BASE"
   $MPICOMMAND\
     $BASE/../gpu_tile_compact.sh\
-    sh -c "$BENCHMARK_EXE --deck $DECK --wgsize 4,8,16,32,64,128,256,512,1024 --ppwi 1,2,4,8,16,32,64 --csv | tee $OUT\${RANK}"
+    sh -c "$BENCHMARK_EXE --deck $DECK --wgsize 8,16,64,128,256 --ppwi 2,8,32,64 --csv | tee $OUT\${RANK}"
  #   sh -c "$BENCHMARK_EXE --deck $DECK --wgsize 16,32,64,128,256 --ppwi 4,8 --csv | tee $OUT\${RANK}"
 }
 
