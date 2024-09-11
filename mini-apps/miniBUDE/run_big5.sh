@@ -54,7 +54,7 @@ cmake --build build --config RELEASE -j "$NCPUS"
 ldd "$BASE/minibude/build/$BENCHMARK_EXE"
 
 # Running the code
-OUT=$BASE/$MODEL-bude-$BM.out
+OUT=$BASE/$MODEL-bude-big5.out
 
 RUN() {
   cd "$BASE/minibude"
