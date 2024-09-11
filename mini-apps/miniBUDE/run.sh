@@ -23,6 +23,7 @@ CMAKE_OPTS+="-DCMAKE_VERBOSE_MAKEFILE=ON "
 if [ "$VENDOR" = "INTEL" ]; then
   MODEL="sycl"
   CMAKE_OPTS+="-DSYCL_COMPILER=ONEAPI-ICPX "
+  CMAKE_OPTS+="-DCXX_EXTRA_FLAGS=-march=native"
 elif [ "$VENDOR" = "NVIDIA" ]; then
   # MODEL="cuda"
   # CMAKE_OPTS+="-DCMAKE_CUDA_COMPILER=$(which nvcc) "
@@ -33,11 +34,12 @@ elif [ "$VENDOR" = "NVIDIA" ]; then
   CMAKE_OPTS+="-DCMAKE_CXX_COMPILER=nvc++ "
   CMAKE_OPTS+="-DTARGET_DEVICE=gpu "
   CMAKE_OPTS+="-DTARGET_PROCESSOR=native "
+  CMAKE_OPTS+="-DCXX_EXTRA_FLAGS=-march=native"
 elif [ "$VENDOR" = "AMD" ]; then
   MODEL="hip"
   CMAKE_OPTS+="-DCMAKE_C_COMPILER=gcc "
   CMAKE_OPTS+="-DCMAKE_CXX_COMPILER=hipcc "
-  CMAKE_OPTS+="-DCXX_EXTRA_FLAGS=--offload-arch=gfx90a;--gcc-toolchain=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/ "
+  CMAKE_OPTS+="-DCXX_EXTRA_FLAGS=-march=native;--offload-arch=gfx90a;--gcc-toolchain=/soft/compilers/gcc/12.2.0/x86_64-suse-linux/ "
 else
   echo "VENDOR variable is either unset or not set to INTEL/NVIDIA/AMD"
 fi
