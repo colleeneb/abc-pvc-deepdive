@@ -1,0 +1,134 @@
+Cloning into 'lats'...
+
+The following have been reloaded with a version change:
+  1) intel_compute_runtime/release/821.36 => intel_compute_runtime/release/803.29
+  2) oneapi/eng-compiler/2024.04.15.002 => oneapi/release/2024.1
+
+
+Currently Loaded Modules:
+  1) libfabric/1.15.2.0            8) gcc/12.2.0
+  2) cray-pals/1.3.3               9) mpich/icc-all-pmix-gpu/20231026
+  3) cray-libpals/1.3.3           10) mpich-config/collective-tuning/1024
+  4) spack-pe-gcc/0.7.0-24.086.0  11) intel_compute_runtime/release/803.29
+  5) gmp/6.2.1-pcxzkau            12) oneapi/release/2024.1
+  6) mpfr/4.2.0-w7v7yjv           13) cmake/3.27.7
+  7) mpc/1.3.1-dfagrna
+
+ 
+
+icx -O3 -std=gnu99 -c profiler.c -o profiler.o
+icpx -O3 -fsycl -DENABLE_PROFILING -c sycl-usm.cpp -o obj_sycl.o
+icpx -O3 -fsycl obj_sycl.o profiler.o -o run.sycl
+Unknown MPI, adjust this script.
+Running on Intel(R) Data Center GPU Max 1550
+Allocating 4096 MiB
+Elapsed Clock Cycles 10571
+Array Size 0.002MB Stride 5 Cache Lines 16 Time 0.000052078000s
+Loads = 160
+Cycles / Load = 66.0687
+Elapsed Clock Cycles 19858
+Array Size 0.004MB Stride 5 Cache Lines 32 Time 0.000034091000s
+Loads = 320
+Cycles / Load = 62.0562
+Elapsed Clock Cycles 39378
+Array Size 0.008MB Stride 5 Cache Lines 64 Time 0.000055357000s
+Loads = 640
+Cycles / Load = 61.5281
+Elapsed Clock Cycles 78418
+Array Size 0.016MB Stride 5 Cache Lines 128 Time 0.000100531000s
+Loads = 1280
+Cycles / Load = 61.2641
+Elapsed Clock Cycles 156498
+Array Size 0.031MB Stride 5 Cache Lines 256 Time 0.000181200000s
+Loads = 2560
+Cycles / Load = 61.1320
+Elapsed Clock Cycles 312658
+Array Size 0.062MB Stride 5 Cache Lines 512 Time 0.000352864000s
+Loads = 5120
+Cycles / Load = 61.0660
+Elapsed Clock Cycles 624978
+Array Size 0.125MB Stride 5 Cache Lines 1024 Time 0.000698057000s
+Loads = 10240
+Cycles / Load = 61.0330
+Elapsed Clock Cycles 1249618
+Array Size 0.250MB Stride 5 Cache Lines 2048 Time 0.001386093000s
+Loads = 20480
+Cycles / Load = 61.0165
+Elapsed Clock Cycles 2498898
+Array Size 0.500MB Stride 5 Cache Lines 4096 Time 0.002764450000s
+Loads = 40960
+Cycles / Load = 61.0083
+Elapsed Clock Cycles 34901739
+Array Size 1.000MB Stride 5 Cache Lines 8192 Time 0.024236388000s
+Loads = 81920
+Cycles / Load = 426.0466
+Elapsed Clock Cycles 69817330
+Array Size 2.000MB Stride 5 Cache Lines 16384 Time 0.048478147000s
+Loads = 163840
+Cycles / Load = 426.1312
+Elapsed Clock Cycles 139665278
+Array Size 4.000MB Stride 5 Cache Lines 32768 Time 0.097011974000s
+Loads = 327680
+Cycles / Load = 426.2246
+Elapsed Clock Cycles 279298747
+Array Size 8.000MB Stride 5 Cache Lines 65536 Time 0.193943407000s
+Loads = 655360
+Cycles / Load = 426.1761
+Elapsed Clock Cycles 558937172
+Array Size 16.000MB Stride 5 Cache Lines 131072 Time 0.388061230000s
+Loads = 1.31072e+06
+Cycles / Load = 426.4352
+Elapsed Clock Cycles 1119620796
+Array Size 32.000MB Stride 5 Cache Lines 262144 Time 0.777239843000s
+Loads = 2.62144e+06
+Cycles / Load = 427.1014
+Elapsed Clock Cycles 2239539571
+Array Size 64.000MB Stride 5 Cache Lines 524288 Time 1.554623179000s
+Loads = 5.24288e+06
+Cycles / Load = 427.1583
+Elapsed Clock Cycles 4478690912
+Array Size 128.000MB Stride 5 Cache Lines 1048576 Time 3.108899728000s
+Loads = 1.04858e+07
+Cycles / Load = 427.1212
+Elapsed Clock Cycles 14536641672
+Array Size 256.000MB Stride 5 Cache Lines 2097152 Time 10.021836401000s
+Loads = 2.09715e+07
+Cycles / Load = 693.1611
+Elapsed Clock Cycles 36009975473
+Array Size 512.000MB Stride 5 Cache Lines 4194304 Time 24.890557474000s
+Loads = 4.1943e+07
+Cycles / Load = 858.5447
+Elapsed Clock Cycles 72024584622
+Array Size 1024.000MB Stride 5 Cache Lines 8388608 Time 49.798100122000s
+Loads = 8.38861e+07
+Cycles / Load = 858.6000
+Elapsed Clock Cycles 144071985545
+Array Size 2048.000MB Stride 5 Cache Lines 16777216 Time 99.612722316000s
+Loads = 1.67772e+08
+Cycles / Load = 858.7360
+Elapsed Clock Cycles 288149292880
+Array Size 4096.000MB Stride 5 Cache Lines 33554432 Time 199.227014477000s
+Loads = 3.35544e+08
+Cycles / Load = 858.7518
+5,2048,66.0687
+5,4096,62.0562
+5,8192,61.5281
+5,16384,61.2641
+5,32768,61.1320
+5,65536,61.0660
+5,131072,61.0330
+5,262144,61.0165
+5,524288,61.0083
+5,1048576,426.0466
+5,2097152,426.1312
+5,4194304,426.2246
+5,8388608,426.1761
+5,16777216,426.4352
+5,33554432,427.1014
+5,67108864,427.1583
+5,134217728,427.1212
+5,268435456,693.1611
+5,536870912,858.5447
+5,1073741824,858.6000
+5,2147483648,858.7360
+5,4294967296,858.7518
