@@ -6,7 +6,7 @@ BM=bm1
 
 # Downloading source code
 if [ ! -e minibude/CMakeLists.txt ]; then
-  if ! git clone -b v2 https://github.com/UoB-HPC/minibude; then
+  if ! git clone -b main https://github.com/UoB-HPC/minibude; then
     echo "\n Failed to fetch source code. \n"
     exit 1
   fi
