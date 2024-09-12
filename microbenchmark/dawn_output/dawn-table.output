@@ -1,0 +1,32 @@
++ export VENDOR=INTEL
++ VENDOR=INTEL
++ ./gen_mk_table.py run.out micro
++ column -t -s '|' -o '|' -R 0
+|                                     | One Tile   | Full Node   | Scaling 
+|---                                  |-----------:|-----------: |----:
+| Single Precision Peak Flops         | 26 TFlop/s | 207 TFlop/s | 8.0 
+| Double Precision Peak Flops         | 20 TFlop/s | 137 TFlop/s | 7.0 
+| Memory Bandwidth (triad)            | 1 TB/s     | 8 TB/s      | 7.5 
+| PCIe Unidirectional Bandwidth (H2D) | 52 GB/s    | 177 GB/s    | 3.4 
+| PCIe Unidirectional Bandwidth (D2H) | 51 GB/s    | 120 GB/s    | 2.4 
+| PCIe Bidirectional Bandwidth        | 71 GB/s    | 163 GB/s    | 2.3 
+| Tile2Tile Unidirectional Bandwidth  | 37 GB/s    | 148 GB/s    | 4.0 
+| Tile2Tile Bidirectional Bandwidth   | 67 GB/s    | 270 GB/s    | 4.0 
+| GPU2GPU Unidirectional Bandwidth    | 18 GB/s    | 75 GB/s     | 4.2 
+| GPU2GPU Bidirectional Bandwidth     | 36 GB/s    | 143 GB/s    | 4.0 
++ ./gen_mk_table.py run.out GEMM
++ column -t -s '|' -o '|' -R 0
+|          | One Tile    | Full Node    | Scaling 
+|---       |-----------: |-----------:  |----:
+| DGEMM    | 18 TFlop/s  | 142 TFlop/s  | 7.9 
+| SGEMM    | 26 TFlop/s  | 203 TFlop/s  | 7.8 
+| HGEMM    | 259 TFlop/s | 1949 TFlop/s | 7.5 
+| BF16GEMM | 261 TFlop/s | 1957 TFlop/s | 7.5 
+| TF32GEMM | 130 TFlop/s | 934 TFlop/s  | 7.2 
+| I8GEMM   | 538 TFlop/s | 4085 TFlop/s | 7.6 
++ ./gen_mk_table.py run.out FFT
++ column -t -s '|' -o '|' -R 0
+|                             | One Tile   | Full Node  | Scaling 
+|---                          |-----------:|-----------:|----:
+| Single-precision FFT C2C 1D | 4 TFlop/s  | 26 TFlop/s | 7.4 
+| Single-precision FFT C2C 2D | 4 TFlop/s  | 25 TFlop/s | 6.9 
