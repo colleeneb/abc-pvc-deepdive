@@ -1,0 +1,1 @@
+-f raw/heavy_by-atom_2016-v1.bhff -p raw/bude_1gcz_proA.mol2 -l raw/bude_1gcz_proA.mol2 -o big5 -n 983040 --force 
