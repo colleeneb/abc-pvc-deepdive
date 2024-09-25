@@ -1,0 +1,1422 @@
+
+The following have been reloaded with a version change:
+  1) intel_compute_runtime/release/821.36 => intel_compute_runtime/release/803.29
+  2) oneapi/eng-compiler/2024.04.15.002 => oneapi/release/2024.1
+
+
+Currently Loaded Modules:
+  1) libfabric/1.15.2.0            8) gcc/12.2.0
+  2) cray-pals/1.3.3               9) mpich/icc-all-pmix-gpu/20231026
+  3) cray-libpals/1.3.3           10) mpich-config/collective-tuning/1024
+  4) spack-pe-gcc/0.7.0-24.086.0  11) intel_compute_runtime/release/803.29
+  5) gmp/6.2.1-pcxzkau            12) oneapi/release/2024.1
+  6) mpfr/4.2.0-w7v7yjv           13) cmake/3.27.7
+  7) mpc/1.3.1-dfagrna
+
+ 
+
+-- The CXX compiler identification is IntelLLVM 2024.1.0
+-- Detecting CXX compiler ABI info
+-- Detecting CXX compiler ABI info - done
+-- Check for working CXX compiler: /opt/aurora/24.086.0/oneapi/compiler/latest/bin/icpx - skipped
+-- Detecting CXX compile features
+-- Detecting CXX compile features - done
+-- CXX_EXTRA_LINK_FLAGS: 
+        Appends to link flags which appear *before* the objects.
+        Do not use this for linking libraries, as the link line is order-dependent
+-- CXX_EXTRA_LIBRARIES: 
+        Append to link flags which appear *after* the objects.
+        Use this for linking extra libraries (e.g `-lmylib`, or simply `mylib`)
+-- CXX_EXTRA_LINKER_FLAGS: 
+        Append to linker flags (i.e GCC's `-Wl` or equivalent)
+-- Available models:  serial;omp;ocl;std-indices;std-ranges;hip;cuda;kokkos;sycl;acc;raja;tbb;thrust
+-- Selected model  :  sycl
+-- Supported flags:
+
+   CMAKE_CXX_COMPILER (optional, default=c++): Any CXX compiler that is supported by CMake detection, this is used for host compilation when required by the SYCL compiler
+   SYCL_COMPILER (required): Compile using the specified SYCL compiler implementation
+        Supported values are
+           ONEAPI-ICPX  - icpx as a standalone compiler
+           ONEAPI-Clang - oneAPI's Clang driver (enabled via `source /opt/intel/oneapi/setvars.sh  --include-intel-llvm`)
+           DPCPP        - dpc++ as a standalone compiler (https://github.com/intel/llvm)
+           HIPSYCL      - hipSYCL compiler (https://github.com/illuhad/hipSYCL)
+           COMPUTECPP   - ComputeCpp compiler (https://developer.codeplay.com/products/computecpp/ce/home)
+   SYCL_COMPILER_DIR (optional, default=): Absolute path to the selected SYCL compiler directory, most are packaged differently so set the path according to `SYCL_COMPILER`:
+           ONEAPI-ICPX              - `icpx` must be used for OneAPI 2023 and later on releases (i.e `source /opt/intel/oneapi/setvars.sh` first)
+           ONEAPI-Clang             - set to the directory that contains the Intel clang++ binary.
+           HIPSYCL|DPCPP|COMPUTECPP - set to the root of the binary distribution that contains at least `bin/`, `include/`, and `lib/`
+   OpenCL_LIBRARY (optional, default=): [ComputeCpp only] Path to OpenCL library, usually called libOpenCL.so
+
+-- Model-specific flags for this build:
+
+   CMAKE_CXX_COMPILER = `/opt/aurora/24.086.0/oneapi/compiler/latest/bin/icpx`
+   SYCL_COMPILER = `ONEAPI-ICPX`
+   SYCL_COMPILER_DIR = ``
+   OpenCL_LIBRARY = ``
+
+-- Default RELEASE flags are `-O3;$<$<OR:$<CXX_COMPILER_ID:NVHPC>,$<CXX_COMPILER_ID:PGI>>:-use_fast_math>;$<$<AND:$<NOT:$<CXX_COMPILER_ID:NVHPC>>,$<NOT:$<CXX_COMPILER_ID:PGI>>>:-ffast-math>;-fsycl`, set RELEASE_FLAGS to override (CXX_EXTRA_* flags are not affected)
+-- PPWI not set, defaulting to 1,2,4,8,16,32,64,128
+-- CXX vendor  : IntelLLVM (icpx)
+-- Platform    : x86_64
+-- PPWI        : 1,2,4,8,16,32,64,128
+-- Sources     : src/sycl/fasten.hpp;src/main.cpp
+-- Libraries   :  
+-- CXX Flags   :  -DNDEBUG -O3;$<$<OR:$<CXX_COMPILER_ID:NVHPC>,$<CXX_COMPILER_ID:PGI>>:-use_fast_math>;$<$<AND:$<NOT:$<CXX_COMPILER_ID:NVHPC>>,$<NOT:$<CXX_COMPILER_ID:PGI>>>:-ffast-math>;-fsycl -march=native
+    CXX flags derived from (CMake + (Override ? Override : Default) + Extras), where:
+        CMake                    = ` -DNDEBUG`
+        Default                  = `-O3;$<$<OR:$<CXX_COMPILER_ID:NVHPC>,$<CXX_COMPILER_ID:PGI>>:-use_fast_math>;$<$<AND:$<NOT:$<CXX_COMPILER_ID:NVHPC>>,$<NOT:$<CXX_COMPILER_ID:PGI>>>:-ffast-math>;-fsycl`
+        Override (RELEASE_FLAGS) = ``
+        Extras (CXX_EXTRA_FLAGS) = `-march=native`
+-- Link Flags  : -fsycl -march=native
+-- Linker Flags:   
+-- Defs        : SYCL
+-- Executable  : sycl-bude
+-- Configuring done (1.4s)
+-- Generating done (0.2s)
+-- Build files have been written to: /home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build
+Change Dir: '/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+
+Run Build Command(s): /opt/aurora/24.086.0/spack/gcc/0.7.0/install/linux-sles15-x86_64/gcc-12.2.0/cmake-3.27.7-mbl7dvgbiblpavhu53h5cheyrmpaikdz/bin/cmake -E env VERBOSE=1 /usr/bin/gmake -f Makefile -j208
+/opt/aurora/24.086.0/spack/gcc/0.7.0/install/linux-sles15-x86_64/gcc-12.2.0/cmake-3.27.7-mbl7dvgbiblpavhu53h5cheyrmpaikdz/bin/cmake -S/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude -B/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build --check-build-system CMakeFiles/Makefile.cmake 0
+/opt/aurora/24.086.0/spack/gcc/0.7.0/install/linux-sles15-x86_64/gcc-12.2.0/cmake-3.27.7-mbl7dvgbiblpavhu53h5cheyrmpaikdz/bin/cmake -E cmake_progress_start /home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/CMakeFiles /home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build//CMakeFiles/progress.marks
+/usr/bin/gmake  -f CMakeFiles/Makefile2 all
+gmake[1]: Entering directory '/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+/usr/bin/gmake  -f CMakeFiles/check_git.dir/build.make CMakeFiles/check_git.dir/depend
+/usr/bin/gmake  -f CMakeFiles/extract_compile_commands.dir/build.make CMakeFiles/extract_compile_commands.dir/depend
+gmake[2]: Entering directory '/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+cd /home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build && /opt/aurora/24.086.0/spack/gcc/0.7.0/install/linux-sles15-x86_64/gcc-12.2.0/cmake-3.27.7-mbl7dvgbiblpavhu53h5cheyrmpaikdz/bin/cmake -E cmake_depends "Unix Makefiles" /home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude /home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude /home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build /home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build /home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/CMakeFiles/check_git.dir/DependInfo.cmake "--color="
+gmake[2]: Entering directory '/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+cd /home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build && /opt/aurora/24.086.0/spack/gcc/0.7.0/install/linux-sles15-x86_64/gcc-12.2.0/cmake-3.27.7-mbl7dvgbiblpavhu53h5cheyrmpaikdz/bin/cmake -E cmake_depends "Unix Makefiles" /home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude /home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude /home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build /home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build /home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/CMakeFiles/extract_compile_commands.dir/DependInfo.cmake "--color="
+gmake[2]: Leaving directory '/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+/usr/bin/gmake  -f CMakeFiles/check_git.dir/build.make CMakeFiles/check_git.dir/build
+gmake[2]: Leaving directory '/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+/usr/bin/gmake  -f CMakeFiles/extract_compile_commands.dir/build.make CMakeFiles/extract_compile_commands.dir/build
+gmake[2]: Entering directory '/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+/opt/aurora/24.086.0/spack/gcc/0.7.0/install/linux-sles15-x86_64/gcc-12.2.0/cmake-3.27.7-mbl7dvgbiblpavhu53h5cheyrmpaikdz/bin/cmake -DCOMMAND_FILE=/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/compile_commands.json -DPRE_CONFIGURE_FILE="/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/meta_build.h.in" -DPOST_CONFIGURE_FILE="/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/generated/meta_build.h" -DSRC_DIR_PREFIX="/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src" -DOUT_DIR_PREFIX="CMakeFiles/bude.dir" -P /home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/cmake/extract_compile_command.cmake
+gmake[2]: Entering directory '/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+[ 33%] Checking the git repository for changes...
+/opt/aurora/24.086.0/spack/gcc/0.7.0/install/linux-sles15-x86_64/gcc-12.2.0/cmake-3.27.7-mbl7dvgbiblpavhu53h5cheyrmpaikdz/bin/cmake -D_BUILD_TIME_CHECK_GIT=TRUE -DGIT_WORKING_DIR=/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude -DGIT_EXECUTABLE=/usr/bin/git -DGIT_STATE_FILE=/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/git-state-hash -DPRE_CONFIGURE_FILE=/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/meta_vcs.h.in -DPOST_CONFIGURE_FILE=/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/generated/meta_vcs.h -DGIT_FAIL_IF_NONZERO_EXIT=FALSE -DGIT_IGNORE_UNTRACKED=FALSE -P /home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/cmake/git_watcher.cmake
+-- Transforming /home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/compile_commands.json...
+gmake[2]: Leaving directory '/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+[ 33%] Built target extract_compile_commands
+gmake[2]: Leaving directory '/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+[ 33%] Built target check_git
+/usr/bin/gmake  -f CMakeFiles/bude.dir/build.make CMakeFiles/bude.dir/depend
+gmake[2]: Entering directory '/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+cd /home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build && /opt/aurora/24.086.0/spack/gcc/0.7.0/install/linux-sles15-x86_64/gcc-12.2.0/cmake-3.27.7-mbl7dvgbiblpavhu53h5cheyrmpaikdz/bin/cmake -E cmake_depends "Unix Makefiles" /home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude /home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude /home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build /home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build /home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/CMakeFiles/bude.dir/DependInfo.cmake "--color="
+gmake[2]: Leaving directory '/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+/usr/bin/gmake  -f CMakeFiles/bude.dir/build.make CMakeFiles/bude.dir/build
+gmake[2]: Entering directory '/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+[ 66%] Building CXX object CMakeFiles/bude.dir/src/main.cpp.o
+icpx -DSYCL -DUSE_PPWI=1,2,4,8,16,32,64,128 -I/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl -I/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/generated -DNDEBUG -std=c++17 -O3 -ffast-math -fsycl -march=native -MD -MT CMakeFiles/bude.dir/src/main.cpp.o -MF CMakeFiles/bude.dir/src/main.cpp.o.d -o CMakeFiles/bude.dir/src/main.cpp.o -c /home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp
+In file included from /home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:77:
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:24:72: warning: 'global_buffer' is deprecated: use 'target::device' instead [-Wdeprecated-declarations]
+   24 |   static constexpr sycl::access::target Global = sycl::access::target::global_buffer;
+      |                                                                        ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/access/access.hpp:23:17: note: 'global_buffer' has been explicitly marked deprecated here
+   23 |   global_buffer __SYCL2020_DEPRECATED("use 'target::device' instead") = 2014,
+      |                 ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:53:40: note: expanded from macro '__SYCL2020_DEPRECATED'
+   53 | #define __SYCL2020_DEPRECATED(message) __SYCL_DEPRECATED(message)
+      |                                        ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:44:38: note: expanded from macro '__SYCL_DEPRECATED'
+   44 | #define __SYCL_DEPRECATED(message) [[deprecated(message)]]
+      |                                      ^
+In file included from /home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:77:
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:25:71: warning: 'local' is deprecated: use `local_accessor` instead [-Wdeprecated-declarations]
+   25 |   static constexpr sycl::access::target Local = sycl::access::target::local;
+      |                                                                       ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/access/access.hpp:25:9: note: 'local' has been explicitly marked deprecated here
+   25 |   local __SYCL2020_DEPRECATED("use `local_accessor` instead") = 2016,
+      |         ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:53:40: note: expanded from macro '__SYCL2020_DEPRECATED'
+   53 | #define __SYCL2020_DEPRECATED(message) __SYCL_DEPRECATED(message)
+      |                                        ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:44:38: note: expanded from macro '__SYCL_DEPRECATED'
+   44 | #define __SYCL_DEPRECATED(message) [[deprecated(message)]]
+      |                                      ^
+In file included from /home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:77:
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:98:40: warning: 'get_count' is deprecated: get_count() is deprecated, please use size() instead [-Wdeprecated-declarations]
+   98 |       for (size_t il = 0; il < ligands.get_count(); il++) {
+      |                                        ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/accessor.hpp:2302:3: note: 'get_count' has been explicitly marked deprecated here
+ 2302 |   __SYCL2020_DEPRECATED("get_count() is deprecated, please use size() instead")
+      |   ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:53:40: note: expanded from macro '__SYCL2020_DEPRECATED'
+   53 | #define __SYCL2020_DEPRECATED(message) __SYCL_DEPRECATED(message)
+      |                                        ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:44:38: note: expanded from macro '__SYCL_DEPRECATED'
+   44 | #define __SYCL_DEPRECATED(message) [[deprecated(message)]]
+      |                                      ^
+In file included from /home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:77:
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:118:43: warning: 'get_count' is deprecated: get_count() is deprecated, please use size() instead [-Wdeprecated-declarations]
+  118 |         for (size_t ip = 0; ip < proteins.get_count(); ip++) {
+      |                                           ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/accessor.hpp:2302:3: note: 'get_count' has been explicitly marked deprecated here
+ 2302 |   __SYCL2020_DEPRECATED("get_count() is deprecated, please use size() instead")
+      |   ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:53:40: note: expanded from macro '__SYCL2020_DEPRECATED'
+   53 | #define __SYCL2020_DEPRECATED(message) __SYCL_DEPRECATED(message)
+      |                                        ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:44:38: note: expanded from macro '__SYCL_DEPRECATED'
+   44 | #define __SYCL_DEPRECATED(message) [[deprecated(message)]]
+      |                                      ^
+In file included from /home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:77:
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:24:72: warning: 'global_buffer' is deprecated: use 'target::device' instead [-Wdeprecated-declarations]
+   24 |   static constexpr sycl::access::target Global = sycl::access::target::global_buffer;
+      |                                                                        ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:27:93: note: in instantiation of static data member 'SyclBude<1>::Global' requested here
+   27 |   template <typename T, sycl::access::mode A = R> using accessor1 = sycl::accessor<T, 1, A, Global>;
+      |                                                                                             ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:481:102: note: in instantiation of template class 'SyclBude<1>' requested here
+  481 |                                                                                          auto bude = IMPL_CLS<Ns>();
+      |                                                                                                      ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:14:18: note: expanded from macro 'IMPL_CLS'
+   14 | #define IMPL_CLS SyclBude
+      |                  ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:480:92: note: while substituting into a lambda expression here
+  480 |   std::unordered_map<size_t, std::function<const std::vector<Device>()>> enumerate = {{Ns, []() {
+      |                                                                                            ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:652:10: note: in instantiation of function template specialization 'run<1UL, 2UL, 4UL, 8UL, 16UL, 32UL, 64UL, 128UL>' requested here
+  652 |   return run<USE_PPWI>(params, wgsizes, ppwis) ? EXIT_SUCCESS : EXIT_FAILURE;
+      |          ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/access/access.hpp:23:17: note: 'global_buffer' has been explicitly marked deprecated here
+   23 |   global_buffer __SYCL2020_DEPRECATED("use 'target::device' instead") = 2014,
+      |                 ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:53:40: note: expanded from macro '__SYCL2020_DEPRECATED'
+   53 | #define __SYCL2020_DEPRECATED(message) __SYCL_DEPRECATED(message)
+      |                                        ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:44:38: note: expanded from macro '__SYCL_DEPRECATED'
+   44 | #define __SYCL_DEPRECATED(message) [[deprecated(message)]]
+      |                                      ^
+In file included from /home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:77:
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:24:72: warning: 'global_buffer' is deprecated: use 'target::device' instead [-Wdeprecated-declarations]
+   24 |   static constexpr sycl::access::target Global = sycl::access::target::global_buffer;
+      |                                                                        ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:27:93: note: in instantiation of static data member 'SyclBude<2>::Global' requested here
+   27 |   template <typename T, sycl::access::mode A = R> using accessor1 = sycl::accessor<T, 1, A, Global>;
+      |                                                                                             ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:481:102: note: in instantiation of template class 'SyclBude<2>' requested here
+  481 |                                                                                          auto bude = IMPL_CLS<Ns>();
+      |                                                                                                      ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:14:18: note: expanded from macro 'IMPL_CLS'
+   14 | #define IMPL_CLS SyclBude
+      |                  ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:480:92: note: while substituting into a lambda expression here
+  480 |   std::unordered_map<size_t, std::function<const std::vector<Device>()>> enumerate = {{Ns, []() {
+      |                                                                                            ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:652:10: note: in instantiation of function template specialization 'run<1UL, 2UL, 4UL, 8UL, 16UL, 32UL, 64UL, 128UL>' requested here
+  652 |   return run<USE_PPWI>(params, wgsizes, ppwis) ? EXIT_SUCCESS : EXIT_FAILURE;
+      |          ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/access/access.hpp:23:17: note: 'global_buffer' has been explicitly marked deprecated here
+   23 |   global_buffer __SYCL2020_DEPRECATED("use 'target::device' instead") = 2014,
+      |                 ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:53:40: note: expanded from macro '__SYCL2020_DEPRECATED'
+   53 | #define __SYCL2020_DEPRECATED(message) __SYCL_DEPRECATED(message)
+      |                                        ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:44:38: note: expanded from macro '__SYCL_DEPRECATED'
+   44 | #define __SYCL_DEPRECATED(message) [[deprecated(message)]]
+      |                                      ^
+In file included from /home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:77:
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:24:72: warning: 'global_buffer' is deprecated: use 'target::device' instead [-Wdeprecated-declarations]
+   24 |   static constexpr sycl::access::target Global = sycl::access::target::global_buffer;
+      |                                                                        ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:27:93: note: in instantiation of static data member 'SyclBude<4>::Global' requested here
+   27 |   template <typename T, sycl::access::mode A = R> using accessor1 = sycl::accessor<T, 1, A, Global>;
+      |                                                                                             ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:481:102: note: in instantiation of template class 'SyclBude<4>' requested here
+  481 |                                                                                          auto bude = IMPL_CLS<Ns>();
+      |                                                                                                      ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:14:18: note: expanded from macro 'IMPL_CLS'
+   14 | #define IMPL_CLS SyclBude
+      |                  ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:480:92: note: while substituting into a lambda expression here
+  480 |   std::unordered_map<size_t, std::function<const std::vector<Device>()>> enumerate = {{Ns, []() {
+      |                                                                                            ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:652:10: note: in instantiation of function template specialization 'run<1UL, 2UL, 4UL, 8UL, 16UL, 32UL, 64UL, 128UL>' requested here
+  652 |   return run<USE_PPWI>(params, wgsizes, ppwis) ? EXIT_SUCCESS : EXIT_FAILURE;
+      |          ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/access/access.hpp:23:17: note: 'global_buffer' has been explicitly marked deprecated here
+   23 |   global_buffer __SYCL2020_DEPRECATED("use 'target::device' instead") = 2014,
+      |                 ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:53:40: note: expanded from macro '__SYCL2020_DEPRECATED'
+   53 | #define __SYCL2020_DEPRECATED(message) __SYCL_DEPRECATED(message)
+      |                                        ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:44:38: note: expanded from macro '__SYCL_DEPRECATED'
+   44 | #define __SYCL_DEPRECATED(message) [[deprecated(message)]]
+      |                                      ^
+In file included from /home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:77:
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:24:72: warning: 'global_buffer' is deprecated: use 'target::device' instead [-Wdeprecated-declarations]
+   24 |   static constexpr sycl::access::target Global = sycl::access::target::global_buffer;
+      |                                                                        ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:27:93: note: in instantiation of static data member 'SyclBude<8>::Global' requested here
+   27 |   template <typename T, sycl::access::mode A = R> using accessor1 = sycl::accessor<T, 1, A, Global>;
+      |                                                                                             ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:481:102: note: in instantiation of template class 'SyclBude<8>' requested here
+  481 |                                                                                          auto bude = IMPL_CLS<Ns>();
+      |                                                                                                      ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:14:18: note: expanded from macro 'IMPL_CLS'
+   14 | #define IMPL_CLS SyclBude
+      |                  ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:480:92: note: while substituting into a lambda expression here
+  480 |   std::unordered_map<size_t, std::function<const std::vector<Device>()>> enumerate = {{Ns, []() {
+      |                                                                                            ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:652:10: note: in instantiation of function template specialization 'run<1UL, 2UL, 4UL, 8UL, 16UL, 32UL, 64UL, 128UL>' requested here
+  652 |   return run<USE_PPWI>(params, wgsizes, ppwis) ? EXIT_SUCCESS : EXIT_FAILURE;
+      |          ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/access/access.hpp:23:17: note: 'global_buffer' has been explicitly marked deprecated here
+   23 |   global_buffer __SYCL2020_DEPRECATED("use 'target::device' instead") = 2014,
+      |                 ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:53:40: note: expanded from macro '__SYCL2020_DEPRECATED'
+   53 | #define __SYCL2020_DEPRECATED(message) __SYCL_DEPRECATED(message)
+      |                                        ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:44:38: note: expanded from macro '__SYCL_DEPRECATED'
+   44 | #define __SYCL_DEPRECATED(message) [[deprecated(message)]]
+      |                                      ^
+In file included from /home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:77:
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:24:72: warning: 'global_buffer' is deprecated: use 'target::device' instead [-Wdeprecated-declarations]
+   24 |   static constexpr sycl::access::target Global = sycl::access::target::global_buffer;
+      |                                                                        ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:27:93: note: in instantiation of static data member 'SyclBude<16>::Global' requested here
+   27 |   template <typename T, sycl::access::mode A = R> using accessor1 = sycl::accessor<T, 1, A, Global>;
+      |                                                                                             ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:481:102: note: in instantiation of template class 'SyclBude<16>' requested here
+  481 |                                                                                          auto bude = IMPL_CLS<Ns>();
+      |                                                                                                      ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:14:18: note: expanded from macro 'IMPL_CLS'
+   14 | #define IMPL_CLS SyclBude
+      |                  ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:480:92: note: while substituting into a lambda expression here
+  480 |   std::unordered_map<size_t, std::function<const std::vector<Device>()>> enumerate = {{Ns, []() {
+      |                                                                                            ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:652:10: note: in instantiation of function template specialization 'run<1UL, 2UL, 4UL, 8UL, 16UL, 32UL, 64UL, 128UL>' requested here
+  652 |   return run<USE_PPWI>(params, wgsizes, ppwis) ? EXIT_SUCCESS : EXIT_FAILURE;
+      |          ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/access/access.hpp:23:17: note: 'global_buffer' has been explicitly marked deprecated here
+   23 |   global_buffer __SYCL2020_DEPRECATED("use 'target::device' instead") = 2014,
+      |                 ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:53:40: note: expanded from macro '__SYCL2020_DEPRECATED'
+   53 | #define __SYCL2020_DEPRECATED(message) __SYCL_DEPRECATED(message)
+      |                                        ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:44:38: note: expanded from macro '__SYCL_DEPRECATED'
+   44 | #define __SYCL_DEPRECATED(message) [[deprecated(message)]]
+      |                                      ^
+In file included from /home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:77:
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:24:72: warning: 'global_buffer' is deprecated: use 'target::device' instead [-Wdeprecated-declarations]
+   24 |   static constexpr sycl::access::target Global = sycl::access::target::global_buffer;
+      |                                                                        ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:27:93: note: in instantiation of static data member 'SyclBude<32>::Global' requested here
+   27 |   template <typename T, sycl::access::mode A = R> using accessor1 = sycl::accessor<T, 1, A, Global>;
+      |                                                                                             ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:481:102: note: in instantiation of template class 'SyclBude<32>' requested here
+  481 |                                                                                          auto bude = IMPL_CLS<Ns>();
+      |                                                                                                      ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:14:18: note: expanded from macro 'IMPL_CLS'
+   14 | #define IMPL_CLS SyclBude
+      |                  ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:480:92: note: while substituting into a lambda expression here
+  480 |   std::unordered_map<size_t, std::function<const std::vector<Device>()>> enumerate = {{Ns, []() {
+      |                                                                                            ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:652:10: note: in instantiation of function template specialization 'run<1UL, 2UL, 4UL, 8UL, 16UL, 32UL, 64UL, 128UL>' requested here
+  652 |   return run<USE_PPWI>(params, wgsizes, ppwis) ? EXIT_SUCCESS : EXIT_FAILURE;
+      |          ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/access/access.hpp:23:17: note: 'global_buffer' has been explicitly marked deprecated here
+   23 |   global_buffer __SYCL2020_DEPRECATED("use 'target::device' instead") = 2014,
+      |                 ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:53:40: note: expanded from macro '__SYCL2020_DEPRECATED'
+   53 | #define __SYCL2020_DEPRECATED(message) __SYCL_DEPRECATED(message)
+      |                                        ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:44:38: note: expanded from macro '__SYCL_DEPRECATED'
+   44 | #define __SYCL_DEPRECATED(message) [[deprecated(message)]]
+      |                                      ^
+In file included from /home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:77:
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:24:72: warning: 'global_buffer' is deprecated: use 'target::device' instead [-Wdeprecated-declarations]
+   24 |   static constexpr sycl::access::target Global = sycl::access::target::global_buffer;
+      |                                                                        ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:27:93: note: in instantiation of static data member 'SyclBude<64>::Global' requested here
+   27 |   template <typename T, sycl::access::mode A = R> using accessor1 = sycl::accessor<T, 1, A, Global>;
+      |                                                                                             ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:481:102: note: in instantiation of template class 'SyclBude<64>' requested here
+  481 |                                                                                          auto bude = IMPL_CLS<Ns>();
+      |                                                                                                      ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:14:18: note: expanded from macro 'IMPL_CLS'
+   14 | #define IMPL_CLS SyclBude
+      |                  ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:480:92: note: while substituting into a lambda expression here
+  480 |   std::unordered_map<size_t, std::function<const std::vector<Device>()>> enumerate = {{Ns, []() {
+      |                                                                                            ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:652:10: note: in instantiation of function template specialization 'run<1UL, 2UL, 4UL, 8UL, 16UL, 32UL, 64UL, 128UL>' requested here
+  652 |   return run<USE_PPWI>(params, wgsizes, ppwis) ? EXIT_SUCCESS : EXIT_FAILURE;
+      |          ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/access/access.hpp:23:17: note: 'global_buffer' has been explicitly marked deprecated here
+   23 |   global_buffer __SYCL2020_DEPRECATED("use 'target::device' instead") = 2014,
+      |                 ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:53:40: note: expanded from macro '__SYCL2020_DEPRECATED'
+   53 | #define __SYCL2020_DEPRECATED(message) __SYCL_DEPRECATED(message)
+      |                                        ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:44:38: note: expanded from macro '__SYCL_DEPRECATED'
+   44 | #define __SYCL_DEPRECATED(message) [[deprecated(message)]]
+      |                                      ^
+In file included from /home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:77:
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:24:72: warning: 'global_buffer' is deprecated: use 'target::device' instead [-Wdeprecated-declarations]
+   24 |   static constexpr sycl::access::target Global = sycl::access::target::global_buffer;
+      |                                                                        ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:27:93: note: in instantiation of static data member 'SyclBude<128>::Global' requested here
+   27 |   template <typename T, sycl::access::mode A = R> using accessor1 = sycl::accessor<T, 1, A, Global>;
+      |                                                                                             ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:481:102: note: in instantiation of template class 'SyclBude<128>' requested here
+  481 |                                                                                          auto bude = IMPL_CLS<Ns>();
+      |                                                                                                      ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:14:18: note: expanded from macro 'IMPL_CLS'
+   14 | #define IMPL_CLS SyclBude
+      |                  ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:480:92: note: while substituting into a lambda expression here
+  480 |   std::unordered_map<size_t, std::function<const std::vector<Device>()>> enumerate = {{Ns, []() {
+      |                                                                                            ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:652:10: note: in instantiation of function template specialization 'run<1UL, 2UL, 4UL, 8UL, 16UL, 32UL, 64UL, 128UL>' requested here
+  652 |   return run<USE_PPWI>(params, wgsizes, ppwis) ? EXIT_SUCCESS : EXIT_FAILURE;
+      |          ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/access/access.hpp:23:17: note: 'global_buffer' has been explicitly marked deprecated here
+   23 |   global_buffer __SYCL2020_DEPRECATED("use 'target::device' instead") = 2014,
+      |                 ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:53:40: note: expanded from macro '__SYCL2020_DEPRECATED'
+   53 | #define __SYCL2020_DEPRECATED(message) __SYCL_DEPRECATED(message)
+      |                                        ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:44:38: note: expanded from macro '__SYCL_DEPRECATED'
+   44 | #define __SYCL_DEPRECATED(message) [[deprecated(message)]]
+      |                                      ^
+In file included from /home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:77:
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:98:40: warning: 'get_count' is deprecated: get_count() is deprecated, please use size() instead [-Wdeprecated-declarations]
+   98 |       for (size_t il = 0; il < ligands.get_count(); il++) {
+      |                                        ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:44:82: note: while substituting into a lambda expression here
+   44 |     h.parallel_for<bude_kernel_ndrange<PPWI>>(sycl::nd_range<1>(global, wgsize), [=](sycl::nd_item<1> item) {
+      |                                                                                  ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:225:9: note: in instantiation of member function 'SyclBude<1>::fasten_main' requested here
+  225 |         fasten_main(h, wgsize, p.ntypes(), p.nposes(),                                                 //
+      |         ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:494:22: note: in instantiation of member function 'SyclBude<1>::fasten' requested here
+  494 |          return bude.fasten(*hp, wgsize, device);
+      |                      ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:652:10: note: in instantiation of function template specialization 'run<1UL, 2UL, 4UL, 8UL, 16UL, 32UL, 64UL, 128UL>' requested here
+  652 |   return run<USE_PPWI>(params, wgsizes, ppwis) ? EXIT_SUCCESS : EXIT_FAILURE;
+      |          ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/accessor.hpp:2302:3: note: 'get_count' has been explicitly marked deprecated here
+ 2302 |   __SYCL2020_DEPRECATED("get_count() is deprecated, please use size() instead")
+      |   ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:53:40: note: expanded from macro '__SYCL2020_DEPRECATED'
+   53 | #define __SYCL2020_DEPRECATED(message) __SYCL_DEPRECATED(message)
+      |                                        ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:44:38: note: expanded from macro '__SYCL_DEPRECATED'
+   44 | #define __SYCL_DEPRECATED(message) [[deprecated(message)]]
+      |                                      ^
+In file included from /home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:77:
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:118:43: warning: 'get_count' is deprecated: get_count() is deprecated, please use size() instead [-Wdeprecated-declarations]
+  118 |         for (size_t ip = 0; ip < proteins.get_count(); ip++) {
+      |                                           ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/accessor.hpp:2302:3: note: 'get_count' has been explicitly marked deprecated here
+ 2302 |   __SYCL2020_DEPRECATED("get_count() is deprecated, please use size() instead")
+      |   ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:53:40: note: expanded from macro '__SYCL2020_DEPRECATED'
+   53 | #define __SYCL2020_DEPRECATED(message) __SYCL_DEPRECATED(message)
+      |                                        ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:44:38: note: expanded from macro '__SYCL_DEPRECATED'
+   44 | #define __SYCL_DEPRECATED(message) [[deprecated(message)]]
+      |                                      ^
+In file included from /home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:77:
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:98:40: warning: 'get_count' is deprecated: get_count() is deprecated, please use size() instead [-Wdeprecated-declarations]
+   98 |       for (size_t il = 0; il < ligands.get_count(); il++) {
+      |                                        ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:44:82: note: while substituting into a lambda expression here
+   44 |     h.parallel_for<bude_kernel_ndrange<PPWI>>(sycl::nd_range<1>(global, wgsize), [=](sycl::nd_item<1> item) {
+      |                                                                                  ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:225:9: note: in instantiation of member function 'SyclBude<2>::fasten_main' requested here
+  225 |         fasten_main(h, wgsize, p.ntypes(), p.nposes(),                                                 //
+      |         ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:494:22: note: in instantiation of member function 'SyclBude<2>::fasten' requested here
+  494 |          return bude.fasten(*hp, wgsize, device);
+      |                      ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:652:10: note: in instantiation of function template specialization 'run<1UL, 2UL, 4UL, 8UL, 16UL, 32UL, 64UL, 128UL>' requested here
+  652 |   return run<USE_PPWI>(params, wgsizes, ppwis) ? EXIT_SUCCESS : EXIT_FAILURE;
+      |          ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/accessor.hpp:2302:3: note: 'get_count' has been explicitly marked deprecated here
+ 2302 |   __SYCL2020_DEPRECATED("get_count() is deprecated, please use size() instead")
+      |   ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:53:40: note: expanded from macro '__SYCL2020_DEPRECATED'
+   53 | #define __SYCL2020_DEPRECATED(message) __SYCL_DEPRECATED(message)
+      |                                        ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:44:38: note: expanded from macro '__SYCL_DEPRECATED'
+   44 | #define __SYCL_DEPRECATED(message) [[deprecated(message)]]
+      |                                      ^
+In file included from /home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:77:
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:118:43: warning: 'get_count' is deprecated: get_count() is deprecated, please use size() instead [-Wdeprecated-declarations]
+  118 |         for (size_t ip = 0; ip < proteins.get_count(); ip++) {
+      |                                           ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/accessor.hpp:2302:3: note: 'get_count' has been explicitly marked deprecated here
+ 2302 |   __SYCL2020_DEPRECATED("get_count() is deprecated, please use size() instead")
+      |   ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:53:40: note: expanded from macro '__SYCL2020_DEPRECATED'
+   53 | #define __SYCL2020_DEPRECATED(message) __SYCL_DEPRECATED(message)
+      |                                        ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:44:38: note: expanded from macro '__SYCL_DEPRECATED'
+   44 | #define __SYCL_DEPRECATED(message) [[deprecated(message)]]
+      |                                      ^
+In file included from /home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:77:
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:98:40: warning: 'get_count' is deprecated: get_count() is deprecated, please use size() instead [-Wdeprecated-declarations]
+   98 |       for (size_t il = 0; il < ligands.get_count(); il++) {
+      |                                        ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:44:82: note: while substituting into a lambda expression here
+   44 |     h.parallel_for<bude_kernel_ndrange<PPWI>>(sycl::nd_range<1>(global, wgsize), [=](sycl::nd_item<1> item) {
+      |                                                                                  ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:225:9: note: in instantiation of member function 'SyclBude<4>::fasten_main' requested here
+  225 |         fasten_main(h, wgsize, p.ntypes(), p.nposes(),                                                 //
+      |         ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:494:22: note: in instantiation of member function 'SyclBude<4>::fasten' requested here
+  494 |          return bude.fasten(*hp, wgsize, device);
+      |                      ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:652:10: note: in instantiation of function template specialization 'run<1UL, 2UL, 4UL, 8UL, 16UL, 32UL, 64UL, 128UL>' requested here
+  652 |   return run<USE_PPWI>(params, wgsizes, ppwis) ? EXIT_SUCCESS : EXIT_FAILURE;
+      |          ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/accessor.hpp:2302:3: note: 'get_count' has been explicitly marked deprecated here
+ 2302 |   __SYCL2020_DEPRECATED("get_count() is deprecated, please use size() instead")
+      |   ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:53:40: note: expanded from macro '__SYCL2020_DEPRECATED'
+   53 | #define __SYCL2020_DEPRECATED(message) __SYCL_DEPRECATED(message)
+      |                                        ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:44:38: note: expanded from macro '__SYCL_DEPRECATED'
+   44 | #define __SYCL_DEPRECATED(message) [[deprecated(message)]]
+      |                                      ^
+In file included from /home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:77:
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:118:43: warning: 'get_count' is deprecated: get_count() is deprecated, please use size() instead [-Wdeprecated-declarations]
+  118 |         for (size_t ip = 0; ip < proteins.get_count(); ip++) {
+      |                                           ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/accessor.hpp:2302:3: note: 'get_count' has been explicitly marked deprecated here
+ 2302 |   __SYCL2020_DEPRECATED("get_count() is deprecated, please use size() instead")
+      |   ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:53:40: note: expanded from macro '__SYCL2020_DEPRECATED'
+   53 | #define __SYCL2020_DEPRECATED(message) __SYCL_DEPRECATED(message)
+      |                                        ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:44:38: note: expanded from macro '__SYCL_DEPRECATED'
+   44 | #define __SYCL_DEPRECATED(message) [[deprecated(message)]]
+      |                                      ^
+In file included from /home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:77:
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:98:40: warning: 'get_count' is deprecated: get_count() is deprecated, please use size() instead [-Wdeprecated-declarations]
+   98 |       for (size_t il = 0; il < ligands.get_count(); il++) {
+      |                                        ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:44:82: note: while substituting into a lambda expression here
+   44 |     h.parallel_for<bude_kernel_ndrange<PPWI>>(sycl::nd_range<1>(global, wgsize), [=](sycl::nd_item<1> item) {
+      |                                                                                  ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:225:9: note: in instantiation of member function 'SyclBude<8>::fasten_main' requested here
+  225 |         fasten_main(h, wgsize, p.ntypes(), p.nposes(),                                                 //
+      |         ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:494:22: note: in instantiation of member function 'SyclBude<8>::fasten' requested here
+  494 |          return bude.fasten(*hp, wgsize, device);
+      |                      ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:652:10: note: in instantiation of function template specialization 'run<1UL, 2UL, 4UL, 8UL, 16UL, 32UL, 64UL, 128UL>' requested here
+  652 |   return run<USE_PPWI>(params, wgsizes, ppwis) ? EXIT_SUCCESS : EXIT_FAILURE;
+      |          ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/accessor.hpp:2302:3: note: 'get_count' has been explicitly marked deprecated here
+ 2302 |   __SYCL2020_DEPRECATED("get_count() is deprecated, please use size() instead")
+      |   ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:53:40: note: expanded from macro '__SYCL2020_DEPRECATED'
+   53 | #define __SYCL2020_DEPRECATED(message) __SYCL_DEPRECATED(message)
+      |                                        ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:44:38: note: expanded from macro '__SYCL_DEPRECATED'
+   44 | #define __SYCL_DEPRECATED(message) [[deprecated(message)]]
+      |                                      ^
+In file included from /home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:77:
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:118:43: warning: 'get_count' is deprecated: get_count() is deprecated, please use size() instead [-Wdeprecated-declarations]
+  118 |         for (size_t ip = 0; ip < proteins.get_count(); ip++) {
+      |                                           ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/accessor.hpp:2302:3: note: 'get_count' has been explicitly marked deprecated here
+ 2302 |   __SYCL2020_DEPRECATED("get_count() is deprecated, please use size() instead")
+      |   ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:53:40: note: expanded from macro '__SYCL2020_DEPRECATED'
+   53 | #define __SYCL2020_DEPRECATED(message) __SYCL_DEPRECATED(message)
+      |                                        ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:44:38: note: expanded from macro '__SYCL_DEPRECATED'
+   44 | #define __SYCL_DEPRECATED(message) [[deprecated(message)]]
+      |                                      ^
+In file included from /home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:77:
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:98:40: warning: 'get_count' is deprecated: get_count() is deprecated, please use size() instead [-Wdeprecated-declarations]
+   98 |       for (size_t il = 0; il < ligands.get_count(); il++) {
+      |                                        ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:44:82: note: while substituting into a lambda expression here
+   44 |     h.parallel_for<bude_kernel_ndrange<PPWI>>(sycl::nd_range<1>(global, wgsize), [=](sycl::nd_item<1> item) {
+      |                                                                                  ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:225:9: note: in instantiation of member function 'SyclBude<16>::fasten_main' requested here
+  225 |         fasten_main(h, wgsize, p.ntypes(), p.nposes(),                                                 //
+      |         ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:494:22: note: in instantiation of member function 'SyclBude<16>::fasten' requested here
+  494 |          return bude.fasten(*hp, wgsize, device);
+      |                      ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:652:10: note: in instantiation of function template specialization 'run<1UL, 2UL, 4UL, 8UL, 16UL, 32UL, 64UL, 128UL>' requested here
+  652 |   return run<USE_PPWI>(params, wgsizes, ppwis) ? EXIT_SUCCESS : EXIT_FAILURE;
+      |          ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/accessor.hpp:2302:3: note: 'get_count' has been explicitly marked deprecated here
+ 2302 |   __SYCL2020_DEPRECATED("get_count() is deprecated, please use size() instead")
+      |   ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:53:40: note: expanded from macro '__SYCL2020_DEPRECATED'
+   53 | #define __SYCL2020_DEPRECATED(message) __SYCL_DEPRECATED(message)
+      |                                        ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:44:38: note: expanded from macro '__SYCL_DEPRECATED'
+   44 | #define __SYCL_DEPRECATED(message) [[deprecated(message)]]
+      |                                      ^
+In file included from /home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:77:
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:118:43: warning: 'get_count' is deprecated: get_count() is deprecated, please use size() instead [-Wdeprecated-declarations]
+  118 |         for (size_t ip = 0; ip < proteins.get_count(); ip++) {
+      |                                           ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/accessor.hpp:2302:3: note: 'get_count' has been explicitly marked deprecated here
+ 2302 |   __SYCL2020_DEPRECATED("get_count() is deprecated, please use size() instead")
+      |   ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:53:40: note: expanded from macro '__SYCL2020_DEPRECATED'
+   53 | #define __SYCL2020_DEPRECATED(message) __SYCL_DEPRECATED(message)
+      |                                        ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:44:38: note: expanded from macro '__SYCL_DEPRECATED'
+   44 | #define __SYCL_DEPRECATED(message) [[deprecated(message)]]
+      |                                      ^
+In file included from /home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:77:
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:98:40: warning: 'get_count' is deprecated: get_count() is deprecated, please use size() instead [-Wdeprecated-declarations]
+   98 |       for (size_t il = 0; il < ligands.get_count(); il++) {
+      |                                        ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:44:82: note: while substituting into a lambda expression here
+   44 |     h.parallel_for<bude_kernel_ndrange<PPWI>>(sycl::nd_range<1>(global, wgsize), [=](sycl::nd_item<1> item) {
+      |                                                                                  ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:225:9: note: in instantiation of member function 'SyclBude<32>::fasten_main' requested here
+  225 |         fasten_main(h, wgsize, p.ntypes(), p.nposes(),                                                 //
+      |         ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:494:22: note: in instantiation of member function 'SyclBude<32>::fasten' requested here
+  494 |          return bude.fasten(*hp, wgsize, device);
+      |                      ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:652:10: note: in instantiation of function template specialization 'run<1UL, 2UL, 4UL, 8UL, 16UL, 32UL, 64UL, 128UL>' requested here
+  652 |   return run<USE_PPWI>(params, wgsizes, ppwis) ? EXIT_SUCCESS : EXIT_FAILURE;
+      |          ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/accessor.hpp:2302:3: note: 'get_count' has been explicitly marked deprecated here
+ 2302 |   __SYCL2020_DEPRECATED("get_count() is deprecated, please use size() instead")
+      |   ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:53:40: note: expanded from macro '__SYCL2020_DEPRECATED'
+   53 | #define __SYCL2020_DEPRECATED(message) __SYCL_DEPRECATED(message)
+      |                                        ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:44:38: note: expanded from macro '__SYCL_DEPRECATED'
+   44 | #define __SYCL_DEPRECATED(message) [[deprecated(message)]]
+      |                                      ^
+In file included from /home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:77:
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:118:43: warning: 'get_count' is deprecated: get_count() is deprecated, please use size() instead [-Wdeprecated-declarations]
+  118 |         for (size_t ip = 0; ip < proteins.get_count(); ip++) {
+      |                                           ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/accessor.hpp:2302:3: note: 'get_count' has been explicitly marked deprecated here
+ 2302 |   __SYCL2020_DEPRECATED("get_count() is deprecated, please use size() instead")
+      |   ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:53:40: note: expanded from macro '__SYCL2020_DEPRECATED'
+   53 | #define __SYCL2020_DEPRECATED(message) __SYCL_DEPRECATED(message)
+      |                                        ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:44:38: note: expanded from macro '__SYCL_DEPRECATED'
+   44 | #define __SYCL_DEPRECATED(message) [[deprecated(message)]]
+      |                                      ^
+In file included from /home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:77:
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:98:40: warning: 'get_count' is deprecated: get_count() is deprecated, please use size() instead [-Wdeprecated-declarations]
+   98 |       for (size_t il = 0; il < ligands.get_count(); il++) {
+      |                                        ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:44:82: note: while substituting into a lambda expression here
+   44 |     h.parallel_for<bude_kernel_ndrange<PPWI>>(sycl::nd_range<1>(global, wgsize), [=](sycl::nd_item<1> item) {
+      |                                                                                  ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:225:9: note: in instantiation of member function 'SyclBude<64>::fasten_main' requested here
+  225 |         fasten_main(h, wgsize, p.ntypes(), p.nposes(),                                                 //
+      |         ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:494:22: note: in instantiation of member function 'SyclBude<64>::fasten' requested here
+  494 |          return bude.fasten(*hp, wgsize, device);
+      |                      ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:652:10: note: in instantiation of function template specialization 'run<1UL, 2UL, 4UL, 8UL, 16UL, 32UL, 64UL, 128UL>' requested here
+  652 |   return run<USE_PPWI>(params, wgsizes, ppwis) ? EXIT_SUCCESS : EXIT_FAILURE;
+      |          ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/accessor.hpp:2302:3: note: 'get_count' has been explicitly marked deprecated here
+ 2302 |   __SYCL2020_DEPRECATED("get_count() is deprecated, please use size() instead")
+      |   ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:53:40: note: expanded from macro '__SYCL2020_DEPRECATED'
+   53 | #define __SYCL2020_DEPRECATED(message) __SYCL_DEPRECATED(message)
+      |                                        ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:44:38: note: expanded from macro '__SYCL_DEPRECATED'
+   44 | #define __SYCL_DEPRECATED(message) [[deprecated(message)]]
+      |                                      ^
+In file included from /home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:77:
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:118:43: warning: 'get_count' is deprecated: get_count() is deprecated, please use size() instead [-Wdeprecated-declarations]
+  118 |         for (size_t ip = 0; ip < proteins.get_count(); ip++) {
+      |                                           ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/accessor.hpp:2302:3: note: 'get_count' has been explicitly marked deprecated here
+ 2302 |   __SYCL2020_DEPRECATED("get_count() is deprecated, please use size() instead")
+      |   ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:53:40: note: expanded from macro '__SYCL2020_DEPRECATED'
+   53 | #define __SYCL2020_DEPRECATED(message) __SYCL_DEPRECATED(message)
+      |                                        ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:44:38: note: expanded from macro '__SYCL_DEPRECATED'
+   44 | #define __SYCL_DEPRECATED(message) [[deprecated(message)]]
+      |                                      ^
+In file included from /home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:77:
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:98:40: warning: 'get_count' is deprecated: get_count() is deprecated, please use size() instead [-Wdeprecated-declarations]
+   98 |       for (size_t il = 0; il < ligands.get_count(); il++) {
+      |                                        ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:44:82: note: while substituting into a lambda expression here
+   44 |     h.parallel_for<bude_kernel_ndrange<PPWI>>(sycl::nd_range<1>(global, wgsize), [=](sycl::nd_item<1> item) {
+      |                                                                                  ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:225:9: note: in instantiation of member function 'SyclBude<128>::fasten_main' requested here
+  225 |         fasten_main(h, wgsize, p.ntypes(), p.nposes(),                                                 //
+      |         ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:494:22: note: in instantiation of member function 'SyclBude<128>::fasten' requested here
+  494 |          return bude.fasten(*hp, wgsize, device);
+      |                      ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:652:10: note: in instantiation of function template specialization 'run<1UL, 2UL, 4UL, 8UL, 16UL, 32UL, 64UL, 128UL>' requested here
+  652 |   return run<USE_PPWI>(params, wgsizes, ppwis) ? EXIT_SUCCESS : EXIT_FAILURE;
+      |          ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/accessor.hpp:2302:3: note: 'get_count' has been explicitly marked deprecated here
+ 2302 |   __SYCL2020_DEPRECATED("get_count() is deprecated, please use size() instead")
+      |   ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:53:40: note: expanded from macro '__SYCL2020_DEPRECATED'
+   53 | #define __SYCL2020_DEPRECATED(message) __SYCL_DEPRECATED(message)
+      |                                        ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:44:38: note: expanded from macro '__SYCL_DEPRECATED'
+   44 | #define __SYCL_DEPRECATED(message) [[deprecated(message)]]
+      |                                      ^
+In file included from /home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:77:
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:118:43: warning: 'get_count' is deprecated: get_count() is deprecated, please use size() instead [-Wdeprecated-declarations]
+  118 |         for (size_t ip = 0; ip < proteins.get_count(); ip++) {
+      |                                           ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/accessor.hpp:2302:3: note: 'get_count' has been explicitly marked deprecated here
+ 2302 |   __SYCL2020_DEPRECATED("get_count() is deprecated, please use size() instead")
+      |   ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:53:40: note: expanded from macro '__SYCL2020_DEPRECATED'
+   53 | #define __SYCL2020_DEPRECATED(message) __SYCL_DEPRECATED(message)
+      |                                        ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:44:38: note: expanded from macro '__SYCL_DEPRECATED'
+   44 | #define __SYCL_DEPRECATED(message) [[deprecated(message)]]
+      |                                      ^
+28 warnings generated.
+In file included from /home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:77:
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:24:72: warning: 'global_buffer' is deprecated: use 'target::device' instead [-Wdeprecated-declarations]
+   24 |   static constexpr sycl::access::target Global = sycl::access::target::global_buffer;
+      |                                                                        ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/access/access.hpp:23:17: note: 'global_buffer' has been explicitly marked deprecated here
+   23 |   global_buffer __SYCL2020_DEPRECATED("use 'target::device' instead") = 2014,
+      |                 ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:53:40: note: expanded from macro '__SYCL2020_DEPRECATED'
+   53 | #define __SYCL2020_DEPRECATED(message) __SYCL_DEPRECATED(message)
+      |                                        ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:44:38: note: expanded from macro '__SYCL_DEPRECATED'
+   44 | #define __SYCL_DEPRECATED(message) [[deprecated(message)]]
+      |                                      ^
+In file included from /home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:77:
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:25:71: warning: 'local' is deprecated: use `local_accessor` instead [-Wdeprecated-declarations]
+   25 |   static constexpr sycl::access::target Local = sycl::access::target::local;
+      |                                                                       ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/access/access.hpp:25:9: note: 'local' has been explicitly marked deprecated here
+   25 |   local __SYCL2020_DEPRECATED("use `local_accessor` instead") = 2016,
+      |         ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:53:40: note: expanded from macro '__SYCL2020_DEPRECATED'
+   53 | #define __SYCL2020_DEPRECATED(message) __SYCL_DEPRECATED(message)
+      |                                        ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:44:38: note: expanded from macro '__SYCL_DEPRECATED'
+   44 | #define __SYCL_DEPRECATED(message) [[deprecated(message)]]
+      |                                      ^
+In file included from /home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:77:
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:98:40: warning: 'get_count' is deprecated: get_count() is deprecated, please use size() instead [-Wdeprecated-declarations]
+   98 |       for (size_t il = 0; il < ligands.get_count(); il++) {
+      |                                        ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/accessor.hpp:2302:3: note: 'get_count' has been explicitly marked deprecated here
+ 2302 |   __SYCL2020_DEPRECATED("get_count() is deprecated, please use size() instead")
+      |   ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:53:40: note: expanded from macro '__SYCL2020_DEPRECATED'
+   53 | #define __SYCL2020_DEPRECATED(message) __SYCL_DEPRECATED(message)
+      |                                        ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:44:38: note: expanded from macro '__SYCL_DEPRECATED'
+   44 | #define __SYCL_DEPRECATED(message) [[deprecated(message)]]
+      |                                      ^
+In file included from /home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:77:
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:118:43: warning: 'get_count' is deprecated: get_count() is deprecated, please use size() instead [-Wdeprecated-declarations]
+  118 |         for (size_t ip = 0; ip < proteins.get_count(); ip++) {
+      |                                           ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/accessor.hpp:2302:3: note: 'get_count' has been explicitly marked deprecated here
+ 2302 |   __SYCL2020_DEPRECATED("get_count() is deprecated, please use size() instead")
+      |   ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:53:40: note: expanded from macro '__SYCL2020_DEPRECATED'
+   53 | #define __SYCL2020_DEPRECATED(message) __SYCL_DEPRECATED(message)
+      |                                        ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:44:38: note: expanded from macro '__SYCL_DEPRECATED'
+   44 | #define __SYCL_DEPRECATED(message) [[deprecated(message)]]
+      |                                      ^
+In file included from /home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:77:
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:24:72: warning: 'global_buffer' is deprecated: use 'target::device' instead [-Wdeprecated-declarations]
+   24 |   static constexpr sycl::access::target Global = sycl::access::target::global_buffer;
+      |                                                                        ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:27:93: note: in instantiation of static data member 'SyclBude<1>::Global' requested here
+   27 |   template <typename T, sycl::access::mode A = R> using accessor1 = sycl::accessor<T, 1, A, Global>;
+      |                                                                                             ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:481:102: note: in instantiation of template class 'SyclBude<1>' requested here
+  481 |                                                                                          auto bude = IMPL_CLS<Ns>();
+      |                                                                                                      ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:14:18: note: expanded from macro 'IMPL_CLS'
+   14 | #define IMPL_CLS SyclBude
+      |                  ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:480:92: note: while substituting into a lambda expression here
+  480 |   std::unordered_map<size_t, std::function<const std::vector<Device>()>> enumerate = {{Ns, []() {
+      |                                                                                            ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:652:10: note: in instantiation of function template specialization 'run<1UL, 2UL, 4UL, 8UL, 16UL, 32UL, 64UL, 128UL>' requested here
+  652 |   return run<USE_PPWI>(params, wgsizes, ppwis) ? EXIT_SUCCESS : EXIT_FAILURE;
+      |          ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/access/access.hpp:23:17: note: 'global_buffer' has been explicitly marked deprecated here
+   23 |   global_buffer __SYCL2020_DEPRECATED("use 'target::device' instead") = 2014,
+      |                 ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:53:40: note: expanded from macro '__SYCL2020_DEPRECATED'
+   53 | #define __SYCL2020_DEPRECATED(message) __SYCL_DEPRECATED(message)
+      |                                        ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:44:38: note: expanded from macro '__SYCL_DEPRECATED'
+   44 | #define __SYCL_DEPRECATED(message) [[deprecated(message)]]
+      |                                      ^
+In file included from /home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:77:
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:24:72: warning: 'global_buffer' is deprecated: use 'target::device' instead [-Wdeprecated-declarations]
+   24 |   static constexpr sycl::access::target Global = sycl::access::target::global_buffer;
+      |                                                                        ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:27:93: note: in instantiation of static data member 'SyclBude<2>::Global' requested here
+   27 |   template <typename T, sycl::access::mode A = R> using accessor1 = sycl::accessor<T, 1, A, Global>;
+      |                                                                                             ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:481:102: note: in instantiation of template class 'SyclBude<2>' requested here
+  481 |                                                                                          auto bude = IMPL_CLS<Ns>();
+      |                                                                                                      ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:14:18: note: expanded from macro 'IMPL_CLS'
+   14 | #define IMPL_CLS SyclBude
+      |                  ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:480:92: note: while substituting into a lambda expression here
+  480 |   std::unordered_map<size_t, std::function<const std::vector<Device>()>> enumerate = {{Ns, []() {
+      |                                                                                            ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:652:10: note: in instantiation of function template specialization 'run<1UL, 2UL, 4UL, 8UL, 16UL, 32UL, 64UL, 128UL>' requested here
+  652 |   return run<USE_PPWI>(params, wgsizes, ppwis) ? EXIT_SUCCESS : EXIT_FAILURE;
+      |          ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/access/access.hpp:23:17: note: 'global_buffer' has been explicitly marked deprecated here
+   23 |   global_buffer __SYCL2020_DEPRECATED("use 'target::device' instead") = 2014,
+      |                 ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:53:40: note: expanded from macro '__SYCL2020_DEPRECATED'
+   53 | #define __SYCL2020_DEPRECATED(message) __SYCL_DEPRECATED(message)
+      |                                        ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:44:38: note: expanded from macro '__SYCL_DEPRECATED'
+   44 | #define __SYCL_DEPRECATED(message) [[deprecated(message)]]
+      |                                      ^
+In file included from /home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:77:
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:24:72: warning: 'global_buffer' is deprecated: use 'target::device' instead [-Wdeprecated-declarations]
+   24 |   static constexpr sycl::access::target Global = sycl::access::target::global_buffer;
+      |                                                                        ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:27:93: note: in instantiation of static data member 'SyclBude<4>::Global' requested here
+   27 |   template <typename T, sycl::access::mode A = R> using accessor1 = sycl::accessor<T, 1, A, Global>;
+      |                                                                                             ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:481:102: note: in instantiation of template class 'SyclBude<4>' requested here
+  481 |                                                                                          auto bude = IMPL_CLS<Ns>();
+      |                                                                                                      ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:14:18: note: expanded from macro 'IMPL_CLS'
+   14 | #define IMPL_CLS SyclBude
+      |                  ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:480:92: note: while substituting into a lambda expression here
+  480 |   std::unordered_map<size_t, std::function<const std::vector<Device>()>> enumerate = {{Ns, []() {
+      |                                                                                            ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:652:10: note: in instantiation of function template specialization 'run<1UL, 2UL, 4UL, 8UL, 16UL, 32UL, 64UL, 128UL>' requested here
+  652 |   return run<USE_PPWI>(params, wgsizes, ppwis) ? EXIT_SUCCESS : EXIT_FAILURE;
+      |          ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/access/access.hpp:23:17: note: 'global_buffer' has been explicitly marked deprecated here
+   23 |   global_buffer __SYCL2020_DEPRECATED("use 'target::device' instead") = 2014,
+      |                 ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:53:40: note: expanded from macro '__SYCL2020_DEPRECATED'
+   53 | #define __SYCL2020_DEPRECATED(message) __SYCL_DEPRECATED(message)
+      |                                        ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:44:38: note: expanded from macro '__SYCL_DEPRECATED'
+   44 | #define __SYCL_DEPRECATED(message) [[deprecated(message)]]
+      |                                      ^
+In file included from /home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:77:
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:24:72: warning: 'global_buffer' is deprecated: use 'target::device' instead [-Wdeprecated-declarations]
+   24 |   static constexpr sycl::access::target Global = sycl::access::target::global_buffer;
+      |                                                                        ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:27:93: note: in instantiation of static data member 'SyclBude<8>::Global' requested here
+   27 |   template <typename T, sycl::access::mode A = R> using accessor1 = sycl::accessor<T, 1, A, Global>;
+      |                                                                                             ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:481:102: note: in instantiation of template class 'SyclBude<8>' requested here
+  481 |                                                                                          auto bude = IMPL_CLS<Ns>();
+      |                                                                                                      ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:14:18: note: expanded from macro 'IMPL_CLS'
+   14 | #define IMPL_CLS SyclBude
+      |                  ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:480:92: note: while substituting into a lambda expression here
+  480 |   std::unordered_map<size_t, std::function<const std::vector<Device>()>> enumerate = {{Ns, []() {
+      |                                                                                            ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:652:10: note: in instantiation of function template specialization 'run<1UL, 2UL, 4UL, 8UL, 16UL, 32UL, 64UL, 128UL>' requested here
+  652 |   return run<USE_PPWI>(params, wgsizes, ppwis) ? EXIT_SUCCESS : EXIT_FAILURE;
+      |          ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/access/access.hpp:23:17: note: 'global_buffer' has been explicitly marked deprecated here
+   23 |   global_buffer __SYCL2020_DEPRECATED("use 'target::device' instead") = 2014,
+      |                 ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:53:40: note: expanded from macro '__SYCL2020_DEPRECATED'
+   53 | #define __SYCL2020_DEPRECATED(message) __SYCL_DEPRECATED(message)
+      |                                        ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:44:38: note: expanded from macro '__SYCL_DEPRECATED'
+   44 | #define __SYCL_DEPRECATED(message) [[deprecated(message)]]
+      |                                      ^
+In file included from /home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:77:
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:24:72: warning: 'global_buffer' is deprecated: use 'target::device' instead [-Wdeprecated-declarations]
+   24 |   static constexpr sycl::access::target Global = sycl::access::target::global_buffer;
+      |                                                                        ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:27:93: note: in instantiation of static data member 'SyclBude<16>::Global' requested here
+   27 |   template <typename T, sycl::access::mode A = R> using accessor1 = sycl::accessor<T, 1, A, Global>;
+      |                                                                                             ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:481:102: note: in instantiation of template class 'SyclBude<16>' requested here
+  481 |                                                                                          auto bude = IMPL_CLS<Ns>();
+      |                                                                                                      ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:14:18: note: expanded from macro 'IMPL_CLS'
+   14 | #define IMPL_CLS SyclBude
+      |                  ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:480:92: note: while substituting into a lambda expression here
+  480 |   std::unordered_map<size_t, std::function<const std::vector<Device>()>> enumerate = {{Ns, []() {
+      |                                                                                            ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:652:10: note: in instantiation of function template specialization 'run<1UL, 2UL, 4UL, 8UL, 16UL, 32UL, 64UL, 128UL>' requested here
+  652 |   return run<USE_PPWI>(params, wgsizes, ppwis) ? EXIT_SUCCESS : EXIT_FAILURE;
+      |          ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/access/access.hpp:23:17: note: 'global_buffer' has been explicitly marked deprecated here
+   23 |   global_buffer __SYCL2020_DEPRECATED("use 'target::device' instead") = 2014,
+      |                 ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:53:40: note: expanded from macro '__SYCL2020_DEPRECATED'
+   53 | #define __SYCL2020_DEPRECATED(message) __SYCL_DEPRECATED(message)
+      |                                        ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:44:38: note: expanded from macro '__SYCL_DEPRECATED'
+   44 | #define __SYCL_DEPRECATED(message) [[deprecated(message)]]
+      |                                      ^
+In file included from /home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:77:
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:24:72: warning: 'global_buffer' is deprecated: use 'target::device' instead [-Wdeprecated-declarations]
+   24 |   static constexpr sycl::access::target Global = sycl::access::target::global_buffer;
+      |                                                                        ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:27:93: note: in instantiation of static data member 'SyclBude<32>::Global' requested here
+   27 |   template <typename T, sycl::access::mode A = R> using accessor1 = sycl::accessor<T, 1, A, Global>;
+      |                                                                                             ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:481:102: note: in instantiation of template class 'SyclBude<32>' requested here
+  481 |                                                                                          auto bude = IMPL_CLS<Ns>();
+      |                                                                                                      ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:14:18: note: expanded from macro 'IMPL_CLS'
+   14 | #define IMPL_CLS SyclBude
+      |                  ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:480:92: note: while substituting into a lambda expression here
+  480 |   std::unordered_map<size_t, std::function<const std::vector<Device>()>> enumerate = {{Ns, []() {
+      |                                                                                            ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:652:10: note: in instantiation of function template specialization 'run<1UL, 2UL, 4UL, 8UL, 16UL, 32UL, 64UL, 128UL>' requested here
+  652 |   return run<USE_PPWI>(params, wgsizes, ppwis) ? EXIT_SUCCESS : EXIT_FAILURE;
+      |          ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/access/access.hpp:23:17: note: 'global_buffer' has been explicitly marked deprecated here
+   23 |   global_buffer __SYCL2020_DEPRECATED("use 'target::device' instead") = 2014,
+      |                 ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:53:40: note: expanded from macro '__SYCL2020_DEPRECATED'
+   53 | #define __SYCL2020_DEPRECATED(message) __SYCL_DEPRECATED(message)
+      |                                        ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:44:38: note: expanded from macro '__SYCL_DEPRECATED'
+   44 | #define __SYCL_DEPRECATED(message) [[deprecated(message)]]
+      |                                      ^
+In file included from /home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:77:
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:24:72: warning: 'global_buffer' is deprecated: use 'target::device' instead [-Wdeprecated-declarations]
+   24 |   static constexpr sycl::access::target Global = sycl::access::target::global_buffer;
+      |                                                                        ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:27:93: note: in instantiation of static data member 'SyclBude<64>::Global' requested here
+   27 |   template <typename T, sycl::access::mode A = R> using accessor1 = sycl::accessor<T, 1, A, Global>;
+      |                                                                                             ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:481:102: note: in instantiation of template class 'SyclBude<64>' requested here
+  481 |                                                                                          auto bude = IMPL_CLS<Ns>();
+      |                                                                                                      ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:14:18: note: expanded from macro 'IMPL_CLS'
+   14 | #define IMPL_CLS SyclBude
+      |                  ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:480:92: note: while substituting into a lambda expression here
+  480 |   std::unordered_map<size_t, std::function<const std::vector<Device>()>> enumerate = {{Ns, []() {
+      |                                                                                            ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:652:10: note: in instantiation of function template specialization 'run<1UL, 2UL, 4UL, 8UL, 16UL, 32UL, 64UL, 128UL>' requested here
+  652 |   return run<USE_PPWI>(params, wgsizes, ppwis) ? EXIT_SUCCESS : EXIT_FAILURE;
+      |          ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/access/access.hpp:23:17: note: 'global_buffer' has been explicitly marked deprecated here
+   23 |   global_buffer __SYCL2020_DEPRECATED("use 'target::device' instead") = 2014,
+      |                 ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:53:40: note: expanded from macro '__SYCL2020_DEPRECATED'
+   53 | #define __SYCL2020_DEPRECATED(message) __SYCL_DEPRECATED(message)
+      |                                        ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:44:38: note: expanded from macro '__SYCL_DEPRECATED'
+   44 | #define __SYCL_DEPRECATED(message) [[deprecated(message)]]
+      |                                      ^
+In file included from /home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:77:
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:24:72: warning: 'global_buffer' is deprecated: use 'target::device' instead [-Wdeprecated-declarations]
+   24 |   static constexpr sycl::access::target Global = sycl::access::target::global_buffer;
+      |                                                                        ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:27:93: note: in instantiation of static data member 'SyclBude<128>::Global' requested here
+   27 |   template <typename T, sycl::access::mode A = R> using accessor1 = sycl::accessor<T, 1, A, Global>;
+      |                                                                                             ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:481:102: note: in instantiation of template class 'SyclBude<128>' requested here
+  481 |                                                                                          auto bude = IMPL_CLS<Ns>();
+      |                                                                                                      ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:14:18: note: expanded from macro 'IMPL_CLS'
+   14 | #define IMPL_CLS SyclBude
+      |                  ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:480:92: note: while substituting into a lambda expression here
+  480 |   std::unordered_map<size_t, std::function<const std::vector<Device>()>> enumerate = {{Ns, []() {
+      |                                                                                            ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:652:10: note: in instantiation of function template specialization 'run<1UL, 2UL, 4UL, 8UL, 16UL, 32UL, 64UL, 128UL>' requested here
+  652 |   return run<USE_PPWI>(params, wgsizes, ppwis) ? EXIT_SUCCESS : EXIT_FAILURE;
+      |          ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/access/access.hpp:23:17: note: 'global_buffer' has been explicitly marked deprecated here
+   23 |   global_buffer __SYCL2020_DEPRECATED("use 'target::device' instead") = 2014,
+      |                 ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:53:40: note: expanded from macro '__SYCL2020_DEPRECATED'
+   53 | #define __SYCL2020_DEPRECATED(message) __SYCL_DEPRECATED(message)
+      |                                        ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:44:38: note: expanded from macro '__SYCL_DEPRECATED'
+   44 | #define __SYCL_DEPRECATED(message) [[deprecated(message)]]
+      |                                      ^
+In file included from /home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:77:
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:98:40: warning: 'get_count' is deprecated: get_count() is deprecated, please use size() instead [-Wdeprecated-declarations]
+   98 |       for (size_t il = 0; il < ligands.get_count(); il++) {
+      |                                        ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:44:82: note: while substituting into a lambda expression here
+   44 |     h.parallel_for<bude_kernel_ndrange<PPWI>>(sycl::nd_range<1>(global, wgsize), [=](sycl::nd_item<1> item) {
+      |                                                                                  ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:225:9: note: in instantiation of member function 'SyclBude<1>::fasten_main' requested here
+  225 |         fasten_main(h, wgsize, p.ntypes(), p.nposes(),                                                 //
+      |         ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:494:22: note: in instantiation of member function 'SyclBude<1>::fasten' requested here
+  494 |          return bude.fasten(*hp, wgsize, device);
+      |                      ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:652:10: note: in instantiation of function template specialization 'run<1UL, 2UL, 4UL, 8UL, 16UL, 32UL, 64UL, 128UL>' requested here
+  652 |   return run<USE_PPWI>(params, wgsizes, ppwis) ? EXIT_SUCCESS : EXIT_FAILURE;
+      |          ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/accessor.hpp:2302:3: note: 'get_count' has been explicitly marked deprecated here
+ 2302 |   __SYCL2020_DEPRECATED("get_count() is deprecated, please use size() instead")
+      |   ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:53:40: note: expanded from macro '__SYCL2020_DEPRECATED'
+   53 | #define __SYCL2020_DEPRECATED(message) __SYCL_DEPRECATED(message)
+      |                                        ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:44:38: note: expanded from macro '__SYCL_DEPRECATED'
+   44 | #define __SYCL_DEPRECATED(message) [[deprecated(message)]]
+      |                                      ^
+In file included from /home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:77:
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:118:43: warning: 'get_count' is deprecated: get_count() is deprecated, please use size() instead [-Wdeprecated-declarations]
+  118 |         for (size_t ip = 0; ip < proteins.get_count(); ip++) {
+      |                                           ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/accessor.hpp:2302:3: note: 'get_count' has been explicitly marked deprecated here
+ 2302 |   __SYCL2020_DEPRECATED("get_count() is deprecated, please use size() instead")
+      |   ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:53:40: note: expanded from macro '__SYCL2020_DEPRECATED'
+   53 | #define __SYCL2020_DEPRECATED(message) __SYCL_DEPRECATED(message)
+      |                                        ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:44:38: note: expanded from macro '__SYCL_DEPRECATED'
+   44 | #define __SYCL_DEPRECATED(message) [[deprecated(message)]]
+      |                                      ^
+In file included from /home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:77:
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:98:40: warning: 'get_count' is deprecated: get_count() is deprecated, please use size() instead [-Wdeprecated-declarations]
+   98 |       for (size_t il = 0; il < ligands.get_count(); il++) {
+      |                                        ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:44:82: note: while substituting into a lambda expression here
+   44 |     h.parallel_for<bude_kernel_ndrange<PPWI>>(sycl::nd_range<1>(global, wgsize), [=](sycl::nd_item<1> item) {
+      |                                                                                  ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:225:9: note: in instantiation of member function 'SyclBude<2>::fasten_main' requested here
+  225 |         fasten_main(h, wgsize, p.ntypes(), p.nposes(),                                                 //
+      |         ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:494:22: note: in instantiation of member function 'SyclBude<2>::fasten' requested here
+  494 |          return bude.fasten(*hp, wgsize, device);
+      |                      ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:652:10: note: in instantiation of function template specialization 'run<1UL, 2UL, 4UL, 8UL, 16UL, 32UL, 64UL, 128UL>' requested here
+  652 |   return run<USE_PPWI>(params, wgsizes, ppwis) ? EXIT_SUCCESS : EXIT_FAILURE;
+      |          ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/accessor.hpp:2302:3: note: 'get_count' has been explicitly marked deprecated here
+ 2302 |   __SYCL2020_DEPRECATED("get_count() is deprecated, please use size() instead")
+      |   ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:53:40: note: expanded from macro '__SYCL2020_DEPRECATED'
+   53 | #define __SYCL2020_DEPRECATED(message) __SYCL_DEPRECATED(message)
+      |                                        ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:44:38: note: expanded from macro '__SYCL_DEPRECATED'
+   44 | #define __SYCL_DEPRECATED(message) [[deprecated(message)]]
+      |                                      ^
+In file included from /home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:77:
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:118:43: warning: 'get_count' is deprecated: get_count() is deprecated, please use size() instead [-Wdeprecated-declarations]
+  118 |         for (size_t ip = 0; ip < proteins.get_count(); ip++) {
+      |                                           ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/accessor.hpp:2302:3: note: 'get_count' has been explicitly marked deprecated here
+ 2302 |   __SYCL2020_DEPRECATED("get_count() is deprecated, please use size() instead")
+      |   ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:53:40: note: expanded from macro '__SYCL2020_DEPRECATED'
+   53 | #define __SYCL2020_DEPRECATED(message) __SYCL_DEPRECATED(message)
+      |                                        ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:44:38: note: expanded from macro '__SYCL_DEPRECATED'
+   44 | #define __SYCL_DEPRECATED(message) [[deprecated(message)]]
+      |                                      ^
+In file included from /home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:77:
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:98:40: warning: 'get_count' is deprecated: get_count() is deprecated, please use size() instead [-Wdeprecated-declarations]
+   98 |       for (size_t il = 0; il < ligands.get_count(); il++) {
+      |                                        ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:44:82: note: while substituting into a lambda expression here
+   44 |     h.parallel_for<bude_kernel_ndrange<PPWI>>(sycl::nd_range<1>(global, wgsize), [=](sycl::nd_item<1> item) {
+      |                                                                                  ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:225:9: note: in instantiation of member function 'SyclBude<4>::fasten_main' requested here
+  225 |         fasten_main(h, wgsize, p.ntypes(), p.nposes(),                                                 //
+      |         ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:494:22: note: in instantiation of member function 'SyclBude<4>::fasten' requested here
+  494 |          return bude.fasten(*hp, wgsize, device);
+      |                      ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:652:10: note: in instantiation of function template specialization 'run<1UL, 2UL, 4UL, 8UL, 16UL, 32UL, 64UL, 128UL>' requested here
+  652 |   return run<USE_PPWI>(params, wgsizes, ppwis) ? EXIT_SUCCESS : EXIT_FAILURE;
+      |          ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/accessor.hpp:2302:3: note: 'get_count' has been explicitly marked deprecated here
+ 2302 |   __SYCL2020_DEPRECATED("get_count() is deprecated, please use size() instead")
+      |   ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:53:40: note: expanded from macro '__SYCL2020_DEPRECATED'
+   53 | #define __SYCL2020_DEPRECATED(message) __SYCL_DEPRECATED(message)
+      |                                        ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:44:38: note: expanded from macro '__SYCL_DEPRECATED'
+   44 | #define __SYCL_DEPRECATED(message) [[deprecated(message)]]
+      |                                      ^
+In file included from /home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:77:
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:118:43: warning: 'get_count' is deprecated: get_count() is deprecated, please use size() instead [-Wdeprecated-declarations]
+  118 |         for (size_t ip = 0; ip < proteins.get_count(); ip++) {
+      |                                           ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/accessor.hpp:2302:3: note: 'get_count' has been explicitly marked deprecated here
+ 2302 |   __SYCL2020_DEPRECATED("get_count() is deprecated, please use size() instead")
+      |   ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:53:40: note: expanded from macro '__SYCL2020_DEPRECATED'
+   53 | #define __SYCL2020_DEPRECATED(message) __SYCL_DEPRECATED(message)
+      |                                        ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:44:38: note: expanded from macro '__SYCL_DEPRECATED'
+   44 | #define __SYCL_DEPRECATED(message) [[deprecated(message)]]
+      |                                      ^
+In file included from /home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:77:
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:98:40: warning: 'get_count' is deprecated: get_count() is deprecated, please use size() instead [-Wdeprecated-declarations]
+   98 |       for (size_t il = 0; il < ligands.get_count(); il++) {
+      |                                        ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:44:82: note: while substituting into a lambda expression here
+   44 |     h.parallel_for<bude_kernel_ndrange<PPWI>>(sycl::nd_range<1>(global, wgsize), [=](sycl::nd_item<1> item) {
+      |                                                                                  ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:225:9: note: in instantiation of member function 'SyclBude<8>::fasten_main' requested here
+  225 |         fasten_main(h, wgsize, p.ntypes(), p.nposes(),                                                 //
+      |         ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:494:22: note: in instantiation of member function 'SyclBude<8>::fasten' requested here
+  494 |          return bude.fasten(*hp, wgsize, device);
+      |                      ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:652:10: note: in instantiation of function template specialization 'run<1UL, 2UL, 4UL, 8UL, 16UL, 32UL, 64UL, 128UL>' requested here
+  652 |   return run<USE_PPWI>(params, wgsizes, ppwis) ? EXIT_SUCCESS : EXIT_FAILURE;
+      |          ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/accessor.hpp:2302:3: note: 'get_count' has been explicitly marked deprecated here
+ 2302 |   __SYCL2020_DEPRECATED("get_count() is deprecated, please use size() instead")
+      |   ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:53:40: note: expanded from macro '__SYCL2020_DEPRECATED'
+   53 | #define __SYCL2020_DEPRECATED(message) __SYCL_DEPRECATED(message)
+      |                                        ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:44:38: note: expanded from macro '__SYCL_DEPRECATED'
+   44 | #define __SYCL_DEPRECATED(message) [[deprecated(message)]]
+      |                                      ^
+In file included from /home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:77:
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:118:43: warning: 'get_count' is deprecated: get_count() is deprecated, please use size() instead [-Wdeprecated-declarations]
+  118 |         for (size_t ip = 0; ip < proteins.get_count(); ip++) {
+      |                                           ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/accessor.hpp:2302:3: note: 'get_count' has been explicitly marked deprecated here
+ 2302 |   __SYCL2020_DEPRECATED("get_count() is deprecated, please use size() instead")
+      |   ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:53:40: note: expanded from macro '__SYCL2020_DEPRECATED'
+   53 | #define __SYCL2020_DEPRECATED(message) __SYCL_DEPRECATED(message)
+      |                                        ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:44:38: note: expanded from macro '__SYCL_DEPRECATED'
+   44 | #define __SYCL_DEPRECATED(message) [[deprecated(message)]]
+      |                                      ^
+In file included from /home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:77:
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:98:40: warning: 'get_count' is deprecated: get_count() is deprecated, please use size() instead [-Wdeprecated-declarations]
+   98 |       for (size_t il = 0; il < ligands.get_count(); il++) {
+      |                                        ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:44:82: note: while substituting into a lambda expression here
+   44 |     h.parallel_for<bude_kernel_ndrange<PPWI>>(sycl::nd_range<1>(global, wgsize), [=](sycl::nd_item<1> item) {
+      |                                                                                  ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:225:9: note: in instantiation of member function 'SyclBude<16>::fasten_main' requested here
+  225 |         fasten_main(h, wgsize, p.ntypes(), p.nposes(),                                                 //
+      |         ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:494:22: note: in instantiation of member function 'SyclBude<16>::fasten' requested here
+  494 |          return bude.fasten(*hp, wgsize, device);
+      |                      ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:652:10: note: in instantiation of function template specialization 'run<1UL, 2UL, 4UL, 8UL, 16UL, 32UL, 64UL, 128UL>' requested here
+  652 |   return run<USE_PPWI>(params, wgsizes, ppwis) ? EXIT_SUCCESS : EXIT_FAILURE;
+      |          ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/accessor.hpp:2302:3: note: 'get_count' has been explicitly marked deprecated here
+ 2302 |   __SYCL2020_DEPRECATED("get_count() is deprecated, please use size() instead")
+      |   ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:53:40: note: expanded from macro '__SYCL2020_DEPRECATED'
+   53 | #define __SYCL2020_DEPRECATED(message) __SYCL_DEPRECATED(message)
+      |                                        ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:44:38: note: expanded from macro '__SYCL_DEPRECATED'
+   44 | #define __SYCL_DEPRECATED(message) [[deprecated(message)]]
+      |                                      ^
+In file included from /home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:77:
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:118:43: warning: 'get_count' is deprecated: get_count() is deprecated, please use size() instead [-Wdeprecated-declarations]
+  118 |         for (size_t ip = 0; ip < proteins.get_count(); ip++) {
+      |                                           ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/accessor.hpp:2302:3: note: 'get_count' has been explicitly marked deprecated here
+ 2302 |   __SYCL2020_DEPRECATED("get_count() is deprecated, please use size() instead")
+      |   ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:53:40: note: expanded from macro '__SYCL2020_DEPRECATED'
+   53 | #define __SYCL2020_DEPRECATED(message) __SYCL_DEPRECATED(message)
+      |                                        ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:44:38: note: expanded from macro '__SYCL_DEPRECATED'
+   44 | #define __SYCL_DEPRECATED(message) [[deprecated(message)]]
+      |                                      ^
+In file included from /home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:77:
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:98:40: warning: 'get_count' is deprecated: get_count() is deprecated, please use size() instead [-Wdeprecated-declarations]
+   98 |       for (size_t il = 0; il < ligands.get_count(); il++) {
+      |                                        ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:44:82: note: while substituting into a lambda expression here
+   44 |     h.parallel_for<bude_kernel_ndrange<PPWI>>(sycl::nd_range<1>(global, wgsize), [=](sycl::nd_item<1> item) {
+      |                                                                                  ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:225:9: note: in instantiation of member function 'SyclBude<32>::fasten_main' requested here
+  225 |         fasten_main(h, wgsize, p.ntypes(), p.nposes(),                                                 //
+      |         ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:494:22: note: in instantiation of member function 'SyclBude<32>::fasten' requested here
+  494 |          return bude.fasten(*hp, wgsize, device);
+      |                      ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:652:10: note: in instantiation of function template specialization 'run<1UL, 2UL, 4UL, 8UL, 16UL, 32UL, 64UL, 128UL>' requested here
+  652 |   return run<USE_PPWI>(params, wgsizes, ppwis) ? EXIT_SUCCESS : EXIT_FAILURE;
+      |          ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/accessor.hpp:2302:3: note: 'get_count' has been explicitly marked deprecated here
+ 2302 |   __SYCL2020_DEPRECATED("get_count() is deprecated, please use size() instead")
+      |   ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:53:40: note: expanded from macro '__SYCL2020_DEPRECATED'
+   53 | #define __SYCL2020_DEPRECATED(message) __SYCL_DEPRECATED(message)
+      |                                        ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:44:38: note: expanded from macro '__SYCL_DEPRECATED'
+   44 | #define __SYCL_DEPRECATED(message) [[deprecated(message)]]
+      |                                      ^
+In file included from /home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:77:
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:118:43: warning: 'get_count' is deprecated: get_count() is deprecated, please use size() instead [-Wdeprecated-declarations]
+  118 |         for (size_t ip = 0; ip < proteins.get_count(); ip++) {
+      |                                           ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/accessor.hpp:2302:3: note: 'get_count' has been explicitly marked deprecated here
+ 2302 |   __SYCL2020_DEPRECATED("get_count() is deprecated, please use size() instead")
+      |   ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:53:40: note: expanded from macro '__SYCL2020_DEPRECATED'
+   53 | #define __SYCL2020_DEPRECATED(message) __SYCL_DEPRECATED(message)
+      |                                        ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:44:38: note: expanded from macro '__SYCL_DEPRECATED'
+   44 | #define __SYCL_DEPRECATED(message) [[deprecated(message)]]
+      |                                      ^
+In file included from /home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:77:
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:98:40: warning: 'get_count' is deprecated: get_count() is deprecated, please use size() instead [-Wdeprecated-declarations]
+   98 |       for (size_t il = 0; il < ligands.get_count(); il++) {
+      |                                        ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:44:82: note: while substituting into a lambda expression here
+   44 |     h.parallel_for<bude_kernel_ndrange<PPWI>>(sycl::nd_range<1>(global, wgsize), [=](sycl::nd_item<1> item) {
+      |                                                                                  ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:225:9: note: in instantiation of member function 'SyclBude<64>::fasten_main' requested here
+  225 |         fasten_main(h, wgsize, p.ntypes(), p.nposes(),                                                 //
+      |         ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:494:22: note: in instantiation of member function 'SyclBude<64>::fasten' requested here
+  494 |          return bude.fasten(*hp, wgsize, device);
+      |                      ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:652:10: note: in instantiation of function template specialization 'run<1UL, 2UL, 4UL, 8UL, 16UL, 32UL, 64UL, 128UL>' requested here
+  652 |   return run<USE_PPWI>(params, wgsizes, ppwis) ? EXIT_SUCCESS : EXIT_FAILURE;
+      |          ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/accessor.hpp:2302:3: note: 'get_count' has been explicitly marked deprecated here
+ 2302 |   __SYCL2020_DEPRECATED("get_count() is deprecated, please use size() instead")
+      |   ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:53:40: note: expanded from macro '__SYCL2020_DEPRECATED'
+   53 | #define __SYCL2020_DEPRECATED(message) __SYCL_DEPRECATED(message)
+      |                                        ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:44:38: note: expanded from macro '__SYCL_DEPRECATED'
+   44 | #define __SYCL_DEPRECATED(message) [[deprecated(message)]]
+      |                                      ^
+In file included from /home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:77:
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:118:43: warning: 'get_count' is deprecated: get_count() is deprecated, please use size() instead [-Wdeprecated-declarations]
+  118 |         for (size_t ip = 0; ip < proteins.get_count(); ip++) {
+      |                                           ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/accessor.hpp:2302:3: note: 'get_count' has been explicitly marked deprecated here
+ 2302 |   __SYCL2020_DEPRECATED("get_count() is deprecated, please use size() instead")
+      |   ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:53:40: note: expanded from macro '__SYCL2020_DEPRECATED'
+   53 | #define __SYCL2020_DEPRECATED(message) __SYCL_DEPRECATED(message)
+      |                                        ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:44:38: note: expanded from macro '__SYCL_DEPRECATED'
+   44 | #define __SYCL_DEPRECATED(message) [[deprecated(message)]]
+      |                                      ^
+In file included from /home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:77:
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:98:40: warning: 'get_count' is deprecated: get_count() is deprecated, please use size() instead [-Wdeprecated-declarations]
+   98 |       for (size_t il = 0; il < ligands.get_count(); il++) {
+      |                                        ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:44:82: note: while substituting into a lambda expression here
+   44 |     h.parallel_for<bude_kernel_ndrange<PPWI>>(sycl::nd_range<1>(global, wgsize), [=](sycl::nd_item<1> item) {
+      |                                                                                  ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:225:9: note: in instantiation of member function 'SyclBude<128>::fasten_main' requested here
+  225 |         fasten_main(h, wgsize, p.ntypes(), p.nposes(),                                                 //
+      |         ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:494:22: note: in instantiation of member function 'SyclBude<128>::fasten' requested here
+  494 |          return bude.fasten(*hp, wgsize, device);
+      |                      ^
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:652:10: note: in instantiation of function template specialization 'run<1UL, 2UL, 4UL, 8UL, 16UL, 32UL, 64UL, 128UL>' requested here
+  652 |   return run<USE_PPWI>(params, wgsizes, ppwis) ? EXIT_SUCCESS : EXIT_FAILURE;
+      |          ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/accessor.hpp:2302:3: note: 'get_count' has been explicitly marked deprecated here
+ 2302 |   __SYCL2020_DEPRECATED("get_count() is deprecated, please use size() instead")
+      |   ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:53:40: note: expanded from macro '__SYCL2020_DEPRECATED'
+   53 | #define __SYCL2020_DEPRECATED(message) __SYCL_DEPRECATED(message)
+      |                                        ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:44:38: note: expanded from macro '__SYCL_DEPRECATED'
+   44 | #define __SYCL_DEPRECATED(message) [[deprecated(message)]]
+      |                                      ^
+In file included from /home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/main.cpp:77:
+/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/src/sycl/fasten.hpp:118:43: warning: 'get_count' is deprecated: get_count() is deprecated, please use size() instead [-Wdeprecated-declarations]
+  118 |         for (size_t ip = 0; ip < proteins.get_count(); ip++) {
+      |                                           ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/accessor.hpp:2302:3: note: 'get_count' has been explicitly marked deprecated here
+ 2302 |   __SYCL2020_DEPRECATED("get_count() is deprecated, please use size() instead")
+      |   ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:53:40: note: expanded from macro '__SYCL2020_DEPRECATED'
+   53 | #define __SYCL2020_DEPRECATED(message) __SYCL_DEPRECATED(message)
+      |                                        ^
+/opt/aurora/24.086.0/oneapi/compiler/2024.1/bin/compiler/../../include/sycl/detail/defines_elementary.hpp:44:38: note: expanded from macro '__SYCL_DEPRECATED'
+   44 | #define __SYCL_DEPRECATED(message) [[deprecated(message)]]
+      |                                      ^
+28 warnings generated.
+[100%] Linking CXX executable sycl-bude
+/opt/aurora/24.086.0/spack/gcc/0.7.0/install/linux-sles15-x86_64/gcc-12.2.0/cmake-3.27.7-mbl7dvgbiblpavhu53h5cheyrmpaikdz/bin/cmake -E cmake_link_script CMakeFiles/bude.dir/link.txt --verbose=1
+icpx  -DNDEBUG -fsycl -march=native CMakeFiles/bude.dir/src/main.cpp.o -o sycl-bude 
+gmake[2]: Leaving directory '/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+[100%] Built target bude
+gmake[1]: Leaving directory '/home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build'
+/opt/aurora/24.086.0/spack/gcc/0.7.0/install/linux-sles15-x86_64/gcc-12.2.0/cmake-3.27.7-mbl7dvgbiblpavhu53h5cheyrmpaikdz/bin/cmake -E cmake_progress_start /home/bertoni/abc-pvc-deepdive/mini-apps/miniBUDE/minibude/build/CMakeFiles 0
+
+	linux-vdso.so.1 (0x00007ffd9b375000)
+	libstdc++.so.6 => /opt/aurora/24.086.0/spack/gcc/0.7.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-jf4ov3v3scg7dvd76qhsuugl3jp42gfn/lib64/libstdc++.so.6 (0x000014a63f527000)
+	libm.so.6 => /lib64/libm.so.6 (0x000014a63f3c5000)
+	libgcc_s.so.1 => /opt/aurora/24.086.0/spack/gcc/0.7.0/install/linux-sles15-x86_64/gcc-12.2.0/gcc-12.2.0-jf4ov3v3scg7dvd76qhsuugl3jp42gfn/lib64/libgcc_s.so.1 (0x000014a63f3a5000)
+	libdl.so.2 => /lib64/libdl.so.2 (0x000014a63f3a0000)
+	libsycl.so.7 => /opt/aurora/24.086.0/oneapi/compiler/latest/lib/libsycl.so.7 (0x000014a63f00b000)
+	libc.so.6 => /lib64/libc.so.6 (0x000014a63ee16000)
+	/lib64/ld-linux-x86-64.so.2 (0x000014a63f74e000)
+	libpthread.so.0 => /lib64/libpthread.so.0 (0x000014a63edf0000)
+cpubind:list x1921c4s5b0n0 pid 47961 rank 0 0: mask 0x1fe
+# (ppwi=1,wgsize=4,valid=1)
+# (ppwi=1,wgsize=8,valid=1)
+# (ppwi=1,wgsize=16,valid=1)
+# (ppwi=1,wgsize=32,valid=1)
+# (ppwi=1,wgsize=64,valid=1)
+# (ppwi=1,wgsize=128,valid=1)
+# (ppwi=1,wgsize=256,valid=1)
+# (ppwi=1,wgsize=512,valid=1)
+# (ppwi=1,wgsize=1024,valid=1)
+# (ppwi=2,wgsize=4,valid=1)
+# (ppwi=2,wgsize=8,valid=1)
+# (ppwi=2,wgsize=16,valid=1)
+# (ppwi=2,wgsize=32,valid=1)
+# (ppwi=2,wgsize=64,valid=1)
+# (ppwi=2,wgsize=128,valid=1)
+# (ppwi=2,wgsize=256,valid=1)
+# (ppwi=2,wgsize=512,valid=1)
+# (ppwi=2,wgsize=1024,valid=1)
+# (ppwi=4,wgsize=4,valid=1)
+# (ppwi=4,wgsize=8,valid=1)
+# (ppwi=4,wgsize=16,valid=1)
+# (ppwi=4,wgsize=32,valid=1)
+# (ppwi=4,wgsize=64,valid=1)
+# (ppwi=4,wgsize=128,valid=1)
+# (ppwi=4,wgsize=256,valid=1)
+# (ppwi=4,wgsize=512,valid=1)
+# (ppwi=4,wgsize=1024,valid=1)
+# (ppwi=8,wgsize=4,valid=1)
+# (ppwi=8,wgsize=8,valid=1)
+# (ppwi=8,wgsize=16,valid=1)
+# (ppwi=8,wgsize=32,valid=1)
+# (ppwi=8,wgsize=64,valid=1)
+# (ppwi=8,wgsize=128,valid=1)
+# (ppwi=8,wgsize=256,valid=1)
+# (ppwi=8,wgsize=512,valid=1)
+# (ppwi=8,wgsize=1024,valid=1)
+# (ppwi=16,wgsize=4,valid=1)
+# (ppwi=16,wgsize=8,valid=1)
+# (ppwi=16,wgsize=16,valid=1)
+# (ppwi=16,wgsize=32,valid=1)
+# (ppwi=16,wgsize=64,valid=1)
+# (ppwi=16,wgsize=128,valid=1)
+# (ppwi=16,wgsize=256,valid=1)
+# (ppwi=16,wgsize=512,valid=1)
+# (ppwi=16,wgsize=1024,valid=1)
+# (ppwi=32,wgsize=4,valid=1)
+# (ppwi=32,wgsize=8,valid=1)
+# (ppwi=32,wgsize=16,valid=1)
+# (ppwi=32,wgsize=32,valid=1)
+# (ppwi=32,wgsize=64,valid=1)
+# (ppwi=32,wgsize=128,valid=1)
+# (ppwi=32,wgsize=256,valid=1)
+# (ppwi=32,wgsize=512,valid=1)
+# (ppwi=32,wgsize=1024,valid=1)
+# (ppwi=64,wgsize=4,valid=1)
+# (ppwi=64,wgsize=8,valid=1)
+# (ppwi=64,wgsize=16,valid=1)
+# (ppwi=64,wgsize=32,valid=1)
+# (ppwi=64,wgsize=64,valid=1)
+# (ppwi=64,wgsize=128,valid=1)
+# (ppwi=64,wgsize=256,valid=1)
+# (ppwi=64,wgsize=512,valid=1)
+# (ppwi=64,wgsize=1024,valid=1)
+ppwi,wgsize,sum_ms,avg_ms,min_ms,max_ms,stddev_ms,interactions/s,gflops/s,gfinst/s
+1,4,595680.802,198560.267,198560.230,198560.323,0.040,35346933949.099,1414.142,883.673
+1,8,302156.639,100718.880,100718.784,100719.056,0.125,69684022325.212,2787.883,1742.101
+1,16,152174.043,50724.681,50724.517,50724.771,0.116,138364530433.443,5535.617,3459.113
+1,32,87310.959,29103.653,29101.399,29104.965,1.601,241155178850.835,9648.013,6028.879
+1,64,87320.945,29106.982,29103.285,29113.320,4.503,241127601438.890,9646.910,6028.190
+1,128,87320.943,29106.981,29104.432,29110.937,2.836,241127607478.061,9646.910,6028.190
+1,256,87479.456,29159.819,29156.036,29164.299,3.409,240690681238.034,9629.430,6017.267
+1,512,94602.139,31534.046,31526.141,31542.793,6.824,222568858093.511,8904.421,5564.221
+1,1024,94605.707,31535.236,31529.826,31537.950,3.825,222560462378.081,8904.085,5564.012
+2,4,409879.056,136626.352,136414.678,136732.212,149.676,51370006968.712,1798.316,1284.250
+2,8,205139.907,68379.969,68379.785,68380.103,0.135,102639658189.940,3593.118,2565.991
+2,16,108856.451,36285.484,36282.501,36287.142,2.113,193424365937.566,6771.229,4835.609
+2,32,71906.575,23968.858,23948.659,24006.368,26.549,292817313240.105,10250.689,7320.433
+2,64,71857.530,23952.510,23951.252,23953.141,0.890,293017170050.085,10257.686,7325.429
+2,128,71856.676,23952.225,23951.474,23953.087,0.663,293020648886.685,10257.807,7325.516
+2,256,72788.386,24262.795,24261.031,24264.368,1.369,289269912112.645,10126.505,7231.748
+2,512,83791.191,27930.397,27684.545,28053.627,173.844,251285245686.979,8796.771,6282.131
+2,1024,85450.541,28483.514,28482.591,28484.500,0.781,246405578748.148,8625.948,6160.139
+4,4,673881.631,224627.210,224625.804,224628.723,1.194,31245086690.552,1015.682,781.127
+4,8,347818.219,115939.406,115939.038,115939.616,0.261,60535902920.553,1967.836,1513.398
+4,16,199842.324,66614.108,66609.100,66617.379,3.596,105360514044.653,3424.947,2634.013
+4,32,132169.887,44056.629,44032.686,44084.348,21.259,159306257176.503,5178.557,3982.656
+4,64,132186.962,44062.321,44042.327,44094.669,23.085,159285678735.077,5177.888,3982.142
+4,128,132321.998,44107.333,44052.735,44200.189,65.997,159123126238.299,5172.604,3978.078
+4,256,132442.976,44147.659,44098.833,44201.660,42.138,158977777231.791,5167.879,3974.444
+4,512,132335.061,44111.687,44064.100,44151.952,36.237,159107418601.572,5172.093,3977.685
+4,1024,132378.149,44126.050,44082.646,44163.290,33.210,159055630248.101,5170.410,3976.391
+8,4,659189.288,219729.763,219729.626,219729.924,0.123,31941492888.078,998.390,798.537
+8,8,355727.781,118575.927,118575.257,118576.624,0.558,59189894876.374,1850.089,1479.747
+8,16,219197.499,73065.833,73057.179,73071.800,6.264,96057163406.852,3002.443,2401.429
+8,32,164904.070,54968.023,54964.845,54973.333,3.779,127683264645.298,3990.975,3192.082
+8,64,164892.033,54964.011,54959.103,54968.564,3.871,127692585130.706,3991.266,3192.315
+8,128,164928.404,54976.135,54970.195,54982.544,5.052,127664425362.863,3990.386,3191.611
+8,256,164873.387,54957.796,54955.693,54960.805,2.183,127707026081.596,3991.717,3192.676
+8,512,167335.582,55778.527,55764.087,55790.621,10.959,125827930048.753,3932.983,3145.698
+8,1024,167295.211,55765.070,55741.466,55782.809,17.380,125858294840.117,3933.932,3146.457
+16,4,756617.212,252205.737,252135.289,252241.854,49.820,27828457568.286,852.435,695.711
+16,8,387924.156,129308.052,129208.718,129473.409,117.713,54277336473.711,1662.612,1356.933
+16,16,245892.848,81964.283,81916.345,82019.962,42.654,85628720583.957,2622.961,2140.718
+16,32,185853.025,61951.008,61945.919,61955.970,4.104,113291080444.803,3470.308,2832.277
+16,64,187305.551,62435.184,62418.249,62447.512,12.383,112412524958.340,3443.397,2810.313
+16,128,187154.132,62384.711,62378.905,62389.493,4.383,112503473550.970,3446.182,2812.587
+16,256,187220.672,62406.891,62394.556,62413.935,8.751,112463489063.962,3444.958,2811.587
+16,512,187168.974,62389.658,62367.384,62402.481,15.810,112494552168.981,3445.909,2812.364
+16,1024,187167.390,62389.130,62377.600,62404.298,11.199,112495504432.987,3445.938,2812.388
+32,4,449188.967,149729.656,149712.010,149757.271,19.777,46874459351.742,1421.199,1171.861
+32,8,312155.611,104051.870,104013.770,104090.518,31.334,67451902970.164,2045.092,1686.298
+32,16,213495.739,71165.246,71007.026,71430.915,188.996,98622530294.083,2990.163,2465.563
+32,32,412591.722,137530.574,135054.083,138837.339,1752.037,51032264648.866,1547.261,1275.807
+32,64,434358.313,144786.104,144759.349,144801.929,19.024,48474932684.611,1469.724,1211.873
+32,128,435787.242,145262.414,145197.177,145320.461,50.586,48315985326.500,1464.905,1207.900
+32,256,441721.777,147240.592,147215.564,147263.718,19.705,47666859716.209,1445.224,1191.671
+32,512,442247.466,147415.822,147369.186,147502.096,61.071,47610199190.061,1443.506,1190.255
+32,1024,442194.290,147398.097,147359.238,147463.472,46.501,47615924552.585,1443.680,1190.398
+64,4,957845.635,319281.878,319209.204,319368.361,65.705,21982132827.244,663.047,549.553
+64,8,988730.715,329576.905,323895.685,332486.838,4017.628,21295474737.703,642.335,532.387
+64,16,1347912.766,449304.255,445665.529,453885.223,3421.180,15620810552.029,471.171,390.520
+64,32,1516809.301,505603.100,501279.172,507904.418,3059.595,13881435166.973,418.706,347.036
+64,64,1885158.538,628386.179,612587.319,637249.650,11199.177,11169081823.445,336.893,279.227
+64,128,2460989.076,820329.692,820300.425,820352.336,21.704,8555702326.754,258.066,213.893
+64,256,2698171.950,899390.650,899362.361,899424.325,25.582,7803613096.392,235.380,195.090
+64,512,3041096.144,1013698.715,1013688.561,1013717.130,13.045,6923651529.237,208.838,173.091
+64,1024,3385668.704,1128556.235,1128539.709,1128572.485,13.382,6219004812.332,187.584,155.475
+# best: { min_ms: 23951.474, max_ms: 23953.087, sum_ms: 71856.676, avg_ms: 23952.225, ppwi: 2, wgsize: 128 }
+========================================
+best gflops/s = 10257.807
+========================================
