@@ -17,6 +17,8 @@ source $BASE/../../environment/$1.env $2
 
 # Compiling the code
 cd "$BASE/minibude"
+# Fix CUDA compilation error
+sed -i "s/\-fast/\-use_fast_math/g" CMakeLists.txt
 
 CMAKE_OPTS+="-DCMAKE_VERBOSE_MAKEFILE=ON "
 
