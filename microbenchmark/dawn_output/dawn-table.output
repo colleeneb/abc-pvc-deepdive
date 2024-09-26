@@ -1,32 +1,174 @@
 + export VENDOR=INTEL
 + VENDOR=INTEL
-+ ./gen_mk_table.py run.out micro
++ ./run.sh
++ tee log.txt
++ mpicxx -fiopenmp -fopenmp-targets=spir64 flops.cpp -o flops
++ mpirun -launcher ssh -np 1 ./gpu_tile_compact.sh ./flops
+Single Precision Peak Flops: 25941.7 GFlop/s
+Double Precision Peak Flops: 19658.9 GFlop/s
++ mpirun -launcher ssh -np 2 ./gpu_tile_compact.sh ./flops
+Single Precision Peak Flops: 51816.8 GFlop/s
+Double Precision Peak Flops: 34964.6 GFlop/s
++ mpirun -launcher ssh -np 8 ./gpu_tile_compact.sh ./flops
+Single Precision Peak Flops: 203779 GFlop/s
+Double Precision Peak Flops: 137418 GFlop/s
++ mpicxx -fiopenmp -fopenmp-targets=spir64 triad.cpp -o triad
++ mpirun -launcher ssh -np 1 ./gpu_tile_compact.sh ./triad
+Memory Bandwidth (triad): 1052.68 GB/s
++ mpirun -launcher ssh -np 2 ./gpu_tile_compact.sh ./triad
+Memory Bandwidth (triad): 2120.34 GB/s
++ mpirun -launcher ssh -np 8 ./gpu_tile_compact.sh ./triad
+Memory Bandwidth (triad): 8468.95 GB/s
++ mpicxx -fsycl pci.cpp -o pci
++ mpirun -launcher ssh -np 1 ./gpu_tile_compact.sh ./pci
+PCIe Unidirectional Bandwidth (H2D): 52 GB/s
+PCIe Unidirectional Bandwidth (D2H): 51 GB/s
+PCIe Bidirectional Bandwidth: 70 GB/s
++ mpirun -launcher ssh -np 2 ./gpu_tile_compact.sh ./pci
+PCIe Unidirectional Bandwidth (H2D): 54 GB/s
+PCIe Unidirectional Bandwidth (D2H): 53 GB/s
+PCIe Bidirectional Bandwidth: 71 GB/s
++ mpirun -launcher ssh -np 8 ./gpu_tile_compact.sh ./pci
+PCIe Unidirectional Bandwidth (H2D): 177 GB/s
+PCIe Unidirectional Bandwidth (D2H): 120 GB/s
+PCIe Bidirectional Bandwidth: 163 GB/s
+
+===================================================================================
+=   BAD TERMINATION OF ONE OF YOUR APPLICATION PROCESSES
+=   PID 1708553 RUNNING AT pvc-s-20
+=   EXIT CODE: 9
+=   CLEANING UP REMAINING PROCESSES
+=   YOU CAN IGNORE THE BELOW CLEANUP MESSAGES
+===================================================================================
+YOUR APPLICATION TERMINATED WITH THE EXIT STRING: Killed (signal 9)
+This typically refers to a problem with your application.
+Please see the FAQ page for debugging suggestions
++ export MPIR_CVAR_CH4_IPC_GPU_ENGINE_TYPE=copy_high_bandwidth
++ MPIR_CVAR_CH4_IPC_GPU_ENGINE_TYPE=copy_high_bandwidth
++ mpicxx -fsycl peer2pear.cpp -o peer2pear
++ mpirun -launcher ssh -np 2 ./gpu_tile_compact.sh ./peer2pear Tile2Tile
+Tile2Tile Unidirectional Bandwidth: 197 GB/s
+Tile2Tile Bidirectional Bandwidth: 287 GB/s
++ mpirun -launcher ssh -np 8 ./gpu_tile_compact.sh ./peer2pear Tile2Tile
+Tile2Tile Unidirectional Bandwidth: 783 GB/s
+Tile2Tile Bidirectional Bandwidth: 1144 GB/s
+
+===================================================================================
+=   BAD TERMINATION OF ONE OF YOUR APPLICATION PROCESSES
+=   PID 1708684 RUNNING AT pvc-s-20
+=   EXIT CODE: 9
+=   CLEANING UP REMAINING PROCESSES
+=   YOU CAN IGNORE THE BELOW CLEANUP MESSAGES
+===================================================================================
+YOUR APPLICATION TERMINATED WITH THE EXIT STRING: Killed (signal 9)
+This typically refers to a problem with your application.
+Please see the FAQ page for debugging suggestions
++ icpx -g0 -lze_loader topology.cpp -o topology
+icpx: remark: Note that use of '-g0' without any optimization-level option will turn off most compiler optimizations similar to use of '-O0'; use '-Rno-debug-disables-optimization' to disable this remark [-Rdebug-disables-optimization]
++ mpirun -launcher ssh -np 2 ./gpu_tile_plan_compact.sh ./peer2pear GPU2GPU
+1
+0
+GPU2GPU Unidirectional Bandwidth: 31 GB/s
+GPU2GPU Bidirectional Bandwidth: 47 GB/s
++ mpirun -launcher ssh -np 8 ./gpu_tile_plan_compact.sh ./peer2pear GPU2GPU
+2
+3
+7
+4
+0
+6
+1
+5
+GPU2GPU Unidirectional Bandwidth: 126 GB/s
+GPU2GPU Bidirectional Bandwidth: 189 GB/s
+
+===================================================================================
+=   BAD TERMINATION OF ONE OF YOUR APPLICATION PROCESSES
+=   PID 1708794 RUNNING AT pvc-s-20
+=   EXIT CODE: 9
+=   CLEANING UP REMAINING PROCESSES
+=   YOU CAN IGNORE THE BELOW CLEANUP MESSAGES
+===================================================================================
+YOUR APPLICATION TERMINATED WITH THE EXIT STRING: Killed (signal 9)
+This typically refers to a problem with your application.
+Please see the FAQ page for debugging suggestions
++ mpicxx -fsycl gemm.cpp -qmkl -o gemm
++ mpirun -launcher ssh -np 1 ./gpu_tile_compact.sh ./gemm
+Memory FootPrint: 3456000000 bytes
+DGEMM: 17509.2 GFlop/s
+Memory FootPrint: 2466250752 bytes
+SGEMM: 26071.3 GFlop/s
+Memory FootPrint: 2774532096 bytes
+HGEMM: 248965 GFlop/s
+Memory FootPrint: 3699376128 bytes
+BF16GEMM: 251961 GFlop/s
+Memory FootPrint: 2466250752 bytes
+TF32GEMM: 124928 GFlop/s
+Memory FootPrint: 4586471424 bytes
+I8GEMM: 516386 GFlop/s
++ mpirun -launcher ssh -np 2 ./gpu_tile_compact.sh ./gemm
+Memory FootPrint: 3456000000 bytes
+DGEMM: 36733.9 GFlop/s
+Memory FootPrint: 2466250752 bytes
+SGEMM: 51637.8 GFlop/s
+Memory FootPrint: 2774532096 bytes
+HGEMM: 511158 GFlop/s
+Memory FootPrint: 3699376128 bytes
+BF16GEMM: 516575 GFlop/s
+Memory FootPrint: 2466250752 bytes
+TF32GEMM: 247196 GFlop/s
+Memory FootPrint: 4586471424 bytes
+I8GEMM: 1.06462e+06 GFlop/s
++ mpirun -launcher ssh -np 8 ./gpu_tile_compact.sh ./gemm
+Memory FootPrint: 3456000000 bytes
+DGEMM: 145272 GFlop/s
+Memory FootPrint: 2466250752 bytes
+SGEMM: 202345 GFlop/s
+Memory FootPrint: 2774532096 bytes
+HGEMM: 1.96153e+06 GFlop/s
+Memory FootPrint: 3699376128 bytes
+BF16GEMM: 1.95052e+06 GFlop/s
+Memory FootPrint: 2466250752 bytes
+TF32GEMM: 933339 GFlop/s
+Memory FootPrint: 4586471424 bytes
+I8GEMM: 4.09865e+06 GFlop/s
++ mpicxx -fsycl fftc2c.cpp -qmkl -o fftc2c
++ mpirun -launcher ssh -np 1 ./gpu_tile_compact.sh ./fftc2c
+Single-precision FFT C2C 1D: 3503.17 GFlop/s
+Single-precision FFT C2C 2D: 3601.48 GFlop/s
++ mpirun -launcher ssh -np 2 ./gpu_tile_compact.sh ./fftc2c
+Single-precision FFT C2C 1D: 6755.15 GFlop/s
+Single-precision FFT C2C 2D: 6533.4 GFlop/s
++ mpirun -launcher ssh -np 8 ./gpu_tile_compact.sh ./fftc2c
+Single-precision FFT C2C 1D: 26244.5 GFlop/s
+Single-precision FFT C2C 2D: 25297.3 GFlop/s
++ ./gen_mk_table.py log.txt micro
 + column -t -s '|' -o '|' -R 0
 |                                     | One Tile   | Full Node   | Scaling 
 |---                                  |-----------:|-----------: |----:
-| Single Precision Peak Flops         | 26 TFlop/s | 207 TFlop/s | 8.0 
+| Single Precision Peak Flops         | 26 TFlop/s | 204 TFlop/s | 7.9 
 | Double Precision Peak Flops         | 20 TFlop/s | 137 TFlop/s | 7.0 
-| Memory Bandwidth (triad)            | 1 TB/s     | 8 TB/s      | 7.5 
+| Memory Bandwidth (triad)            | 1 TB/s     | 8 TB/s      | 8.0 
 | PCIe Unidirectional Bandwidth (H2D) | 52 GB/s    | 177 GB/s    | 3.4 
 | PCIe Unidirectional Bandwidth (D2H) | 51 GB/s    | 120 GB/s    | 2.4 
-| PCIe Bidirectional Bandwidth        | 71 GB/s    | 163 GB/s    | 2.3 
-| Tile2Tile Unidirectional Bandwidth  | 37 GB/s    | 148 GB/s    | 4.0 
-| Tile2Tile Bidirectional Bandwidth   | 67 GB/s    | 270 GB/s    | 4.0 
-| GPU2GPU Unidirectional Bandwidth    | 18 GB/s    | 75 GB/s     | 4.2 
-| GPU2GPU Bidirectional Bandwidth     | 36 GB/s    | 143 GB/s    | 4.0 
-+ ./gen_mk_table.py run.out GEMM
+| PCIe Bidirectional Bandwidth        | 70 GB/s    | 163 GB/s    | 2.3 
+| Tile2Tile Unidirectional Bandwidth  | 197 GB/s   | 783 GB/s    | 4.0 
+| Tile2Tile Bidirectional Bandwidth   | 287 GB/s   | 1 TB/s      | 4.0 
+| GPU2GPU Unidirectional Bandwidth    | 31 GB/s    | 126 GB/s    | 4.1 
+| GPU2GPU Bidirectional Bandwidth     | 47 GB/s    | 189 GB/s    | 4.0 
++ ./gen_mk_table.py log.txt GEMM
 + column -t -s '|' -o '|' -R 0
 |          | One Tile    | Full Node    | Scaling 
 |---       |-----------: |-----------:  |----:
-| DGEMM    | 18 TFlop/s  | 142 TFlop/s  | 7.9 
-| SGEMM    | 26 TFlop/s  | 203 TFlop/s  | 7.8 
-| HGEMM    | 259 TFlop/s | 1949 TFlop/s | 7.5 
-| BF16GEMM | 261 TFlop/s | 1957 TFlop/s | 7.5 
-| TF32GEMM | 130 TFlop/s | 934 TFlop/s  | 7.2 
-| I8GEMM   | 538 TFlop/s | 4085 TFlop/s | 7.6 
-+ ./gen_mk_table.py run.out FFT
+| DGEMM    | 18 TFlop/s  | 145 TFlop/s  | 8.3 
+| SGEMM    | 26 TFlop/s  | 202 TFlop/s  | 7.8 
+| HGEMM    | 249 TFlop/s | 1962 TFlop/s | 7.9 
+| BF16GEMM | 252 TFlop/s | 1951 TFlop/s | 7.7 
+| TF32GEMM | 125 TFlop/s | 933 TFlop/s  | 7.5 
+| I8GEMM   | 516 TFlop/s | 4099 TFlop/s | 7.9 
++ ./gen_mk_table.py log.txt FFT
 + column -t -s '|' -o '|' -R 0
 |                             | One Tile   | Full Node  | Scaling 
 |---                          |-----------:|-----------:|----:
-| Single-precision FFT C2C 1D | 4 TFlop/s  | 26 TFlop/s | 7.4 
-| Single-precision FFT C2C 2D | 4 TFlop/s  | 25 TFlop/s | 6.9 
+| Single-precision FFT C2C 1D | 4 TFlop/s  | 26 TFlop/s | 7.5 
+| Single-precision FFT C2C 2D | 4 TFlop/s  | 25 TFlop/s | 7.0 
